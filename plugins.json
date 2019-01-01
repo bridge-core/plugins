@@ -1,0 +1,17 @@
+{
+    "solved.utilities.console": {
+        "name": "Console",
+        "author": "solvedDev",
+        "version": "1.0.0",
+        "description": "Utility module to bring a console to bridge. plugins."
+    },
+    "solved.utilities.file_search": {
+        "name": "File Search",
+        "author": "solvedDev",
+        "version": "1.0.0",
+        "description": "Quickly search all files of a project for specific keywords.",
+        "dependencies": [
+            "solved.utilities.console"
+        ]
+    }
+}
