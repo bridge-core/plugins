@@ -9,10 +9,11 @@ class Console {
     constructor() {
         this.content = [];
         this.registered_sidebar = true;
+        this.registered_footer = false;
+        this.new_logs = 0;
         this.input = "";
-        this.context = {
-            
-        };
+        this.current_open_sidebar = "Explorer";
+        this.context = {};
 
         this.input_logic = [
             {
@@ -102,6 +103,13 @@ class Console {
             ],
             actions: action_content
         });
+        Bridge.on("opened-sidebar", sidebar_id => {
+            this.current_open_sidebar = sidebar_id;
+            if(sidebar_id == "solved.utilities.console.sidebar") {
+                this.new_logs = 0;
+                Bridge.Footer.remove("solved.utilities.console.footer");
+            } 
+        });
     }
 
     updateUI() {
@@ -109,8 +117,9 @@ class Console {
             Bridge.Sidebar.update({
                 id: "solved.utilities.console.sidebar",
                 content: this.getContent()
-            });           
-        } 
+            }); 
+        }
+
         Bridge.Window.update({
             id: "solved.utilities.console.window",
             content: this.getContent()
@@ -138,20 +147,51 @@ class Console {
         
         this.updateUI();
     }
+    __increase__badge__(new_logs=this.new_logs) {
+        if(!this.registered_sidebar) return;
+
+        this.new_logs++;
+        if(!this.registered_footer) {
+            this.registered_footer = true;
+            Bridge.Footer.register({
+                id: "solved.utilities.console.footer",
+                display_name: `${new_logs} new logs`,
+                display_icon: "sms_failed",
+                badge: {
+                    color: "orange",
+                    content: new_logs
+                },
+                action: () => {
+                    if(this.registered_sidebar) Bridge.Sidebar.open("solved.utilities.console.sidebar")
+                }
+            });
+        } else {
+            Bridge.Footer.update({
+                id: "solved.utilities.console.footer",
+                display_name: `${new_logs} new logs`,
+                badge: {
+                    content: new_logs
+                }
+            });
+        }
+    }
 
     log(...args) {
         args.forEach(log => {
             this.__internal__log__(log);
+            this.__increase__badge__();
         });
     }
     warn(...args) {
         args.forEach(log => {
             this.__internal__log__(log, "orange");
+            this.__increase__badge__();
         });
     }
     error(...args) {
         args.forEach(log => {
             this.__internal__log__(log, "error");
+            this.__increase__badge__();
         });
     }
 
