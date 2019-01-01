@@ -3,7 +3,8 @@
         "name": "Console",
         "author": "solvedDev",
         "version": "1.0.0",
-        "description": "Utility module to bring a console to bridge. plugins."
+        "description": "Utility module to bring a console to bridge. plugins.",
+        "folder": "modules/"
     },
     "solved.utilities.file_search": {
         "name": "File Search",
