@@ -48,7 +48,7 @@ function loadProject(segment, cb) {
 
 function setupUI() {
     Bridge.Window.register({
-        id: "solved.utilities.search.window",
+        id: "solved.utilities.file_search.window",
         options: {
             height: 160,
             is_persistent: false,
@@ -76,7 +76,7 @@ function setupUI() {
         ]
     });
     Bridge.Sidebar.register({
-        id: "solved.utilities.search.sidebar",
+        id: "solved.utilities.file_search.sidebar",
         icon: "search",
         title: "File Search",
         toolbar: [
@@ -84,7 +84,7 @@ function setupUI() {
                 display_name: "Information",
                 display_icon: "info",
                 action() {
-                    Bridge.Window.open("solved.utilities.search.window");
+                    Bridge.Window.open("solved.utilities.file_search.window");
                 }
             }
         ],
@@ -168,7 +168,7 @@ function updateUI(list) {
     }
     
     Bridge.Sidebar.update({
-        id: "solved.utilities.search.sidebar",
+        id: "solved.utilities.file_search.sidebar",
         content
     });
 }
