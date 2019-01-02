@@ -74,7 +74,7 @@ class Console {
                     }
                 }
             ],
-            content: this.content
+            content: this.getContent()
         };
     }
     
@@ -148,18 +148,18 @@ class Console {
         this.updateUI();
     }
     __increase__badge__(new_logs=this.new_logs) {
-        if(!this.registered_sidebar) return;
+        if(!this.registered_sidebar|| this.current_open_sidebar == "solved.utilities.console.sidebar") return;
 
         this.new_logs++;
         if(!this.registered_footer) {
             this.registered_footer = true;
             Bridge.Footer.register({
                 id: "solved.utilities.console.footer",
-                display_name: `${new_logs} new logs`,
+                display_name: `${new_logs+1} new logs`,
                 display_icon: "sms_failed",
                 badge: {
                     color: "orange",
-                    content: new_logs
+                    content: new_logs+1
                 },
                 action: () => {
                     if(this.registered_sidebar) Bridge.Sidebar.open("solved.utilities.console.sidebar")
@@ -168,9 +168,9 @@ class Console {
         } else {
             Bridge.Footer.update({
                 id: "solved.utilities.console.footer",
-                display_name: `${new_logs} new logs`,
+                display_name: `${new_logs+1} new logs`,
                 badge: {
-                    content: new_logs
+                    content: new_logs+1
                 }
             });
         }
