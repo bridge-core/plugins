@@ -25,11 +25,13 @@ class Console {
             },
             {
                 type: "input",
-                action: (val) => {
-                    this.input = val;
-                },
-                enter: () => {
-                    this.evalInput();
+                action: {
+                  	default: (val) => {
+                    	this.input = val;
+                  	},
+                  	enter: () => {
+                    	this.evalInput();
+                	}
                 }
             }
         ];
