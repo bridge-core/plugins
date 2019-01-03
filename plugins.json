@@ -9,9 +9,12 @@
         "name": "File Search",
         "author": "solvedDev",
         "version": "1.0.0",
-        "description": "Quickly search all files of a project for specific keywords.",
-        "dependencies": [
-            "solved.utilities.console"
-        ]
+        "description": "Quickly search all files of a project for specific keywords."
+    },
+    "solved.utilities.crash_overview": {
+        "name": "Crash Indicator",
+        "author": "solvedDev",
+        "version": "1.0.0",
+        "description": "Displays which entities may cause crashes."
     }
 }
