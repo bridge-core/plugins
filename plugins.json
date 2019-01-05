@@ -2,7 +2,7 @@
     "solved.utilities.console": {
         "name": "Console",
         "author": "solvedDev",
-        "version": "1.0.0",
+        "version": "1.0.1",
         "description": "Utility module to bring a console to bridge. plugins."
     },
     "solved.utilities.file_search": {

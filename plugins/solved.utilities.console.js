@@ -25,12 +25,14 @@ class Console {
             },
             {
                 type: "input",
+              	input: this.input,
                 action: {
                   	default: (val) => {
                     	this.input = val;
                   	},
                   	enter: () => {
                     	this.evalInput();
+                      	this.input = "";
                 	}
                 }
             }
@@ -120,12 +122,13 @@ class Console {
                 id: "solved.utilities.console.sidebar",
                 content: this.getContent()
             }); 
-        }
-
-        Bridge.Window.update({
-            id: "solved.utilities.console.window",
-            content: this.getContent()
-        });
+        } else {
+            Bridge.Window.update({
+                id: "solved.utilities.console.window",
+                content: this.getContent(),
+                actions: this.input_logic
+            });
+        }        
     }
 
     getContent() {
@@ -193,6 +196,12 @@ class Console {
     error(...args) {
         args.forEach(log => {
             this.__internal__log__(log, "error");
+            this.__increase__badge__();
+        });
+    }
+  	info(...args) {
+        args.forEach(log => {
+            this.__internal__log__(log, "info");
             this.__increase__badge__();
         });
     }
