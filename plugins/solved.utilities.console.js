@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.0.1",
+    version: "1.1.0",
     name: "Console",
     description: "Makes a console available to plugins."
 });
@@ -204,6 +204,10 @@ class Console {
             this.__internal__log__(log, "info");
             this.__increase__badge__();
         });
+    }
+  
+  	hook(context) {
+    	this.context = context;
     }
 
     clear() {
