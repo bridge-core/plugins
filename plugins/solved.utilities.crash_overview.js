@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.0.0",
+    version: "1.1.0",
     name: "Crash Indicator",
     description: "Displays which entities may cause crashes."
 });
@@ -27,7 +27,8 @@ function loadProject(cb) {
                     if(content.includes(problem)) {
                         list.push({
                             type: problem,
-                            file: file.toLowerCase()
+                            file: file.toLowerCase(),
+                          	content
                         });
                     }
                 });
@@ -66,14 +67,29 @@ function initialLoad(register=true) {
         ];
         if(list.length > 0) {
             let el = [];
+          	list.sort((a, b) => {
+              if(a.file > b.file) return 1;
+              if(a.file < b.file) return -1;
+              if(a.type > b.type) return 1;
+              if(a.type < b.type) return -1;
+              return 0;
+            })
             for(let e of list.filter(e => e.type.includes(search) || e.file.includes(search))) {
+              	let action = () => {
+                  	Bridge.open({
+                      	content: e.content,
+                      	path: "entities/" + e.file,
+                      	file_name: e.file
+                    });
+                };
                 el.push({ text: e.type, color: "error" });
-                el.push({ text: `\n${e.file}`.replace(/\.json/g, ""), color: "yellow" });
-                el.push({ text: ".json\n", color: "orange" });
+                el.push({ text: `\n${e.file}`.replace(/\.json/g, ""), color: "yellow", action });
+                el.push({ text: ".json\n", color: "orange", action });
                 el.push({ type: "divider" });
             }
             if(el.length == 0) content.push({ text: `No results found for "${search}"` });
             content.push(...el);
+          
             content.push({ type: "divider" }, { type: "divider" });
             content.push({ text: "\nTotal: ", color: "success" }, { text: el.length/4 });
         } else {
