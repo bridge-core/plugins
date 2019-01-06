@@ -1,6 +1,23 @@
 {
+    "bridge.ui.common_window": {
+        "author": "bridge. Team",
+        "version": "1.0.0",
+        "name": "Bridge CommonWindow",
+        "description": "Utility for other plugins. Wraps the Bridge.Window API into an easier to use class.",
+        "folder": "bridge.ui"
+    },
+    "bridge.ui.confirm_window": {
+        "author": "bridge. Team",
+        "version": "1.0.0",
+        "name": "Bridge ConfirmWindow",
+        "description": "Utility for other plugins. Uses bridge.ui.common_window to construct a confirm dialog.",
+        "folder": "bridge.ui",
+        "dependencies": [
+            "bridge.ui.common_window"
+        ]
+    },
     "solved.utilities.bridge_plugin_creator": {
-        "author": "solvedDev",
+        "author": "bridge. Team",
         "version": "1.0.0",
         "name": "Bridge Plugin Creator",
         "description": "Adds bridge. plugin files to bridge.'s native file creation window."
