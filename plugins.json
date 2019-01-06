@@ -1,20 +1,26 @@
 {
+    "solved.utilities.bridge_plugin_creator": {
+        "author": "solvedDev",
+        "version": "1.0.0",
+        "name": "Bridge Plugin Creator",
+        "description": "Adds bridge. plugin files to bridge.'s native file creation window."
+    },
     "solved.utilities.console": {
         "name": "Console",
         "author": "solvedDev",
         "version": "1.1.0",
         "description": "Utility module to bring a console to bridge. plugins."
     },
-    "solved.utilities.file_search": {
-        "name": "File Search",
-        "author": "solvedDev",
-        "version": "1.1.0",
-        "description": "Quickly search all files of a project for specific keywords."
-    },
     "solved.utilities.crash_overview": {
         "name": "Crash Indicator",
         "author": "solvedDev",
         "version": "1.0.0",
         "description": "Displays which entities may cause crashes."
+    },
+    "solved.utilities.file_search": {
+        "name": "File Search",
+        "author": "solvedDev",
+        "version": "1.1.0",
+        "description": "Quickly search all files of a project for specific keywords."
     }
 }
