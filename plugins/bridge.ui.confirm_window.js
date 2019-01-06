@@ -1,4 +1,4 @@
-const Common = use("bridge.ui.common_window");
+const Common = use("bridge.ui/bridge.ui.common_window.js");
 
 class ConfirmDialog extends Common {
     constructor(on_confirm, on_cancel, other) {
@@ -36,4 +36,4 @@ class ConfirmDialog extends Common {
 }
 
 provide(ConfirmDialog)
-	.as("bridge.ui.confirm_window")
+    .as("bridge.ui.confirm_window")
