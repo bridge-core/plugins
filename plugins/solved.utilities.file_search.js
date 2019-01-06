@@ -3,7 +3,7 @@ let SEARCH_CATEGORY = "entities";
 
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.0.1",
+    version: "1.1.0",
     name: "File Search",
     description: "Quickly search all files of a project for specific keywords."
 });
@@ -25,7 +25,8 @@ function loadProject(segment, cb) {
                         
                         list.push({
                             content: data.toString(),
-                            path: file.toLowerCase()
+                            file_name: file.toLowerCase(),
+                          	path: `${segment}/${file}`
                         });
     
                         total++;
@@ -147,6 +148,8 @@ function updateUI(list) {
         {
             type: "input",
             text: "Search...",
+          	key: Math.random(),
+          	input: SEARCH_INPUT,
             action(val) {
                 SEARCH_INPUT = val;
                 updateUI();
@@ -159,8 +162,14 @@ function updateUI(list) {
         content.push({ type: "loader" });
     } else if(SEARCH_INPUT != "") {
         list.forEach(el => {
-            if(el.content.includes(SEARCH_INPUT) || el.path.includes(SEARCH_INPUT)) {
-                content.push({ text: el.path + "\n", color: "success" });
+            if(el.content.includes(SEARCH_INPUT) || el.path.toLowerCase().includes(SEARCH_INPUT)) {
+                content.push({
+                  	text: el.file_name + "\n",
+                  	color: "success",
+                  	action: () => {
+                		Bridge.open(el);
+                	} 
+                });
             }
         });
     } else {

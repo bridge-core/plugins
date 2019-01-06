@@ -8,7 +8,7 @@
     "solved.utilities.file_search": {
         "name": "File Search",
         "author": "solvedDev",
-        "version": "1.0.1",
+        "version": "1.1.0",
         "description": "Quickly search all files of a project for specific keywords."
     },
     "solved.utilities.crash_overview": {
