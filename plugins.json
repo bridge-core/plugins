@@ -3,7 +3,7 @@
         "author": "bridge. Team",
         "version": "1.0.0",
         "name": "Bridge CommonWindow",
-        "description": "Utility for other plugins. Wraps the Bridge.Window API into an easier to use class.",
+        "description": "Utility for other plugins. Wraps the bridge. Window API into an easier to use class.",
         "folder": "bridge.ui"
     },
     "bridge.ui.confirm_window": {
