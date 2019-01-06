@@ -13,7 +13,7 @@ class ConfirmDialog extends Common {
                 is_rounded: true,
                 action: () => {
                     this.close();
-                    on_cancel();
+                    if(typeof on_cancel == "function") on_cancel();
                 }
             },
             {
@@ -23,7 +23,7 @@ class ConfirmDialog extends Common {
                 is_rounded: true,
                 action: () => {
                     this.close();
-                    on_confirm();
+                    if(typeof on_confirm == "function") on_confirm();
                 }
             }
         ];
