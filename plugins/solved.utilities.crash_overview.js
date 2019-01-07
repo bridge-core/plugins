@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.1.0",
+    version: "1.1.1",
     name: "Crash Indicator",
     description: "Displays which entities may cause crashes."
 });
@@ -74,7 +74,7 @@ function initialLoad(register=true) {
                 if(a.file < b.file) return -1;
                 return 0;
             });
-            
+
             for(let e of list.filter(e => e.type.includes(search) || e.file.includes(search))) {
               	let action = () => {
                   	Bridge.open({
