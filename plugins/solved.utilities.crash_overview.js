@@ -68,12 +68,13 @@ function initialLoad(register=true) {
         if(list.length > 0) {
             let el = [];
           	list.sort((a, b) => {
-              if(a.file > b.file) return 1;
-              if(a.file < b.file) return -1;
-              if(a.type > b.type) return 1;
-              if(a.type < b.type) return -1;
-              return 0;
-            })
+                if(a.type > b.type) return 1;
+                if(a.type < b.type) return -1;
+                if(a.file > b.file) return 1;
+                if(a.file < b.file) return -1;
+                return 0;
+            });
+            
             for(let e of list.filter(e => e.type.includes(search) || e.file.includes(search))) {
               	let action = () => {
                   	Bridge.open({
