@@ -37,7 +37,7 @@
     "solved.utilities.file_search": {
         "name": "File Search",
         "author": "solvedDev",
-        "version": "1.1.0",
+        "version": "1.1.1",
         "description": "Quickly search all files of a project for specific keywords."
     }
 }

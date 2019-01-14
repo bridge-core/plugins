@@ -3,7 +3,7 @@ let SEARCH_CATEGORY = "entities";
 
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.1.0",
+    version: "1.1.1",
     name: "File Search",
     description: "Quickly search all files of a project for specific keywords."
 });
@@ -161,6 +161,11 @@ function updateUI(list) {
     if(!list) {
         content.push({ type: "loader" });
     } else if(SEARCH_INPUT != "") {
+      	list.sort((a, b) => {
+          if(a.file_name > b.file_name) return 1;
+          if(a.file_name < b.file_name) return -1;
+          return 0;
+        });
         list.forEach(el => {
             if(el.content.includes(SEARCH_INPUT) || el.path.toLowerCase().includes(SEARCH_INPUT)) {
                 content.push({
