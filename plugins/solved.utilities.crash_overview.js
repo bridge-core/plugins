@@ -131,7 +131,7 @@ function initialLoad(register=true) {
                         Bridge.Footer.remove("solved-crash-indicator-footer");
                     }
                 });
-                Bridge.on("opened-sidebar", (sidebar_id) => {
+                Bridge.on("bridge:openedSidebar", (sidebar_id) => {
                     if(sidebar_id == "solved-crash-indicator-sidebar") {
                         Bridge.Footer.remove("solved-crash-indicator-footer");
                     }

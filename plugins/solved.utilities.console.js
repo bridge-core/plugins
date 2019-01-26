@@ -107,7 +107,7 @@ class Console {
             ],
             actions: action_content
         });
-        Bridge.on("opened-sidebar", sidebar_id => {
+        Bridge.on("bridge:openedSidebar", sidebar_id => {
             this.current_open_sidebar = sidebar_id;
             if(sidebar_id == "solved.utilities.console.sidebar") {
                 this.new_logs = 0;
