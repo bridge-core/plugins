@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.0.0",
+    version: "1.0.1",
     name: "Bridge Plugin Creator",
     description: "Adds bridge. plugin files to bridge.'s native file creation window."
 });
