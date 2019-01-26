@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.1.1",
+    version: "1.1.2",
     name: "Crash Indicator",
     description: "Displays which entities may cause crashes."
 });

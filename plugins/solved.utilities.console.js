@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.1.0",
+    version: "1.1.1",
     name: "Console",
     description: "Makes a console available to plugins."
 });
