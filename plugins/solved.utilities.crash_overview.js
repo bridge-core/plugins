@@ -13,34 +13,36 @@ let potential_problems = [
 ];
 
 function loadProject(cb) {
-    Bridge.FS.readDirectory("entities", (err, files) => {
-        if(err) console.warn(err);
-
-        let total = 0;
-        let list = [];
-        files.forEach(file => {
-            Bridge.FS.readFile("entities/" + file, (err, data) => {
-                if(err) console.warn(err);
-                
-                let content = data.toString();
-                potential_problems.forEach(problem => {
-                    if(content.includes(problem)) {
-                        list.push({
-                            type: problem,
-                            file: file.toLowerCase(),
-                          	content
-                        });
+    if(Bridge.FS.exists("entities")){
+        Bridge.FS.readDirectory("entities", (err, files) => {
+            if(err) console.warn(err);
+    
+            let total = 0;
+            let list = [];
+            files.forEach(file => {
+                Bridge.FS.readFile("entities/" + file, (err, data) => {
+                    if(err) console.warn(err);
+                    
+                    let content = data.toString();
+                    potential_problems.forEach(problem => {
+                        if(content.includes(problem)) {
+                            list.push({
+                                type: problem,
+                                file: file.toLowerCase(),
+                                  content
+                            });
+                        }
+                    });
+    
+                    total++;
+                    if(total >= files.length) {
+                        if(cb) cb(list);
                     }
                 });
-
-                total++;
-                if(total >= files.length) {
-                    if(cb) cb(list);
-                }
             });
         });
-    });
-    return "Loading...";
+        return "Loading...";   
+    }
 }
 
 let search = "";
