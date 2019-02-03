@@ -25,13 +25,18 @@ Bridge.on("bridge:addedNode", ({ node }) => {
 
 Bridge.on("solved:compiledLoops", ({ content, file_extension }) => {
   if(file_extension != "json") return;
-  let groups = Object.keys(content.get("minecraft:entity/component_groups").toJSON());
+  let group_context = content.get("minecraft:entity/component_groups");
+  if(group_context == undefined) return;
+  
+  let groups = Object.keys(group_context.toJSON());
   console.log(groups,content.get("minecraft:entity/events"));
   for(let node of content.get("minecraft:entity/events")) {
     
     if(node.key == "all") {
       let context = node.parent;
-      let filter = node.get("includes").toJSON();
+      let filter_context = node.get("includes");
+      if(filter_context == undefined) return;
+      let filter = filter_context.toJSON();
 
       node.remove();
       context.buildFromObject(groups.filter(g => g.includes(filter)));
