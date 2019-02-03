@@ -2,7 +2,7 @@
 
 Bridge.registerPlugin({
 	author: "solvedDev",
-	version: "v1.0.0",
+	version: "1.0.0",
 	name: "Dynamic Function",
 	description: "Adds the new /dynamicfunction & /func command which can be used to pass arguments to a .mcfunction file."
 });

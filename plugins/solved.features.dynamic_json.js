@@ -1,7 +1,7 @@
 // More on plugins: "https://github.com/solvedDev/bridge./blob/master/plugins/getting-started.md"
 Bridge.registerPlugin({
 	author: "solvedDev",
-	version: "v1.0.0",
+	version: "1.0.0",
 	name: "JSON Loop",
 	description: "A compiler which can speed up creating repetitive JSON by writing a loop statements and writing shared data inside the new \"variables\" state."
 });
