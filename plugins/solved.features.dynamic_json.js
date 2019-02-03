@@ -3,7 +3,7 @@ Bridge.registerPlugin({
 	author: "solvedDev",
 	version: "1.0.0",
 	name: "Dynamic JSON",
-	description: "A compiler which can speed up creating repetitive JSON by writing a loop statements and writing shared data inside the new \"variables\" state."
+	description: "A compiler which can speed up creating repetitive JSON by writing loop statements and shared data inside the new \"variables\" state."
 });
 
 Bridge.Language.addKeywords(["bridge", "variables"]);
