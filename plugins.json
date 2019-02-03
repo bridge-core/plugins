@@ -21,7 +21,7 @@
         "version": "1.0.0",
         "name": "Dynamic JSON",
         "min_app_version": "v0.7.0",
-        "description": "A compiler which can speed up creating repetitive JSON by writing a loop statements and writing shared data inside the new \"variables\" state."
+        "description": "A compiler which can speed up creating repetitive JSON by writing loop statements and shared data inside the new \"variables\" state."
     },
     "solved.features.dynamic_function": {
         "author": "solvedDev",
