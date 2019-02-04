@@ -43,20 +43,24 @@ Bridge.on("bridge:saveFile", ({ content, file_extension }) => {
 });
 
 function setupContext(content) {
-  let vars = content.get("minecraft:entity/variables").toJSON();
+  let vars_context = content.get("minecraft:entity/variables");
+  if(vars_context == undefined) return;
+  
+  let vars = vars_context.toJSON();
   for(let key in vars) {
     if(typeof vars[key] == "object") EVAL_CONTEXT[key] = vars[key];
     else EVAL_CONTEXT[key] = evalStatement(vars[key], { index: 0, vars: EVAL_CONTEXT });
   }
-  if(vars) content.get("minecraft:entity/variables").remove();
+  vars_context.remove();
 }
 
 function compileLoop(loop_node) {
   let context = loop_node.parent;
   let data = loop_node.get("content");
-  let value = loop_node.get("value").toJSON();
+  let value_context = loop_node.get("value");
+  if(data == undefined || value_context == undefined) return;
+  let value = value_context.toJSON();
   
-  if(data == undefined || value == undefined) return;
   if(typeof value == "string") value = evalStatement(value.substring(2, value.length - 1), { index: 0, vars: EVAL_CONTEXT });
   
   for(let i = 0; i < value; i++) {
