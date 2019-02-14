@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.1.2",
+    version: "1.1.3",
     name: "Crash Indicator",
     description: "Displays which entities may cause crashes."
 });
@@ -81,7 +81,7 @@ function initialLoad(register=true) {
               	let action = () => {
                   	Bridge.open({
                       	content: e.content,
-                      	path: "entities/" + e.file,
+                      	file_path: "entities/" + e.file,
                       	file_name: e.file
                     });
                 };
@@ -90,7 +90,7 @@ function initialLoad(register=true) {
                 el.push({ text: ".json\n", color: "orange", action });
                 el.push({ type: "divider" });
             }
-            if(el.length == 0) content.push({ text: `No results found for "${search}"` });
+            if(el.length == 0) content.push({ text: "No results found for \"" }, { text: search, color: "error" }, { text: "\"" });
             content.push(...el);
           
             content.push({ type: "divider" }, { type: "divider" });
