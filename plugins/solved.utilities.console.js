@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.1.1",
+    version: "1.1.2",
     name: "Console",
     description: "Makes a console available to plugins."
 });
@@ -111,6 +111,7 @@ class Console {
             this.current_open_sidebar = sidebar_id;
             if(sidebar_id == "solved.utilities.console.sidebar") {
                 this.new_logs = 0;
+              	this.registered_footer = false;
                 Bridge.Footer.remove("solved.utilities.console.footer");
             } 
         });
