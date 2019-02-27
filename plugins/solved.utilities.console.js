@@ -62,14 +62,14 @@ class Console {
             toolbar: [
                 {
                     display_icon: "not_interested",
-                    display_name: "Clear console",
+                    display_name: "Clear Console",
                     action: () => {
                         this.clear();
                     }
                 },
                 {
                     display_icon: "open_in_new",
-                    display_name: "As separate window",
+                    display_name: "As Separate Window",
                     action: () => {
                         this.registered_sidebar = false;
                         this.updateUI();
