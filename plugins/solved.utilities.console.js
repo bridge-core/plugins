@@ -1,6 +1,6 @@
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.1.2",
+    version: "1.1.3",
     name: "Console",
     description: "Makes a console available to plugins."
 });
@@ -18,7 +18,7 @@ class Console {
         this.input_logic = [
             {
                 type: "icon",
-                text: "send",
+                text: "mdi-send",
                 action: () => {
                     this.evalInput();
                 }
@@ -57,18 +57,18 @@ class Console {
     getSidebar() {
         return {
             id: "solved.utilities.console.sidebar",
-            icon: "sms_failed",
+            icon: "mdi-message-alert",
             title: "Console",
             toolbar: [
                 {
-                    display_icon: "not_interested",
+                    display_icon: "mdi-cancel",
                     display_name: "Clear Console",
                     action: () => {
                         this.clear();
                     }
                 },
                 {
-                    display_icon: "open_in_new",
+                    display_icon: "mdi-open-in-new",
                     display_name: "As Separate Window",
                     action: () => {
                         this.registered_sidebar = false;
@@ -95,7 +95,7 @@ class Console {
             },
             toolbar: [
                 {
-                    display_icon: "minimize",
+                    display_icon: "mdi-minus",
                     action: () => {
                         this.registered_sidebar = true;
                         Bridge.Sidebar.register(this.getSidebar());
@@ -162,7 +162,7 @@ class Console {
             Bridge.Footer.register({
                 id: "solved.utilities.console.footer",
                 display_name: `${new_logs+1} new logs`,
-                display_icon: "sms_failed",
+                display_icon: "mdi-message-alert",
                 badge: {
                     color: "orange",
                     content: new_logs+1
