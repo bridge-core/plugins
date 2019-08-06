@@ -80,12 +80,12 @@ function setupUI() {
     });
     Bridge.Sidebar.register({
         id: "solved.utilities.file_search.sidebar",
-        icon: "search",
+        icon: "mdi-magnify",
         title: "File Search",
         toolbar: [
             {
                 display_name: "Information",
-                display_icon: "info",
+                display_icon: "mdi-information",
                 action() {
                     Bridge.Window.open("solved.utilities.file_search.window");
                 }
