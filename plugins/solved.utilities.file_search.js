@@ -3,7 +3,7 @@ let SEARCH_CATEGORY = "entities";
 
 Bridge.registerPlugin({
     author: "solvedDev",
-    version: "1.1.3",
+    version: "1.1.4",
     name: "File Search",
     description: "Quickly search all files of a project for specific keywords."
 });
