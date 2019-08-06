@@ -101,10 +101,10 @@ function initialLoad(register=true) {
             Bridge.Sidebar.register({
                 id: "solved-crash-indicator-sidebar",
                 title: "Crash Indicator",
-                icon: "error",
+                icon: "mdi-alert-circle",
                 toolbar: [
                     {
-                        display_icon: "refresh",
+                        display_icon: "mdi-refresh",
                         action() {
                             initialLoad(false);
                         }
@@ -117,7 +117,7 @@ function initialLoad(register=true) {
             if(list.length > 0) {
                 Bridge.Footer.register({
                     display_name: `${list.length} potential crashes`,
-                    display_icon: "error",
+                    display_icon: "mdi-alert-circle",
                     id: "solved-crash-indicator-footer",
                     badge: {
                         color: "error",
