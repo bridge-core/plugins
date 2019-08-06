@@ -39,19 +39,19 @@
     "solved.utilities.console": {
         "name": "Console",
         "author": "solvedDev",
-        "version": "1.1.2",
+        "version": "1.1.4",
         "description": "Utility module to bring a console to bridge. plugins."
     },
     "solved.utilities.crash_overview": {
         "name": "Crash Indicator",
         "author": "solvedDev",
-        "version": "1.1.3",
+        "version": "1.1.5",
         "description": "Displays which entities may cause crashes."
     },
     "solved.utilities.file_search": {
         "name": "File Search",
         "author": "solvedDev",
-        "version": "1.1.2",
+        "version": "1.1.4",
         "description": "Quickly search all files of a project for specific keywords."
     }
 }
