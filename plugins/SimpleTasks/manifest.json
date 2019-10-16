@@ -1,0 +1,8 @@
+{
+	"author": "solvedDev",
+	"version": "1.0.1",
+	"name": "Simple Tasks",
+	"description": "All your tasks inside bridge. Supports pinning tasks and marking them as completed.",
+	"id": "44dc6685-4258-4eed-9f62-e0d0fdfd41e9",
+    "api_version": 1
+}
