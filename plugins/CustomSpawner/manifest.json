@@ -1,0 +1,8 @@
+{
+    "author": "solvedDev",
+    "id": "8497489b-3b80-45a6-94f3-65d8bd1188cd",
+    "version": "1.0.0",
+    "name": "Custom Spawner",
+    "description": "Implements a flexible custom spawner component to use on your entity. Requires active bridge. Core and Minecraft 1.13!",
+    "api_version": 1
+}

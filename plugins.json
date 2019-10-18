@@ -13,8 +13,17 @@
         "name": "Simple Tasks",
         "description": "All your tasks inside bridge. Supports pinning tasks and marking them as completed.",
         "id": "44dc6685-4258-4eed-9f62-e0d0fdfd41e9",
-        "link": "/plugins/SimpleTasks.zip",
+        "link": "/plugins/SimpleTasks/SimpleTasks.zip",
         "tags": ["Curated", "Utility"]
+    },
+    {
+        "author": "solvedDev",
+        "id": "8497489b-3b80-45a6-94f3-65d8bd1188cd",
+        "version": "1.0.0",
+        "name": "Custom Spawner",
+        "description": "Implements a flexible custom spawner component to use on your entity. Requires active bridge. Core and Minecraft 1.13!",
+        "link": "/plugins/CustomSpawner/CustomSpawner.zip",
+        "tags": ["Curated", "Component"]
     },
     {
         "author": "bridge. Team",
