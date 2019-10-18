@@ -1,10 +1,7 @@
 Bridge.register(class EntitySpawner {
     static component_name = "bridge:entity_spawner";
 
-    onApply({ cooldown, spawn_entity, detection_range, spawn_delay }={}, location) {
-        if (cooldown === undefined) cooldown = 360;
-        if (detection_range === undefined) detection_range = 16;
-        if (spawn_delay === undefined) spawn_delay = 0;
+    onApply({ spawn_entity, cooldown = 360, detection_range = 16, spawn_delay = 0 }={}, location) {
         if (spawn_entity === undefined) return {};
 
         const TEMPLATE = {
