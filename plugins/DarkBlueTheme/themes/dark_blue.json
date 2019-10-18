@@ -1,0 +1,35 @@
+{
+    "name": "DarkBlue",
+    "id": "64813bf4-b30b-4c64-b8a5-65db896fcd4f",
+    "definition": {
+        "dark": {
+            "highlighter": {
+                "property": { "color": "#E84670" },
+                "keyword": { "color": "#40F99B" },
+                "definition": { "color": "#E84670" },
+                "atom": { "color": "#748CAB" },
+                "number": { "color": "#748CAB" },
+                "string": { "color": "#FFB86F" },
+                "variable": { "color": "#9effff" },
+                "variable_strong": { "color": "#66d9ef" },
+                "meta": { "color": "white" },
+                "comment": { "color": "#ED6A5A" }
+            },
+            "primary": "#3E5C76",
+            "secondary": "#3E5C76",
+            "accent": "#82B1FF",
+            "error": "#FE5F55",
+            "info": "#748CAB",
+            "success": "#4CAF50",
+            "warning": "#FB8C00",
+            "background": "#1D2D44",
+            "sidebar_navigation": "#0D1321",
+            "expanded_sidebar": "#1D2D44",
+            "menu": "#0D1321",
+            "toolbar": "#0D1321",
+            "footer": "#0D1321",
+            "tooltip": "#0D1321",
+            "default_button": "#0D1321"
+        }
+    }
+}

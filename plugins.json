@@ -27,6 +27,15 @@
         "tags": ["Curated", "Component"]
     },
     {
+        "author": "solvedDev",
+        "version": "1.0.0",
+        "name": "DarkBlue Theme",
+        "description": "Adds a new dark blue color theme to select inside the settings window.",
+        "id": "f883bbc1-d81a-4373-8ec7-a11b81d9070a",
+        "link": "/plugins/DarkBlueTheme/DarkBlueTheme.zip",
+        "tags": ["Curated", "Theme"]
+    },
+    {
         "author": "bridge. Team",
         "id": "bridge.ui.confirm_window",
         "version": "1.0.0",
