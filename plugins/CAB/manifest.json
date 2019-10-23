@@ -1,8 +1,8 @@
 {
 	"author": "ENDERZOMBI102",
-	"version": "1.2",
+	"version": "1.2.0",
 	"name": "Create a Block",
-	"description": "add a better 'template' for blocks.",
+	"description": "Add a better 'template' for blocks.",
 	"id": "ENDERZOMBI102.bridgePlugins.create-a-block",
     "api_version": 1
 }
