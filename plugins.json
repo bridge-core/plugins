@@ -102,5 +102,14 @@
         "description": "Quickly search all files of a project for specific keywords.",
         "link": "/plugins/solved.utilities.file_search.js",
         "tags": ["Utility"]
-    }
+    },
+	{
+		"name": "Create a Block",
+		"id": "ENDERZOMBI102.bridgePlugins.create-a-block",
+		"author": "ENDERZOMBI102",
+		"version": "1.2",
+		"description": "add a better 'template' for blocks.",
+		"link": "/plugins/CAB/CAB.zip",
+		"tags": ["Snippets", "Utility"]
+	}
 ]
