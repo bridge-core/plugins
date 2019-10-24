@@ -1,22 +1,21 @@
 {
-	"file_type":"item",
+	"file_type": "item",
 	"display_name": "Create a Item",
-    "template": {
+	"template": {
 		"data_path": "minecraft:item",
 		"force_default_scope": true,
 		"data": {
-	"format_version": "1.13.0",
-	  "description": {
-			"identifier": ""
-		},
-		"components": {
-			"minecraft:use_duration": {},
-			"minecraft:max_stack_size": {},
-			"minecraft:max_damage": {},
-			"minecraft:hand_equipped": {},
-			"minecraft:stacked_by_data": {}
+			"format_version": "1.13.0",
+			"description": {
+				"identifier": {}
+			},
+			"components": {
+				"minecraft:use_duration": {},
+				"minecraft:max_stack_size": {},
+				"minecraft:max_damage": {},
+				"minecraft:hand_equipped": {},
+				"minecraft:stacked_by_data": {}
+			}
 		}
 	}
-}
-}
 }
