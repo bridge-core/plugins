@@ -2,6 +2,15 @@
 	{
         "author": "JustSkitzo",
         "version": "1.0.0",
+        "name": "Create a Item",
+        "description": "add a better 'template' for items.",
+        "id": "JustSkitzo.bridgePlugins.create-a-item",
+		"link": "/plugins/CAI/CAI.zip",
+		"tags": ["Curated", "Snippet"]
+	},
+	{
+        "author": "JustSkitzo",
+        "version": "1.0.0",
         "name": "Spooky Theme",
         "description": "Adds a new spooky color theme to select inside the settings window.",
         "id": "6337c024-f603-11e9-802a-5aa538984bd8",
