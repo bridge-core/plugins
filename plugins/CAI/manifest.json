@@ -1,0 +1,8 @@
+{
+	"author": "JustSkitzo",
+	"version": "1.0",
+	"name": "Create a Item",
+	"description": "add a better 'template' for items.",
+	"id": "JustSkitzo.bridgePlugins.create-a-item",
+    "api_version": 1
+}
