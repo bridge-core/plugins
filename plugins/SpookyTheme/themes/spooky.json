@@ -1,0 +1,64 @@
+{
+    "name": "Spooky",
+    "id": "68f50936-f676-11e9-b82c-5aa538984bd8",
+    "definition": {
+        "dark": {
+            "highlighter": {
+                "property": { "color": "#eb6123" },
+                "keyword": { "color": "#eb6123" },
+                "definition": { "color": "#eb6123" },
+                "atom": { "color": "#303030" },
+                "number": { "color": "#eb6123" },
+                "string": { "color": "#eb6123" },
+                "variable": { "color": "#eb6123" },
+                "variable_strong": { "color": "#eb6123" },
+                "meta": { "color": "#931FEE" },
+                "comment": { "color": "#eb6123" }
+            },
+            "primary": "#eb6123",
+            "secondary": "#eb6123",
+            "accent": "#eb6123",
+            "error": "#931FEE",
+            "info": "#eb6123",
+            "success": "#303030",
+            "warning": "#931FEE",
+            "background": "#252525",
+            "sidebar_navigation": "#303030",
+            "expanded_sidebar": "#303030",
+            "menu": "#303030",
+            "toolbar": "#252525",
+            "footer": "#252525",
+            "tooltip": "#303030",
+            "default_button": "#eb6123"
+        },
+        "light": {
+            "highlighter": {
+                "property": { "color": "#eb6123" },
+                "keyword": { "color": "#eb6123" },
+                "definition": { "color": "#eb6123" },
+                "atom": { "color": "#DFDFDF" },
+                "number": { "color": "#eb6123" },
+                "string": { "color": "#eb6123" },
+                "variable": { "color": "#eb6123" },
+                "variable_strong": { "color": "#eb6123" },
+                "meta": { "color": "#931FEE" },
+                "comment": { "color": "#eb6123" }
+            },
+            "primary": "#eb6123",
+            "secondary": "#eb6123",
+            "accent": "#eb6123",
+            "error": "#931FEE",
+            "info": "#eb6123",
+            "success": "#DFDFDF",
+            "warning": "#931FEE",
+            "background": "#DFDFDF",
+            "sidebar_navigation": "#CDCDCD",
+            "expanded_sidebar": "#DFDFDF",
+            "menu": "#CDCDCD",
+            "toolbar": "#CDCDCD",
+            "footer": "#CDCDCD",
+            "tooltip": "#DFDFDF",
+            "default_button": "#eb6123"
+        }
+    }
+}

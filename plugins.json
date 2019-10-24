@@ -1,13 +1,22 @@
 [
-    {
-        "author": "bridge. Team",
-        "id": "bridge.ui.common_window",
+	{
+        "author": "JustSkitzo",
         "version": "1.0.0",
-        "name": "Bridge CommonWindow",
-        "description": "Utility for other plugins. Wraps the bridge. Window API into an easier to use class.",
-        "link": "/plugins/bridge.ui.common_window.js",
-        "tags": ["Utility"]
-    },
+        "name": "Spooky Theme",
+        "description": "Adds a new spooky color theme to select inside the settings window.",
+        "id": "6337c024-f603-11e9-802a-5aa538984bd8",
+		"link": "/plugins/SpookyTheme/SpookyTheme.zip",
+		"tags": ["Curated", "Theme"]
+	},
+	{
+		"name": "Create a Block",
+		"id": "ENDERZOMBI102.bridgePlugins.create-a-block",
+		"author": "ENDERZOMBI102",
+		"version": "1.2.0",
+		"description": "Add a better 'template' for blocks.",
+		"link": "/plugins/CAB/CAB.zip",
+		"tags": ["Snippet"]
+	},
     {
         "author": "solvedDev",
         "version": "1.0.1",
@@ -34,6 +43,25 @@
         "id": "f883bbc1-d81a-4373-8ec7-a11b81d9070a",
         "link": "/plugins/DarkBlueTheme/DarkBlueTheme.zip",
         "tags": ["Curated", "Theme"]
+    },
+
+    {
+        "author": "bridge. Team",
+        "id": "bridge.ui.common_window",
+        "version": "1.0.0",
+        "name": "Bridge CommonWindow",
+        "description": "Utility for other plugins. Wraps the bridge. Window API into an easier to use class.",
+        "link": "/plugins/bridge.ui.common_window.js",
+        "tags": ["Utility"]
+    },
+    {
+        "author": "bridge. Team",
+        "id": "solved.utilities.bridge_plugin_creator",
+        "version": "1.0.1",
+        "name": "Bridge Plugin Creator",
+        "description": "Adds bridge. plugin files to bridge.'s native file creation window.",
+        "link": "/plugins/solved.utilities.bridge_plugin_creator.js",
+        "tags": ["Curated", "Utility"]
     },
     {
         "author": "bridge. Team",
@@ -68,15 +96,6 @@
         "tags": ["Utility"]
     },
     {
-        "author": "bridge. Team",
-        "id": "solved.utilities.bridge_plugin_creator",
-        "version": "1.0.1",
-        "name": "Bridge Plugin Creator",
-        "description": "Adds bridge. plugin files to bridge.'s native file creation window.",
-        "link": "/plugins/solved.utilities.bridge_plugin_creator.js",
-        "tags": ["Curated", "Utility"]
-    },
-    {
         "name": "Console",
         "id": "solved.utilities.console",
         "author": "solvedDev",
@@ -102,14 +121,5 @@
         "description": "Quickly search all files of a project for specific keywords.",
         "link": "/plugins/solved.utilities.file_search.js",
         "tags": ["Utility"]
-    },
-	{
-		"name": "Create a Block",
-		"id": "ENDERZOMBI102.bridgePlugins.create-a-block",
-		"author": "ENDERZOMBI102",
-		"version": "1.2.0",
-		"description": "Add a better 'template' for blocks.",
-		"link": "/plugins/CAB/CAB.zip",
-		"tags": ["Snippet"]
-	}
+    }
 ]
