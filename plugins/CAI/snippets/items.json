@@ -1,11 +1,10 @@
 {
 	"file_type": "item",
-	"display_name": "Create a Item",
+	"display_name": "Create an Item",
 	"template": {
 		"data_path": "minecraft:item",
 		"force_default_scope": true,
 		"data": {
-			"format_version": "1.13.0",
 			"description": {
 				"identifier": {}
 			},
