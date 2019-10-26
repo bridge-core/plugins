@@ -12,7 +12,7 @@
                 "string": { "color": "#eb6123" },
                 "variable": { "color": "#eb6123" },
                 "variable_strong": { "color": "#eb6123" },
-                "meta": { "color": "#931FEE" },
+                "meta": { "color": "#eb6123" },
                 "comment": { "color": "#eb6123" }
             },
             "primary": "#eb6123",
