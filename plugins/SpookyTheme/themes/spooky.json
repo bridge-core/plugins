@@ -36,7 +36,7 @@
                 "property": { "color": "#eb6123" },
                 "keyword": { "color": "#eb6123" },
                 "definition": { "color": "#eb6123" },
-                "atom": { "color": "#DFDFDF" },
+                "atom": { "color": "#eb6123" },
                 "number": { "color": "#eb6123" },
                 "string": { "color": "#eb6123" },
                 "variable": { "color": "#eb6123" },
