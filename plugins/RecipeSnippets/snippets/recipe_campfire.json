@@ -1,0 +1,18 @@
+{
+	"file_type": "recipe",
+	"display_name": "Create a Campfire Recipe Template",
+	"template": {
+		"data_path": "minecraft:recipe_furnace",
+		"force_default_scope": false,
+		"data": {
+			"description": {
+				"identifier": {}
+			},
+			"tags": [
+				"campfire"
+			],
+			"input": "minecraft:apple",
+			"output": "minecraft:golden_apple"
+		}
+	}
+}

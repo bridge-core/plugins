@@ -1,0 +1,28 @@
+{
+	"file_type": "recipe",
+	"display_name": "Create a Stonecutter Recipe Template",
+	"template": {
+		"data_path": "minecraft:recipe_shapeless",
+		"force_default_scope": false,
+		"data": {
+			"description": {
+				"identifier": {}
+			},
+			"tags": [
+				"stonecutter"
+			],
+			"priority": 0,
+			"ingredients": [
+				{
+					"item": "minecraft:apple"
+				}
+			],
+			"result": [
+				{
+					"count": 1,
+					"item": "minecraft:golden_apple"
+				}
+			]
+		}
+	}
+}

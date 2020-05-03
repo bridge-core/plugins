@@ -1,0 +1,35 @@
+{
+	"file_type": "recipe",
+	"display_name": "Create a Shaped Recipe Template",
+	"template": {
+		"data_path": "minecraft:recipe_shaped",
+		"force_default_scope": false,
+		"data": {
+			"description": {
+				"identifier": {}
+			},
+			"tags": [
+				"crafting_table"
+			],
+			"pattern": [
+				" a ",
+				"a a",
+				"///"
+			],
+			"key": {
+				"a": {
+					"item": "minecraft:apple"
+				},
+				"/": {
+					"item": "minecraft:gold_ore"
+				}
+			},
+			"result": [
+				{
+					"item": "minecraft:golden_apple",
+					"count": 1
+				}
+			]
+		}
+	}
+}
