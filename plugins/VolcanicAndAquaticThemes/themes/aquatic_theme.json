@@ -1,0 +1,55 @@
+{
+	"name": "Aquatic",
+	"id": "b1387467-466e-460f-9a8e-d17e83763dfc",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#a6e22e"
+				},
+				"keyword": {
+					"color": "#774F9E"
+				},
+				"definition": {
+					"color": "#23837D"
+				},
+				"atom": {
+					"color": "#ae81ff"
+				},
+				"number": {
+					"color": "#ae81ff"
+				},
+				"string": {
+					"color": "#4DD8AD"
+				},
+				"variable": {
+					"color": "#9effff"
+				},
+				"variable_strong": {
+					"color": "#66d9ef"
+				},
+				"meta": {
+					"color": "white"
+				},
+				"comment": {
+					"color": "#75715e"
+				}
+			},
+			"primary": "#55D9C0",
+			"secondary": "#C7F6EC",
+			"accent": "#107050",
+			"error": "#045C49",
+			"info": "#2196F3",
+			"success": "#3AB83F",
+			"warning": "#94652B",
+			"background": "#161922",
+			"sidebar_navigation": "#171A24",
+			"expanded_sidebar": "#171A24",
+			"menu": "#171A24",
+			"toolbar": "#000000",
+			"footer": "#111111",
+			"tooltip": "#1F1F1F",
+			"default_button": "#212121"
+		}
+	}
+}

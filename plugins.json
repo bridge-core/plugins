@@ -1,13 +1,22 @@
 [
     {
         "author": "Joel ant 05",
+        "name": "Volcanic and Aquatic Themes",
+        "version": "1.0.0",
+        "id": "84b65ea3-b206-40fd-aaae-3f884b12b4f4",
+        "description": "Adds two new volcanic and aquatic color themes to select inside the settings window",
+        "link": "/plugins/VolcanicAndAquaticThemes/VolcanicAndAquaticThemes.zip",
+        "tags": ["Curated", "Theme"]
+    },
+    {
+        "author": "Joel ant 05",
         "name": "Recipe Snippets",
         "version": "1.0.0",
         "id": "caa0a585-d513-48cf-a803-c920055e2afe",
         "description": "Adds better templates for custom recipes",
         "link": "/plugins/RecipeSnippets/RecipeSnippets.zip",
 		"tags": ["Curated", "Snippet"]
-	},
+    },
 	{
         "author": "JustSkitzo",
         "version": "1.0.1",
@@ -16,7 +25,16 @@
         "id": "6337c024-f603-11e9-802a-5aa538984bd8",
 		"link": "/plugins/SpookyTheme/SpookyTheme.zip",
 		"tags": ["Curated", "Theme"]
-	},
+    },
+    {
+        "author": "solvedDev",
+        "id": "8497489b-3b80-45a6-94f3-65d8bd1188cd",
+        "version": "1.0.0",
+        "name": "Custom Spawner",
+        "description": "Implements a flexible custom spawner component to use on your entities. Requires active bridge. Core and Minecraft 1.13!",
+        "link": "/plugins/CustomSpawner/CustomSpawner.zip",
+        "tags": ["Curated", "Component"]
+    },
 	{
 		"name": "Create a Block",
 		"id": "ENDERZOMBI102.bridgePlugins.create-a-block",
@@ -42,16 +60,7 @@
         "description": "All your tasks inside bridge. Supports pinning tasks and marking them as completed.",
         "id": "44dc6685-4258-4eed-9f62-e0d0fdfd41e9",
         "link": "/plugins/SimpleTasks/SimpleTasks.zip",
-        "tags": ["Curated", "Utility"]
-    },
-    {
-        "author": "solvedDev",
-        "id": "8497489b-3b80-45a6-94f3-65d8bd1188cd",
-        "version": "1.0.0",
-        "name": "Custom Spawner",
-        "description": "Implements a flexible custom spawner component to use on your entities. Requires active bridge. Core and Minecraft 1.13!",
-        "link": "/plugins/CustomSpawner/CustomSpawner.zip",
-        "tags": ["Curated", "Component"]
+        "tags": ["Utility"]
     },
     {
         "author": "solvedDev",
@@ -60,7 +69,7 @@
         "description": "Adds a new dark blue color theme to select inside the settings window.",
         "id": "f883bbc1-d81a-4373-8ec7-a11b81d9070a",
         "link": "/plugins/DarkBlueTheme/DarkBlueTheme.zip",
-        "tags": ["Curated", "Theme"]
+        "tags": ["Theme"]
     },
 
     {

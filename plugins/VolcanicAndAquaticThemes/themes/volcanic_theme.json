@@ -1,0 +1,55 @@
+{
+	"name": "Volcanic",
+	"id": "0c0ad0ed-dc98-4a2a-9bd3-c64ecb10fdef",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#CC9C38"
+				},
+				"keyword": {
+					"color": "#CA663F"
+				},
+				"definition": {
+					"color": "#fd971f"
+				},
+				"atom": {
+					"color": "#ae81ff"
+				},
+				"number": {
+					"color": "#FFCE34"
+				},
+				"string": {
+					"color": "#FF9F25"
+				},
+				"variable": {
+					"color": "#9effff"
+				},
+				"variable_strong": {
+					"color": "#66d9ef"
+				},
+				"meta": {
+					"color": "white"
+				},
+				"comment": {
+					"color": "#635100"
+				}
+			},
+			"primary": "#FF2323",
+			"secondary": "#D19903",
+			"accent": "#FF5D00",
+			"error": "#FF0000",
+			"info": "#613030",
+			"success": "#006304",
+			"warning": "#FB7100",
+			"background": "#131313",
+			"sidebar_navigation": "#242424",
+			"expanded_sidebar": "#191919",
+			"menu": "#242424",
+			"toolbar": "#252222",
+			"footer": "#332E2E",
+			"tooltip": "#303030",
+			"default_button": "#212121"
+		}
+	}
+}
