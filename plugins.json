@@ -1,5 +1,4 @@
-[
-    {
+[{
         "author": "Joel ant 05",
         "name": "Volcanic and Aquatic Themes",
         "version": "1.0.0",
@@ -15,16 +14,16 @@
         "id": "caa0a585-d513-48cf-a803-c920055e2afe",
         "description": "Adds better templates for custom recipes",
         "link": "/plugins/RecipeSnippets/RecipeSnippets.zip",
-		"tags": ["Curated", "Snippet"]
+        "tags": ["Curated", "Snippet"]
     },
-	{
+    {
         "author": "JustSkitzo",
         "version": "1.0.1",
         "name": "Spooky Theme",
         "description": "Adds a new spooky color theme to select inside the settings window.",
         "id": "6337c024-f603-11e9-802a-5aa538984bd8",
-		"link": "/plugins/SpookyTheme/SpookyTheme.zip",
-		"tags": ["Curated", "Theme"]
+        "link": "/plugins/SpookyTheme/SpookyTheme.zip",
+        "tags": ["Curated", "Theme"]
     },
     {
         "author": "solvedDev",
@@ -35,24 +34,24 @@
         "link": "/plugins/CustomSpawner/CustomSpawner.zip",
         "tags": ["Curated", "Component"]
     },
-	{
-		"name": "Create a Block",
-		"id": "ENDERZOMBI102.bridgePlugins.create-a-block",
-		"author": "ENDERZOMBI102",
-		"version": "1.2.0",
-		"description": "Add a better 'template' for blocks.",
-		"link": "/plugins/CAB/CAB.zip",
-		"tags": ["Curated", "Snippet"]
-	},
+    {
+        "name": "Create a Block",
+        "id": "ENDERZOMBI102.bridgePlugins.create-a-block",
+        "author": "ENDERZOMBI102",
+        "version": "1.2.0",
+        "description": "Add a better 'template' for blocks.",
+        "link": "/plugins/CAB/CAB.zip",
+        "tags": ["Curated", "Snippet"]
+    },
     {
         "author": "JustSkitzo",
         "version": "1.0.0",
         "name": "Create an Item",
         "description": "Add a better 'template' for items.",
         "id": "JustSkitzo.bridgePlugins.create-an-item",
-		"link": "/plugins/CAI/CAI.zip",
-		"tags": ["Curated", "Snippet"]
-	},
+        "link": "/plugins/CAI/CAI.zip",
+        "tags": ["Curated", "Snippet"]
+    },
     {
         "author": "solvedDev",
         "version": "1.0.1",
