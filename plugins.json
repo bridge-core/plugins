@@ -1,5 +1,14 @@
 [{
         "author": "Joel ant 05",
+        "name": "Deep Blue Theme",
+        "version": "1.0.0",
+        "id": "056b172d-77a8-40fc-9f34-226c163e330b",
+        "description": "Adds a deep blue color theme to select inside the settings window",
+        "link": "/plugins/DeepBlueTheme/DeepBlueTheme.zip",
+        "tags": ["Curated", "Theme"]
+},
+{
+        "author": "Joel ant 05",
         "name": "Lime Theme",
         "version": "1.0.0",
         "id": "4d73da69-6df3-46bc-9486-a602373573db",
@@ -50,7 +59,7 @@
         "version": "1.2.0",
         "description": "Add a better 'template' for blocks.",
         "link": "/plugins/CAB/CAB.zip",
-        "tags": ["Curated", "Snippet"]
+        "tags": ["Snippet"]
     },
     {
         "author": "JustSkitzo",

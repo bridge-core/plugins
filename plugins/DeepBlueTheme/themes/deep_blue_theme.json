@@ -1,0 +1,55 @@
+{
+	"name": "Deep Blue",
+	"id": "36198510-14d1-40b5-bced-49a062299487",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#002199"
+				},
+				"keyword": {
+					"color": "#A025FD"
+				},
+				"definition": {
+					"color": "#00FFF1"
+				},
+				"atom": {
+					"color": "#ae81ff"
+				},
+				"number": {
+					"color": "#573496"
+				},
+				"string": {
+					"color": "#007EFF"
+				},
+				"variable": {
+					"color": "#9effff"
+				},
+				"variable_strong": {
+					"color": "#66d9ef"
+				},
+				"meta": {
+					"color": "white"
+				},
+				"comment": {
+					"color": "#00A3C3"
+				}
+			},
+			"primary": "#3500D3",
+			"secondary": "#240090",
+			"accent": "#0053A0",
+			"error": "#FF1E1E",
+			"info": "#2196F3",
+			"success": "#4CAF50",
+			"warning": "#FB8C00",
+			"background": "#070411",
+			"sidebar_navigation": "#060019",
+			"expanded_sidebar": "#090025",
+			"menu": "#000C20",
+			"toolbar": "#000000",
+			"footer": "#130146",
+			"tooltip": "#111316",
+			"default_button": "#001924"
+		}
+	}
+}
