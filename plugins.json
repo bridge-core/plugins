@@ -1,5 +1,14 @@
 [{
         "author": "Joel ant 05",
+        "name": "Lime Theme",
+        "version": "1.0.0",
+        "id": "4d73da69-6df3-46bc-9486-a602373573db",
+        "description": "Adds a lime color theme to select inside the settings window",
+        "link": "/plugins/LimeTheme/LimeTheme.zip",
+        "tags": ["Curated", "Theme"]
+    },
+    {
+        "author": "Joel ant 05",
         "name": "Volcanic and Aquatic Themes",
         "version": "1.0.0",
         "id": "84b65ea3-b206-40fd-aaae-3f884b12b4f4",
@@ -50,7 +59,7 @@
         "description": "Add a better 'template' for items.",
         "id": "JustSkitzo.bridgePlugins.create-an-item",
         "link": "/plugins/CAI/CAI.zip",
-        "tags": ["Curated", "Snippet"]
+        "tags": ["Snippet"]
     },
     {
         "author": "solvedDev",

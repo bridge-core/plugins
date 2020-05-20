@@ -1,0 +1,55 @@
+{
+	"name": "Lime",
+	"id": "f9a65fb6-da0e-480d-b5cf-23a303a8e434",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#A6E22E"
+				},
+				"keyword": {
+					"color": "#018300"
+				},
+				"definition": {
+					"color": "#6FFF50"
+				},
+				"atom": {
+					"color": "#1C861A"
+				},
+				"number": {
+					"color": "#10771D"
+				},
+				"string": {
+					"color": "#2CDB00"
+				},
+				"variable": {
+					"color": "#9EFFA0"
+				},
+				"variable_strong": {
+					"color": "#66EF74"
+				},
+				"meta": {
+					"color": "white"
+				},
+				"comment": {
+					"color": "#275818"
+				}
+			},
+			"primary": "#5AA201",
+			"secondary": "#86C232",
+			"accent": "#19A01B",
+			"error": "#256300",
+			"info": "#2FF36A",
+			"success": "#4CAF50",
+			"warning": "#C9FF46",
+			"background": "#070707",
+			"sidebar_navigation": "#000000",
+			"expanded_sidebar": "#0A0A0A",
+			"menu": "#141414",
+			"toolbar": "#000000",
+			"footer": "#000000",
+			"tooltip": "#131313",
+			"default_button": "#040F01"
+		}
+	}
+}
