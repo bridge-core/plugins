@@ -1,0 +1,55 @@
+{
+	"name": "Lemon",
+	"id": "690e4a65-1152-4e81-b9de-0df4e5163c79",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#FFB300"
+				},
+				"keyword": {
+					"color": "#FFFA00"
+				},
+				"definition": {
+					"color": "#CAB600"
+				},
+				"atom": {
+					"color": "#B4D400"
+				},
+				"number": {
+					"color": "#FFC100"
+				},
+				"string": {
+					"color": "#FFF74C"
+				},
+				"variable": {
+					"color": "#9effff"
+				},
+				"variable_strong": {
+					"color": "#66d9ef"
+				},
+				"meta": {
+					"color": "white"
+				},
+				"comment": {
+					"color": "#75715e"
+				}
+			},
+			"primary": "#D1E000",
+			"secondary": "#E3EC00",
+			"accent": "#EFF511",
+			"error": "#A2AF00",
+			"info": "#2196F3",
+			"success": "#4CAF50",
+			"warning": "#FB8C00",
+			"background": "#0C0C0C",
+			"sidebar_navigation": "#000000",
+			"expanded_sidebar": "#080808",
+			"menu": "#454D00",
+			"toolbar": "#000000",
+			"footer": "#000000",
+			"tooltip": "#A0AC00",
+			"default_button": "#D9FF00"
+		}
+	}
+}

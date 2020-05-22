@@ -1,13 +1,22 @@
 [{
         "author": "Joel ant 05",
+        "name": "Fruity Themes",
+        "version": "1.0.0",
+        "id": "47c1b5f9-a452-4ed1-8d00-a0427dd5168a",
+        "description": "Adds different fruity color themes to select inside the settings window",
+        "link": "/plugins/FruityThemes/FruityThemes.zip",
+        "tags": ["Curated", "Theme"]
+    },
+    {
+        "author": "Joel ant 05",
         "name": "Deep Blue Theme",
         "version": "1.0.0",
         "id": "056b172d-77a8-40fc-9f34-226c163e330b",
         "description": "Adds a deep blue color theme to select inside the settings window",
         "link": "/plugins/DeepBlueTheme/DeepBlueTheme.zip",
         "tags": ["Curated", "Theme"]
-},
-{
+    },
+    {
         "author": "Joel ant 05",
         "name": "Lime Theme",
         "version": "1.0.0",

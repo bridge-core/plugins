@@ -1,0 +1,55 @@
+{
+	"name": "Cherry",
+	"id": "15706a90-61f1-41ad-a9ff-871ea535bc01",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#E22E2E"
+				},
+				"keyword": {
+					"color": "#DD135C"
+				},
+				"definition": {
+					"color": "#FD1F1F"
+				},
+				"atom": {
+					"color": "#FF8181"
+				},
+				"number": {
+					"color": "#FF8181"
+				},
+				"string": {
+					"color": "#FF4949"
+				},
+				"variable": {
+					"color": "#9effff"
+				},
+				"variable_strong": {
+					"color": "#66d9ef"
+				},
+				"meta": {
+					"color": "white"
+				},
+				"comment": {
+					"color": "#75715e"
+				}
+			},
+			"primary": "#9A1750",
+			"secondary": "#EE4C7C",
+			"error": "#9A1750",
+			"accent": "#FF0000",
+			"info": "#2196F3",
+			"success": "#4CAF50",
+			"warning": "#FB8C00",
+			"background": "#20000B",
+			"sidebar_navigation": "#510B19",
+			"expanded_sidebar": "#3B0815",
+			"menu": "#4D0000",
+			"toolbar": "#51051A",
+			"footer": "#8B1C1C",
+			"tooltip": "#350000",
+			"default_button": "#A2162D"
+		}
+	}
+}

@@ -1,0 +1,55 @@
+{
+	"name": "Citrus",
+	"id": "e7b29793-ee62-4fb8-9c00-2085b6c04756",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#a6e22e"
+				},
+				"keyword": {
+					"color": "#53900F"
+				},
+				"definition": {
+					"color": "#FF6B00"
+				},
+				"atom": {
+					"color": "#B4D400"
+				},
+				"number": {
+					"color": "#ae81ff"
+				},
+				"string": {
+					"color": "#D6CE15"
+				},
+				"variable": {
+					"color": "#9effff"
+				},
+				"variable_strong": {
+					"color": "#66d9ef"
+				},
+				"meta": {
+					"color": "white"
+				},
+				"comment": {
+					"color": "#75715e"
+				}
+			},
+			"primary": "#28802A",
+			"secondary": "#86FF00",
+			"accent": "#F9FF00",
+			"error": "#575E00",
+			"info": "#2196F3",
+			"success": "#4CAF50",
+			"warning": "#FB8C00",
+			"background": "#151A02",
+			"sidebar_navigation": "#1D2503",
+			"expanded_sidebar": "#1D2503",
+			"menu": "#214700",
+			"toolbar": "#000000",
+			"footer": "#4E741B",
+			"tooltip": "#A0AC00",
+			"default_button": "#677900"
+		}
+	}
+}
