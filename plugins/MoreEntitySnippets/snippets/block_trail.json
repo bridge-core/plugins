@@ -1,0 +1,20 @@
+{
+	"file_type": "entity",
+	"display_name": "Block Trail",
+	"template": {
+		"force_default_scope": true,
+		"data_path": "minecraft:entity",
+		"data": {
+			"components": {
+				"minecraft:trail": {
+					"block_type": "minecraft:snow_layer",
+					"spawn_filter": {
+						"test": "on_ground",
+						"subject": "self",
+						"value": true
+					}
+				}
+			}
+		}
+	}
+}

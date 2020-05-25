@@ -1,0 +1,36 @@
+{
+	"file_type": "entity",
+	"display_name": "Interaction",
+	"template": {
+		"force_default_scope": true,
+		"data_path": "minecraft:entity",
+		"data": {
+			"components": {
+				"minecraft:interact": {
+					"interactions": [
+						{
+							"on_interact": {
+								"filters": {
+									"all_of": [
+										{
+											"test": "is_family",
+											"subject": "other",
+											"value": "player"
+										}
+									]
+								},
+								"target": "self",
+								"event": "bridge:on_interact"
+							},
+							"play_sounds": "milk",
+							"interact_text": "action.interact.blank"
+						}
+					]
+				}
+			},
+			"events": {
+				"bridge:on_interact": {}
+			}
+		}
+	}
+}

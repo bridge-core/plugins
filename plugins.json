@@ -1,5 +1,14 @@
 [{
         "author": "Joel ant 05",
+        "name": "More Entity Snippets",
+        "version": "1.0.0",
+        "id": "87d418b3-e7ab-414e-9be1-13082c3cf46d",
+        "description": "Adds more snippets for entities",
+        "link": "/plugins/MoreEntitySnippets/MoreEntitySnippets.zip",
+        "tags": ["Curated", "Snippet"]
+    },
+    {
+        "author": "Joel ant 05",
         "name": "Fruity Themes",
         "version": "1.0.0",
         "id": "47c1b5f9-a452-4ed1-8d00-a0427dd5168a",
@@ -50,7 +59,7 @@
         "description": "Adds a new spooky color theme to select inside the settings window.",
         "id": "6337c024-f603-11e9-802a-5aa538984bd8",
         "link": "/plugins/SpookyTheme/SpookyTheme.zip",
-        "tags": ["Curated", "Theme"]
+        "tags": ["Theme"]
     },
     {
         "author": "solvedDev",

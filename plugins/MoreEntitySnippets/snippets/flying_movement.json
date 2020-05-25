@@ -1,0 +1,33 @@
+{
+	"file_type": "entity",
+	"display_name": "Flying Behaviours",
+	"template": {
+		"force_default_scope": true,
+		"data_path": "minecraft:entity",
+		"data": {
+			"components": {
+				"minecraft:navigation.float": {
+					"can_path_over_water": true
+				},
+				"minecraft:behavior.float": {
+					"priority": 0
+				},
+				"minecraft:behavior.float_wander": {
+					"xz_dist": 10,
+					"y_dist": 7,
+					"y_offset": -2,
+					"random_reselect": true,
+					"float_duration": [
+						0.1,
+						0.35
+					]
+				},
+				"minecraft:can_fly": {},
+				"minecraft:movement.basic": {},
+				"minecraft:flying_speed": {
+					"value": 0.1
+				}
+			}
+		}
+	}
+}

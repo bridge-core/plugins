@@ -1,0 +1,42 @@
+{
+	"file_type": "entity",
+	"display_name": "Projectile Behaviours",
+	"template": {
+		"force_default_scope": true,
+		"data_path": "minecraft:entity",
+		"data": {
+			"component": {
+				"minecraft:collision_box": {
+					"width": 0.25,
+					"height": 0.25
+				},
+				"minecraft:physics": {},
+				"minecraft:pushable": {
+					"is_pushable": true,
+					"is_pushable_by_piston": true
+				},
+				"minecraft:projectile": {
+					"on_hit": {
+						"impact_damage": {
+							"damage": 3,
+							"knockback": true
+						},
+						"remove_on_hit": {}
+					},
+					"anchor": 1,
+					"power": 1.5,
+					"gravity": 0.03,
+					"angle_offset": 0,
+					"offset": [
+						0,
+						-0.1,
+						0
+					]
+				}
+			},
+			"description": {
+				"runtime_identifier": "minecraft:snowball"
+			}
+		}
+	}
+}

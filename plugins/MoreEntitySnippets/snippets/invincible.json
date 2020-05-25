@@ -1,0 +1,20 @@
+{
+	"file_type": "entity",
+	"display_name": "Invincibility",
+	"template": {
+		"force_default_scope": true,
+		"data_path": "minecraft:entity",
+		"data": {
+			"components": {
+				"minecraft:damage_sensor": {
+					"triggers": [
+						{
+							"cause": "all",
+							"deals_damage": false
+						}
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{
+	"file_type": "entity",
+	"display_name": "Death Sensor",
+	"template": {
+		"force_default_scope": true,
+		"data_path": "minecraft:entity",
+		"data": {
+			"components": {
+				"minecraft:damage_sensor": {
+					"triggers": [
+						{
+							"on_damage": [
+								{
+									"target": "self",
+									"event": "bridge:on_death",
+									"filters": {
+										"test": "has_damage",
+										"value": "fatal"
+									}
+								}
+							]
+						}
+					]
+				}
+			},
+			"events": {
+				"bridge:on_death": {}
+			}
+		}
+	}
+}
