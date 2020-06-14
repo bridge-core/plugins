@@ -1,4 +1,13 @@
 [{
+       "author": "Joel ant 05",
+       "name": "Black and White Theme",
+       "version": "1.0.0",
+       "id": "d9419ae7-69ec-46d6-9080-a9ff48e6edab",
+       "description": "Adds a black and white theme to select inside the settings window",
+       "link": "/plugins/BlackAndWhiteTheme/BlackAndWhiteTheme.zip",
+       "tags": ["Curated", "Theme"]
+    },
+    {
         "author": "Joel ant 05",
         "name": "Particle Example Snippets",
         "version": "1.0.0",
@@ -50,7 +59,7 @@
         "id": "84b65ea3-b206-40fd-aaae-3f884b12b4f4",
         "description": "Adds two new volcanic and aquatic color themes to select inside the settings window",
         "link": "/plugins/VolcanicAndAquaticThemes/VolcanicAndAquaticThemes.zip",
-        "tags": ["Curated", "Theme"]
+        "tags": ["Theme"]
     },
     {
         "author": "Joel ant 05",

@@ -1,0 +1,55 @@
+{
+	"name": "Black and White",
+	"id": "b48826f9-a5d0-445e-b41e-bf5ff2a3e2b6",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#8D8D8D"
+				},
+				"keyword": {
+					"color": "#4D4D4D"
+				},
+				"definition": {
+					"color": "#8D8D8D"
+				},
+				"atom": {
+					"color": "#8D8D8D"
+				},
+				"number": {
+					"color": "#8D8D8D"
+				},
+				"string": {
+					"color": "#FFFFFF"
+				},
+				"variable": {
+					"color": "#9effff"
+				},
+				"variable_strong": {
+					"color": "#66d9ef"
+				},
+				"meta": {
+					"color": "#FFFFFF"
+				},
+				"comment": {
+					"color": "#979796"
+				}
+			},
+			"primary": "#464646",
+			"secondary": "#CCCCCC",
+			"accent": "#FFFFFF",
+			"error": "#6D6D6D",
+			"info": "#BACAD6",
+			"success": "#779C78",
+			"warning": "#FFFFFF",
+			"background": "#000000",
+			"sidebar_navigation": "#070707",
+			"expanded_sidebar": "#0C0C0C",
+			"menu": "#000000",
+			"toolbar": "#000000",
+			"footer": "#000000",
+			"tooltip": "#0A0A0A",
+			"default_button": "#3D3D3D"
+		}
+	}
+}
