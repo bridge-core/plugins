@@ -1,12 +1,4 @@
-[{
-       "author": "Gekocaretaker",
-       "name": "Simply Json",
-       "version": "1.0.0",
-       "id": "f5cecd90-dda9-11ea-87d0-0242ac130003",
-       "description": "More tools for your addons. From components to auto completions, this will make making addons easier. Look at the guide for help.",
-       "link": "plugins/SimplyJson/SimplyJson.zip",
-       "tags": ["Component"]
-    },
+[
     {
        "author": "Joel ant 05",
        "name": "Black and White Theme",
@@ -60,6 +52,16 @@
         "description": "Adds a lime color theme to select inside the settings window",
         "link": "/plugins/LimeTheme/LimeTheme.zip",
         "tags": ["Curated", "Theme"]
+    },
+
+    {
+       "author": "Gekocaretaker",
+       "name": "Simply Json",
+       "version": "1.0.0",
+       "id": "f5cecd90-dda9-11ea-87d0-0242ac130003",
+       "description": "More tools for your addons. From components to auto completions, this will make making addons easier. Look at the guide for help.",
+       "link": "plugins/SimplyJson/SimplyJson.zip",
+       "tags": ["Component"]
     },
     {
         "author": "Joel ant 05",
