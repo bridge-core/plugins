@@ -1,0 +1,23 @@
+//bridge-file-version: #0
+{
+	"path": "general/ores",
+	"definition": [
+		"empty",
+		"lava",
+		"iron",
+		"gold",
+		"diamond",
+		"coal",
+		"lapis",
+		"emerald",
+		"redstone",
+		"quartz",
+		"debris",
+		"netherite",
+		"copper",
+		"tin",
+		"silver",
+		"platinium",
+		"steel"
+	]
+}

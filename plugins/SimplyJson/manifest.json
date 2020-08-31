@@ -1,0 +1,10 @@
+//bridge-file-version: #0
+{
+	"author": "Gekocaretaker",
+	"id": "f5cecd90-dda9-11ea-87d0-0242ac130003",
+	"version": "1.0.0",
+	"name": "Simply Json",
+	"link": "https://github.com/bridge-core/plugins/tree/master/plugins/SimplyJson/README.md",
+	"description": "More tools for your addons. From components to auto completions, this will make making addons easier.",
+	"api_version": 1
+}
