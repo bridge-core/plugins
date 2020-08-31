@@ -20,5 +20,5 @@ Simply Json is a plugin that adds components and auto completions to bridge.
 
 ### How to use auto completions
 The auto completions are used in custom components. Here is a list:
-* $general.ores //This has a list of ores. Will add more in the future
-* $upcraft.difficulty //This is different difficulties. Use this in any way you want.
+* $general.ores #This has a list of ores. Will add more in the future.
+* $upcraft.difficulty #This is different difficulties. Use this in any way you want.

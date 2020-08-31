@@ -1,0 +1,14 @@
+{
+  "path": "upcraft/difficulty",
+  "definition": [
+    "empty",
+    "basic",
+    "main",
+    "complex",
+    "easy",
+    "medium",
+    "hard",
+    "impossible",
+    "peaceful"
+  ]
+}
