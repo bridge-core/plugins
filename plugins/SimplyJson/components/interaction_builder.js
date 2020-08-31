@@ -42,7 +42,7 @@ Bridge.register(
           add: {
             component_groups: [currentData.add_component_group],
           },
-          remove: { 
+          remove: {
             component_groups: [currentData.remove_component_group],
           }
         }
@@ -70,7 +70,7 @@ Bridge.register(
             component_group: "$entity.general.component_group_name",
             add_component_group: "$entity.general.component_group_name",
             remove_component_group: "$entity.general.component_group_name",
-            event_name: "$entity.general.event_definition",
+            event_name: "$dynamic.cache.eventevents",
             interacting_text: "$general.translatable_text",
             play_sound: "$general.sound",
             interact_item:
