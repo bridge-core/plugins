@@ -1,0 +1,9 @@
+{
+  "path": "upcraft/startup",
+  "definition": [
+    "empty",
+    "basic",
+    "main",
+    "complex"
+  ]
+}
