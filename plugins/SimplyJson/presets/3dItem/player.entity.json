@@ -1,0 +1,14 @@
+"geometry": {
+  "{{IDENTIFIER}}": "{{IDENTIFIER}}.geo"
+},
+"textures": {
+  "{{IDENTIFIER}}": "textures/models/{{IDENTIFIER}}"
+},
+"pre_animation": [
+  "variable.{{IDENTIFIER}} = query.get_equipped_item_name('main_hand') == '{{IDENTIFIER}}';"
+],
+"render_controllers": [
+  {
+    "controller.render.{{IDENTIFIER}}": "variable.{{IDENTIFIER}}"
+  }
+]
