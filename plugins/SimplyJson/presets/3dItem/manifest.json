@@ -1,0 +1,22 @@
+{
+  "display_name": "3d Item",
+  "description": "Creates a new 3d item",
+  "icon": "mdi-box-shadow",
+  "bp_map": {
+    "item.json": "items/{{IDENTIFIER}}.json"
+  },
+  "rp_map": {
+    "client_item.json": "items/{{IDENTIFIER}}.json"
+  },
+  "expand_rp_files": {
+    "item_texture.json": "textures/item_texture.json",
+    "en_US.lang": "texts/en_US.lang",
+    "player.entity.json": "entity/player.entity.json"
+  },
+  "copy_rp_files": {
+    "icon.png": "textures/items/{{IDENTIFIER}}.png",
+    "geometry.json": "models/items/{{IDENTIFIER}}.json",
+    "texture.png": "textures/models/{{IDENTIFIER}}.png",
+    "render_controller.json": "render_controllers/{{IDENTIFIER}}.render_controllers.json"
+  }
+}

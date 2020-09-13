@@ -1,0 +1,13 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:item": {
+    "description": {
+      "identifier": "{{PROJ_PREFIX}}:{{IDENTIFIER}}",
+      "category": "Nature"
+    },
+    "components": {
+      "minecraft:icon": "{{PROJ_PREFIX}}_{{IDENTIFIER}}",
+      "minecraft:render_offsets": "apple"
+    }
+  }
+}
