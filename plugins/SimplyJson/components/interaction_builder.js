@@ -22,7 +22,7 @@ Bridge.register(
                         value: "player",
                       },
                       {
-                        test: "has_equiptment",
+                        test: "has_equipment",
                         subject: "other",
                         domain: "hand",
                         value: currentData.interact_item,
