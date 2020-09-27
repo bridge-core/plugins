@@ -1,0 +1,28 @@
+{
+  "display_name": "Crop",
+  "description": "Creates a new crop block with seeds",
+  "icon": "mdi-sprout",
+  "bp_map": {
+    "item.json": "items/{{IDENTIFIER}}_seeds.json",
+	"block.json": "blocks/{{IDENTIFIER}}.json",
+	"crop_loot_grown.json": "loot_tables/{{IDENTIFIER}}_loot_grown.json",
+	"crop_loot_not_grown.json": "loot_tables/{{IDENTIFIER}}_loot_not_grown.json"
+  },
+  "rp_map": {
+    "client_item.json": "items/{{IDENTIFIER}}_seeds.json"
+  },
+  "expand_rp_files": {
+    "en_US.lang": "texts/en_US.lang",
+	"item_texture.json": "textures/item_texture.json",
+	"terrain_texture.json": "textures/terrain_texture.json"
+  },
+  "copy_rp_files": {
+    "seed.png": "textures/items/{{IDENTIFIER}}_seeds.png",
+	"crop_0.png": "textures/blocks/{{IDENTIFIER}}_0.png",
+	"crop_1.png": "textures/blocks/{{IDENTIFIER}}_1.png",
+	"crop_2.png": "textures/blocks/{{IDENTIFIER}}_2.png",
+	"crop_3.png": "textures/blocks/{{IDENTIFIER}}_3.png",
+	"crop_4.png": "textures/blocks/{{IDENTIFIER}}_4.png",
+	"crop.geo.json": "models/entity/{{IDENTIFIER}}.geo.json"
+  }
+}

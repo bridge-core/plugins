@@ -1,0 +1,194 @@
+{
+  "format_version": "1.16.100",
+  "minecraft:block": {
+    "description": {
+      "identifier": "{{PROJ_PREFIX}}:{{IDENTIFIER}}",
+      "is_experimental": false,
+      "properties": {
+        "{{PROJ_PREFIX}}:crop_growth": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    "components": {
+      "minecraft:ticking": {
+        "looping": true,
+        "range": [
+          25,
+          45
+        ],
+        "on_tick": {
+          "target": "self",
+          "event": "{{PROJ_PREFIX}}:grow",
+          "condition": "query.block_property('{{PROJ_PREFIX}}:crop_growth') < 4"
+        }
+      },
+      "minecraft:geometry": "geometry.crop",
+      "minecraft:block_light_absorption": 0,
+      "minecraft:entity_collision": false,
+	  "minecraft:breakonpush": true,
+      "minecraft:placement_filter": {
+        "conditions": [
+          {
+            "block_filter": [
+              "farmland"
+            ],
+            "allowed_faces": [
+              "up"
+            ]
+          }
+        ]
+      },
+      "minecraft:destroy_time": 0,
+      "minecraft:loot": "loot_tables/{{IDENTIFIER}}_loot_not_grown.json"
+    },
+    "permutations": [
+      {
+        "condition": "query.block_property('{{PROJ_PREFIX}}:crop_growth') == 0",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "{{PROJ_PREFIX}}_{{IDENTIFIER}}_0",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:pick_collision": {
+            "origin": [
+              -5,
+              0,
+              -5
+            ],
+            "size": [
+              10,
+              2,
+              10
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_property('{{PROJ_PREFIX}}:crop_growth') == 1",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "{{PROJ_PREFIX}}_{{IDENTIFIER}}_1",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:pick_collision": {
+            "origin": [
+              -5,
+              0,
+              -5
+            ],
+            "size": [
+              10,
+              3,
+              10
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_property('{{PROJ_PREFIX}}:crop_growth') == 2",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "{{PROJ_PREFIX}}_{{IDENTIFIER}}_2",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:pick_collision": {
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              6,
+              14
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_property('{{PROJ_PREFIX}}:crop_growth') == 3",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "{{PROJ_PREFIX}}_{{IDENTIFIER}}_3",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:pick_collision": {
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              10,
+              14
+            ]
+          }
+        }
+      },
+      {
+        "condition": "query.block_property('{{PROJ_PREFIX}}:crop_growth') == 4",
+        "components": {
+          "minecraft:material_instances": {
+            "*": {
+              "texture": "{{PROJ_PREFIX}}_{{IDENTIFIER}}_4",
+              "render_method": "alpha_test"
+            }
+          },
+          "minecraft:on_interact": {
+            "target": "self",
+            "event": "{{PROJ_PREFIX}}:harvest"
+          },
+          "minecraft:pick_collision": {
+            "origin": [
+              -7,
+              0,
+              -7
+            ],
+            "size": [
+              14,
+              14,
+              14
+            ]
+          }
+        }
+      }
+    ],
+    "events": {
+      "{{PROJ_PREFIX}}:grow": {
+		"randomize": [
+			{
+				"set_block_property": {
+					"{{PROJ_PREFIX}}:crop_growth": "query.block_property('{{PROJ_PREFIX}}:crop_growth') + 1"
+				},
+				"weight": 1
+			},
+			{
+				"weight": 1
+			}
+		]
+      },
+      "{{PROJ_PREFIX}}:harvest": {
+        "set_block_property": {
+          "{{PROJ_PREFIX}}:crop_growth": 2
+        },
+        "spawn_loot": {
+          "table": "loot_tables/{{IDENTIFIER}}_loot_grown.json"
+        }
+      }
+    }
+  }
+}

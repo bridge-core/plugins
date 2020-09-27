@@ -1,0 +1,19 @@
+{
+  "texture_data": {
+    "{{PROJ_PREFIX}}_{{IDENTIFIER}}_0": {
+      "textures": "textures/blocks/{{IDENTIFIER}}_0"
+    },
+	"{{PROJ_PREFIX}}_{{IDENTIFIER}}_1": {
+      "textures": "textures/blocks/{{IDENTIFIER}}_1"
+    },
+	"{{PROJ_PREFIX}}_{{IDENTIFIER}}_2": {
+      "textures": "textures/blocks/{{IDENTIFIER}}_2"
+    },
+	"{{PROJ_PREFIX}}_{{IDENTIFIER}}_3": {
+      "textures": "textures/blocks/{{IDENTIFIER}}_3"
+    },
+	"{{PROJ_PREFIX}}_{{IDENTIFIER}}_4": {
+      "textures": "textures/blocks/{{IDENTIFIER}}_4"
+    }
+  }
+}
