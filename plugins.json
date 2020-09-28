@@ -146,7 +146,7 @@
     },
 
     {
-        "author": "bridge. Team",
+        "author": "solvedDev",
         "id": "bridge.ui.common_window",
         "version": "1.0.0",
         "name": "Bridge CommonWindow",
@@ -155,7 +155,7 @@
         "tags": ["Utility"]
     },
     {
-        "author": "bridge. Team",
+        "author": "solvedDev",
         "id": "solved.utilities.bridge_plugin_creator",
         "version": "1.0.1",
         "name": "Bridge Plugin Creator",
@@ -164,7 +164,7 @@
         "tags": ["Curated", "Utility"]
     },
     {
-        "author": "bridge. Team",
+        "author": "solvedDev",
         "id": "bridge.ui.confirm_window",
         "version": "1.0.0",
         "name": "Bridge ConfirmWindow",
