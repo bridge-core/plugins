@@ -4,7 +4,7 @@
         "name": "Simple Block Rotation",
         "version": "1.1.0",
         "id": "ac340569-8df3-4409-ac9d-b855b183210b",
-        "description": "Adds a new component that provides an easy way to rotate a block like a log.",
+        "description": "Adding rotation to blocks is as easy as it should be: Adding a single component!",
         "link": "/plugins/BlockRotation/BlockRotation.zip",
 		"tags": ["Curated", "Component"]
     },
