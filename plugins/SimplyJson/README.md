@@ -1,7 +1,6 @@
-# Simply Json
 Simply Json is a plugin that adds components and auto completions to bridge.
 
-### How to use components
+## How to use components
 **Warning! All component groups and events that you use in the components must be predefined!**
 ```js
 "upcraft:interaction_builder": { //Allows you to quickly build interactions
@@ -28,11 +27,11 @@ Simply Json is a plugin that adds components and auto completions to bridge.
 }
 ```
 
-### How to use auto completions
+## How to use auto completions
 The auto completions are used in custom components. Here is a list:
 * $general.ores #This has a list of ores. Will add more in the future.
 * $upcraft.difficulty #This is different difficulties. Use this in any way you want.
 
-### Presets!
+## Presets!
 The presets are used for quickly adding things you want.
 * 3d Items #This is used for making 3d items. make sure to change the 2d and 3d item textures and also the model.
