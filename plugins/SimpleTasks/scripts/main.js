@@ -9,5 +9,3 @@ const sidebar = create({
 	displayName: 'Tasks',
 	component: Main,
 })
-
-sidebar.select()
