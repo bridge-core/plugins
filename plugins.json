@@ -1,234 +1,232 @@
 [
-    {
-        "author": "solvedDev",
-        "name": "Simple Block Rotation",
-        "version": "1.1.0",
-        "id": "ac340569-8df3-4409-ac9d-b855b183210b",
-        "description": "Adding rotation to blocks is as easy as it should be: Adding a single component!",
-        "link": "/plugins/BlockRotation/BlockRotation.zip",
-		"tags": ["Curated", "Component"]
-    },
-	{
-		"author": "Joel ant 05",
-		"version": "1.0.0",
-		"name": "More presets",
-		"description": "Adds a new crop preset. Presets in this plugin require Minecraft beta 1.16.100.56+",
-		"id": "89457173-109d-4dff-9f7e-f8f8875e307a",
-		"link": "/plugins/MorePresets/MorePresets.zip",
-		"tags": ["Curated", "Presets"]
-	},
-    {
-       "author": "Joel ant 05",
-       "name": "Black and White Theme",
-       "version": "1.0.0",
-       "id": "d9419ae7-69ec-46d6-9080-a9ff48e6edab",
-       "description": "Adds a black and white theme to select inside the settings window",
-       "link": "/plugins/BlackAndWhiteTheme/BlackAndWhiteTheme.zip",
-       "tags": ["Curated", "Theme"]
-    },
-    {
-        "author": "Joel ant 05",
-        "name": "Particle Example Snippets",
-        "version": "1.0.0",
-        "description": "Adds particle snippets",
-        "id": "a0ad4844-ee48-4687-9da2-f1a47f3d1c3a",
-        "link": "/plugins/ParticleExampleSnippets/ParticleExampleSnippets.zip",
-        "tags": ["Curated", "Snippet"]
-    },
-    {
-        "author": "Joel ant 05",
-        "name": "More Entity Snippets",
-        "version": "1.0.0",
-        "id": "87d418b3-e7ab-414e-9be1-13082c3cf46d",
-        "description": "Adds more snippets for entities",
-        "link": "/plugins/MoreEntitySnippets/MoreEntitySnippets.zip",
-        "tags": ["Curated", "Snippet"]
-    },
-    {
-        "author": "Joel ant 05",
-        "name": "Fruity Themes",
-        "version": "1.0.0",
-        "id": "47c1b5f9-a452-4ed1-8d00-a0427dd5168a",
-        "description": "Adds different fruity color themes to select inside the settings window",
-        "link": "/plugins/FruityThemes/FruityThemes.zip",
-        "tags": ["Theme"]
-    },
-    {
-        "author": "Joel ant 05",
-        "name": "Deep Blue Theme",
-        "version": "1.0.0",
-        "id": "056b172d-77a8-40fc-9f34-226c163e330b",
-        "description": "Adds a deep blue color theme to select inside the settings window",
-        "link": "/plugins/DeepBlueTheme/DeepBlueTheme.zip",
-        "tags": ["Curated", "Theme"]
-    },
-    {
-        "author": "Joel ant 05",
-        "name": "Lime Theme",
-        "version": "1.0.0",
-        "id": "4d73da69-6df3-46bc-9486-a602373573db",
-        "description": "Adds a lime color theme to select inside the settings window",
-        "link": "/plugins/LimeTheme/LimeTheme.zip",
-        "tags": ["Theme"]
-    },
+  {
+    "author": "solvedDev",
+    "version": "1.1.0",
+    "name": "Simple Tasks",
+    "description": "Keep track of all your tasks directly inside of bridge.",
+    "id": "44dc6685-4258-4eed-9f62-e0d0fdfd41e9",
+    "link": "/plugins/SimpleTasks/SimpleTasks.zip",
+    "tags": ["Curated", "Utility"]
+  },
+  {
+    "author": "solvedDev",
+    "name": "Simple Block Rotation",
+    "version": "1.1.0",
+    "id": "ac340569-8df3-4409-ac9d-b855b183210b",
+    "description": "Adding rotation to blocks is as easy as it should be: Adding a single component!",
+    "link": "/plugins/BlockRotation/BlockRotation.zip",
+    "tags": ["Curated", "Component"]
+  },
+  {
+    "author": "Joel ant 05",
+    "version": "1.0.0",
+    "name": "More presets",
+    "description": "Adds a new crop preset. Presets in this plugin require Minecraft beta 1.16.100.56+",
+    "id": "89457173-109d-4dff-9f7e-f8f8875e307a",
+    "link": "/plugins/MorePresets/MorePresets.zip",
+    "tags": ["Curated", "Presets"]
+  },
+  {
+    "author": "Joel ant 05",
+    "name": "Black and White Theme",
+    "version": "1.0.0",
+    "id": "d9419ae7-69ec-46d6-9080-a9ff48e6edab",
+    "description": "Adds a black and white theme to select inside the settings window",
+    "link": "/plugins/BlackAndWhiteTheme/BlackAndWhiteTheme.zip",
+    "tags": ["Curated", "Theme"]
+  },
+  {
+    "author": "Joel ant 05",
+    "name": "Particle Example Snippets",
+    "version": "1.0.0",
+    "description": "Adds particle snippets",
+    "id": "a0ad4844-ee48-4687-9da2-f1a47f3d1c3a",
+    "link": "/plugins/ParticleExampleSnippets/ParticleExampleSnippets.zip",
+    "tags": ["Snippet"]
+  },
+  {
+    "author": "Joel ant 05",
+    "name": "More Entity Snippets",
+    "version": "1.0.0",
+    "id": "87d418b3-e7ab-414e-9be1-13082c3cf46d",
+    "description": "Adds more snippets for entities",
+    "link": "/plugins/MoreEntitySnippets/MoreEntitySnippets.zip",
+    "tags": ["Curated", "Snippet"]
+  },
+  {
+    "author": "Joel ant 05",
+    "name": "Fruity Themes",
+    "version": "1.0.0",
+    "id": "47c1b5f9-a452-4ed1-8d00-a0427dd5168a",
+    "description": "Adds different fruity color themes to select inside the settings window",
+    "link": "/plugins/FruityThemes/FruityThemes.zip",
+    "tags": ["Theme"]
+  },
+  {
+    "author": "Joel ant 05",
+    "name": "Deep Blue Theme",
+    "version": "1.0.0",
+    "id": "056b172d-77a8-40fc-9f34-226c163e330b",
+    "description": "Adds a deep blue color theme to select inside the settings window",
+    "link": "/plugins/DeepBlueTheme/DeepBlueTheme.zip",
+    "tags": ["Curated", "Theme"]
+  },
+  {
+    "author": "Joel ant 05",
+    "name": "Lime Theme",
+    "version": "1.0.0",
+    "id": "4d73da69-6df3-46bc-9486-a602373573db",
+    "description": "Adds a lime color theme to select inside the settings window",
+    "link": "/plugins/LimeTheme/LimeTheme.zip",
+    "tags": ["Theme"]
+  },
 
-    {
-       "author": "Gekocaretaker",
-       "name": "Simply Json",
-       "version": "1.2.0",
-       "id": "f5cecd90-dda9-11ea-87d0-0242ac130003",
-       "description": "More tools for your addons. From components to auto completions, this will make making addons easier. Look at the guide for help.",
-       "link": "plugins/SimplyJson/SimplyJson.zip",
-       "tags": ["Component"]
-    },
-    {
-        "author": "Joel ant 05",
-        "name": "Volcanic and Aquatic Themes",
-        "version": "1.0.0",
-        "id": "84b65ea3-b206-40fd-aaae-3f884b12b4f4",
-        "description": "Adds two new volcanic and aquatic color themes to select inside the settings window",
-        "link": "/plugins/VolcanicAndAquaticThemes/VolcanicAndAquaticThemes.zip",
-        "tags": ["Theme"]
-    },
-    {
-        "author": "Joel ant 05",
-        "name": "Recipe Snippets",
-        "version": "1.0.0",
-        "id": "caa0a585-d513-48cf-a803-c920055e2afe",
-        "description": "Adds better templates for custom recipes",
-        "link": "/plugins/RecipeSnippets/RecipeSnippets.zip",
-        "tags": ["Snippet"]
-    },
-    {
-        "author": "JustSkitzo",
-        "version": "1.0.1",
-        "name": "Spooky Theme",
-        "description": "Adds a new spooky color theme to select inside the settings window.",
-        "id": "6337c024-f603-11e9-802a-5aa538984bd8",
-        "link": "/plugins/SpookyTheme/SpookyTheme.zip",
-        "tags": ["Theme"]
-    },
-    {
-        "author": "solvedDev",
-        "id": "8497489b-3b80-45a6-94f3-65d8bd1188cd",
-        "version": "1.0.0",
-        "name": "Custom Spawner",
-        "description": "Implements a flexible custom spawner component to use on your entities. Requires active bridge. Core and Minecraft 1.13!",
-        "link": "/plugins/CustomSpawner/CustomSpawner.zip",
-        "tags": ["Curated", "Component"]
-    },
-    {
-        "name": "Create a Block",
-        "id": "ENDERZOMBI102.bridgePlugins.create-a-block",
-        "author": "ENDERZOMBI102",
-        "version": "1.2.0",
-        "description": "Add a better 'template' for blocks.",
-        "link": "/plugins/CAB/CAB.zip",
-        "tags": ["Snippet"]
-    },
-    {
-        "author": "JustSkitzo",
-        "version": "1.0.0",
-        "name": "Create an Item",
-        "description": "Add a better 'template' for items.",
-        "id": "JustSkitzo.bridgePlugins.create-an-item",
-        "link": "/plugins/CAI/CAI.zip",
-        "tags": ["Snippet"]
-    },
-    {
-        "author": "solvedDev",
-        "version": "1.0.1",
-        "name": "Simple Tasks",
-        "description": "All your tasks inside bridge. Supports pinning tasks and marking them as completed.",
-        "id": "44dc6685-4258-4eed-9f62-e0d0fdfd41e9",
-        "link": "/plugins/SimpleTasks/SimpleTasks.zip",
-        "tags": ["Utility"]
-    },
-    {
-        "author": "solvedDev",
-        "version": "1.0.0",
-        "name": "DarkBlue Theme",
-        "description": "Adds a new dark blue color theme to select inside the settings window.",
-        "id": "f883bbc1-d81a-4373-8ec7-a11b81d9070a",
-        "link": "/plugins/DarkBlueTheme/DarkBlueTheme.zip",
-        "tags": ["Theme"]
-    },
+  {
+    "author": "Gekocaretaker",
+    "name": "Simply Json",
+    "version": "1.2.0",
+    "id": "f5cecd90-dda9-11ea-87d0-0242ac130003",
+    "description": "More tools for your addons. From components to auto completions, this will make making addons easier. Look at the guide for help.",
+    "link": "plugins/SimplyJson/SimplyJson.zip",
+    "tags": ["Component"]
+  },
+  {
+    "author": "Joel ant 05",
+    "name": "Volcanic and Aquatic Themes",
+    "version": "1.0.0",
+    "id": "84b65ea3-b206-40fd-aaae-3f884b12b4f4",
+    "description": "Adds two new volcanic and aquatic color themes to select inside the settings window",
+    "link": "/plugins/VolcanicAndAquaticThemes/VolcanicAndAquaticThemes.zip",
+    "tags": ["Theme"]
+  },
+  {
+    "author": "Joel ant 05",
+    "name": "Recipe Snippets",
+    "version": "1.0.0",
+    "id": "caa0a585-d513-48cf-a803-c920055e2afe",
+    "description": "Adds better templates for custom recipes",
+    "link": "/plugins/RecipeSnippets/RecipeSnippets.zip",
+    "tags": ["Snippet"]
+  },
+  {
+    "author": "JustSkitzo",
+    "version": "1.0.1",
+    "name": "Spooky Theme",
+    "description": "Adds a new spooky color theme to select inside the settings window.",
+    "id": "6337c024-f603-11e9-802a-5aa538984bd8",
+    "link": "/plugins/SpookyTheme/SpookyTheme.zip",
+    "tags": ["Theme"]
+  },
+  {
+    "author": "solvedDev",
+    "id": "8497489b-3b80-45a6-94f3-65d8bd1188cd",
+    "version": "1.0.0",
+    "name": "Custom Spawner",
+    "description": "Implements a flexible custom spawner component to use on your entities. Requires active bridge. Core and Minecraft 1.13!",
+    "link": "/plugins/CustomSpawner/CustomSpawner.zip",
+    "tags": ["Curated", "Component"]
+  },
+  {
+    "name": "Create a Block",
+    "id": "ENDERZOMBI102.bridgePlugins.create-a-block",
+    "author": "ENDERZOMBI102",
+    "version": "1.2.0",
+    "description": "Add a better 'template' for blocks.",
+    "link": "/plugins/CAB/CAB.zip",
+    "tags": ["Snippet"]
+  },
+  {
+    "author": "JustSkitzo",
+    "version": "1.0.0",
+    "name": "Create an Item",
+    "description": "Add a better 'template' for items.",
+    "id": "JustSkitzo.bridgePlugins.create-an-item",
+    "link": "/plugins/CAI/CAI.zip",
+    "tags": ["Snippet"]
+  },
+  {
+    "author": "solvedDev",
+    "version": "1.0.0",
+    "name": "DarkBlue Theme",
+    "description": "Adds a new dark blue color theme to select inside the settings window.",
+    "id": "f883bbc1-d81a-4373-8ec7-a11b81d9070a",
+    "link": "/plugins/DarkBlueTheme/DarkBlueTheme.zip",
+    "tags": ["Theme"]
+  },
 
-    {
-        "author": "solvedDev",
-        "id": "bridge.ui.common_window",
-        "version": "1.0.0",
-        "name": "Bridge CommonWindow",
-        "description": "Utility for other plugins. Wraps the bridge. Window API into an easier to use class.",
-        "link": "/plugins/bridge.ui.common_window.js",
-        "tags": ["Utility"]
-    },
-    {
-        "author": "solvedDev",
-        "id": "solved.utilities.bridge_plugin_creator",
-        "version": "1.0.1",
-        "name": "Bridge Plugin Creator",
-        "description": "Adds bridge. plugin files to bridge.'s native file creation window.",
-        "link": "/plugins/solved.utilities.bridge_plugin_creator.js",
-        "tags": ["Curated", "Utility"]
-    },
-    {
-        "author": "solvedDev",
-        "id": "bridge.ui.confirm_window",
-        "version": "1.0.0",
-        "name": "Bridge ConfirmWindow",
-        "description": "Utility for other plugins. Uses bridge.ui.common_window to construct a confirm dialog.",
-        "link": "/plugins/bridge.ui.confirm_window.js",
-        "tags": ["Utility"],
-        "dependencies": [
-            "bridge.ui.common_window"
-        ]
-    },
-    {
-        "author": "solvedDev",
-        "id": "solved.features.dynamic_json",
-        "version": "1.0.0",
-        "name": "Dynamic JSON",
-        "min_app_version": "v0.7.0",
-        "description": "A compiler which can speed up creating repetitive JSON by writing loop statements and shared data inside the new \"variables\" state.",
-        "link": "/plugins/solved.features.dynamic_json.js",
-        "tags": ["Utility"]
-    },
-    {
-        "author": "solvedDev",
-        "id": "solved.features.dynamic_function",
-        "version": "1.0.0",
-        "name": "Dynamic Function",
-        "min_app_version": "v0.7.0",
-        "description": "Adds the new /dynamicfunction & /func command which can be used to pass arguments to a .mcfunction file.",
-        "link": "/plugins/solved.features.dynamic_function.js",
-        "tags": ["Utility"]
-    },
-    {
-        "name": "Console",
-        "id": "solved.utilities.console",
-        "author": "solvedDev",
-        "version": "1.1.4",
-        "description": "Utility module to bring a console to bridge. plugins.",
-        "link": "/plugins/solved.utilities.console.js",
-        "tags": ["Utility"]
-    },
-    {
-        "name": "Crash Indicator",
-        "id": "solved.utilities.crash_overview",
-        "author": "solvedDev",
-        "version": "1.1.5",
-        "description": "Displays which entities may cause crashes.",
-        "link": "/plugins/solved.utilities.crash_overview.js",
-        "tags": ["Utility"]
-    },
-    {
-        "name": "File Search",
-        "id": "solved.utilities.file_search",
-        "author": "solvedDev",
-        "version": "1.1.4",
-        "description": "Quickly search all files of a project for specific keywords.",
-        "link": "/plugins/solved.utilities.file_search.js",
-        "tags": ["Utility"]
-    }
+  {
+    "author": "solvedDev",
+    "id": "bridge.ui.common_window",
+    "version": "1.0.0",
+    "name": "Bridge CommonWindow",
+    "description": "Utility for other plugins. Wraps the bridge. Window API into an easier to use class.",
+    "link": "/plugins/bridge.ui.common_window.js",
+    "tags": ["Utility"]
+  },
+  {
+    "author": "solvedDev",
+    "id": "solved.utilities.bridge_plugin_creator",
+    "version": "1.0.1",
+    "name": "Bridge Plugin Creator",
+    "description": "Adds bridge. plugin files to bridge.'s native file creation window.",
+    "link": "/plugins/solved.utilities.bridge_plugin_creator.js",
+    "tags": ["Curated", "Utility"]
+  },
+  {
+    "author": "solvedDev",
+    "id": "bridge.ui.confirm_window",
+    "version": "1.0.0",
+    "name": "Bridge ConfirmWindow",
+    "description": "Utility for other plugins. Uses bridge.ui.common_window to construct a confirm dialog.",
+    "link": "/plugins/bridge.ui.confirm_window.js",
+    "tags": ["Utility"],
+    "dependencies": ["bridge.ui.common_window"]
+  },
+  {
+    "author": "solvedDev",
+    "id": "solved.features.dynamic_json",
+    "version": "1.0.0",
+    "name": "Dynamic JSON",
+    "min_app_version": "v0.7.0",
+    "description": "A compiler which can speed up creating repetitive JSON by writing loop statements and shared data inside the new \"variables\" state.",
+    "link": "/plugins/solved.features.dynamic_json.js",
+    "tags": ["Utility"]
+  },
+  {
+    "author": "solvedDev",
+    "id": "solved.features.dynamic_function",
+    "version": "1.0.0",
+    "name": "Dynamic Function",
+    "min_app_version": "v0.7.0",
+    "description": "Adds the new /dynamicfunction & /func command which can be used to pass arguments to a .mcfunction file.",
+    "link": "/plugins/solved.features.dynamic_function.js",
+    "tags": ["Utility"]
+  },
+  {
+    "name": "Console",
+    "id": "solved.utilities.console",
+    "author": "solvedDev",
+    "version": "1.1.4",
+    "description": "Utility module to bring a console to bridge. plugins.",
+    "link": "/plugins/solved.utilities.console.js",
+    "tags": ["Utility"]
+  },
+  {
+    "name": "Crash Indicator",
+    "id": "solved.utilities.crash_overview",
+    "author": "solvedDev",
+    "version": "1.1.5",
+    "description": "Displays which entities may cause crashes.",
+    "link": "/plugins/solved.utilities.crash_overview.js",
+    "tags": ["Utility"]
+  },
+  {
+    "name": "File Search",
+    "id": "solved.utilities.file_search",
+    "author": "solvedDev",
+    "version": "1.1.4",
+    "description": "Quickly search all files of a project for specific keywords.",
+    "link": "/plugins/solved.utilities.file_search.js",
+    "tags": ["Utility"]
+  }
 ]
