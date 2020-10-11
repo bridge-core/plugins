@@ -1,0 +1,40 @@
+{
+    "name": "Desert",
+    "id": "chikorita_lover.desert.theme",
+    "options": {
+        "inherit_highlighter": true
+    },
+    "definition": {
+        "dark": {
+            "highlighter": {
+                "property": { "color": "#96CA64" },
+                "keyword": { "color": "#64D7CA" },
+                "atom": { "color": "#64D7CA" },
+                "number": { "color": "#649832" },
+                "string": { "color": "#C6965A" }
+            },
+            "primary": "#649832",
+            "accent": "#649832",
+            "background": "#29281F",
+            "sidebar_navigation": "#38362A",
+            "expanded_sidebar": "#38362A",
+            "menu": "#38362A",
+            "footer": "#212121",
+            "tooltip": "#29281F"
+        },
+        "light": {
+            "highlighter": {
+                "keyword": { "color": "#32A598" },
+                "atom": { "color": "#32A598" },
+                "number": { "color": "#649832" },
+                "string": { "color": "#B17A36" }
+            },
+            "primary": "#649832",
+            "accent": "#649832",
+            "background": "#F7F6EA",
+            "sidebar_navigation": "#FFFFFF",
+            "expanded_sidebar": "#FFFFFF",
+            "toolbar": "#F2F0DA"
+        }
+    }
+}
