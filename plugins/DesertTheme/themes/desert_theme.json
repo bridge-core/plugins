@@ -9,6 +9,7 @@
             "highlighter": {
                 "property": { "color": "#96CA64" },
                 "keyword": { "color": "#64D7CA" },
+                "definition": { "color": "#96CA64" },
                 "atom": { "color": "#64D7CA" },
                 "number": { "color": "#649832" },
                 "string": { "color": "#C6965A" }
