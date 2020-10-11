@@ -15,6 +15,9 @@
       },
       "minecraft:block_placer": {
         "block": "{{PROJ_PREFIX}}:{{IDENTIFIER}}"
+      },
+      "minecraft:icon": {
+        "texture": "{{PROJ_PREFIX}}_{{IDENTIFIER}}_seeds"
       }
     }
   }

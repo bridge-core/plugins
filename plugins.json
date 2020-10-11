@@ -28,9 +28,9 @@
   },
   {
     "author": "Joel ant 05",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "name": "More presets",
-    "description": "Adds a new crop preset. Presets in this plugin require Minecraft beta 1.16.100.56+",
+    "description": "Adds a new crop, pickaxe and axe preset. Presets in this plugin require Minecraft beta 1.16.100.56+",
     "id": "89457173-109d-4dff-9f7e-f8f8875e307a",
     "link": "/plugins/MorePresets/MorePresets.zip",
     "tags": ["Curated", "Presets"]
