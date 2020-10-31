@@ -20,7 +20,7 @@
   {
     "author": "solvedDev",
     "name": "Simple Block Rotation",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "id": "ac340569-8df3-4409-ac9d-b855b183210b",
     "description": "Adding rotation to blocks is as easy as it should be: Adding a single component!",
     "link": "/plugins/BlockRotation/BlockRotation.zip",

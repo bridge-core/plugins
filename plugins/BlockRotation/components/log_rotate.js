@@ -25,7 +25,7 @@ Bridge.register(class Component {
 				events: {
 					'bridge:update_rotation': {
 						set_block_property: {
-							'bridge:block_rotation': `math.floor(${rotation_from === 'player' ? 'query.cardinal_player_facing' : 'query.cardinal_block_face_placed_on'} / 2.0)`
+							'bridge:block_rotation': `math.floor(${rotation_from === 'player' ? 'query.cardinal_facing' : 'query.block_face'} / 2.0)`
 						}
 					}
 				}
