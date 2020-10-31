@@ -3,7 +3,7 @@ Bridge.register(class Component {
 	static type = 'block'
 
 	onApply({ rotation_from = 'player'}) {
-		const rotationLookup = [[0.0, 0.0, 0.0], [0.0, 0.0, 180.0], [90.0, 0.0, 0.0], [-90.0, 0.0, 0.0], [0.0, 0.0, -90.0]
+		const rotationLookup = [[0.0, 0.0, 0.0], [0.0, 0.0, 180.0], [90.0, 0.0, 0.0], [-90.0, 0.0, 0.0], [0.0, 0.0, -90.0]]
 		return {
 			'minecraft:block': {
 				description: {
