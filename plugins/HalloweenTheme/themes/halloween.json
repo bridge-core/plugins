@@ -4,7 +4,6 @@
     "options": {
         "css": "halloween.css"
     },
-    "isHidden": true,
     "definition": {
         "dark": {
             "highlighter": {
