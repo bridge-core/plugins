@@ -1,6 +1,6 @@
 {
     "name": "Halloween",
-    "id": "bridge.easterEgg.halloween",
+    "id": "bridge.halloween",
     "options": {
         "css": "halloween.css"
     },
