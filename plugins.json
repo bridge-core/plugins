@@ -1,5 +1,14 @@
 [
   {
+    "author": "ihategravel",
+    "id": "7117cb17-0a72-4489-86ce-d68cb35109ff",
+    "version": "1.0.0",
+    "name": "ihategravel's Block Components",
+    "link": "/plugins/ihategravelsBlockComponents/ihategravelsBlockComponents.zip",
+    "description": "Adds more block componets!",
+    "tags": ["Component"]
+  },
+  {
     "author": "solvedDev",
     "name": "Halloween Theme",
     "version": "1.0.2",
