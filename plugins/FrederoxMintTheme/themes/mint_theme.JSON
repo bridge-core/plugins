@@ -1,0 +1,62 @@
+//bridge-file-version: #18
+{
+	"name": "Mint Theme",
+	"id": "solved.custom_theme.mint",
+	"options": {
+		"no_logo_display": true
+	},
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"keyword": {
+					"color": "#59C9A5"
+				},
+				"atom": {
+					"color": "#8EE4AF"
+				},
+				"number": {
+					"color": "#8EE4AF"
+				},
+				"string": {
+					"color": "#8EE4AF"
+				},
+				"comment": {
+					"color": "#038836"
+				}
+			},
+			"monaco": {
+				"editor.lineHighlightBackground": "#EDF5E1"
+			},
+			"primary": "#38E279",
+			"secondary": "#53AF7C",
+			"accent": "white",
+			"toolbar": "#24E46E",
+			"tooltip": "#24E46E"
+		},
+		"light": {
+			"highlighter": {
+				"keyword": {
+					"color": "#59C9A5"
+				},
+				"atom": {
+					"color": "#8EE4AF"
+				},
+				"number": {
+					"color": "#8EE4AF"
+				},
+				"string": {
+					"color": "#8EE4AF"
+				},
+				"comment": {
+					"color": "#038836"
+				}
+			},
+			"primary": "#38E279",
+			"secondary": "#5CDB95",
+			"accent": "#A0D8B9",
+			"toolbar": "#038836",
+			"tooltip": "#038836",
+			"sidebar_navigation \t": "#53AF7C"
+		}
+	}
+}
