@@ -25,7 +25,7 @@
 				}
 			},
 			"monaco": {
-				"editor.lineHighlightBackground": "#EDF5E1"
+				"editor.lineHighlightBackground": "#173D25"
 			},
 			"primary": "#38E279",
 			"secondary": "#53AF7C",
