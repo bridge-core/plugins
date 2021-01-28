@@ -1,5 +1,14 @@
 [
   {
+    "author": "Frederox",
+    "name": "Mint Theme",
+    "version": "1.0.0",
+    "id": "4d73da69-6df3-46bc-9486-a322373573db",
+    "description": "Adds a nice minty theme :) Looks best in darkmode",
+    "link": "/plugins/FrederoxMintTheme/FrederoxMintTheme.zip",
+    "tags": ["Theme"]
+  },
+  {
     "author": "ihategravel",
     "id": "7117cb17-0a72-4489-86ce-d68cb35109ff",
     "version": "1.0.1",
