@@ -1,0 +1,61 @@
+{
+	"name": "Mint Theme",
+	"id": "5afec3ac-1816-4cc4-b51b-d343099fd71c",
+	"options": {
+		"no_logo_display": true
+	},
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"keyword": {
+					"color": "#59C9A5"
+				},
+				"atom": {
+					"color": "#8EE4AF"
+				},
+				"number": {
+					"color": "#8EE4AF"
+				},
+				"string": {
+					"color": "#8EE4AF"
+				},
+				"comment": {
+					"color": "#038836"
+				}
+			},
+			"monaco": {
+				"editor.lineHighlightBackground": "#173D25"
+			},
+			"primary": "#38E279",
+			"secondary": "#53AF7C",
+			"accent": "white",
+			"toolbar": "#24E46E",
+			"tooltip": "#24E46E"
+		},
+		"light": {
+			"highlighter": {
+				"keyword": {
+					"color": "#59C9A5"
+				},
+				"atom": {
+					"color": "#8EE4AF"
+				},
+				"number": {
+					"color": "#8EE4AF"
+				},
+				"string": {
+					"color": "#8EE4AF"
+				},
+				"comment": {
+					"color": "#038836"
+				}
+			},
+			"primary": "#38E279",
+			"secondary": "#5CDB95",
+			"accent": "#A0D8B9",
+			"toolbar": "#038836",
+			"tooltip": "#038836",
+			"sidebar_navigation": "#53AF7C"
+		}
+	}
+}
