@@ -1,0 +1,20 @@
+{
+    "name": "Basic Animated Background Theme",
+    "id": "warhead.basic.theme",
+    "options": {
+        "css": "basic.css",
+        "inherit_highlighter": true
+    },
+    "definition": {
+        "dark": {
+            "primary": "#858585",
+            "secondary": "#3b3b3b",
+            "accent": "#666666",
+            "menu": "#424242",
+            "toolbar": "#787878",
+            "footer": "#424242",
+            "tooltip": "#787878",
+            "default_button": "#787878"
+        }
+    }    
+}    
