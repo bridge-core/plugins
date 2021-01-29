@@ -1,0 +1,29 @@
+
+.v-main {
+    background-image: url("https://cutewallpaper.org/21/background-gif-1920x1080/gif-Backgrounds-Wallpaper-Cave.gif");
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+    background-size: 1920px 1080px;
+    color: white;
+}
+.v-system-bar {
+    background-image: url("https://www.f-covers.com/cover/black-texture-facebook-cover-timeline-banner-for-fb.jpg");
+    background-repeat: no-repeat;
+    background-color: #cccccc;
+    background-size: cover;
+    background-size: 1920px 100px;
+}
+.v-footer {
+    background-image: url("https://www.f-covers.com/cover/black-texture-facebook-cover-timeline-banner-for-fb.jpg");
+    background-repeat: no-repeat;
+    background-color: #000000;
+    background-size: cover;
+    background-size: 1920px 40px;
+}
+.v-navigation-drawer {
+    background-image: url("https://www.f-covers.com/cover/black-texture-facebook-cover-timeline-banner-for-fb.jpg");
+    background-repeat: no-repeat;
+    background-color: #000000;
+    background-size: cover;
+    background-size: 40px 1080px;
+}
