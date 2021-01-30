@@ -4,5 +4,6 @@
 	"version": "1.0.0",
 	"id": "d9419ae7-69ec-46d6-9080-a9ff48e6edab",
 	"description": "Adds a black and white theme to select inside the settings window",
-	"api_version": 1
+	"api_version": 1,
+	"tags": ["Curated", "Theme"]
 }

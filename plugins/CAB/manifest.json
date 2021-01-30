@@ -4,5 +4,6 @@
 	"name": "Create a Block",
 	"description": "Add a better 'template' for blocks.",
 	"id": "ENDERZOMBI102.bridgePlugins.create-a-block",
-    "api_version": 1
+	"api_version": 1,
+	"tags": ["Snippet"]
 }

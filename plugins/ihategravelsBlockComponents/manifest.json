@@ -1,9 +1,10 @@
 {
-    "author": "ihategravel",
-    "id": "7117cb17-0a72-4489-86ce-d68cb35109ff",
-    "version": "1.0.1",
-    "name": "ihategravel's block components",
-    "link": "https://twitter.com/ihategravel2",
-    "description": "Adds more block components!",
-    "api_version": 1
+	"author": "ihategravel",
+	"id": "7117cb17-0a72-4489-86ce-d68cb35109ff",
+	"version": "1.0.1",
+	"name": "ihategravel's block components",
+	"link": "https://twitter.com/ihategravel2",
+	"description": "Adds more block components!",
+	"api_version": 1,
+	"tags": ["Component"]
 }

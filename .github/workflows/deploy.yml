@@ -1,0 +1,34 @@
+name: Build and Deploy
+on:
+    push:
+        branches:
+            - master
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@v2.3.1
+              with:
+                  persist-credentials: false
+
+            - name: Setup Deno 🚧
+              uses: denolib/setup-deno@v2
+              with:
+                  deno-version: v1.x
+
+            - name: Install and Build 🔧
+              run: |
+                  deno run --allow-read --allow-write --unstable ./scripts/build.ts
+
+            - name: Commit files ✅
+              run: |
+                  git config --local user.email "action@github.com"
+                  git config --local user.name "GitHub Action"
+                  git commit -m "Push latest dist files" -a
+
+            - name: Push changes 🔼
+              uses: ad-m/github-push-action@master
+              with:
+                  branch: master
+                  github_token: ${{ secrets.GITHUB_TOKEN }}

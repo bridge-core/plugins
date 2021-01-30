@@ -4,5 +4,6 @@
 	"version": "1.0.0",
 	"description": "Adds particle snippets",
 	"id": "a0ad4844-ee48-4687-9da2-f1a47f3d1c3a",
-	"api_version": 1
+	"api_version": 1,
+	"tags": ["Snippet"]
 }

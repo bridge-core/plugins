@@ -4,5 +4,6 @@
 	"version": "1.0.0",
 	"id": "caa0a585-d513-48cf-a803-c920055e2afe",
 	"description": "Adds better templates for custom recipes",
-	"api_version": "1"
+	"api_version": 1,
+	"tags": ["Snippet"]
 }
