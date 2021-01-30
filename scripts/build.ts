@@ -28,7 +28,7 @@ for await (const dirEntry of Deno.readDir('./plugins')) {
 	if (!manifest.releaseTimestamp) {
 		manifest.releaseTimestamp = Date.now()
 		await Deno.writeTextFile(
-			'./plugins.json',
+			join('./plugins', dirEntry.name, 'manifest.json'),
 			JSON.stringify(manifest, null, '\t')
 		)
 	}
