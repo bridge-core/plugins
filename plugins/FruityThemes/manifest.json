@@ -5,5 +5,9 @@
 	"id": "47c1b5f9-a452-4ed1-8d00-a0427dd5168a",
 	"description": "Adds different fruity color themes to select inside the settings window",
 	"api_version": 1,
-	"tags": ["Theme"]
+	"tags": [
+		"Theme"
+	],
+	"link": "/plugins/FruityThemes/plugin.zip",
+	"releaseTimestamp": 1612027358091
 }

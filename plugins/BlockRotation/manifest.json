@@ -6,5 +6,10 @@
 	"description": "Adding rotation to blocks is as easy as it should be: Adding a single component!",
 	"api_version": 2,
 	"target": "both",
-	"tags": ["Curated", "Component"]
+	"tags": [
+		"Curated",
+		"Component"
+	],
+	"link": "/plugins/BlockRotation/plugin.zip",
+	"releaseTimestamp": 1612027357819
 }

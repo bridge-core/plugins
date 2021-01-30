@@ -1,10 +1,13 @@
 {
-    "author": "Frederox",
-    "id": "21e57b93-24da-451d-9825-7a5b038f264c",
-    "version": "1.0.0",
-    "name": "Frederox's Themes",
-    "link": "https://github.com/FrederoxGit",
-    "description": "Adds in some new themes!",
-    "api_version": 2,
-    "tags": ["Theme"]
+	"author": "Frederox",
+	"id": "21e57b93-24da-451d-9825-7a5b038f264c",
+	"version": "1.0.0",
+	"name": "Frederox's Themes",
+	"link": "/plugins/FrederoxThemes/plugin.zip",
+	"description": "Adds in some new themes!",
+	"api_version": 2,
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1612027358198
 }
