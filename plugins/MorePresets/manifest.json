@@ -4,10 +4,5 @@
 	"name": "More Presets",
 	"description": "Adds a new crop, pickaxe and axe preset. Presets in this plugin require Minecraft beta 1.16.100.56+",
 	"id": "89457173-109d-4dff-9f7e-f8f8875e307a",
-	"tags": [
-		"Curated",
-		"Presets"
-	],
-	"link": "/plugins/MorePresets/plugin.zip",
-	"releaseTimestamp": 1612027358316
+	"tags": ["Curated", "Presets"]
 }
