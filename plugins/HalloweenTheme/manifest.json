@@ -5,10 +5,5 @@
 	"id": "e868e248-36a1-4a15-b1be-1dc36542ec4b",
 	"description": "Adds the halloween theme to select in the settings window",
 	"api_version": 2,
-	"tags": [
-		"Curated",
-		"Theme"
-	],
-	"link": "/plugins/HalloweenTheme/plugin.zip",
-	"releaseTimestamp": 1612027571356
+	"tags": ["Curated", "Theme"]
 }

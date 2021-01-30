@@ -5,9 +5,5 @@
 	"id": "4d73da69-6df3-46bc-9486-a322373573db",
 	"description": "Adds a nice minty theme :) Looks best in darkmode",
 	"api_version": 1,
-	"tags": [
-		"Theme"
-	],
-	"link": "/plugins/FrederoxMintTheme/plugin.zip",
-	"releaseTimestamp": 1612027571369
+	"tags": ["Theme"]
 }

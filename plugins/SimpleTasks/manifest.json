@@ -6,10 +6,5 @@
 	"id": "44dc6685-4258-4eed-9f62-e0d0fdfd41e9",
 	"api_version": 2,
 	"target": "both",
-	"tags": [
-		"Curated",
-		"Utility"
-	],
-	"link": "/plugins/SimpleTasks/plugin.zip",
-	"releaseTimestamp": 1612027570783
+	"tags": ["Curated", "Utility"]
 }

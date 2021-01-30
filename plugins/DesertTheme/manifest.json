@@ -5,10 +5,5 @@
 	"id": "ea349bf3-628e-4c8f-924a-157a968cc320",
 	"description": "Adds a desert-inspired theme to select inside the settings window",
 	"api_version": 1,
-	"tags": [
-		"Curated",
-		"Theme"
-	],
-	"link": "/plugins/DesertTheme/plugin.zip",
-	"releaseTimestamp": 1612027570981
+	"tags": ["Curated", "Theme"]
 }
