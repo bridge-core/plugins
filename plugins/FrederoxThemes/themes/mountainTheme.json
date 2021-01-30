@@ -1,0 +1,26 @@
+//bridge-file-version: #15
+{
+	"name": "Mountains Theme",
+	"id": "frederox.mountain.theme",
+	"options": {
+		"css": "mountain.css",
+		"inherit_highlighter": true
+	},
+	"definition": {
+		"dark": {
+			"primary": "#009BFF",
+			"secondary": "#008DFF",
+			"accent": "#008DFF",
+			"menu": "#5FBBE9",
+			"toolbar": "#3E7BC9",
+			"footer": "#424242",
+			"tooltip": "#1DC5EE",
+			"default_button": "#5FBBE9",
+			"sidebar_navigation": "#1B3033",
+			"expanded_sidebar": "#1B3033",
+			"monaco": {
+				"editor.lineHighlightBackground": "#141817"
+			}
+		}
+	}
+}
