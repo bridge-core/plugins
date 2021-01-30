@@ -23,6 +23,16 @@ for await (const dirEntry of Deno.readDir('./plugins')) {
 		),
 		link: `/plugins/${dirEntry.name}/plugin.zip`,
 	}
+
+	// Add release timestamp
+	if (!manifest.releaseTimestamp) {
+		manifest.releaseTimestamp = Date.now()
+		await Deno.writeTextFile(
+			'./plugins.json',
+			JSON.stringify(manifest, null, '\t')
+		)
+	}
+
 	if (manifest.target === 'both') {
 		v2Plugins.push(manifest)
 		v1Plugins.push(manifest)
