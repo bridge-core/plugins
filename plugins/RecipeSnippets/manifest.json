@@ -5,5 +5,9 @@
 	"id": "caa0a585-d513-48cf-a803-c920055e2afe",
 	"description": "Adds better templates for custom recipes",
 	"api_version": 1,
-	"tags": ["Snippet"]
+	"tags": [
+		"Snippet"
+	],
+	"link": "/plugins/RecipeSnippets/plugin.zip",
+	"releaseTimestamp": 1612027570717
 }

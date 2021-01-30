@@ -5,5 +5,9 @@
 	"description": "Add a better 'template' for blocks.",
 	"id": "ENDERZOMBI102.bridgePlugins.create-a-block",
 	"api_version": 1,
-	"tags": ["Snippet"]
+	"tags": [
+		"Snippet"
+	],
+	"link": "/plugins/CAB/plugin.zip",
+	"releaseTimestamp": 1612027570995
 }

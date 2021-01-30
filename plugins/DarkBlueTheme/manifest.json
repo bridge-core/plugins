@@ -4,5 +4,9 @@
 	"name": "DarkBlue Theme",
 	"description": "Adds a new dark blue color theme to select inside the settings window.",
 	"id": "f883bbc1-d81a-4373-8ec7-a11b81d9070a",
-	"tags": ["Theme"]
+	"tags": [
+		"Theme"
+	],
+	"link": "/plugins/DarkBlueTheme/plugin.zip",
+	"releaseTimestamp": 1612027570942
 }
