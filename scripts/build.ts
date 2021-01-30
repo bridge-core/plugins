@@ -15,14 +15,11 @@ for await (const dirEntry of Deno.readDir('./plugins')) {
 		await zip.generateAsync<'uint8array'>({ type: 'uint8array' })
 	)
 
-	const manifest = {
-		...JSON.parse(
-			await Deno.readTextFile(
-				join('./plugins', dirEntry.name, 'manifest.json')
-			)
-		),
-		link: `/plugins/${dirEntry.name}/plugin.zip`,
-	}
+	const manifest = JSON.parse(
+		await Deno.readTextFile(
+			join('./plugins', dirEntry.name, 'manifest.json')
+		)
+	)
 
 	// Add release timestamp
 	if (!manifest.releaseTimestamp) {
@@ -32,6 +29,9 @@ for await (const dirEntry of Deno.readDir('./plugins')) {
 			JSON.stringify(manifest, null, '\t')
 		)
 	}
+
+	// Add download link
+	manifest.link = `/plugins/${dirEntry.name}/plugin.zip`
 
 	if (manifest.target === 'both') {
 		v2Plugins.push(manifest)
