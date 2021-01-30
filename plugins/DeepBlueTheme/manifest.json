@@ -5,5 +5,9 @@
 	"id": "056b172d-77a8-40fc-9f34-226c163e330b",
 	"description": "Adds a deep blue color theme to select inside the settings window",
 	"api_version": 1,
-	"tags": ["Curated", "Theme"]
+	"tags": [
+		"Curated",
+		"Theme"
+	],
+	"releaseTimestamp": 1612027691319
 }

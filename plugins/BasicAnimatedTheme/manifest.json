@@ -6,5 +6,8 @@
 	"link": "cave-enhancements.com/",
 	"description": "This theme uses properties never used before to create a really awesome looking animated background to level up your bridge. experience. For Dark Theme users ONLY.",
 	"api_version": 2,
-	"tags": ["Theme"]
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1612027691303
 }

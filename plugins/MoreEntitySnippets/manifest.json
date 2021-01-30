@@ -5,5 +5,9 @@
 	"id": "87d418b3-e7ab-414e-9be1-13082c3cf46d",
 	"description": "Adds more snippets for entities",
 	"api_version": 1,
-	"tags": ["Curated", "Snippet"]
+	"tags": [
+		"Curated",
+		"Snippet"
+	],
+	"releaseTimestamp": 1612027690751
 }

@@ -6,5 +6,8 @@
 	"link": "https://github.com/bridge-core/plugins/tree/master/plugins/SimplyJson/README.md",
 	"description": "More tools for your addons. From components to auto completions, this will make making addons easier.",
 	"api_version": 1,
-	"tags": ["Component"]
+	"tags": [
+		"Component"
+	],
+	"releaseTimestamp": 1612027690904
 }
