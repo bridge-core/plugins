@@ -14,9 +14,6 @@ for await (const dirEntry of Deno.readDir('./plugins')) {
 		join('./plugins', dirEntry.name, 'plugin.zip'),
 		await zip.generateAsync<'uint8array'>({ type: 'uint8array' })
 	)
-	console.log(
-		await Deno.readFile(join('./plugins', dirEntry.name, 'plugin.zip'))
-	)
 
 	const manifest = {
 		...JSON.parse(
