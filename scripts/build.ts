@@ -8,6 +8,10 @@ for await (const dirEntry of Deno.readDir('./plugins')) {
 	if (dirEntry.isFile) continue
 	console.log(`Processing plugin "${dirEntry.name}"...`)
 
+	try {
+		await Deno.remove(join('./plugins', dirEntry.name, 'plugin.zip'))
+	} catch {}
+
 	const zip = new JSZip()
 	await readDirectory(zip, join('./plugins', dirEntry.name))
 	await Deno.writeFile(
