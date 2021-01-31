@@ -1,0 +1,13 @@
+{
+	"author": "Joel ant 05",
+	"name": "More Vanilla Entity Presets",
+	"version": "1.0.0",
+	"id": "51d4fa51-b8dc-4c49-acfc-95d45b343793",
+	"description": "Adds a cod, salmon and bat preset.",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Curated",
+		"Presets"
+	]
+}
