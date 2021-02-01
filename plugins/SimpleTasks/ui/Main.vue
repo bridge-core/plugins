@@ -75,13 +75,23 @@
 </template>
 
 <script>
-const { writeJSON, readJSON } = await require('@bridge/fs')
+const { readJSON, writeJSON } = await require('@bridge/fs')
 const { join } = await require('@bridge/path')
-const { getCurrentBP } = await require('@bridge/env')
-const { createInputWindow, createWindow } = await require('@bridge/windows')
+const {
+	getCurrentProject,
+	getCurrentBP,
+	getProjectAuthor,
+	APP_VERSION,
+} = await require('@bridge/env')
+const { createWindow } = await require('@bridge/windows')
 const { InputWindow } = await require('@bridge/ui')
+const { compare } = await require('@bridge/compare-versions')
 
-const taskSavePath = join(getCurrentBP(), 'bridge/tasks.json')
+const isV2 = compare(APP_VERSION, '2.0.0', '>=')
+
+let taskSavePath
+if (isV2) taskSavePath = join(getCurrentProject(), 'bridge/tasks.json')
+else taskSavePath = join(getCurrentBP(), 'bridge/tasks.json')
 
 export default {
 	async mounted() {
@@ -95,11 +105,11 @@ export default {
 	}),
 
 	methods: {
-		onCreateTask() {
+		async onCreateTask() {
 			createWindow(InputWindow, {
 				title: `Task ${this.tasks.length + 1}`,
 				description: '',
-				assignedTo: '',
+				assignedTo: isV2 ? await getProjectAuthor() : '',
 				onInput: (title, description, assignedTo) => {
 					this.tasks.push({
 						title,
