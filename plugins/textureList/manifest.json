@@ -7,11 +7,17 @@
 	"id": "bridge-core.compiler.textureListGenerator",
 	"api_version": 2,
 	"target": "v2",
-	"tags": ["Curated", "Compiler"],
-	"dependencies": ["bridge-core.compiler.util.loadJSON"],
+	"tags": [
+		"Curated",
+		"Compiler"
+	],
+	"dependencies": [
+		"bridge-core.compiler.util.loadJSON"
+	],
 	"compiler": {
 		"plugins": {
 			"textureList": "compiler/textureList.js"
 		}
-	}
+	},
+	"releaseTimestamp": 1612366051684
 }

@@ -7,12 +7,20 @@
 	"id": "92578746-2fe3-47d1-8c9c-c0de83457f08",
 	"api_version": 2,
 	"target": "v2",
-	"tags": ["Curated", "Compiler"],
-	"dependencies": ["bridge-core.util.compiler.asJSON"],
+	"tags": [
+		"Curated",
+		"Compiler"
+	],
+	"dependencies": [
+		"bridge-core.util.compiler.asJSON"
+	],
 	"compiler": {
-		"createFiles": ["RP/textures/texture_list.json"],
+		"createFiles": [
+			"RP/textures/texture_list.json"
+		],
 		"plugins": {
 			"textureList": "compiler/textureList.js"
 		}
-	}
+	},
+	"releaseTimestamp": 1612366051586
 }
