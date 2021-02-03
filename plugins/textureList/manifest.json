@@ -10,7 +10,6 @@
 	"tags": ["Curated", "Compiler"],
 	"dependencies": ["bridge-core.compiler.util.loadJSON"],
 	"compiler": {
-		"createFiles": ["RP/textures/texture_list.json"],
 		"plugins": {
 			"textureList": "compiler/textureList.js"
 		}
