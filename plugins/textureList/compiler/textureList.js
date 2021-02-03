@@ -1,15 +1,16 @@
-const textureList = []
+let textureList = []
 let createdFile = false
 
 module.exports = {
-	createFiles(file) {
+	async createFiles(file) {
 		if (createdFile) return
+
 		createdFile = true
-		file.create('RP/textures/texture_list.json')
-		file.data = textureList
-		file.hooks.on('cleanup', () => {
+		const listFile = await file.create('RP/textures/texture_list.json')
+		listFile.data = textureList
+		listFile.hooks.on('cleanup', () => {
 			textureList = []
-			file.data = undefined
+			listFile.data = undefined
 		})
 	},
 	collect(file) {
@@ -18,9 +19,8 @@ module.exports = {
 
 		const pathParts = filePath.split('.')
 		const ext = pathParts.pop()
-		pathParts.shift()
 
 		if (ext === 'png' || ext === 'tga' || ext === 'jpg' || ext === 'jpeg')
-			textureList.push(pathParts.join('/'))
+			textureList.push(pathParts.join('.').replace('RP/', ''))
 	},
 }

@@ -3,9 +3,18 @@ module.exports = {
 		if (!file.filePath.endsWith('.json') || file.data !== undefined) return
 
 		const f = await file.fileHandle.getFile()
-		file.data = JSON.parse(await f.text())
+		try {
+			file.data = JSON.parse(await f.text())
+		} catch {}
 	},
 	afterTransform(file, { minify = false }) {
-		file.data = JSON.stringify(f, null, minify ? undefined : '\t')
+		if (
+			!file.filePath.endsWith('.json') ||
+			typeof file.data !== 'object' ||
+			file.data === null
+		)
+			return
+
+		file.data = JSON.stringify(file.data, null, minify ? undefined : '\t')
 	},
 }
