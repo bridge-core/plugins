@@ -7,10 +7,14 @@
 	"id": "bridge-core.compiler.util.com-mojang-rewrite",
 	"api_version": 2,
 	"target": "v2",
-	"tags": ["Curated", "Compiler"],
+	"tags": [
+		"Curated",
+		"Compiler"
+	],
 	"compiler": {
 		"plugins": {
 			"comMojangRewrite": "compiler/comMojangRewrite.js"
 		}
-	}
+	},
+	"releaseTimestamp": 1612367614723
 }
