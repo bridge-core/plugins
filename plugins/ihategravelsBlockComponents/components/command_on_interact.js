@@ -6,11 +6,11 @@ Bridge.register(
 		onApply({ target, condition, command }) {
 			return {
 				'minecraft:block': {
-					events: {
+                    events: {
                         'bridge:command_on_interact': {
-                            'run_command': {
-								'command': [command],
-								'target': target
+                                'run_command': {
+                                    "command": command,
+                                    'target': target
                             }
                         }
                     },
@@ -29,7 +29,9 @@ Bridge.register(
 				[BlockComponent.component_name]: {
                     condition: '$molang.embedded',
 					target: ["self","other"],
-					command: '$function.embedded_no_slash'
+					command: {
+						"$dynamic.list.next_index": "$function.embedded_no_slash"
+					}
 				  }
 			}
 		}
