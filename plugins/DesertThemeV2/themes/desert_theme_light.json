@@ -1,0 +1,27 @@
+{
+    "id": "chikorita_lover.desert.theme",
+    "colorScheme": "light",
+    "colors": {
+        "text": "#000",
+        "toolbar": "#F2F0DA",
+        "expandedSidebar": "#FFFFFF",
+        "sidebarNavigation": "#FFFFFF",
+        "primary": "#649832",
+        "accent": "#649832",
+        "background": "#F7F6EA"
+    },
+    "highlighter": {
+        "keyword": {
+            "color": "#32A598"
+        },
+        "atom": {
+            "color": "#32A598"
+        },
+        "number": {
+            "color": "#649832"
+        },
+        "string": {
+            "color": "#B17A36"
+        }
+    }
+}

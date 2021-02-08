@@ -1,0 +1,11 @@
+{
+	"author": "Joel ant 05",
+	"name": "Volcanic and Aquatic Themes",
+	"version": "1.0.0",
+	"id": "84b65ea3-b206-40fd-aaae-3f884b12b4f4",
+	"description": "Adds two new volcanic and aquatic color themes to select inside the settings window",
+	"target": "v2",
+	"tags": [
+		"Theme"
+	]
+}

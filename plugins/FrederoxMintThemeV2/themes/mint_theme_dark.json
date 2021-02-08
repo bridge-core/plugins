@@ -1,0 +1,32 @@
+{
+    "id": "5afec3ac-1816-4cc4-b51b-d343099fd71c",
+    "colorScheme": "dark",
+    "colors": {
+        "text": "#fff",
+        "toolbar": "#24E46E",
+        "primary": "#38E279",
+        "secondary": "#53AF7C",
+        "accent": "white",
+        "tooltip": "#24E46E"
+    },
+    "monaco": {
+        "editor.lineHighlightBackground": "#173D25"
+    },
+    "highlighter": {
+        "keyword": {
+            "color": "#59C9A5"
+        },
+        "atom": {
+            "color": "#8EE4AF"
+        },
+        "number": {
+            "color": "#8EE4AF"
+        },
+        "string": {
+            "color": "#8EE4AF"
+        },
+        "comment": {
+            "color": "#038836"
+        }
+    }
+}

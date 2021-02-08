@@ -1,0 +1,53 @@
+{
+    "id": "68f50936-f676-11e9-b82c-5aa538984bd8",
+    "colorScheme": "light",
+    "colors": {
+        "text": "#000",
+        "toolbar": "#CDCDCD",
+        "expandedSidebar": "#DFDFDF",
+        "sidebarNavigation": "#CDCDCD",
+        "primary": "#eb6123",
+        "secondary": "#eb6123",
+        "accent": "#eb6123",
+        "error": "#931FEE",
+        "info": "#eb6123",
+        "warning": "#931FEE",
+        "success": "#DFDFDF",
+        "background": "#DFDFDF",
+        "menu": "#CDCDCD",
+        "footer": "#CDCDCD",
+        "tooltip": "#DFDFDF"
+    },
+    "highlighter": {
+        "property": {
+            "color": "#eb6123"
+        },
+        "keyword": {
+            "color": "#eb6123"
+        },
+        "definition": {
+            "color": "#eb6123"
+        },
+        "atom": {
+            "color": "#eb6123"
+        },
+        "number": {
+            "color": "#eb6123"
+        },
+        "string": {
+            "color": "#eb6123"
+        },
+        "variable": {
+            "color": "#eb6123"
+        },
+        "variable_strong": {
+            "color": "#eb6123"
+        },
+        "meta": {
+            "color": "#931FEE"
+        },
+        "comment": {
+            "color": "#eb6123"
+        }
+    }
+}

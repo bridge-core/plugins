@@ -1,0 +1,11 @@
+{
+	"author": "Joel ant 05",
+	"name": "Lime Theme",
+	"version": "1.0.0",
+	"id": "4d73da69-6df3-46bc-9486-a602373573db",
+	"description": "Adds a lime color theme to select inside the settings window",
+	"target": "v2",
+	"tags": [
+		"Theme"
+	]
+}

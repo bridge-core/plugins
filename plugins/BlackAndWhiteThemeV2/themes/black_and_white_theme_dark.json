@@ -1,0 +1,21 @@
+{
+    "id": "b48826f9-a5d0-445e-b41e-bf5ff2a3e2b6",
+    "colorScheme": "dark",
+    "colors": {
+        "text": "#fff",
+        "toolbar": "#000000",
+        "expandedSidebar": "#0C0C0C",
+        "sidebarNavigation": "#070707",
+        "primary": "#464646",
+        "secondary": "#CCCCCC",
+        "accent": "#FFFFFF",
+        "error": "#6D6D6D",
+        "info": "#BACAD6",
+        "warning": "#FFFFFF",
+        "success": "#779C78",
+        "background": "#000000",
+        "menu": "#000000",
+        "footer": "#000000",
+        "tooltip": "#0A0A0A"
+    }
+}
