@@ -5,7 +5,7 @@
 	"name": "ihategravel's block components",
 	"link": "https://twitter.com/ihategravel2",
 	"description": "Adds more block components!",
-	"api_version": 1,
+	"api_version": 2,
 	"tags": [
 		"Component"
 	],
