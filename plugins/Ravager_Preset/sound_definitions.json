@@ -1,0 +1,85 @@
+{
+   "sound_definitions": {
+      "mob.{{IDENTIFIER}}.ambient": {
+         "__use_legacy_max_distance": "true",
+         "sounds": [
+            "sounds/mob/{{IDENTIFIER}}/idle1",
+            "sounds/mob/{{IDENTIFIER}}/idle2",
+            "sounds/mob/{{IDENTIFIER}}/idle3",
+            "sounds/mob/{{IDENTIFIER}}/idle4",
+            "sounds/mob/{{IDENTIFIER}}/idle5",
+            "sounds/mob/{{IDENTIFIER}}/idle6",
+            "sounds/mob/{{IDENTIFIER}}/idle7",
+            "sounds/mob/{{IDENTIFIER}}/idle8"
+         ]
+      },
+      "mob.{{IDENTIFIER}}.bite": {
+         "__use_legacy_max_distance": "true",
+         "sounds": [
+            "sounds/mob/{{IDENTIFIER}}/bite1",
+            "sounds/mob/{{IDENTIFIER}}/bite2",
+            {
+               "load_on_low_memory": true,
+               "name": "sounds/mob/{{IDENTIFIER}}/bite3"
+            }
+         ]
+      },
+      "mob.{{IDENTIFIER}}.celebrate": {
+         "__use_legacy_max_distance": "true",
+         "sounds": [
+            "sounds/mob/{{IDENTIFIER}}/celebrate1",
+            "sounds/mob/{{IDENTIFIER}}/celebrate2"
+         ]
+      },
+      "mob.{{IDENTIFIER}}.death": {
+         "__use_legacy_max_distance": "true",
+         "sounds": [
+            "sounds/mob/{{IDENTIFIER}}/death1",
+            "sounds/mob/{{IDENTIFIER}}/death2",
+            "sounds/mob/{{IDENTIFIER}}/death3"
+         ]
+      },
+      "mob.{{IDENTIFIER}}.hurt": {
+         "__use_legacy_max_distance": "true",
+         "sounds": [
+            "sounds/mob/{{IDENTIFIER}}/hurt1",
+            "sounds/mob/{{IDENTIFIER}}/hurt2",
+            "sounds/mob/{{IDENTIFIER}}/hurt3",
+            "sounds/mob/{{IDENTIFIER}}/hurt4"
+         ]
+      },
+      "mob.{{IDENTIFIER}}.roar": {
+         "__use_legacy_max_distance": "true",
+         "sounds": [
+            {
+               "load_on_low_memory": true,
+               "name": "sounds/mob/{{IDENTIFIER}}/roar1"
+            },
+            "sounds/mob/{{IDENTIFIER}}/roar2",
+            "sounds/mob/{{IDENTIFIER}}/roar3",
+            "sounds/mob/{{IDENTIFIER}}/roar4"
+         ]
+      },
+      "mob.{{IDENTIFIER}}.step": {
+         "__use_legacy_max_distance": "true",
+         "sounds": [
+            "sounds/mob/{{IDENTIFIER}}/step1",
+            "sounds/mob/{{IDENTIFIER}}/step2",
+            "sounds/mob/{{IDENTIFIER}}/step3",
+            "sounds/mob/{{IDENTIFIER}}/step4",
+            "sounds/mob/{{IDENTIFIER}}/step5"
+         ]
+      },
+      "mob.{{IDENTIFIER}}.stun": {
+         "__use_legacy_max_distance": "true",
+         "sounds": [
+            {
+               "load_on_low_memory": true,
+               "name": "sounds/mob/{{IDENTIFIER}}/stun1"
+            },
+            "sounds/mob/{{IDENTIFIER}}/stun2",
+            "sounds/mob/{{IDENTIFIER}}/stun3"
+         ]
+      }
+   }
+}

@@ -1,0 +1,31 @@
+{
+   "entity_sounds": {
+      "entities": {
+         "ravager": {
+            "events": {
+               "ambient": "mob.ravager.ambient",
+               "ambient.in.raid": {
+                  "pitch": [
+                     0.80,
+                     1.20
+                  ],
+                  "sound": "mob.ravager.ambient",
+                  "volume": 3.0
+               },
+               "attack.strong": "mob.ravager.bite",
+               "celebrate": "mob.ravager.celebrate",
+               "death": "mob.ravager.death",
+               "hurt": "mob.ravager.hurt",
+               "roar": "mob.ravager.roar",
+               "step": "mob.ravager.step",
+               "stun": "mob.ravager.stun"
+            },
+            "pitch": [
+               0.80,
+               1.20
+            ],
+            "volume": 1.0
+         }
+      }
+   }
+}
