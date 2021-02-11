@@ -1,2 +1,0 @@
-item.spawn_egg.entity.{{PROJ_PREFIX}}:{{IDENTIFIER}}.name=Spawn {{IDENTIFIER_NAME}}
-entity.{{PROJ_PREFIX}}:{{IDENTIFIER}}.name={{IDENTIFIER_NAME}}
