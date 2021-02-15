@@ -19,11 +19,18 @@ for await (const dirEntry of Deno.readDir('./plugins')) {
 		await zip.generateAsync<'uint8array'>({ type: 'uint8array' })
 	)
 
-	const manifest = JSON.parse(
-		await Deno.readTextFile(
-			join('./plugins', dirEntry.name, 'manifest.json')
+	let manifest
+	try {
+		manifest = JSON.parse(
+			await Deno.readTextFile(
+				join('./plugins', dirEntry.name, 'manifest.json')
+			)
 		)
-	)
+	} catch {
+		// No manifest, remove generated ZIP
+		await Deno.remove(join('./plugins', dirEntry.name, 'plugin.zip'))
+		continue
+	}
 
 	// Add release timestamp
 	if (!manifest.releaseTimestamp) {
