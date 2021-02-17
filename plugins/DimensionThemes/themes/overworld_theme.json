@@ -1,0 +1,68 @@
+{
+    "name": "Overworld",
+    "id": "be022e26-20f8-416a-8e63-08481135e84f",
+    "definition": {
+        "dark": {
+            "highlighter": {
+                "property": { "color": "#a5a5a5" },
+                "keyword": { "color": "#7fbf55" },
+                "definition": { "color": "#a5a5a5" },
+                "atom": { "color": "#7185ff" },
+                "number": { "color": "#7185ff" },
+                "string": { "color": "#d8a177" },
+                "variable": { "color": "#7185ff" },
+                "variable_strong": { "color": "#7185ff" },
+                "meta": { "color": "white" },
+                "comment": { "color": "#75715e" }
+            },
+            "primary": "#7FBF55",
+            "secondary": "#1778D2",
+            "accent": "#7FD843",
+            "error": "#D4540B",
+            "info": "#2196F3",
+            "success": "#4CAF50",
+            "warning": "#EBB949",
+            "background": "#38281D",
+            "sidebar_navigation": "#282828",
+            "expanded_sidebar": "#282828",
+            "menu": "#2A1C11",
+            "toolbar": "#5D923B",
+            "footer": "#212121",
+            "tooltip": "#38281D",
+            "default_button": "#5D923B"
+        },
+        "light": {
+            "highlighter": {
+                "property": { "color": "#7F7B77" },
+                "keyword": { "color": "#82B35B" },
+                "definition": { "text_decoration": "underline" },
+                "atom": { "color": "#6C8CD5" },
+                "number": { "color": "#4D5DC1" },
+                "string": { "color": "#966642" },
+                "variable": { "color": "black" },
+                "variable_strong": { "color": "black" },
+                "meta": { "color": "yellow" },
+                "comment": { "color": "#0080FF" }
+            },
+            "monaco": {
+                "editor.lineHighlightBackground": "#e0e0e0",
+                "editorWidget.border":  "#e0e0e0"
+            },
+            "primary": "#5D923B",
+            "secondary": "#5D923B",
+            "accent": "#5D923B",
+            "error": "#F17C3A",
+            "info": "#2196F3",
+            "success": "#4CAF50",
+            "warning": "#F17C3A",
+            "background": "#F4E3DC",
+            "sidebar_navigation": "#D3D3D3",
+            "expanded_sidebar": "#D3D3D3",
+            "menu": "#C4C4C4",
+            "toolbar": "#8FC46D",
+            "footer": "#C4C4C4",
+            "tooltip": "#424242",
+            "default_button": "#D2F2BC"
+        }
+    }
+}
