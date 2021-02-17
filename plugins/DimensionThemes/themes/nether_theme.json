@@ -1,0 +1,68 @@
+{
+    "name": "Nether",
+    "id": "7fdbcac8-fdad-4260-8215-b7561e26faab",
+    "definition": {
+        "dark": {
+            "highlighter": {
+                "property": { "color": "#F8AF2B" },
+                "keyword": { "color": "#BD3031" },
+                "definition": { "color": "#F8AF2B" },
+                "atom": { "color": "#14B485" },
+                "number": { "color": "#14B485" },
+                "string": { "color": "#14B485" },
+                "variable": { "color": "#14B485" },
+                "variable_strong": { "color": "#14B485" },
+                "meta": { "color": "white" },
+                "comment": { "color": "#75715e" }
+            },
+            "primary": "#D38C10",
+            "secondary": "#511515",
+            "accent": "#F8AF2B",
+            "error": "#D4540B",
+            "info": "#2196F3",
+            "success": "#4CAF50",
+            "warning": "#EBB949",
+            "background": "#2B0707",
+            "sidebar_navigation": "#330B0B",
+            "expanded_sidebar": "#330B0B",
+            "menu": "#210303",
+            "toolbar": "#210303",
+            "footer": "#210303",
+            "tooltip": "#210303",
+            "default_button": "#723232"
+        },
+        "light": {
+            "highlighter": {
+                "property": { "color": "#D48B07" },
+                "keyword": { "color": "#CF4243" },
+                "definition": { "color": "#D48B07" },
+                "atom": { "color": "#14B485" },
+                "number": { "color": "#14B485" },
+                "string": { "color": "#14B485" },
+                "variable": { "color": "#14B485" },
+                "variable_strong": { "color": "#14B485" },
+                "meta": { "color": "yellow" },
+                "comment": { "color": "#0080FF" }
+            },
+            "monaco": {
+                "editor.lineHighlightBackground": "#E0E0E0",
+                "editorWidget.border":  "#E0E0E0"
+            },
+            "primary": "#D48B07",
+            "secondary": "#D48B07",
+            "accent": "#D48B07",
+            "error": "#F47D3C",
+            "info": "#2196F3",
+            "success": "#4CAF50",
+            "warning": "#F47D3C",
+            "background": "#F9DBDB",
+            "sidebar_navigation": "#FCE3E3",
+            "expanded_sidebar": "#FCE3E3",
+            "menu": "#F4CCCC",
+            "toolbar": "#F4CCCC",
+            "footer": "#F4CCCC",
+            "tooltip": "#260505",
+            "default_button": "#f5f5f5"
+        }
+    }
+}
