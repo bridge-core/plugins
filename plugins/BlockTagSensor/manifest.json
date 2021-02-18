@@ -1,8 +1,0 @@
-{
-	"author": "ClaudalVP",
-	"name": "Block Tag Sensor",
-	"version": "1.0.0",
-	"id": "610feb3f-52ef-4316-9c3b-b93be9f788c6",
-	"description": "Add a component to an entity to trigger an event when one or more tags are detected in a block at a defined location",
-	"api_version": 2
-}
