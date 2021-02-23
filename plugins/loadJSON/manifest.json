@@ -1,7 +1,7 @@
 {
 	"icon": "mdi-code-json",
 	"author": "solvedDev",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"name": "loadJSON",
 	"description": "Utility for bridge.'s compiler to simplify dealing with JSON files",
 	"id": "bridge-core.compiler.util.load-json",
