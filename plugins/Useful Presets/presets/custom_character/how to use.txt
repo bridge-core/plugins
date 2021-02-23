@@ -1,0 +1,17 @@
+How to find the unicode for my custom character?
+Open the characters.png image and find what spot your character is in the grid of the picture then get the Horizontal and Vertical line the character is in. Put those 2 numbers on the according spots of this unicode character \ue1HV (H for Horizontal number, V for Vertical number)
+
+How do I display my custom character in minecraft?
+If you are able to use tellraw/titleraw make a rawtext component and add your unicode character you got from above if this is done correctly you should get a character in the chat
+
+The 16x16 per character limit is too small can I increase it?
+Yes you can acutally, by making the font image bigger (Original size: 256x256) I suggest doubling the size of the picture so its easier to know what drawing are you have
+
+I want to have my character pasted in chat how do I do that?
+Using this website https://www.branah.com/unicode-converter in the second box (the one with the name UTF-16) put your unicode character code aka this \ue1HV it should on the first box convert it to a normal character by copying that you can now paste it in chat or in commands
+
+Notes:
+Feel free to use the grid.png as a layer over the font image to help you 
+
+Written by Paty
+Thanks to Brandon on Discord for the website

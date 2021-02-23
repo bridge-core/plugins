@@ -1,0 +1,18 @@
+{
+    "display_name": "Animated Block",
+    "description": "Creates a new block with an animated texture",
+    "icon": "mdi-cube-send",
+
+    "bp_map": {
+    	"block.json": "blocks/{{IDENTIFIER}}.json"
+    },
+    "expand_rp_files": {
+    	"blocks.json": "blocks.json",
+    	"flipbook_textures.json": "textures/flipbook_textures.json",
+    	"terrain_texture.json": "textures/terrain_texture.json",
+        "en_US.lang": "texts/en_US.lang"
+    },
+    "copy_rp_files": {
+    	"texture.png": "textures/blocks/{{IDENTIFIER}}.png"
+    }
+}

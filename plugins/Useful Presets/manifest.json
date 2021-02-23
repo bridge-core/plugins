@@ -1,0 +1,11 @@
+{
+    "author": "Paty",
+    "id": "ce2667f1-9e82-4609-95b8-3ea748c52095",
+    "version": "1.0.0",
+    "name": "Useful Presets",
+    "description": "A set of useful presets people use often enough to be a preset",
+    "api_version": 2,
+    "tags": [
+		"Presets"
+	]
+}
