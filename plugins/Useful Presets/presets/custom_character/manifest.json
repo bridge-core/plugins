@@ -1,6 +1,6 @@
 {
     "display_name": "Custom Character",
-    "description": "Creates a new font image with custom characters and a function (No identifier needed)",
+    "description": "Creates a new font image with custom characters and a function (No identifier needed) DO NOT CREATE THIS PRESET MULTIPLE TIMES IN ONE ADDON",
     "icon": "mdi-grid",
 
     "copy_rp_files": {
