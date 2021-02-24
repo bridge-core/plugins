@@ -1,20 +1,15 @@
-module.exports = {
-	async beforeTransform(file) {
-		if (!file.filePath.endsWith('.json') || file.data !== undefined) return
+module.exports = ({}) => {
+	return {
+		async load(filePath, fileHandle) {
+			if (!filePath.endsWith('.json')) return
 
-		const f = await file.fileHandle.getFile()
-		try {
-			file.data = JSON.parse(await f.text())
-		} catch {}
-	},
-	afterTransform(file, { minify = false }) {
-		if (
-			!file.filePath.endsWith('.json') ||
-			typeof file.data !== 'object' ||
-			file.data === null
-		)
-			return
+			const file = await fileHandle.getFile()
+			return JSON.parse(await file.text())
+		},
+		finalizeBuild(filePath, fileContent) {
+			if (!filePath.endsWith('.json')) return
 
-		file.data = JSON.stringify(file.data, null, minify ? undefined : '\t')
-	},
+			return JSON.stringify(fileContent)
+		},
+	}
 }

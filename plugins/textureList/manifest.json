@@ -1,14 +1,13 @@
 {
 	"icon": "mdi-format-list-bulleted",
 	"author": "solvedDev",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"name": "Texture List Generator",
 	"description": "Automatically generates the texture_list.json file",
 	"id": "bridge-core.compiler.textureListGenerator",
 	"api_version": 2,
 	"target": "v2",
 	"tags": ["Curated", "Compiler"],
-	"dependencies": ["bridge-core.compiler.util.load-json"],
 	"compiler": {
 		"plugins": {
 			"textureList": "compiler/textureList.js"

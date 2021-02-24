@@ -1,26 +1,33 @@
-let textureList = []
-let createdFile = false
+// TODO: Make texture_list work in dev mode
 
-module.exports = {
-	async createFiles(file) {
-		if (createdFile) return
+module.exports = ({ resolve, options }) => {
+	const textures = new Set()
+	const textureList = 'RP/textures/texture_list.json'
 
-		createdFile = true
-		const listFile = await file.create('RP/textures/texture_list.json')
-		listFile.data = textureList
-		listFile.hooks.on('cleanup', () => {
-			textureList = []
-			listFile.data = undefined
-		})
-	},
-	collect(file) {
-		const filePath = file.filePath
-		if (!filePath.startsWith('RP/textures')) return
+	return {
+		afterResolveId(filePath) {
+			if (!filePath.startsWith('RP/textures/')) return
 
-		const pathParts = filePath.split('.')
-		const ext = pathParts.pop()
-
-		if (ext === 'png' || ext === 'tga' || ext === 'jpg' || ext === 'jpeg')
-			textureList.push(pathParts.join('.').replace('RP/', ''))
-	},
+			const pathParts = filePath.split('.')
+			const ext = pathParts.pop()
+			if (
+				ext === 'png' ||
+				ext === 'tga' ||
+				ext === 'jpg' ||
+				ext === 'jpeg'
+			)
+				textures.add(pathParts.join('.').replace('RP/', ''))
+		},
+		load(filePath) {
+			if (filePath === textureList) return {}
+		},
+		finalizeBuild(filePath) {
+			if (filePath === textureList) {
+				return JSON.stringify([...textures.values()], null, '\t')
+			}
+		},
+		async buildEnd() {
+			await resolve(textureList, undefined, true)
+		},
+	}
 }

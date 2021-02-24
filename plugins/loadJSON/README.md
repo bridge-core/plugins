@@ -3,7 +3,7 @@ Install the extension and then add the `loadJSON` compiler plugin to your build 
 ```json
 {
 	"plugins": {
-		"*": ["loadJSON"]
+		"*": ["loadJSON", "comMojangRewrite"]
 	}
 }
 ```
