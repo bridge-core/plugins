@@ -1,16 +1,20 @@
 {
-    "icon": "mdi-lock-outline",
-    "author": "Joel ant 05",
-    "version": "1.0.0",
-    "name": "Json Encoder",
-    "description": "Encodes your json files into utf-16.",
-    "id": "bridge-core.compiler.jsonEncoder",
-    "api_version": 2,
-    "target": "v2",
-    "tags": ["Curated", "Compiler"],
-    "compiler": {
-        "plugins": {
-            "jsonEncoder": "compiler/jsonEncoder.js"
-        }
-    }
+	"icon": "mdi-lock-outline",
+	"author": "Joel ant 05",
+	"version": "1.0.0",
+	"name": "Json Encoder",
+	"description": "Encodes your json files into utf-16.",
+	"id": "bridge-core.compiler.jsonEncoder",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Curated",
+		"Compiler"
+	],
+	"compiler": {
+		"plugins": {
+			"jsonEncoder": "compiler/jsonEncoder.js"
+		}
+	},
+	"releaseTimestamp": 1614183304044
 }
