@@ -1,0 +1,21 @@
+{
+    "display_name": "Dummy Entity",
+    "description": "Creates a new dummy entity",
+    "icon": "mdi-cube",
+
+    "bp_map": {
+        "entity.json": "entities/{{IDENTIFIER}}.json"
+    },
+    "rp_map": {
+        "client_entity.json": "entity/{{IDENTIFIER}}.json",
+        "dummy.geo.json": "models/entity/{{IDENTIFIER}}.geo.json",
+        "dummy.render.json": "render_controllers/{{IDENTIFIER}}.render.json"
+        
+    },
+    "copy_rp_files": {
+        "dummy_texture.png": "textures/entity/{{IDENTIFIER}}_texture.png"
+    },
+    "expand_rp_files": {
+        "en_US.lang": "texts/en_US.lang"
+    }
+}

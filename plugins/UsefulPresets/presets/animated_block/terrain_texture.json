@@ -1,0 +1,11 @@
+{
+  "texture_data": {
+    "{{PROJ_PREFIX}}_{{IDENTIFIER}}": {
+      "textures": [
+      	{
+      		"path": "textures/blocks/{{IDENTIFIER}}"
+      	}
+      ]
+    }
+  }
+}
