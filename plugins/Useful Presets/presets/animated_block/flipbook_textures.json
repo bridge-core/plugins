@@ -1,7 +1,0 @@
-[
-	{
-    "flipbook_texture": "textures/blocks/{{IDENTIFIER}}",
-    "atlas_tile": "{{PROJ_PREFIX}}_{{IDENTIFIER}}",
-    "ticks_per_frame": 3
-  }
-]
