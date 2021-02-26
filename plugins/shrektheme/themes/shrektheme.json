@@ -1,6 +1,6 @@
 {
     "name": "Shrek theme",
-    "id": "warhead.basic.theme",
+    "id": "20c0c8e8-24e4-4ce5-a7fc-38543a535313",
     "options": {
         "css": "shrek.css",
         "inherit_highlighter": true
