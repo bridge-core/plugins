@@ -1,0 +1,12 @@
+{
+    "name": "Shrek theme",
+    "id": "warhead.basic.theme",
+    "options": {
+        "css": "shrek.css",
+        "inherit_highlighter": true
+    },
+	"definition": {
+"dark": {},
+"light": {}
+}
+}
