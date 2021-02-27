@@ -1,7 +1,7 @@
 {
 	"icon": "mdi-format-list-bulleted",
 	"author": "solvedDev",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"name": "Texture List Generator",
 	"description": "Automatically generates the texture_list.json file",
 	"id": "bridge-core.compiler.textureListGenerator",

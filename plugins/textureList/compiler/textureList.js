@@ -1,12 +1,13 @@
 // TODO: Make texture_list work in dev mode
 
-module.exports = ({ resolve, options }) => {
+module.exports = ({ compileFiles, options }) => {
 	const textures = new Set()
 	const textureList = 'RP/textures/texture_list.json'
 
 	return {
-		afterResolveId(filePath) {
+		transformPath(filePath) {
 			if (!filePath.startsWith('RP/textures/')) return
+			console.log(filePath)
 
 			const pathParts = filePath.split('.')
 			const ext = pathParts.pop()
@@ -18,16 +19,16 @@ module.exports = ({ resolve, options }) => {
 			)
 				textures.add(pathParts.join('.').replace('RP/', ''))
 		},
-		load(filePath) {
-			if (filePath === textureList) return {}
-		},
-		finalizeBuild(filePath) {
-			if (filePath === textureList) {
-				return JSON.stringify([...textures.values()], null, '\t')
-			}
-		},
 		async buildEnd() {
-			await resolve(textureList, undefined, true)
+			await compileFiles([textureList], false)
+		},
+		read(filePath) {
+			if (filePath === textureList) return textures
+		},
+		finalizeBuild(filePath, fileContent) {
+			if (filePath === textureList) {
+				return JSON.stringify([...fileContent.values()], null, '\t')
+			}
 		},
 	}
 }
