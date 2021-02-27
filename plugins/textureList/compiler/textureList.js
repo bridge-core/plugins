@@ -7,7 +7,6 @@ module.exports = ({ compileFiles, options }) => {
 	return {
 		transformPath(filePath) {
 			if (!filePath.startsWith('RP/textures/')) return
-			console.log(filePath)
 
 			const pathParts = filePath.split('.')
 			const ext = pathParts.pop()
