@@ -1,0 +1,15 @@
+//bridge-file-version: #0
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "{{PROJ_PREFIX}}:{{IDENTIFIER}}"
+		},
+		"components": {
+			"minecraft:icon": {
+				"texture": "{{PROJ_PREFIX}}_{{IDENTIFIER}}"
+			}
+		},
+		"events": {}
+	}
+}
