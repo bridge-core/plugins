@@ -45,21 +45,21 @@
                 "meta": { "color": "white" },
                 "comment": { "color": "#75715e" }
             },
-            "primary": "#2a2241",
-            "secondary": "#160e2d",
-            "accent": "#2a2241",
+            "primary": "#4b4564",
+            "secondary": "#3a3150",
+            "accent": "#4d4564",
             "error": "#FF5252",
             "info": "#FF5252",
             "success": "#110931",
             "warning": "#0d0028",
-            "background": "#090129",
-            "sidebar_navigation": "#110931",
-            "expanded_sidebar": "#110931",
-            "menu": "#110931",
-            "toolbar": "#070121",
-            "footer": "#070121",
+            "background": "#2d244c",
+            "sidebar_navigation": "#342c55",
+            "expanded_sidebar": "#342c55",
+            "menu": "#342c55",
+            "toolbar": "#482444",
+            "footer": "#482444",
             "tooltip": "#303030",
-            "default_button": "#110931"
+            "default_button": "#482444"
 	}
 }
 }
