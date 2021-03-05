@@ -1,9 +1,10 @@
 {
-    "author": "Kiki Mods Minecraft",
-    "id": "aad1d7ec-a32e-4732-ad2b-abb770e38202",
-    "version": "1.0.0",
-    "name": "Kiki's Presets",
-    "link": "https://www.youtube.com/channel/UCOt9hqBRhSvR3BCLhXdar1Q",
-    "description": "Tons More Presets To Help Making Addons",
-    "api_version": 1
+	"author": "Kiki Mods Minecraft",
+	"id": "aad1d7ec-a32e-4732-ad2b-abb770e38202",
+	"version": "1.0.0",
+	"name": "Kiki's Presets",
+	"link": "https://www.youtube.com/channel/UCOt9hqBRhSvR3BCLhXdar1Q",
+	"description": "Tons More Presets To Help Making Addons",
+	"api_version": 1,
+	"releaseTimestamp": 1614953705588
 }
