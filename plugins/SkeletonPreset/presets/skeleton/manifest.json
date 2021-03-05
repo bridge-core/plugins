@@ -36,6 +36,11 @@
 			{ "inject": ["IDENTIFIER"] }
 		],
 		[
+			"icon.png",
+			"RP/textures/items/egg_{{IDENTIFIER}}.png",
+			{ "inject": ["IDENTIFIER"] }
+		],
+		[
 			"loot_table.json",
 			"BP/loot_tables/entities/{{IDENTIFIER}}.json",
 			{ "inject": ["IDENTIFIER"] }
