@@ -1,5 +1,5 @@
 {
-	"name": "Skeleton",
+	"display_name": "Skeleton",
 	"icon": "mdi-skull-crossbones",
 	"description": "Creates a new skeleton entity.",
 	"category": "fileType.entity",
