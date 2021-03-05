@@ -16,7 +16,7 @@
 			{ "inject": ["IDENTIFIER", "PROJECT_PREFIX"] }
 		],
 		[
-			"clientEntity.json",
+			"client_entity.json",
 			"RP/entity/{{IDENTIFIER}}.json",
 			{ "inject": ["IDENTIFIER", "PROJECT_PREFIX"] }
 		],
@@ -26,7 +26,7 @@
 			{ "inject": ["IDENTIFIER"] }
 		],
 		[
-			"animationController.json",
+			"animation_controller.json",
 			"RP/animation_controllers/{{IDENTIFIER}}.json",
 			{ "inject": ["IDENTIFIER"] }
 		],
@@ -36,17 +36,17 @@
 			{ "inject": ["IDENTIFIER"] }
 		],
 		[
-			"lootTable.json",
+			"loot_table.json",
 			"BP/loot_tables/entities/{{IDENTIFIER}}.json",
 			{ "inject": ["IDENTIFIER"] }
 		],
 		[
-			"renderController.json",
+			"render_controller.json",
 			"RP/render_controllers/{{IDENTFIER}}.json",
 			{ "inject": ["IDENTIFIER"] }
 		],
 		[
-			"spawnRule.json",
+			"spawn_rule.json",
 			"BP/spawn_rules/{{IDENTIFIER}}.json",
 			{ "inject": ["IDENTIFIER", "PROJECT_PREFIX"] }
 		],
@@ -63,7 +63,7 @@
 			{ "inject": ["IDENTIFIER", "IDENTIFIER_NAME", "PROJECT_PREFIX"] }
 		],
 		[
-			"soundDefinitions.json",
+			"sound_definitions.json",
 			"RP/sounds/sound_definitions.json",
 			{ "inject": ["IDENTIFIER"] }
 		],
