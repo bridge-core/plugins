@@ -41,6 +41,11 @@
 			{ "inject": ["IDENTIFIER"] }
 		],
 		[
+			"loot_table_gear.json",
+			"BP/loot_tables/entities/{{IDENTIFIER}}_gear.json",
+			{ "inject": ["IDENTIFIER"] }
+		],
+		[
 			"render_controller.json",
 			"RP/render_controllers/{{IDENTFIER}}.json",
 			{ "inject": ["IDENTIFIER"] }
