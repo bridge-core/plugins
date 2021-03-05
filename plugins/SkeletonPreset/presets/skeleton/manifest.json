@@ -76,6 +76,11 @@
 			"sounds.json",
 			"RP/sounds.json",
 			{ "inject": ["IDENTIFIER", "PROJECT_PREFIX"] }
+		],
+		[
+			"item_texture.json",
+			"RP/textures/item_texture.json",
+			{ "inject": ["IDENTIFIER"] }
 		]
 	]
 }
