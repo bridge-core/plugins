@@ -1,7 +1,7 @@
 {
 	"entity_sounds": {
 		"entities": {
-			"{{PROJ_PREFIX}}:{{IDENTIFIER}}": {
+			"{{PROJECT_PREFIX}}:{{IDENTIFIER}}": {
 				"events": {
           "ambient": "mob.{{IDENTIFIER}}.say",
           "death": "mob.{{IDENTIFIER}}.death",
