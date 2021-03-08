@@ -73,11 +73,6 @@
 			{ "inject": ["IDENTIFIER", "IDENTIFIER_NAME", "PROJECT_PREFIX"] }
 		],
 		[
-			"sound_definitions.json",
-			"RP/sounds/sound_definitions.json",
-			{ "inject": ["IDENTIFIER"] }
-		],
-		[
 			"sounds.json",
 			"RP/sounds.json",
 			{ "inject": ["IDENTIFIER", "PROJECT_PREFIX"] }
