@@ -6,6 +6,6 @@
 	"link": "https://www.youtube.com/channel/UCOt9hqBRhSvR3BCLhXdar1Q",
 	"description": "Tons More Presets To Help Making Addons",
 	"api_version": 1,
-	"tags": "presets",
+	"tags": ["presets"],
 	"releaseTimestamp": 1615216261965
 }
