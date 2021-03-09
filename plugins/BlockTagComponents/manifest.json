@@ -2,8 +2,9 @@
 	"author": "ClaudalVP",
 	"name": "Block Tags Components",
 	"version": "1.1.0",
-	"id": "610feb3f-52ef-4316-9c3b-b93be9f788c6",
+	"id": "0a67f796-456f-4627-b913-3ffe069aff4c",
 	"description": "Add two components to your entities that work with block tags to facilitate some works",
 	"api_version": 2,
+	"tags": ["Component"],
 	"releaseTimestamp": 1613642487730
 }
