@@ -1,33 +1,37 @@
 // TODO: Make texture_list work in dev mode
 
-module.exports = ({ compileFiles, options }) => {
-	const textures = new Set()
+module.exports = ({ options }) => {
 	const textureList = 'RP/textures/texture_list.json'
 
 	return {
-		transformPath(filePath) {
-			if (!filePath.startsWith('RP/textures/')) return
-
-			const pathParts = filePath.split('.')
-			const ext = pathParts.pop()
-			if (
-				ext === 'png' ||
-				ext === 'tga' ||
-				ext === 'jpg' ||
-				ext === 'jpeg'
-			)
-				textures.add(pathParts.join('.').replace('RP/', ''))
+		include() {
+			return [textureList]
 		},
-		async buildEnd() {
-			await compileFiles([textureList], false)
+		require(filePath) {
+			if (filePath === textureList)
+				return [
+					'RP/textures/**/*.png',
+					'RP/textures/**/*.tga',
+					'RP/textures/**/*.jpg',
+					'RP/textures/**/*.jpeg',
+				]
 		},
+		// Reading the textureList file should return the raw textures array
 		read(filePath) {
-			if (filePath === textureList) return textures
+			if (filePath === textureList) return []
 		},
+		transform(filePath, fileContent, dependencies = {}) {
+			if (filePath === textureList)
+				return Object.keys(dependencies).map((dep) => {
+					const parts = dep.split('.')
+					parts.pop() // Removes the file extension
+					return parts.join('.')
+				})
+		},
+		// Stringify the textures array to make it ready for writing to disk
 		finalizeBuild(filePath, fileContent) {
-			if (filePath === textureList) {
+			if (filePath === textureList)
 				return JSON.stringify([...fileContent.values()], null, '\t')
-			}
 		},
 	}
 }
