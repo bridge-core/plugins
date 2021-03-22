@@ -19,12 +19,12 @@ button.default_button i.v-icon.notranslate.mdi.mdi-plus.theme--light {
 }
 
 .theme--light .col.col-10 {
-    background-image: url(https://media.discordapp.net/attachments/754186550061039687/823377256159903764/coffee_theme_light.png);
+    background-image: url(https://raw.githubusercontent.com/Chikorita-Lover/plugins/master/plugins/CoffeeTheme/styles/coffee_theme_light.png);
     background-position: bottom right;
 }
 
 .theme--dark .col.col-10 {
-    background-image: url(https://media.discordapp.net/attachments/754186550061039687/823681823929401394/coffee_theme_dark.png);
+    background-image: url(https://raw.githubusercontent.com/Chikorita-Lover/plugins/master/plugins/CoffeeTheme/styles/coffee_theme_dark.png);
     background-position: bottom right;
 }
 
