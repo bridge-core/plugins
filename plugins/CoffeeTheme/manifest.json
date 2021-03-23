@@ -1,0 +1,11 @@
+{
+	"author": "Chikorita-Lover",
+	"name": "Coffee Theme",
+	"version": "1.0.0",
+	"id": "8a680a41-ac94-4441-a6db-d3a5dcdc0b99",
+	"description": "Adds a coffee theme to select inside the settings window, additionally replacing some navigation icons. Caffeine not included.",
+	"api_version": 1,
+	"tags": [
+		"theme"
+	]
+}
