@@ -5,7 +5,7 @@ Bridge.register(
         unit_cube = false
 
 
-        onApply({ geometry, texture, render_method }) {
+        onApply({ geometry, texture, render_method, ambient_occlusion, face_dimming }) {
             return {
                 'minecraft:block': {
                     components: {
@@ -13,7 +13,9 @@ Bridge.register(
                         'minecraft:material_instances': {
                             "*": {
                                 "texture": texture,
-                                "render_method": render_method
+                                "render_method": render_method,
+                                "ambient_occlusion": ambient_occlusion,
+                                "face_dimming": face_dimming
                             }
                         },
                     },
@@ -26,6 +28,8 @@ Bridge.register(
                 [BlockComponent.component_name]: {
                     geometry: '$general.model_identifier',
                     render_method: ["opaque","blend","double_sided","alpha_test"],
+                    ambient_occlusion: ["true","false"],
+                    face_dimming: ["true","false"],
                     texture: '$dynamic.rp.terrain_texture',
                   }
             }
