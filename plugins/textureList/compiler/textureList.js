@@ -1,6 +1,4 @@
-// TODO: Make texture_list work in dev mode
-
-module.exports = ({ options }) => {
+module.exports = () => {
 	const textureList = 'RP/textures/texture_list.json'
 
 	return {
@@ -20,13 +18,20 @@ module.exports = ({ options }) => {
 		read(filePath) {
 			if (filePath === textureList) return []
 		},
+		// The "transform" hook is used here to compose an array with all textures
 		transform(filePath, fileContent, dependencies = {}) {
-			if (filePath === textureList)
+			if (filePath === textureList) {
+				/**
+				 * The "dependencies" object always contains the files that were
+				 * required earlier. Structure: { [filePath]: fileContent }
+				 *  We're only interested in the file paths in this case
+				 */
 				return Object.keys(dependencies).map((dep) => {
 					const parts = dep.split('.')
 					parts.pop() // Removes the file extension
 					return parts.join('.')
 				})
+			}
 		},
 		// Stringify the textures array to make it ready for writing to disk
 		finalizeBuild(filePath, fileContent) {
