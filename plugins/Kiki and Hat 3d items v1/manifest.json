@@ -5,6 +5,7 @@
 	"name": "KikiCreations and Hatfluppyclouds 3D Items",
 	"link": "https://www.youtube.com/channel/UCOt9hqBRhSvR3BCLhXdar1Q",
 	"description": "A plugin that adds a 3d item template",
-    "api_version": 1,
-	"tags": "Presets"
+	"api_version": 1,
+	"tags": "Presets",
+	"releaseTimestamp": 1620567419014
 }
