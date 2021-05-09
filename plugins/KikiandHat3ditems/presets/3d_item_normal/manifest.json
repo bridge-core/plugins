@@ -1,0 +1,23 @@
+{
+    "display_name": "3D Item Normal",
+    "description": "Creates a new 3d item.",
+    "icon": "mdi-pickaxe",
+    "bp_map": {
+        "item.json": "items/{{IDENTIFIER}}.json"
+	},
+	"rp_map": {
+		"attachables.json": "attachables/",
+		"geometry.json": "models/entity/",
+		"animation.json": "animations/",
+        "animation_controller.json": "animation_controllers/",
+		"render_controller.json": "render_controllers/"
+    },
+    "expand_rp_files": {
+        "item_texture.json": "textures/item_texture.json",
+        "en_US.lang": "texts/en_US.lang"
+    },
+    "copy_rp_files": {
+        "texture.png": "textures/items/{{IDENTIFIER}}.entity.png",
+        "icon.png": "textures/items/{{IDENTIFIER}}.png"
+    }
+}
