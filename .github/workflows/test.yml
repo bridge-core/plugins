@@ -1,0 +1,23 @@
+name: Run Tests
+on:
+    push:
+    pull_request:
+        branches:
+            - master
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout 🛎️
+              uses: actions/checkout@v2.3.1
+              with:
+                  persist-credentials: false
+
+            - name: Setup Deno 🚧
+              uses: denolib/setup-deno@v2
+              with:
+                  deno-version: v1.7.X
+
+            - name: Run Tests 🔧
+              run: |
+                  deno run --allow-read --allow-write --unstable ./scripts/test.ts

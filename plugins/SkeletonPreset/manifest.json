@@ -1,0 +1,13 @@
+{
+	"author": "Chikorita-Lover",
+	"name": "Skeleton Preset",
+	"version": "1.0.0",
+	"id": "1be48056-4767-442c-a145-eb45f4df7fc1",
+	"description": "Adds a skeleton preset.",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Presets"
+	],
+	"releaseTimestamp": 1615227999474
+}
