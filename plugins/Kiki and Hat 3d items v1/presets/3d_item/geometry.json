@@ -1,0 +1,84 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.{{PROJ_PREFIX}}_{{IDENTIFIER}}",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "waist",
+					"parent": "root",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "body",
+					"parent": "waist",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "hat",
+					"parent": "head",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "rightArm",
+					"parent": "body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "rightSleeve",
+					"parent": "rightArm",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "rightItem",
+					"parent": "rightArm",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "iron_spear",
+					"parent": "rightItem",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "handle",
+					"parent": "iron_spear",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-1, 0, 0], "size": [2, 30, 2], "uv": [24, 0]}
+					]
+				},
+				{
+					"name": "blade",
+					"parent": "iron_spear",
+					"pivot": [0, -2, 0]
+				},
+				{
+					"name": "leftArm",
+					"parent": "body",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "jacket",
+					"parent": "body",
+					"pivot": [0, 0, 0]
+				}
+			]
+		}
+	]
+}
