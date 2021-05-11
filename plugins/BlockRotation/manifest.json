@@ -5,7 +5,6 @@
 	"id": "ac340569-8df3-4409-ac9d-b855b183210b",
 	"description": "Adding rotation to blocks is as easy as it should be: Adding a single component!",
 	"api_version": 2,
-	"target": "both",
 	"tags": [
 		"Curated",
 		"Component"
