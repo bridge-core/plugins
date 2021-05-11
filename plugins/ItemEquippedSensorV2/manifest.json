@@ -6,8 +6,12 @@
 	"description": "Adds a custom item component to allow you to simply run events and commands when the item is equipped/unequipped.",
 	"api_version": 2,
 	"target": "v2",
-	"tags": ["Components", "Curated"],
+	"tags": [
+		"Components",
+		"Curated"
+	],
 	"install": {
 		"components/item": "BP/components/item/bridge/"
-	}
+	},
+	"releaseTimestamp": 1620755291316
 }
