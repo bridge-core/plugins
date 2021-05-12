@@ -7,7 +7,7 @@
 	"api_version": 2,
 	"target": "v2",
 	"tags": [
-		"Components",
+		"Component",
 		"Curated"
 	],
 	"install": {
