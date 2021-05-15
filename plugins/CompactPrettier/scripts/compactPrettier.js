@@ -1,4 +1,5 @@
 // ass
+const PARAMS = { maxLength: 150, indent: 4, spacing: true }
 
 const { registerDocumentFormattingEditProvider } = await require('@bridge/monaco');
 const { parse } = await require('@bridge/json5');
@@ -17,7 +18,7 @@ registerDocumentFormattingEditProvider('json', {
 
 // src is of type string here because model.getValue() returns a string
 function formatText(src) {
-	if (parse(src)) {
+	try {
 		function stringify(passedObj, options) {
 			let stringOrChar = /("(?:[^\\"]|\\.)*")|[:,]/g;
 			var indent, maxLength, replacer;
@@ -97,11 +98,9 @@ function formatText(src) {
 				return string;
 			})(passedObj, "", 0);
 		};
-
-		let data_out = stringify(parse(src), { maxLength: 150, indent: 4, });
-		data_out = data_out.replace(/(?<={|\[)(?="|[0-9]|-)|(?<=[0-9]|")(?=}|\])/g, ' ');
-
+		let data_out = stringify(parse(src), PARAMS);
+		if (PARAMS.spacing) { data_out = data_out.replace(/(?<={|\[)(?="|[0-9]|-)|(?<=[0-9]|")(?=}|\])/g, ' ') };
 		return data_out
 	}
-	else { return src }
+	catch { return src.substring(1) };
 }
