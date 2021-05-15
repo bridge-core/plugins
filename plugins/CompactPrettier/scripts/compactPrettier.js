@@ -1,12 +1,16 @@
 // ass
-const PARAMS = { maxLength: 150, indent: 4, spacing: true }
+let PARAMS = { maxLength: 150, indent: 4, spacing: true }
 
 const { registerDocumentFormattingEditProvider } = await require('@bridge/monaco');
 const { parse } = await require('@bridge/json5');
+const { create } = await require('@bridge/sidebar');
+const { Options } = await require('@bridge/ui');
+const { readJSON } = await require('@bridge/fs')
 
 // Register the formatting provider
 registerDocumentFormattingEditProvider('json', {
-	provideDocumentFormattingEdits(model, options, token) {
+	async provideDocumentFormattingEdits(model, options, token) {
+		PARAMS = await readJSON('extensions/CompactPrettier/options.json')
 		return [
 			{
 				text: formatText(model.getValue()),
@@ -104,3 +108,9 @@ function formatText(src) {
 	}
 	catch { return src.substring(1) };
 }
+
+const sidebar = create({
+	icon: 'mdi-code-json',
+	displayName: 'Compact Prettier Options',
+	component: Options,
+})
