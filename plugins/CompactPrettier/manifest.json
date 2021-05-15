@@ -1,0 +1,11 @@
+{
+	"icon": "mdi-code-json",
+	"author": "assassin",
+	"version": "1.0.0",
+	"name": "Compact Prettier",
+	"description": "Compactly prettifies you JSON code in production",
+	"id": "bridge-core.script.util.compact-prettier",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [ "Compiler" ]
+}
