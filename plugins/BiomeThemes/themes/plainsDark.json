@@ -1,0 +1,22 @@
+{
+	"name": "Plains",
+	"id": "ocs.theme.plains",
+	"definition": {
+		"dark": {
+			"toolbar": "#61be55",
+        	"expandedSidebar": "#292929",
+        	"sidebarNavigation": "#292929",
+        	"primary": "#61be55",
+        	"secondary": "#453026",
+        	"accent": "#292929",
+			"error": "#f22c2c",
+			"info": "#61be55",
+			"warning": "#f0b62d",
+			"success": "#61be55",
+			"background": "#453026",
+			"menu": "#61be55",
+			"footer": "#292929",
+			"tooltip": "#292929"
+		}
+	}
+}
