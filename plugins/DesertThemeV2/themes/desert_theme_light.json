@@ -5,8 +5,8 @@
     "colors": {
         "text": "#000",
         "toolbar": "#F2F0DA",
-        "expandedSidebar": "#FFFFFF",
-        "sidebarNavigation": "#FFFFFF",
+        "expandedSidebar": "#FCFBF2",
+        "sidebarNavigation": "#FCFBF2",
         "primary": "#649832",
         "accent": "#649832",
         "background": "#F7F6EA"
