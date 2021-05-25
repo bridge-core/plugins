@@ -1,0 +1,34 @@
+{
+    "name": "Modern Blue",
+    "id": "ocs.modern.blue.theme",
+    "options": {
+        "css": "modernBlue.css",
+        "inherit_highlighter": true
+    },
+    "definition": {
+        "dark": {
+            "primary": "#2e80a6",
+            "secondary": "#ffffff",
+            "accent": "#ffffff",
+            "menu": "#2e80a6",
+            "toolbar": "#2e80a6",
+            "footer": "#2e80a6",
+            "tooltip": "#2e80a6",
+            "default_button": "#0d0f11",
+            "sidebar_navigation": "#111418",
+            "expanded_sidebar": "#111418"
+        },
+        "light": {
+            "primary": "#49b0ca",
+            "secondary": "#0d0f11",
+            "accent": "#0d0f11",
+            "menu": "#49b0ca",
+            "toolbar": "#49b0ca",
+            "footer": "#49b0ca",
+            "tooltip": "#49b0ca",
+            "default_button": "#ffffff",
+            "sidebar_navigation": "#fcfcfc",
+            "expanded_sidebar": "#ffffff"
+        }
+    }    
+}    

@@ -1,0 +1,34 @@
+{
+    "name": "Modern Dusk",
+    "id": "ocs.modern.dusk.theme",
+    "options": {
+        "css": "modernDusk.css",
+        "inherit_highlighter": true
+    },
+    "definition": {
+        "dark": {
+            "primary": "#849eaf",
+            "secondary": "#ffffff",
+            "accent": "#ffffff",
+            "menu": "#849eaf",
+            "toolbar": "#849eaf",
+            "footer": "#ffaa35",
+            "tooltip": "#849eaf",
+            "default_button": "#110f0d",
+            "sidebar_navigation": "#0e0c0c",
+            "expanded_sidebar": "#0e0c0c"
+        },
+        "light": {
+            "primary": "#98b2c3",
+            "secondary": "#110f0d",
+            "accent": "#110f0d",
+            "menu": "#98b2c3",
+            "toolbar": "#98b2c3",
+            "footer": "#ffaa35",
+            "tooltip": "#98b2c3",
+            "default_button": "#ffffff",
+            "sidebar_navigation": "#fcfcfc",
+            "expanded_sidebar": "#ffffff"
+        }
+    }    
+}    

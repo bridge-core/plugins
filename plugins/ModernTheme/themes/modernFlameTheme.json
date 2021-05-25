@@ -1,0 +1,34 @@
+{
+    "name": "Modern Flame",
+    "id": "ocs.modern.flame.theme",
+    "options": {
+        "css": "modernFlame.css",
+        "inherit_highlighter": true
+    },
+    "definition": {
+        "dark": {
+            "primary": "#ef822d",
+            "secondary": "#ffffff",
+            "accent": "#ffffff",
+            "menu": "#ef822d",
+            "toolbar": "#ef822d",
+            "footer": "#ef822d",
+            "tooltip": "#ef822d",
+            "default_button": "#110f0d",
+            "sidebar_navigation": "#0e0c0c",
+            "expanded_sidebar": "#0e0c0c"
+        },
+        "light": {
+            "primary": "#ef822d",
+            "secondary": "#110f0d",
+            "accent": "#110f0d",
+            "menu": "#ef822d",
+            "toolbar": "#ef822d",
+            "footer": "#ef822d",
+            "tooltip": "#ef822d",
+            "default_button": "#ffffff",
+            "sidebar_navigation": "#fcfcfc",
+            "expanded_sidebar": "#ffffff"
+        }
+    }    
+}    

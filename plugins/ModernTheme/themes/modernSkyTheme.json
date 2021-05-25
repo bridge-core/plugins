@@ -1,0 +1,34 @@
+{
+    "name": "Modern Sky",
+    "id": "ocs.modern.sky.theme",
+    "options": {
+        "css": "modernSky.css",
+        "inherit_highlighter": true
+    },
+    "definition": {
+        "dark": {
+            "primary": "#d4ac9a",
+            "secondary": "#ffffff",
+            "accent": "#ffffff",
+            "menu": "#d4ac9a",
+            "toolbar": "#d4ac9a",
+            "footer": "#d4ac9a",
+            "tooltip": "#d4ac9a",
+            "default_button": "#110f0d",
+            "sidebar_navigation": "#0e0c0c",
+            "expanded_sidebar": "#0e0c0c"
+        },
+        "light": {
+            "primary": "#d4ac9a",
+            "secondary": "#110f0d",
+            "accent": "#110f0d",
+            "menu": "#ddc2b6",
+            "toolbar": "#ddc2b6",
+            "footer": "#ddc2b6",
+            "tooltip": "#ddc2b6",
+            "default_button": "#ffffff",
+            "sidebar_navigation": "#fcfcfc",
+            "expanded_sidebar": "#ffffff"
+        }
+    }    
+}    
