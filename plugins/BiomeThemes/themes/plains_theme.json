@@ -1,0 +1,55 @@
+{
+	"name": "Plains",
+	"id": "c6bfac34-b7e9-11eb-8529-0242ac130003",
+	"definition": {
+		"dark": {
+			"highlighter": {
+				"property": {
+					"color": "#f0b62d"
+				},
+				"keyword": {
+					"color": "#61be55"
+				},
+				"definition": {
+					"color": "#f0b62d"
+				},
+				"atom": {
+					"color": "#8893f1"
+				},
+				"number": {
+					"color": "#8893f1"
+				},
+				"string": {
+					"color": "#8893f1"
+				},
+				"variable": {
+					"color": "#8893f1"
+				},
+				"variable_strong": {
+					"color": "#8893f1"
+				},
+				"meta": {
+					"color": "#8893f1"
+				},
+				"comment": {
+					"color": "#292929"
+				}
+			},
+			"primary": "#61be55", 
+			"secondary": "#292929",
+			"error": "#f22c2c",
+			"accent": "#61be55",
+			"info": "#61be55",
+			"success": "#61be55",
+			"warning": "#f0b62d",
+			"background": "#453026",
+			"sidebar_navigation": "#292929",
+			"expanded_sidebar": "#292929",
+			"menu": "#292929",
+			"toolbar": "#61be55",
+			"footer": "#292929",
+			"tooltip": "#453026",
+			"default_button": "#61be55"
+		}
+	}
+}

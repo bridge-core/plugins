@@ -1,0 +1,37 @@
+button.default_button i.v-icon.notranslate.mdi.mdi-plus.theme--light {
+    color: white;
+}
+
+.mdi-alert-circle::before {
+    content: "\F0FAA";
+}
+
+.mdi-console-line::before {
+    content: "\F109F";
+}
+
+.mdi-import::before {
+    content: "\F0177";
+}
+
+.mdi-sword::before {
+    content: "\F0176";
+}
+
+.theme--light .col.col-10 {
+    background-image: url(https://raw.githubusercontent.com/bridge-core/plugins/master/plugins/CoffeeTheme/styles/coffee_theme_light.png);
+    background-position: bottom right;
+}
+
+.theme--dark .col.col-10 {
+    background-image: url(https://raw.githubusercontent.com/bridge-core/plugins/master/plugins/CoffeeTheme/styles/coffee_theme_dark.png);
+    background-position: bottom right;
+}
+
+.theme--light.v-application .grey--text.text--lighten-1 {
+    color: #2B2B2B !important;
+}
+
+.theme--light.v-divider {
+    border-color: #2B2B2B40;
+}

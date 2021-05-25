@@ -1,0 +1,22 @@
+{
+    "id": "ocs.theme.nether.v2",
+	"name": "Nether",
+    "colorScheme": "dark",
+    "colors": {
+        "text": "#ff822e",
+        "toolbar": "#ff822e",
+        "expandedSidebar": "#282320",
+        "sidebarNavigation": "#282320",
+        "primary": "#ff822e",
+        "secondary": "#ff822e",
+        "accent": "#1d0606",
+        "error": "#f22c2c",
+        "info": "#ff822e",
+        "warning": "#f0b62d",
+        "success": "#ff822e",
+        "background": "#1d0606",
+        "menu": "#ff822e",
+        "footer": "#ff822e",
+        "tooltip": "#ff822e"
+    }
+}

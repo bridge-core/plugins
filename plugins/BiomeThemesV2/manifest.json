@@ -1,0 +1,12 @@
+{
+	"author": "Outer Cloud Studio",
+	"name": "Biome Themes",
+	"version": "2.0.0",
+	"id": "7def393e-b7e9-11eb-8529-0242ac130003",
+	"description": "Adds multiple biome themes to select inside the settings window",
+	"target": "v2",
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1621524085937
+}
