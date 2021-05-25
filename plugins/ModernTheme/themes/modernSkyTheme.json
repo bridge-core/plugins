@@ -8,7 +8,7 @@
     "definition": {
         "dark": {
             "primary": "#d4ac9a",
-            "secondary": "#ffffff",
+            "secondary": "#d4ac9a",
             "accent": "#ffffff",
             "menu": "#d4ac9a",
             "toolbar": "#d4ac9a",
