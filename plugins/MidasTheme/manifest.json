@@ -4,5 +4,8 @@
 	"version": "1.0.0",
 	"name": "Midas Theme",
 	"description": "Made By KikiCreations and Suggested By Skyler",
-	"tags": ["Theme"]
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1622369671731
 }
