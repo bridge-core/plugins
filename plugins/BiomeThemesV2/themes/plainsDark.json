@@ -4,19 +4,19 @@
     "colorScheme": "dark",
     "colors": {
         "text": "#fff",
-        "toolbar": "#61be55",
-        "expandedSidebar": "#292929",
-        "sidebarNavigation": "#292929",
-        "primary": "#61be55",
-        "secondary": "#453026",
-        "accent": "#292929",
+        "toolbar": "#4b8811",
+        "expandedSidebar": "#0a0b0a",
+        "sidebarNavigation": "#0a0b0a",
+        "primary": "#4b8811",
+        "secondary": "#0a0b0a",
+        "accent": "#0a0b0a",
         "error": "#f22c2c",
-        "info": "#61be55",
+        "info": "#4b8811",
         "warning": "#f0b62d",
-        "success": "#61be55",
-        "background": "#453026",
-        "menu": "#61be55",
-        "footer": "#292929",
-        "tooltip": "#292929"
+        "success": "#4b8811",
+        "background": "#212b18",
+        "menu": "#4b8811",
+        "footer": "#0a0b0a",
+        "tooltip": "#0a0b0a"
     }    
 }
