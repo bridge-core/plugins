@@ -1,12 +1,12 @@
 {
 	"author": "outercloudstudio",
 	"id": "3a87aa2a-d494-4c93-ae28-6352928e2b7b",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"name": "Modern Themes",
 	"description": "Adds multiple asthetic modern themes to select in File > Preferences > Setting > Apearence!",
 	"api_version": 2,
 	"tags": [
 		"Theme"
 	],
-	"releaseTimestamp": 1622055576292
+ 	"releaseTimestamp": 1622055576292
 }
