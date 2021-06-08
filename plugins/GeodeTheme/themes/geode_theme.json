@@ -1,0 +1,107 @@
+{
+  "name": "Geode",
+  "id": "chikorita_lover.geode.theme",
+  "options": {
+    "inherit_highlighter": true
+  },
+  "definition": {
+    "dark": {
+      "highlighter": {
+        "property": {
+          "color": "#8690AA"
+        },
+        "keyword": {
+          "color": "#D85FA2"
+        },
+        "definition": {
+          "color": "#EDAE7B"
+        },
+        "atom": {
+          "color": "#AE81FF"
+        },
+        "number": {
+          "color": "#AE81FF"
+        },
+        "string": {
+          "color": "#EDAE7B"
+        },
+        "variable": {
+          "color": "#91A5B7"
+        },
+        "variable_strong": {
+          "color": "#AE81FF"
+        },
+        "meta": {
+          "color": "white"
+        },
+        "comment": {
+          "color": "#75715E"
+        }
+      },
+      "primary": "#625BAF",
+      "secondary": "#625BAF",
+      "accent": "#625BAF",
+      "error": "#FF5252",
+      "info": "#2196F3",
+      "success": "#4CAF50",
+      "warning": "#FB8C00",
+      "background": "#19101C",
+      "sidebar_navigation": "#1C1818",
+      "expanded_sidebar": "#1C1818",
+      "menu": "#1C1818",
+      "toolbar": "#1E1F26",
+      "footer": "#1E1F26",
+      "tooltip": "#1C1818",
+      "default_button": "#212121"
+    },
+    "light": {
+      "highlighter": {
+        "property": {
+          "color": "#1E1F26"
+        },
+        "keyword": {
+          "color": "#9B66FF"
+        },
+        "definition": {
+          "text_decoration": "underline"
+        },
+        "atom": {
+          "color": "#788A99"
+        },
+        "number": {
+          "color": "#D85FA2"
+        },
+        "string": {
+          "color": "#EF8839"
+        },
+        "variable": {
+          "color": "#1E1F26"
+        },
+        "variable_strong": {
+          "color": "#1E1F26"
+        },
+        "meta": {
+          "color": "yellow"
+        },
+        "comment": {
+          "color": "#0080FF"
+        }
+      },
+      "primary": "#965DCC",
+      "secondary": "#965DCC",
+      "accent": "#965DCC",
+      "error": "#FF5252",
+      "info": "#2196F3",
+      "success": "#4CAF50",
+      "warning": "#FB8C00",
+      "background": "#F1DBFF",
+      "sidebar_navigation": "#F2F0E8",
+      "expanded_sidebar": "#F2F0E8",
+      "menu": "#F2F0E8",
+      "toolbar": "#C2C4D1",
+      "footer": "#C2C4D1",
+      "tooltip": "#424242",
+      "default_button": "#D892EF"
+    }
+  }
+}
