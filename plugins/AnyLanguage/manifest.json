@@ -5,10 +5,14 @@
 	"id": "18e46b21-856c-49e3-8b15-7aaa0ecf27f6",
 	"description": "Automatically create all language files based on your en_US.lang file.",
 	"target": "v2",
-	"tags": ["Compiler", "Curated"],
+	"tags": [
+		"Compiler",
+		"Curated"
+	],
 	"compiler": {
 		"plugins": {
 			"anyLanguage": "plugin.js"
 		}
-	}
+	},
+	"releaseTimestamp": 1623596634317
 }
