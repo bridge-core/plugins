@@ -3,7 +3,7 @@ const { create } = await require('@bridge/sidebar')
 const { WorldHub } = await require('@bridge/ui')
 const { register, addTabActions } = await require('@bridge/tab-actions')
 const { setup } = await require('@bridge/com-mojang')
-const { readdir, getFileHandle, loadFileHandleAsDataUrl } =
+const { readdir, getFileHandle, loadFileHandleAsDataUrl, directoryExists } =
 	await require('@bridge/fs')
 const { getCurrentProject } = await require('@bridge/env')
 
@@ -13,15 +13,18 @@ class WorldHubTab extends ContentTab {
 	availableWorlds = null
 	isReady = false
 
-	constructor(parent) {
-		super(parent)
+	async setup() {
+		await new Promise((resolve) =>
+			setup.once(async () => {
+				this.isReady = true
 
-		setup.once(() => {
-			this.isReady = true
+				addTabActions(this)
+				resolve()
+			})
+		)
 
-			addTabActions(this)
-			this.refresh()
-		})
+		await super.setup()
+		await this.refresh()
 	}
 
 	static is() {
@@ -31,7 +34,14 @@ class WorldHubTab extends ContentTab {
 		return false
 	}
 
-	refresh() {
+	async refresh() {
+		this.isLoading = true
+		if (!(await directoryExists(`${getCurrentProject()}/worlds`))) {
+			this.availableWorlds = []
+			this.isLoading = false
+			return
+		}
+
 		readdir(`${getCurrentProject()}/worlds`, {
 			withFileTypes: true,
 		}).then(async (dirents) => {
@@ -64,6 +74,7 @@ class WorldHubTab extends ContentTab {
 					})
 			)
 		})
+		this.isLoading = false
 	}
 
 	get icon() {

@@ -6,6 +6,16 @@
 			required in order for this extension to work.
 		</p>
 	</div>
+	<div class="pa-4" v-else-if="!tab.availableWorlds">
+		<h1>Loading Worlds...</h1>
+	</div>
+	<div class="px-4" v-else-if="tab.availableWorlds.length === 0">
+		<h1>No Worlds</h1>
+		<p>
+			You do not have any worlds to load inside of your "worlds/" folder
+			yet.
+		</p>
+	</div>
 
 	<div class="px-4 pb-4" :style="{ 'overflow-y': 'auto' }" v-else>
 		<v-row>
@@ -24,12 +34,13 @@
 
 					<v-card-actions>
 						<v-spacer />
-						<v-tooltip color="tooltip" right>
+						<v-tooltip color="tooltip" bottom>
 							<template #activator="{ on }">
 								<v-btn
 									color="primary"
 									text
 									@click="moveWorld(world.folderName)"
+									:disabled="tab.isLoading"
 									v-on="on"
 								>
 									<v-icon small class="pl-1">
@@ -41,12 +52,13 @@
 							<span>Move world to com.mojang folder</span>
 						</v-tooltip>
 
-						<v-tooltip color="tooltip" right>
+						<v-tooltip color="tooltip" bottom>
 							<template #activator="{ on }">
 								<v-btn
 									color="primary"
 									text
 									@click="fetchWorld(world.folderName)"
+									:disabled="tab.isLoading"
 									v-on="on"
 								>
 									<v-icon small class="pl-1">
@@ -78,6 +90,7 @@ export default {
 	},
 	methods: {
 		async moveWorld(world) {
+			this.tab.isLoading = true
 			const comMojangFs = await requestFileSystem()
 
 			await comMojangFs.unlink(`minecraftWorlds/${world}`)
@@ -91,9 +104,11 @@ export default {
 					{ create: true }
 				)
 			)
+			this.tab.isLoading = false
 		},
 
 		async fetchWorld(world) {
+			this.tab.isLoading = true
 			const comMojangFs = await requestFileSystem()
 
 			if (
@@ -115,6 +130,7 @@ export default {
 					{ create: true }
 				)
 			)
+			this.tab.isLoading = false
 		},
 	},
 }

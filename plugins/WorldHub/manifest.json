@@ -2,14 +2,11 @@
 	"author": "solvedDev",
 	"icon": "mdi-earth-box",
 	"name": "WorldHub",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"id": "822b2bd4-b020-478b-8abd-7ecf6853399e",
 	"description": "Move worlds from a \"worlds/\" folder to your com.mojang folder and back!",
 	"api_version": 2,
 	"target": "v2",
-	"tags": [
-		"Utility",
-		"Curated"
-	],
+	"tags": ["Utility", "Curated"],
 	"releaseTimestamp": 1623508454822
 }
