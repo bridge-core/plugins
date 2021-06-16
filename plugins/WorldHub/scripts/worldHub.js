@@ -101,6 +101,7 @@ register({
 
 let currentHubs = {}
 create({
+	id: 'solvedDev.bridge.worldHub',
 	displayName: '[WorldHub]',
 	icon: 'mdi-earth-box',
 	onClick: async () => {
