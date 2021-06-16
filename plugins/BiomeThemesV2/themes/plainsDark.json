@@ -1,0 +1,22 @@
+{
+    "id": "ocs.theme.plains.v2",
+	"name": "Plains",
+    "colorScheme": "dark",
+    "colors": {
+        "text": "#fff",
+        "toolbar": "#4b8811",
+        "expandedSidebar": "#0a0b0a",
+        "sidebarNavigation": "#0a0b0a",
+        "primary": "#4b8811",
+        "secondary": "#0a0b0a",
+        "accent": "#0a0b0a",
+        "error": "#f22c2c",
+        "info": "#4b8811",
+        "warning": "#f0b62d",
+        "success": "#4b8811",
+        "background": "#212b18",
+        "menu": "#4b8811",
+        "footer": "#0a0b0a",
+        "tooltip": "#0a0b0a"
+    }    
+}

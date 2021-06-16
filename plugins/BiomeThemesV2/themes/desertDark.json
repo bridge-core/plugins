@@ -1,0 +1,36 @@
+{
+    "id": "ocs.theme.desert.v2",
+	"name": "Desert",
+    "colorScheme": "dark",
+    "colors": {
+        "text": "#306e2b",
+        "toolbar": "#306e2b",
+        "expandedSidebar": "#3b3730",
+        "sidebarNavigation": "#3b3730",
+        "primary": "#306e2b",
+        "secondary": "#306e2b",
+        "accent": "#4e4537",
+        "error": "#f22c2c",
+        "info": "#306e2b",
+        "warning": "#f0b62d",
+        "success": "#306e2b",
+        "background": "#4e4537",
+        "menu": "#306e2b",
+        "footer": "#3b3730",
+        "tooltip": "#3b3730"
+    },
+    "highlighter": {
+        "keyword": {
+            "color": "#3fa296"
+        },
+        "atom": {
+            "color": "#3fa296"
+        },
+        "number": {
+            "color": "#80cd37"
+        },
+        "string": {
+            "color": "#dd9236"
+        }
+    }
+}

@@ -1,0 +1,15 @@
+.theme--dark .v-main {
+    background: linear-gradient(rgba(0, 0, 0, .2),rgba(0, 0, 0, .2)), url("https://images.unsplash.com/photo-1557682260-96773eb01377?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1315&q=80");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+    color: white;
+}
+
+.theme--light .v-main {
+    background: linear-gradient(rgba(255, 255, 255, .2),rgba(0, 0, 0, .05)), url("https://images.unsplash.com/photo-1557682260-96773eb01377?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1315&q=80");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+    color: white;
+}

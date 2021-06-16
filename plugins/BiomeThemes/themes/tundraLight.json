@@ -1,0 +1,22 @@
+{
+    "name": "Tundra",
+    "id": "ocs.theme.tundra",
+    "definition": {
+        "light":{
+        "toolbar": "#75957e",
+        "expandedSidebar": "#ebebeb",
+        "sidebarNavigation": "#ebebeb",
+        "primary": "#75957e",
+        "secondary": "#75957e",
+        "accent": "#ffffff",
+        "error": "#f22c2c",
+        "info": "#75957e",
+        "warning": "#f0b62d",
+        "success": "#75957e",
+        "background": "#ffffff",
+        "menu": "#75957e",
+        "footer": "#75957e",
+        "tooltip": "#75957e"
+        }
+    }
+}

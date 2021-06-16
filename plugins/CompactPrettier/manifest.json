@@ -1,7 +1,7 @@
 {
 	"icon": "mdi-code-json",
 	"author": "assassin",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"name": "Compact Prettier",
 	"description": "Compactly prettifies your JSON code upon saving",
 	"id": "6e9e9de3-ce58-4736-8191-770669fb9748",

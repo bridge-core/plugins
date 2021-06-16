@@ -6,7 +6,7 @@
 	"description": "Adds a coffee theme to select inside the settings window, additionally replacing some navigation icons. Caffeine not included.",
 	"api_version": 1,
 	"tags": [
-		"theme"
+		"Theme"
 	],
 	"releaseTimestamp": 1616492033400
 }

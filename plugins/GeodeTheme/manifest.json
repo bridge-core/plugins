@@ -1,0 +1,12 @@
+{
+	"author": "Chikorita-Lover",
+	"name": "Geode Theme",
+	"version": "1.0.0",
+	"id": "c1f037e2-9c41-4432-955c-afbeac5911b6",
+	"description": "Adds an amethyst geode-inspired theme to select inside the settings window",
+	"api_version": 1,
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1623229380322
+}
