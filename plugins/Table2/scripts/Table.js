@@ -1,11 +1,11 @@
 const { ContentTab, openTab } = await require('@bridge/tab')
 const { create } = await require('@bridge/sidebar')
 const { Table2 } = await require('@bridge/ui')
-​
+
 class Table2Tab extends ContentTab {
 	type = 'Table2Tab'
 	component = Table2
-​
+
 	async isFor() {
 		return false
 	}
@@ -19,18 +19,17 @@ class Table2Tab extends ContentTab {
 		return 'Table2'
 	}
 }
-​
+
 let openedTab = undefined
 create({
 	icon: 'mdi-google-spreadsheet',
 	displayName: '[Table2]',
 	onClick: async () => {
-		if (openedTab) 
-			return openedTab.select()
-		
+		if (openedTab) return openedTab.select()
+
 		openedTab = await openTab(Table2Tab)
 
-		tab.onClose.on(() => {
+		openedTab.onClose.on(() => {
 			openedTab = undefined
 		})
 	},
