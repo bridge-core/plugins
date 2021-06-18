@@ -20,18 +20,18 @@ class Table2Tab extends ContentTab {
 	}
 }
 ​
-let opened = false
+let openedTab = undefined
 create({
 	icon: 'mdi-google-spreadsheet',
 	displayName: '[Table2]',
 	onClick: async () => {
-		if (opened) {
-			return console.log('already open')
-		}
-		const tab = await openTab(Table2Tab)
-		opened = true
+		if (openedTab) 
+			return openedTab.select()
+		
+		openedTab = await openTab(Table2Tab)
+
 		tab.onClose.on(() => {
-			opened = false
+			openedTab = undefined
 		})
 	},
 })

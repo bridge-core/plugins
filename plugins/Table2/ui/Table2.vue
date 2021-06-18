@@ -107,10 +107,11 @@
 </style>
 
 <script>
-const { getCurrentBP } = await require('@bridge/env')
+const { getCurrentProject } = await require('@bridge/env')
 const { readJSON } = await require('@bridge/fs')
-let configPath = `${getCurrentBP().replace(/\/BP\s*$/, '')}/config.json`
+let configPath = `${getCurrentProject()}/config.json`
 const config = await readJSON(configPath)
+
 export default {
 	props: {
 		height: Number,
@@ -123,7 +124,7 @@ export default {
 			loading: true,
 			expanded: [],
 			subtitle:
-				"Put your sheet.best API key in your project's config.json file with they key 'spreadsheet_api'.",
+				"Put your sheet.best API key in your project's config.json file with the key 'spreadsheet_api' inside of a 'table2' object.",
 			dialog: false,
 			headers: [
 				{ text: 'Selected', value: 'Selected' },
@@ -186,12 +187,12 @@ export default {
 			})
 		},
 		initialize() {
-			if (!config?.spreadsheet_api)
+			if (!config?.table2?.spreadsheet_api)
 				return new Promise((resolve) => resolve())
 
 			this.loading = true
 			this.subtitle = 'Fetching data...'
-			return fetch(config.spreadsheet_api)
+			return fetch(config.table2.spreadsheet_api)
 				.then((r) => r.json())
 				.then((d) => {
 					for (let i = 0; i < d.length; i++) {
@@ -209,10 +210,14 @@ export default {
 		},
 		save() {
 			if (this.editedIndex > -1) {
+				if (!config?.table2?.spreadsheet_api) return
+
 				this.subtitle = 'Pushing data...'
 				Object.assign(this.table[this.editedIndex], this.editedItem)
 				fetch(
-					config.spreadsheet_api + '/' + this.editedIndex.toString(),
+					config.table2.spreadsheet_api +
+						'/' +
+						this.editedIndex.toString(),
 					{
 						method: 'PATCH',
 						mode: 'cors',
