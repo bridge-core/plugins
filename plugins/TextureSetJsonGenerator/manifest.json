@@ -7,5 +7,8 @@
 	"link": "https://github.com/jasonjgardner/bridge-texture-set-generator",
 	"description": "Easily generate, customize and save .texture_set.json files",
 	"target": "v2",
-	"tags": ["Utility"]
+	"tags": [
+		"Utility"
+	],
+	"releaseTimestamp": 1624392473321
 }
