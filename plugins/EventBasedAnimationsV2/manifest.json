@@ -8,5 +8,8 @@
 	"target": "v2",
 	"tags": [
 		"Component"
-	]
+	],
+	"install" : {
+		"components/entity" : "BP/components/entity/bridge/"
+	}
 }
