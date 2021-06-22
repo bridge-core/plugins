@@ -4,6 +4,6 @@ const { TextureSetGenerator } = await require('@bridge/ui')
 create({
 	id: 'co.jasongardner.textureSetGenerator',
 	displayName: 'Texture Set Generator',
-	icon: 'mdi-buffer ',
+	icon: 'mdi-buffer',
 	component: TextureSetGenerator,
 })
