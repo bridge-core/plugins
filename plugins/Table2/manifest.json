@@ -1,0 +1,12 @@
+{
+	"icon": "mdi-google-spreadsheet",
+	"author": "assassin",
+	"version": "1.0.1",
+	"name": "Table2",
+	"description": "Read and write cloud-stored spreadsheets with a sheet.best API URL",
+	"id": "721f4fc4-3a8c-4c32-8e94-75d493b50648",
+	"api_version": 2,
+	"target": "v2",
+	"tags": ["Utility", "Curated"],
+	"releaseTimestamp": 1624021589894
+}
