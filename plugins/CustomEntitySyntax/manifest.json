@@ -15,5 +15,6 @@
 		"plugins": {
 			"customEntitySyntax": "compiler/customEntitySyntaxCompiled.js"
 		}
-	}
+	},
+	"releaseTimestamp": 1624565058623
 }
