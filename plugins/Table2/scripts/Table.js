@@ -22,6 +22,7 @@ class Table2Tab extends ContentTab {
 
 let openedTab = undefined
 create({
+	id: 'assassin.table2.sidebar',
 	icon: 'mdi-google-spreadsheet',
 	displayName: '[Table2]',
 	onClick: async () => {
