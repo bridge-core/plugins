@@ -8,7 +8,8 @@
 	"description": "Easily generate, customize and save .texture_set.json files",
 	"target": "v2",
 	"tags": [
-		"Utility"
+		"Utility",
+		"Curated"
 	],
 	"releaseTimestamp": 1624392473321
 }
