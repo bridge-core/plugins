@@ -7,5 +7,9 @@
 	"description": "Quickly test MoLang statements within bridge.",
 	"api_version": 2,
 	"target": "v2",
-	"tags": ["Utility", "Curated"]
+	"tags": [
+		"Utility",
+		"Curated"
+	],
+	"releaseTimestamp": 1626344398921
 }
