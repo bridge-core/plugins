@@ -37,131 +37,156 @@ module.exports = () => {
         }
         return use(obj[key], path)
     }
-    function set(obj, path, data) {
-        if (typeof path == 'string') {
-            const keys = path.split('/')
-            set(obj, keys, data)
-        } else {
-            let key = path.shift()
 
-            if (path.length === 0) {
-                if (obj[key] === undefined) obj[key] = data
-                else if (Array.isArray(obj[key]) && !Array.isArray(data))
-                    if (!obj[key].includes(data)) obj[key].push(data)
-                else if (Array.isArray(obj[key]) && Array.isArray(data))
-                    obj[key].push(...data)
-                return obj
-            } else if (obj[key] === undefined) {
-                obj[key] = {}
-            }
+    function processEvent(eventObj, opts) {
+        let entity = {}
 
-            return set(obj[key], path, data)
-        }
-    }
+        if (opts.eventName) {
+            const res = processEvent(eventObj, { formatVersion: opts.formatVersion })
 
-    function processEvent(event, formatVersion) {
-        let entity = {
-            events: event
-        }
-        const eventName = Object.keys(event).toString()
+            entity = deepMerge(entity, res.entity)
+            entity = deepMerge(entity, {
+                'minecraft:entity': { events: { [opts.eventName]: res.event } }
+            })
 
-        if (event) {
-            // Spell effects
-            const effectId = uuid.v4()
-            let addEffects = undefined
-            let removeEffects = undefined
+            return entity
+        } else if (eventObj) {
+                // Sequence/Randomize support
+                if (eventObj.sequence) {
+                    let sequencedEvents = []
+                    for (const entry of eventObj.sequence) {
+                        const nestedRes = processEvent(entry, { formatVersion: opts.formatVersion })
+                        entity = deepMerge(entity, nestedRes.entity)
+                        sequencedEvents.push(nestedRes.event)
+                    }
+                    eventObj.sequence = sequencedEvents
+                } 
+                if (eventObj.randomize) {
+                    let randomizedEvents = []
+                    for (const entry of eventObj.randomize) {
+                        const nestedRes = processEvent(entry, { formatVersion: opts.formatVersion })
+                        entity = deepMerge(entity, nestedRes.entity['minecraft:entity'])
+                        randomizedEvents.push(nestedRes.event)
+                    }
+                    eventObj.randomize = randomizedEvents
+                    console.log(randomizedEvents)
+                }
 
-            if (event[eventName]?.add?.spell_effects) addEffects = use(entity.events[eventName], 'add/spell_effects')
-            if (event[eventName]?.remove?.spell_effects) removeEffects = use(entity.events[eventName], 'remove/spell_effects')
+                // Spell effects
+                const effectId = uuid.v4()
+                let addEffects = undefined
+                let removeEffects = undefined
 
-            if (addEffects) {
-                set(entity, `events/${eventName}/add/component_groups`, [effectId])
-                set(entity, `component_groups/${effectId}/minecraft:spell_effects/add_effects`, addEffects)
-            }
-            if (removeEffects) {
-                set(entity, `events/${eventName}/add/component_groups`, [effectId])
-                set(entity, `component_groups/${effectId}/minecraft:spell_effects/remove_effects`, removeEffects)
-            }
+                if (eventObj.add?.spell_effects) addEffects = use(eventObj, 'add/spell_effects')
+                if (eventObj.remove?.spell_effects) removeEffects = use(eventObj, 'remove/spell_effects')
 
-            // Group
-            if (event[eventName]?.add?.group) {
-                const group = use(entity.events[eventName], 'add/group')
-                const groupName = (typeof group.name !== 'object' ? group.name : uuid.v4()) || uuid.v4()
-                const components = group.components ?? {}
-
-                set(entity, `events/${eventName}/add/component_groups`, [groupName])
-                set(entity, `component_groups/${groupName}`, components)
-            }
-
-            // Execute commands
-            if (event[eventName]?.execute?.commands) {
-                let { commands } = use(entity.events[eventName], 'execute') ?? []
-                if (typeof commands == 'string') commands = [commands]
-                if (compare(formatVersion, '1.16.100', '<') < 0) {
-                    // < 1.16.100
-                    commandIdCounter++
-
-                    const acShortName = `bridge_execute_command_${uuid.v4()}`
-                    let executeCommandsGroup = `execute_command_id_${commandIdCounter}`
-
-                    set(entity, `description/animations/${acShortName}`, acId)
-                    set(entity, 'description/scripts/animate', [acShortName])
-
-                    set(entity, `component_groups/bridge:${executeCommandsGroup}`, {
-                        'minecraft:skin_id': {
-                            value: commandIdCounter,
-                        },
+                if (addEffects) {
+                    eventObj = deepMerge(eventObj, { add: { component_groups: [effectId] } })
+                    entity = deepMerge(entity, {
+                        component_groups: { [effectId]: { 'minecraft:spell_effects': { add_effects: addEffects } } }
                     })
-                    set(entity, 'component_groups/bridge:execute_no_command', {
-                        'minecraft:skin_id': {
-                            value: 0,
-                        },
+                }
+                if (removeEffects) {
+                    eventObj = deepMerge(eventObj, { add: { component_groups: [effectId] } })
+                    entity = deepMerge(entity, {
+                        component_groups: { [effectId]: { 'minecraft:spell_effects': { remove_effects: removeEffects } } }
                     })
+                }
 
-                    set(entity, `events/${eventName}/add/component_groups`, [`bridge:${executeCommandsGroup}`])
-                    set(entity, `events/bridge:remove_command_id_${commandIdCounter}`, {
-                        add: {
-                            component_groups: ['bridge:execute_no_command'],
-                        },
-                        remove: {
-                            component_groups: [`bridge:${executeCommandsGroup}`],
-                        },
+                // Group
+                if (eventObj.add?.group) {
+                    const group = use(eventObj, 'add/group')
+                    const groupName = (typeof group.name !== 'object' ? group.name : uuid.v4()) || uuid.v4()
+                    const components = group.components ?? {}
+    
+                    eventObj = deepMerge(eventObj, {
+                        add: { component_groups: [groupName] }
                     })
-
-                    // For some reason set() isn't working here so using deepMerge() instead
-                    
-                    animationController = deepMerge(animationController, {
-                        animation_controllers: {
-                            [acId]: {
-                                states: {
-                                    default: {
-                                        transitions: [
-                                            {
-                                                [executeCommandsGroup]: `query.skin_id == ${commandIdCounter}`,
-                                            },
-                                        ],
+                    entity = deepMerge(entity, {
+                        component_groups: { [groupName]: components }
+                    })
+                }
+        
+                // Execute commands
+                if (eventObj.execute?.commands) {
+                    let { commands } = use(eventObj, 'execute') ?? []
+                    if (typeof commands == 'string') commands = [commands]
+                    if (compare(opts.formatVersion, '1.16.100', '<') < 0) {
+                        // < 1.16.100
+                        commandIdCounter++
+    
+                        const acShortName = `bridge_execute_command_${uuid.v4()}`
+                        let executeCommandsGroup = `execute_command_id_${commandIdCounter}`
+    
+                        entity = deepMerge(entity, { description: { animations: { [acShortName]: acId } } })
+                        entity = deepMerge(entity, { description: { scripts: { animate: [acShortName] } } })
+    
+                        entity = deepMerge(entity, {
+                            component_groups: { 
+                                [`bridge:${executeCommandsGroup}`]: {
+                                    'minecraft:skin_id': {
+                                        value: commandIdCounter,
                                     },
-                                    [executeCommandsGroup]: {
-                                        transitions: [
-                                            { default: `query.skin_id != ${commandIdCounter}` },
-                                        ],
-                                        on_entry: [
-                                            ...commands,
-                                            `@s bridge:remove_command_id_${commandIdCounter}`
-                                        ]
+                                } 
+                            } 
+                        })
+                        entity = deepMerge(entity, {
+                            component_groups: { 
+                                'bridge:execute_no_command': {
+                                    'minecraft:skin_id': {
+                                        value: 0
                                     },
+                                } 
+                            } 
+                        })
+    
+                        eventObj = deepMerge(eventObj, { add: { component_groups: [`bridge:${executeCommandsGroup}`] } })
+                        entity = deepMerge(entity, { events: {
+                            [`bridge:remove_command_id_${commandIdCounter}`]: {
+                                add: {
+                                    component_groups: ['bridge:execute_no_command'],
+                                },
+                                remove: {
+                                    component_groups: [`bridge:${executeCommandsGroup}`],
+                                },
+                            }
+                        }})
+                        
+                        animationController = deepMerge(animationController, {
+                            animation_controllers: {
+                                [acId]: {
+                                    states: {
+                                        default: {
+                                            transitions: [
+                                                {
+                                                    [executeCommandsGroup]: `query.skin_id == ${commandIdCounter}`,
+                                                },
+                                            ],
+                                        },
+                                        [executeCommandsGroup]: {
+                                            transitions: [
+                                                { default: `query.skin_id != ${commandIdCounter}` },
+                                            ],
+                                            on_entry: [
+                                                ...commands,
+                                                `@s bridge:remove_command_id_${commandIdCounter}`
+                                            ]
+                                        },
+                                    }
                                 }
                             }
-                        }
-                    })
-                } else {
-                    // >= 1.16.100
-                    set(entity, `events/${eventName}/run_command/command`, commands)
+                        })
+                    } else {
+                        // >= 1.16.100
+                        eventObj = deepMerge(eventObj, { run_command: { command: commands } })
+                    }
                 }
-            }
-        }
-
-        return { 'minecraft:entity': entity }
+                
+                }
+            return { 
+                entity: { 'minecraft:entity': entity },
+                event: eventObj
+            }    
     }
 
     const acPath = 'BP/animation_controllers/bridge/execute_commands.json'
@@ -192,15 +217,11 @@ module.exports = () => {
     
                 // Iterate each event and process it
                 for (const event in events) {
-                    const processedEvent = processEvent({
-                        [event]: events[event]
-                    }, formatVersion)
-    
+                    const res = processEvent(events[event], { formatVersion: formatVersion, eventName: event })
+
                     // Merge transformed entity with original
-                    fileContent = deepMerge(fileContent, processedEvent)
-    
-                    // Change old event to new event so custom syntax is removed
-                    fileContent['minecraft:entity'].events[event] = processedEvent['minecraft:entity'].events[event]
+                    fileContent['minecraft:entity'].events[event] = {}
+                    fileContent = deepMerge(fileContent, res)
                 }
 
                 commandIdCounter = 0
