@@ -115,7 +115,6 @@ module.exports = () => {
                         // < 1.16.100
                         commandIdCounter++
     
-                        const acShortName = `bridge_execute_command_${uuid.v4()}`
                         let executeCommandsGroup = `execute_command_id_${commandIdCounter}`
     
                         entity = deepMerge(entity, { description: { animations: { [acShortName]: acId } } })
@@ -196,6 +195,7 @@ module.exports = () => {
     }
     let commandIdCounter = 0
     let acId = `controller.animation.bridge.${uuid.v4()}_execute_commands`
+    const acShortName = `bridge_execute_command_${uuid.v4()}`
 
     return {
         include() {
@@ -231,7 +231,9 @@ module.exports = () => {
             }
         },
         finalizeBuild(filePath, fileContent) {
-            if (filePath === acPath) return JSON.stringify(deepMerge(fileContent, animationController), null, '\t')
+            if (filePath === acPath) {
+                return JSON.stringify(deepMerge(animationController, fileContent), null, '\t')
+            }
         }
     }
 }
