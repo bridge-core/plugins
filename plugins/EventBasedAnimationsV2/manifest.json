@@ -1,7 +1,7 @@
 {
 	"author": "Tschipp",
 	"name": "Event based animations",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"id": "6bf541b1-c9d0-4da3-8335-bba02ba9d0a4",
 	"description": "Adds a component that triggers animations based on events",
 	"api_version": 2,
