@@ -1,0 +1,308 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "{{PROJECT_PREFIX}}:{{IDENTIFIER}}",
+			"properties": {
+				"{{PROJECT_PREFIX}}:open": [
+					false,
+					true
+				],
+				"{{PROJECT_PREFIX}}:face": [
+					0,
+					1,
+					2,
+					3,
+					4,
+					5
+				],
+				"{{PROJECT_PREFIX}}:block_rotation": [
+					2,
+					3,
+					4,
+					5
+				]
+			}
+		},
+		"components": {
+			"minecraft:on_player_placing": {
+				"event": "{{PROJECT_PREFIX}}:update_rotation"
+			},
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "{{PROJECT_PREFIX}}_{{IDENTIFIER}}",
+					"render_method": "opaque",
+					"ambient_occlusion": false,
+					"face_dimming": true
+				}
+			},
+			"minecraft:breathability": "air",
+			"minecraft:block_light_absorption": 0,
+			"minecraft:on_interact": {
+				"event": "inter"
+			},
+			"minecraft:explosion_resistance": 3,
+			"minecraft:destroy_time": 4.5,
+			"minecraft:friction": 1
+		},
+		"events": {
+			"set": {
+				"set_block_property": {
+					"{{PROJECT_PREFIX}}:face": "query.block_face"
+				}
+			},
+			"inter": {
+				"sequence": [
+					{
+						"condition": "query.block_property('{{PROJECT_PREFIX}}:open')==true",
+						"set_block_property": {
+							"{{PROJECT_PREFIX}}:open": false
+						},
+						"run_command": {
+							"command": [
+								"playsound random.door_close @a[r=5]"
+							]
+						}
+					},
+					{
+						"condition": "query.block_property('{{PROJECT_PREFIX}}:open')==false",
+						"set_block_property": {
+							"{{PROJECT_PREFIX}}:open": true
+						},
+						"run_command": {
+							"command": [
+								"playsound random.door_open @a[r=5]"
+							]
+						}
+					}
+				]
+			},
+			"{{PROJECT_PREFIX}}:update_rotation": {
+				"set_block_property": {
+					"{{PROJECT_PREFIX}}:block_rotation": "query.cardinal_facing_2d"
+				},
+				"trigger": "set"
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:face') == 1 && query.block_property('{{PROJECT_PREFIX}}:open') == false",
+				"components": {
+					"minecraft:geometry": "geometry.trapdoor_closed",
+					"minecraft:pick_collision": {
+						"size": [
+							16,
+							3,
+							16
+						]
+					},
+					"minecraft:entity_collision": {
+						"size": [
+							16,
+							3,
+							16
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:face') == 1 && query.block_property('{{PROJECT_PREFIX}}:open') == true",
+				"components": {
+					"minecraft:geometry": "geometry.trapdoor_side_open",
+					"minecraft:pick_collision": {
+						"size": [
+							16,
+							16,
+							3
+						],
+						"origin": [
+							-8,
+							0,
+							5
+						]
+					},
+					"minecraft:entity_collision": {
+						"size": [
+							16,
+							16,
+							3
+						],
+						"origin": [
+							-8,
+							0,
+							5
+						]
+					},
+					"minecraft:explosion_resistance": 3,
+					"minecraft:destroy_time": 4.5,
+					"minecraft:friction": 1,
+					"minecraft:block_light_absorption": 0,
+					"minecraft:flammable": {
+						"burn_odds": 0,
+						"flame_odds": 0
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:face') > 1 && query.block_property('{{PROJECT_PREFIX}}:open') == false",
+				"components": {
+					"minecraft:geometry": "geometry.trapdoor_side",
+					"minecraft:pick_collision": {
+						"size": [
+							16,
+							3,
+							16
+						],
+						"origin": [
+							-8,
+							13,
+							-8
+						]
+					},
+					"minecraft:entity_collision": {
+						"size": [
+							16,
+							3,
+							16
+						],
+						"origin": [
+							-8,
+							13,
+							-8
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:face') > 1 && query.block_property('{{PROJECT_PREFIX}}:open') == true",
+				"components": {
+					"minecraft:geometry": "geometry.trapdoor_side_open",
+					"minecraft:pick_collision": {
+						"size": [
+							16,
+							16,
+							3
+						],
+						"origin": [
+							-8,
+							0,
+							5
+						]
+					},
+					"minecraft:entity_collision": {
+						"size": [
+							16,
+							16,
+							3
+						],
+						"origin": [
+							-8,
+							0,
+							5
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:face') == 0 && query.block_property('{{PROJECT_PREFIX}}:open') == false",
+				"components": {
+					"minecraft:geometry": "geometry.trapdoor_side",
+					"minecraft:pick_collision": {
+						"size": [
+							16,
+							3,
+							16
+						],
+						"origin": [
+							-8,
+							13,
+							-8
+						]
+					},
+					"minecraft:entity_collision": {
+						"size": [
+							16,
+							3,
+							16
+						],
+						"origin": [
+							-8,
+							13,
+							-8
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:face') == 0 && query.block_property('{{PROJECT_PREFIX}}:open') == true",
+				"components": {
+					"minecraft:geometry": "geometry.trapdoor_side_open",
+					"minecraft:pick_collision": {
+						"size": [
+							16,
+							16,
+							3
+						],
+						"origin": [
+							-8,
+							0,
+							5
+						]
+					},
+					"minecraft:entity_collision": {
+						"size": [
+							16,
+							16,
+							3
+						],
+						"origin": [
+							-8,
+							0,
+							5
+						]
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:block_rotation') == 2",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						180,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:block_rotation') == 3",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						0,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:block_rotation') == 4",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						270,
+						0
+					]
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:block_rotation') == 5",
+				"components": {
+					"minecraft:rotation": [
+						0,
+						90,
+						0
+					]
+				}
+			}
+		]
+	}
+}
