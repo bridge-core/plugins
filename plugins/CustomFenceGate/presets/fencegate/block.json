@@ -1,0 +1,215 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "{{PROJECT_PREFIX}}:{{IDENTIFIER}}",
+            "properties": {
+                "{{PROJECT_PREFIX}}:facing": [0, 1, 2, 3],
+                "{{PROJECT_PREFIX}}:open_bit": [0, 1],
+                "{{PROJECT_PREFIX}}:mirror_bit": [0, 1]
+            }
+        },
+        "components": {
+            "minecraft:destroy_time": 2,
+            "minecraft:creative_category": {
+                "group": "itemGroup.name.fenceGate",
+                "category": "construction"
+            },
+            "minecraft:block_light_absorption": 0,
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "{{PROJECT_PREFIX}}_{{IDENTIFIER}}",
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:pick_collision": {
+                "origin": [-8, 0, -2],
+                "size": [16, 16, 4]
+            },
+            "minecraft:on_player_placing": {
+                "event": "{{PROJECT_PREFIX}}:facing",
+                "target": "self"
+            },
+            "minecraft:unwalkable": true,
+            "tag:wood": {}
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 0",
+                "components": {
+					"minecraft:rotation": [
+						0,
+						180,
+						0
+					]
+				}
+            },
+            {
+                "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 1",
+                "components": {
+					"minecraft:rotation": [
+						0,
+						0,
+						0
+					]
+				}
+            },
+            {
+                "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 2",
+                "components": {
+					"minecraft:rotation": [
+						0,
+						-90,
+						0
+					]
+				}
+            },
+            {
+                "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 3",
+                "components": {
+					"minecraft:rotation": [
+						0,
+						90,
+						0
+					]
+				}
+            },
+            {
+                "condition": "query.block_property('{{PROJECT_PREFIX}}:open_bit') == 0",
+                "components": {
+                    "minecraft:geometry": "geometry.fence_gate",
+                    "minecraft:on_interact": {
+                        "event": "{{PROJECT_PREFIX}}:open",
+                        "target": "self"
+                    },
+                    "minecraft:entity_collision": {
+                        "origin": [-8, 0, -2],
+                        "size": [16, 16, 4]
+                    }
+                }
+            },
+            {
+                "condition": "query.block_property('{{PROJECT_PREFIX}}:open_bit') == 1 && query.block_property('{{PROJECT_PREFIX}}:mirror_bit') == 0",
+                "components": {
+                    "minecraft:geometry": "geometry.fence_gate_open_mirror",
+                    "minecraft:on_interact": {
+                        "event": "{{PROJECT_PREFIX}}:close",
+                        "target": "self"
+                    },
+                    "minecraft:entity_collision": false
+                }
+            },
+            {
+                "condition": "query.block_property('{{PROJECT_PREFIX}}:open_bit') == 1 && query.block_property('{{PROJECT_PREFIX}}:mirror_bit') == 1",
+                "components": {
+                    "minecraft:geometry": "geometry.fence_gate_open",
+                    "minecraft:on_interact": {
+                        "event": "{{PROJECT_PREFIX}}:close",
+                        "target": "self"
+                    },
+                    "minecraft:entity_collision": false
+                }
+            }
+        ],
+        "events": {
+            "{{PROJECT_PREFIX}}:facing": {
+                "set_block_property": {
+                    "{{PROJECT_PREFIX}}:facing": "query.cardinal_facing_2d-2"
+                }
+            },
+            "{{PROJECT_PREFIX}}:open": {
+                "sequence": [
+                    {
+                        "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 0 && query.block_face == 2",
+                        "set_block_property": {
+                            "{{PROJECT_PREFIX}}:open_bit": "1",
+                            "{{PROJECT_PREFIX}}:mirror_bit": "0"
+                        },
+                        "run_command": {
+                            "command": ["playsound random.door_open @a ~ ~ ~ "]
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 0 && query.block_face != 2",
+                        "set_block_property": {
+                            "{{PROJECT_PREFIX}}:open_bit": "1",
+                            "{{PROJECT_PREFIX}}:mirror_bit": "1"
+                        },
+                        "run_command": {
+                            "command": ["playsound random.door_open @a ~ ~ ~ "]
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 1 && query.block_face == 3",
+                        "set_block_property": {
+                            "{{PROJECT_PREFIX}}:open_bit": "1",
+                            "{{PROJECT_PREFIX}}:mirror_bit": "0"
+                        },
+                        "run_command": {
+                            "command": ["playsound random.door_open @a ~ ~ ~ "]
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 1 && query.block_face != 3",
+                        "set_block_property": {
+                            "{{PROJECT_PREFIX}}:open_bit": "1",
+                            "{{PROJECT_PREFIX}}:mirror_bit": "1"
+                        },
+                        "run_command": {
+                            "command": ["playsound random.door_open @a ~ ~ ~ "]
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 2 && query.block_face == 4",
+                        "set_block_property": {
+                            "{{PROJECT_PREFIX}}:open_bit": "1",
+                            "{{PROJECT_PREFIX}}:mirror_bit": "0"
+                        },
+                        "run_command": {
+                            "command": ["playsound random.door_open @a ~ ~ ~ "]
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 2 && query.block_face != 4",
+                        "set_block_property": {
+                            "{{PROJECT_PREFIX}}:open_bit": "1",
+                            "{{PROJECT_PREFIX}}:mirror_bit": "1"
+                        },
+                        "run_command": {
+                            "command": ["playsound random.door_open @a ~ ~ ~ "]
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 3 && query.block_face == 5",
+                        "set_block_property": {
+                            "{{PROJECT_PREFIX}}:open_bit": "1",
+                            "{{PROJECT_PREFIX}}:mirror_bit": "0"
+                        },
+                        "run_command": {
+                            "command": ["playsound random.door_open @a ~ ~ ~ "]
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('{{PROJECT_PREFIX}}:facing') == 3 && query.block_face != 5",
+                        "set_block_property": {
+                            "{{PROJECT_PREFIX}}:open_bit": "1",
+                            "{{PROJECT_PREFIX}}:mirror_bit": "1"
+                        },
+                        "run_command": {
+                            "command": ["playsound random.door_open @a ~ ~ ~ "]
+                        }
+                    }
+                ]
+            },
+            "{{PROJECT_PREFIX}}:close": {
+                "set_block_property": {
+                    "{{PROJECT_PREFIX}}:open_bit": "0",
+                    "{{PROJECT_PREFIX}}:mirror_bit": "0"
+                },
+                "run_command": {
+                    "command": ["playsound random.door_close @a ~ ~ ~ "]
+                }
+            }
+        }
+    }
+}
