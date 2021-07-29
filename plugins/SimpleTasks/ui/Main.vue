@@ -77,12 +77,8 @@
 <script>
 const { readJSON, writeJSON } = await require('@bridge/fs')
 const { join } = await require('@bridge/path')
-const {
-	getCurrentProject,
-	getCurrentBP,
-	getProjectAuthor,
-	APP_VERSION,
-} = await require('@bridge/env')
+const { getCurrentProject, getCurrentBP, getProjectAuthor, APP_VERSION } =
+	await require('@bridge/env')
 const { createWindow } = await require('@bridge/windows')
 const { InputWindow } = await require('@bridge/ui')
 const { compare } = await require('@bridge/compare-versions')
@@ -90,7 +86,7 @@ const { compare } = await require('@bridge/compare-versions')
 const isV2 = compare(APP_VERSION, '2.0.0', '>=')
 
 let taskSavePath
-if (isV2) taskSavePath = join(getCurrentProject(), 'bridge/tasks.json')
+if (isV2) taskSavePath = join(getCurrentProject(), '.bridge/tasks.json')
 else taskSavePath = join(getCurrentBP(), 'bridge/tasks.json')
 
 export default {
