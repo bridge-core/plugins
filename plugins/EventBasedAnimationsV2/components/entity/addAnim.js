@@ -5,6 +5,7 @@ export default function defineComponent({ name, template, schema }) {
             anims: {
                 type: 'array',
                 items: {
+                    type: 'object',
                     properties: {
                         name: {
                             description: "Animation to trigger (currently unused)",
@@ -17,6 +18,10 @@ export default function defineComponent({ name, template, schema }) {
                         trigger_event: {
                             description: "Event that triggers the animation",
                             $ref: "/data/packages/minecraftBedrock/schema/entity/dynamic/eventEnum.json"
+                        },
+                        force_stop: {
+                            description: "If all animations should be force stopped after the time has elapsed. Defaults to true.",
+                            type: 'boolean'
                         },
                         timeline: {
                             description: "OPTIONAL timeline that will be used for the server-side animation",
@@ -135,7 +140,11 @@ export default function defineComponent({ name, template, schema }) {
             )
 
             animTransitions.push({ [`animation_${i + offset}`]: `query.mark_variant == ${i + offset}` })
-            animobj = Object.assign(animobj, {
+
+            if (anim.force_stop == undefined)
+                anim.force_stop = true
+
+            animobj = Object.assign(animobj, anim.force_stop ? {
                 [`animation_${i + offset}`]: {
                     "animations": [
                         animNames[i]
@@ -149,14 +158,26 @@ export default function defineComponent({ name, template, schema }) {
                         }
                     ]
                 }
-            })
+            } :
+                {
+                    [`animation_${i + offset}`]: {
+                        "animations": [
+                            animNames[i]
+                        ],
+                        "transitions": [
+                            {
+                                "default": "query.any_animation_finished"
+                            }
+                        ]
+                    }
+                })
 
             create(
                 {
                     [anim.trigger_event]: {
                         "add": {
                             "component_groups": [
-                                "bridge:event_animation_" + (i + 1)
+                                `bridge:event_animation_${i + offset}`
                             ]
                         }
                     }
