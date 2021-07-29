@@ -1,0 +1,140 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:block": {
+		"description": {
+			"identifier": "{{PROJECT_PREFIX}}:{{IDENTIFIER}}",
+			"properties": {
+				"{{PROJECT_PREFIX}}:slab": [
+					0,
+					1,
+					2
+				]
+			}
+		},
+		"components": {
+			"minecraft:creative_category": {
+                "group": "itemGroup.name.slab",
+                "category": "construction"
+            },
+			"minecraft:destroy_time": 0.5,
+			"minecraft:on_player_placing": {
+				"event": "{{PROJECT_PREFIX}}:up",
+				"target": "self",
+				"condition": "query.target_x_rotation <= 0"
+			}
+		},
+		"permutations": [
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:slab') == 0",
+				"components": {
+					"minecraft:geometry": "geometry.slab_down",
+					"minecraft:block_light_absorption": 0,
+					"minecraft:on_interact": {
+						"event": "{{PROJECT_PREFIX}}:block",
+						"target": "self",
+						"condition": "query.get_equipped_item_name('main_hand') == '{{IDENTIFIER}}' && query.block_face == 1"
+					},
+					"minecraft:entity_collision": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					},
+					"minecraft:pick_collision": {
+						"origin": [
+							-8,
+							0,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					},
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "{{PROJECT_PREFIX}}_{{IDENTIFIER}}",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:slab') == 1",
+				"components": {
+					"minecraft:geometry": "geometry.slab_up",
+					"minecraft:block_light_absorption": 0,
+					"minecraft:on_interact": {
+						"event": "{{PROJECT_PREFIX}}:block",
+						"target": "self",
+						"condition": "query.get_equipped_item_name('main_hand') == '{{IDENTIFIER}}' && query.block_face == 0"
+					},
+					"minecraft:entity_collision": {
+						"origin": [
+							-8,
+							8,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					},
+					"minecraft:pick_collision": {
+						"origin": [
+							-8,
+							8,
+							-8
+						],
+						"size": [
+							16,
+							8,
+							16
+						]
+					},
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "{{PROJECT_PREFIX}}_{{IDENTIFIER}}",
+							"render_method": "alpha_test"
+						}
+					}
+				}
+			},
+			{
+				"condition": "query.block_property('{{PROJECT_PREFIX}}:slab') == 2",
+				"components": {
+					"minecraft:unit_cube": {},
+					"minecraft:loot": "loot_tables/blocks/{{IDENTIFIER}}_double.json",
+					"minecraft:block_light_absorption": 15,
+					"minecraft:material_instances": {
+						"*": {
+							"texture": "{{PROJECT_PREFIX}}_{{IDENTIFIER}}",
+							"render_method": "opaque"
+						}
+					}
+				}
+			}
+		],
+		"events": {
+			"{{PROJECT_PREFIX}}:block": {
+				"set_block_property": {
+					"{{PROJECT_PREFIX}}:slab": 2
+				},
+				"decrement_stack": {}
+			},
+			"{{PROJECT_PREFIX}}:up": {
+				"set_block_property": {
+					"{{PROJECT_PREFIX}}:slab": 1
+				}
+			}
+		}
+	}
+}
