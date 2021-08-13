@@ -1,0 +1,38 @@
+{
+	"name": "Snippet: Standard Entity",
+	"description": "Standard entity components like health, hitbox and physics",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+		"minecraft:entity/component_groups/*"
+	],
+	"data": {
+		"minecraft:health": {
+			"value": 20,
+			"max": 20
+		},
+		"minecraft:collision_box": {
+			"width": 1,
+			"height": 1
+		},
+		"minecraft:physics": {},
+		"minecraft:pushable": {
+			"is_pushable": true,
+			"is_pushable_by_piston": true
+		},
+		"minecraft:hurt_on_condition": {
+			"damage_conditions": [
+				{
+					"filters": {
+						"test": "in_lava",
+						"subject": "self",
+						"operator": "==",
+						"value": true
+					},
+					"cause": "lava",
+					"damage_per_tick": 4
+				}
+			]
+		}
+	}
+}

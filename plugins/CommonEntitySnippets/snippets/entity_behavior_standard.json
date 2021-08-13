@@ -1,0 +1,20 @@
+{
+	"name": "Snippet: Standard Entity Behavior",
+	"description": "Behaviors like random walk, look",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+		"minecraft:entity/component_groups/*"
+	],
+	"data": {
+		"minecraft:behavior.random_stroll": {
+			"priority": 5
+		},
+		"minecraft:behavior.look_at_player": {
+			"priority": 5
+		},
+		"minecraft:behavior.random_look_around": {
+			"priority": 6
+		}
+	}
+}
