@@ -6,10 +6,9 @@
 	"description": "Adds a component that triggers animations based on events",
 	"api_version": 2,
 	"target": "v2",
-	"tags": [
-		"Component"
-	],
-	"install" : {
-		"components/entity" : "BP/components/entity/bridge/"
-	}
+	"tags": ["Component"],
+	"install": {
+		"components/entity": "BP/components/entity/bridge/"
+	},
+	"releaseTimestamp": 1624356536597
 }
