@@ -1,9 +1,9 @@
 {
 	"author": "Chikorita-Lover",
 	"name": "Desert Theme",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"id": "ea349bf3-628e-4c8f-924a-157a968cc320",
-	"description": "Adds a desert-inspired theme to select inside the settings window",
+	"description": "Adds a new desert-inspired color theme to select inside the settings window.",
 	"target": "v2",
 	"tags": [
 		"Curated",

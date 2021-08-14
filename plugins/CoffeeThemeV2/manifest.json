@@ -1,0 +1,11 @@
+{
+  "author": "Chikorita-Lover",
+  "version": "1.0.0",
+  "name": "Coffee Theme",
+  "description": "Adds a new coffee-inspired color theme to select inside the settings window.",
+  "id": "8a680a41-ac94-4441-a6db-d3a5dcdc0b99",
+  "target": "v2",
+  "tags": [
+    "Theme"
+  ]
+}
