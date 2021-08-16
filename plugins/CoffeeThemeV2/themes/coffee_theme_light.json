@@ -1,0 +1,54 @@
+{
+  "id": "chikorita_lover.coffee.theme",
+  "name": "Coffee",
+  "colorScheme": "light",
+  "colors": {
+    "primary": "#875136",
+    "secondary": "#875136",
+    "accent": "#875136",
+    "error": "#FF5252",
+    "info": "#2196F3",
+    "success": "#4CAF50",
+    "warning": "#FB8C00",
+    "background": "#E0E0E0",
+    "sidebarNavigation": "#E5E5E5",
+    "expandedSidebar": "#E5E5E5",
+    "menu": "#E5E5E5",
+    "toolbar": "#C4C4C4",
+    "footer": "#C4C4C4",
+    "tooltip": "#424242",
+    "defaultButton": "#875136"
+  },
+  "highlighter": {
+    "property": {
+      "color": "black"
+    },
+    "keyword": {
+      "color": "#562407"
+    },
+    "definition": {
+      "color": "#CA5A19"
+    },
+    "atom": {
+      "color": "#CA5A19"
+    },
+    "number": {
+      "color": "#116644"
+    },
+    "string": {
+      "color": "#116644"
+    },
+    "variable": {
+      "color": "black"
+    },
+    "variableStrong": {
+      "color": "black"
+    },
+    "meta": {
+      "color": "#CA5A19"
+    },
+    "comment": {
+      "color": "#0080FF"
+    }
+  }
+}

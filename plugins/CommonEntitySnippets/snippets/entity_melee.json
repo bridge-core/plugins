@@ -1,0 +1,43 @@
+{
+	"name": "Snippet: Melee Entity",
+	"description": "Components that allow the entity to perform a simple melee attack against the player",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+		"minecraft:entity/component_groups/*"
+	],
+	"data": {
+		"minecraft:attack": {
+			"damage": 4
+		},
+		"minecraft:behavior.melee_attack": {
+			"priority": 2,
+			"speed_multiplier": 1,
+			"track_target": false
+		},
+		"minecraft:behavior.hurt_by_target": {
+			"priority": 1
+		},
+		"minecraft:behavior.nearest_attackable_target": {
+			"priority": 2,
+			"within_radius": 20,
+			"reselect_targets": true,
+			"entity_types": [
+				{
+					"filters": {
+						"any_of": [
+							{
+								"test": "is_family",
+								"subject": "other",
+								"value": "player"
+							}
+						]
+					},
+					"max_dist": 20
+				}
+			],
+			"must_see": true,
+			"must_see_forget_duration": 17.0
+		}
+	}
+}
