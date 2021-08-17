@@ -1,0 +1,14 @@
+{
+	"author": "SineVector241",
+	"icon": "mdi-palette",
+	"id": "24672c87-efcb-4d3c-9da1-357cbdaa0e4d",
+	"version": "1.0.0",
+	"name": "Custom Theme Editor",
+	"target": "v2",
+	"description": "Customize your own theme for bridge",
+	"api_version": 2,
+	"tags": [
+		"Utility",
+		"Theme"
+	]
+}
