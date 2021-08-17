@@ -5,7 +5,7 @@
 	"version": "1.0.0",
 	"name": "Custom Theme Editor",
 	"target": "v2",
-	"description": "Able to customize the theme you want for bridge",
+	"description": "Customize your own theme for bridge",
 	"api_version": 2,
 	"tags": [
 		"Utility",
