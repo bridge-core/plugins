@@ -1,0 +1,48 @@
+{
+  "name": "Moonlight Light",
+  "id": "frederox.moonlight_light",
+  "colorScheme": "dark",
+  "colors": {
+    "background": "#191F2E",
+    "sidebarNavigation": "#101320",
+    "expandedSidebar": "#101320",
+    "toolbar": "#101320",
+    "footer": "#101320",
+    "primary": "#7289DA",
+    "secondary": "#7289DA",
+    "accent": "#7289DA",
+    "tabActive": "#262B41",
+    "tabInactive": "#1E2233",
+    "sidebarSelection": "#262B41",
+    "lineHighlightBackground": "#262B41",
+    "tooltip": "#7289DA",
+    "behaviorPack": "#ff757f",
+    "resourcePack": "#82e2fa"
+  },
+  "highlighter": {
+    "string": {
+      "color": "#7af8ca"
+    },
+    "number": {
+      "color": "#ff9668"
+    },
+    "comment": {
+      "color": "#7e8eda"
+    },
+    "type": {
+      "color": "#c7f59b"
+    },
+    "definition": {
+      "color": "#c7f59b"
+    },
+    "atom": {
+      "color": "#ff8a8a"
+    },
+    "keyword": {
+      "color": "#baacff"
+    },
+    "variable": {
+      "color": "#34d3fb"
+    }
+  }
+}
