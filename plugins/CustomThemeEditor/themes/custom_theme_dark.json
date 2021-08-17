@@ -1,0 +1,15 @@
+{
+	"id": "sinevector.custom_theme.dark",
+	"name": "Custom Theme",
+	"colorScheme": "dark",
+	"colors": {
+		"primary": "#1778D2",
+		"accent": "#1778D2",
+		"background": "#121212",
+		"sidebarNavigation": "#1F1F1F",
+		"expandedSidebar": "#1F1F1F",
+		"menu": "#1F1F1F",
+		"toolbar": "#000000",
+		"tooltip": "#1F1F1F"
+	}
+}
