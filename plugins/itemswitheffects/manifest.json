@@ -1,0 +1,14 @@
+{
+	"author": "PoisonF5god",
+	"version": "1.0.1",
+	"name": "ItemsWithEffectsPreset",
+	"description": "adds presets for items that give off Mob Effects.",
+	"id": "4edf8fd3-45b5-424d-a433-0ea561ce63d0",
+	"target": "v2",
+	"api_version": 2,
+	"tags": [
+		"Presets"
+	],
+	"releaseTimestamp": 1629275609990
+}
+
