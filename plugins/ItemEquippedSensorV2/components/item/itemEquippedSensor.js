@@ -71,7 +71,7 @@ export default function defineComponent({ name, template, schema }) {
 			)
 
 			player.animationController({
-				default_state: 'not_equipped',
+				initial_state: 'not_equipped',
 				states: {
 					not_equipped: {
 						transitions: [
