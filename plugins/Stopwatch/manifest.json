@@ -6,7 +6,8 @@
 	"id": "bc763735-3219-4788-a0a3-f17e1550cb7b",
 	"description": "A simple stopwatch",
 	"tags": [
-		"Utility"
+		"Utility",
+		"Curated"
 	],
 	"target": "v2",
 	"icon": "mdi-timer",
