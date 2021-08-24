@@ -29,9 +29,8 @@
 <script>
 const {readJSON, writeJSON} = await require('@bridge/fs')
 const {join} = await require('@bridge/path')
-const {getCurrentProject} = await require('@bridge/env')
 
-let filePath = join(getCurrentProject(), '.bridge/stopwatch.json')
+let filePath = 'data/stopwatch.json'
 
 export default {
   async mounted() {
