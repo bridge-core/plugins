@@ -4,6 +4,6 @@ const { Main } = await require('@bridge/ui')
 const sidebar = create({
     id: 'pascal.stopwatch.sidebar',
     icon: 'mdi-timer',
-    displayName: 'Stopwatch',
+    displayName: '[Stopwatch]',
     component: Main,
 })
