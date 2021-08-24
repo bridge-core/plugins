@@ -3,7 +3,6 @@
   "id": "frederox.moonlight_dark",
   "colorScheme": "dark",
   "colors": {
-    "menu": "#262B41",
     "background": "#191F2E",
     "sidebarNavigation": "#101320",
     "expandedSidebar": "#101320",
@@ -16,9 +15,11 @@
     "tabInactive": "#1E2233",
     "sidebarSelection": "#262B41",
     "lineHighlightBackground": "#262B41",
+    "menu": "#262B41",
     "tooltip": "#7289DA",
     "behaviorPack": "#ff757f",
-    "resourcePack": "#82e2fa"
+    "resourcePack": "#82e2fa",
+    "scrollbarThumb": "#262B41"
   },
   "highlighter": {
     "string": {
