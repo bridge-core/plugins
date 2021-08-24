@@ -1,7 +1,7 @@
 {
   "name": "Moonlight Light",
   "id": "frederox.moonlight_light",
-  "colorScheme": "dark",
+  "colorScheme": "light",
   "colors": {
     "background": "#191F2E",
     "sidebarNavigation": "#101320",
