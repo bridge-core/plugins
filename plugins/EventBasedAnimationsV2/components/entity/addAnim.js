@@ -8,8 +8,8 @@ export default function defineComponent({ name, template, schema }) {
                     type: 'object',
                     properties: {
                         name: {
-                            description: "Animation to trigger (currently unused)",
-                            $ref: '/data/packages/minecraftBedrock/schema/general/reference/clientAnimation.json'
+                            description: "Animation to trigger",
+                            $ref: '/data/packages/minecraftBedrock/schema/clientEntity/dynamic/animationReferenceEnum.json'
                         },
                         length: {
                             description: "Length of the animation in seconds",
@@ -17,10 +17,14 @@ export default function defineComponent({ name, template, schema }) {
                         },
                         trigger_event: {
                             description: "Event that triggers the animation",
-                            $ref: "/data/packages/minecraftBedrock/schema/entity/dynamic/eventEnum.json"
+                            $ref: "../dynamic/currentContext/eventEnum.json"
                         },
                         force_stop: {
                             description: "If all animations should be force stopped after the time has elapsed. Defaults to true.",
+                            type: 'boolean'
+                        },
+                        use_playanimation: {
+                            description: "Set to true if the client animation should be automatically triggered with /playanimation. Defaults to false",
                             type: 'boolean'
                         },
                         timeline: {
@@ -144,33 +148,23 @@ export default function defineComponent({ name, template, schema }) {
             if (anim.force_stop == undefined)
                 anim.force_stop = true
 
-            animobj = Object.assign(animobj, anim.force_stop ? {
+            if (anim.use_playanimation == undefined)
+                anim.use_playanimation = false
+
+            animobj = Object.assign(animobj, {
                 [`animation_${i + offset}`]: {
                     "animations": [
                         animNames[i]
                     ],
-                    "on_exit": [
-                        "@s bridge:stop_all_animations"
-                    ],
+                    "on_entry": (anim.use_playanimation ? ["/playanimation @s " + anim.name] : undefined),
+                    "on_exit": (anim.force_stop ? ["@s bridge:stop_all_animations"] : undefined),
                     "transitions": [
                         {
                             "default": "query.any_animation_finished"
                         }
                     ]
                 }
-            } :
-                {
-                    [`animation_${i + offset}`]: {
-                        "animations": [
-                            animNames[i]
-                        ],
-                        "transitions": [
-                            {
-                                "default": "query.any_animation_finished"
-                            }
-                        ]
-                    }
-                })
+            })
 
             create(
                 {
