@@ -2,6 +2,7 @@
 	"author": "Drako hyena#3238",
 	"name": "Violet Magic",
 	"version": "2.0.0",
+	"icon": "mdi-palette",
 	"id": "e45a4c14-473f-4c8d-af9b-4345929a4298",
 	"description": "Adds a nice looking theme to bridge (dark mode only)",
 	"target": "v2",
