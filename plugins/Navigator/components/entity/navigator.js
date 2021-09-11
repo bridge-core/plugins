@@ -17,6 +17,10 @@ export default defineComponent(({ name, template, schema }) => {
 							$ref: "../dynamic/currentContext/eventEnum.json",
 							description: "Event that starts the entity's pathing"
 						},
+						stop_event: {
+							$ref: "../dynamic/currentContext/eventEnum.json",
+							description: "Event that stops this path"
+						},
 						speed_multiplier: {
 							type: "number",
 							description: "Speed multiplier while pathing"
@@ -212,6 +216,21 @@ export default defineComponent(({ name, template, schema }) => {
 					},
 					'minecraft:entity/events'
 				)
+
+				if (path.stop_event) {
+					create(
+						{
+							[path.stop_event]: {
+								"remove": {
+									"component_groups": [
+										`bridge:path_${i}_${j}`
+									]
+								}
+							}
+						},
+						'minecraft:entity/events'
+					)
+				}
 			})
 
 			create(
