@@ -9,7 +9,8 @@
 	"tags": [
 		"Component"
 	],
-	"install" : {
-		"components/entity" : "BP/components/entity/bridge/"
-	}
+	"install": {
+		"components/entity": "BP/components/entity/bridge/"
+	},
+	"releaseTimestamp": 1631354917412
 }
