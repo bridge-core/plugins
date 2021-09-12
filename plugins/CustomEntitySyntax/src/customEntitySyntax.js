@@ -52,16 +52,16 @@ module.exports = () => {
             return entity
         } else if (eventObj) {
                 // Sequence/Randomize support
-                if (eventObj.sequence) {
+                if (eventObj.sequence && Array.isArray(eventObj.sequence)) {
                     let sequencedEvents = []
                     for (const entry of eventObj.sequence) {
                         const nestedRes = processEvent(entry, { formatVersion: opts.formatVersion })
-                        entity = deepMerge(entity, nestedRes.entity)
+                        entity = deepMerge(entity, nestedRes.entity['minecraft:entity'])
                         sequencedEvents.push(nestedRes.event)
                     }
                     eventObj.sequence = sequencedEvents
                 } 
-                if (eventObj.randomize) {
+                if (eventObj.randomize && Array.isArray(eventObj.randomize)) {
                     let randomizedEvents = []
                     for (const entry of eventObj.randomize) {
                         const nestedRes = processEvent(entry, { formatVersion: opts.formatVersion })
@@ -69,7 +69,6 @@ module.exports = () => {
                         randomizedEvents.push(nestedRes.event)
                     }
                     eventObj.randomize = randomizedEvents
-                    console.log(randomizedEvents)
                 }
 
                 // Spell effects
@@ -201,15 +200,12 @@ module.exports = () => {
         include() {
             return [acPath]
         },
-
         require(filePath) {
             if (filePath == acPath) return ['BP/entities/**/*.json', 'BP/entities/*.json']
         },
-
         read(filePath) {
             if (filePath === acPath) return {}
         },
-
         transform(filePath, fileContent) {
             if (filePath.startsWith('BP/entities')) {
                 const events = fileContent['minecraft:entity']?.events
@@ -228,12 +224,10 @@ module.exports = () => {
                 acId = `controller.animation.bridge.${uuid.v4()}_execute_commands`
                 
                 return fileContent
+            } else if (filePath === acPath) {
+                const data = deepMerge(animationController, fileContent)
+                return data
             }
         },
-        finalizeBuild(filePath, fileContent) {
-            if (filePath === acPath) {
-                return JSON.stringify(deepMerge(animationController, fileContent), null, '\t')
-            }
-        }
     }
 }
