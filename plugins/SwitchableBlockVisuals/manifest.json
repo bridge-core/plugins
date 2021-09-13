@@ -6,8 +6,11 @@
 	"description": "Adds a component that allows for switching between multiple block geometries & textures simultaneously.",
 	"api_version": 2,
 	"target": "v2",
-	"tags": [ "Component" ],
+	"tags": [
+		"Component"
+	],
 	"install": {
 		"components/block": "BP/components/block/bridge/"
-	}
+	},
+	"releaseTimestamp": 1631525067324
 }
