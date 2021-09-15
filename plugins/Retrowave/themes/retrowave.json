@@ -1,0 +1,58 @@
+{
+	"name": "Retrowave",
+	"id": "arexon.retrowave",
+	"colorScheme": "dark",
+	"colors": {
+		"primary": "#9a42d8",
+		"secondary": "#ff0000",
+		"accent": "#985ce3",
+		"error": "#bb3259",
+		"info": "#33cd86",
+		"success": "#33cd86",
+		"warning": "#e08d3b",
+		"background": "#2a1e30",
+		"sidebarNavigation": "#1e1628",
+		"expandedSidebar": "#1e1628",
+		"sidebarSelection": "#190c1f",
+		"menu": "#753c76",
+		"toolbar": "#180a1e",
+		"footer": "#1e1628",
+		"tooltip": "#0b0110",
+		"tabActive": "#1e1628",
+		"tabInactive": "#2a1e30",
+		"lineHighlightBackground": "#1f142c",
+		"scrollbarThumb": "#1e1628",
+		"behaviorPack": "#b64e90",
+		"resourcePack": "#6a24cd",
+		"skinPack": "#47bfb7",
+		"worldTemplate": "#cac838"
+	},
+	"highlighter": {
+		"type": {
+			"color": "#ffa751"
+		},
+		"keyword": {
+			"color": "#4a9fff",
+			"textDecoration": "italic"
+		},
+		"definition": {
+			"color": "#de4d76"
+		},
+		"atom": {
+			"color": "#4ddede"
+		},
+		"number": {
+			"color": "#de4ddd"
+		},
+		"string": {
+			"color": "#4affbf"
+		},
+		"variable": {
+			"color": "#ac69ff"
+		},
+		"comment": {
+			"color": "#9a54be",
+			"textDecoration": "italic"
+		}
+	}
+}
