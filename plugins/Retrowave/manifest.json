@@ -7,5 +7,8 @@
 	"icon": "mdi-sawtooth-wave",
 	"api_version": 2,
 	"target": "v2",
-	"tags": [ "Theme" ]
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1631732772151
 }
