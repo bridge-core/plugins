@@ -1,0 +1,20 @@
+{
+	"name": "Plentiful Snippets: Optional Entity Components",
+	"description": "Generates optional components for a entity.",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+        "minecraft:entity/component_groups/*"
+	],
+    "data": {
+        "minecraft:leashable": {},
+        "minecraft:nameable": {},
+        "minecraft:balloonable": {},
+        "minecraft:type_family": {
+            "family": [
+                "mob"
+            ]
+        },
+        "minecraft:pushable": {}
+    }
+}
