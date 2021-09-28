@@ -7,8 +7,11 @@
 	"description": "Easily make your block connect with neighboring blocks by using part_visibity or geometries.",
 	"api_version": 2,
 	"target": "v2",
-	"tags": [ "Component" ],
+	"tags": [
+		"Component"
+	],
 	"install": {
 		"components/block": "BP/components/block/bridge/"
-	}
+	},
+	"releaseTimestamp": 1632821021507
 }
