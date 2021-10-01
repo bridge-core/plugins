@@ -9,11 +9,11 @@ export default defineComponent(({ name, template, schema }) => {
 		],
 		properties: {
 			tag: {
-				description: 'The neighbor block tag.',
+				description: 'The neighbor block tag which the component will test.',
 				type: 'string'
 			},
 			directions: {
-				description: 'Outlines which directions can be connected to.',
+				description: 'Specifies which direction the component will use & create block properties for.',
 				type: 'array',
 				items: {
 					type: 'string',
@@ -21,7 +21,7 @@ export default defineComponent(({ name, template, schema }) => {
 				}
 			},
 			parts: {
-				description: 'part_visiblity method | Defines when to hide specific parts of the geometry. Not compatible with the "geometries" method.',
+				description: 'The part_visiblity method | Defines when to hide specific parts of the geometry. Not compatible with the "geometries" method.',
 				type: 'object',
 				additionalProperties: false,
 				patternProperties: {
@@ -32,7 +32,7 @@ export default defineComponent(({ name, template, schema }) => {
 				}
 			},
 			geometries: {
-				description: 'geometries method | Defines a list of geometries and when to hide each one. Not compatible with the "part_visiblity" method.',
+				description: 'The geometries method | Defines a list of geometries and when to hide each one. Not compatible with the "part_visiblity" method.',
 				type: 'array',
 				items: {
 					type: 'object',
@@ -42,7 +42,7 @@ export default defineComponent(({ name, template, schema }) => {
 							type: 'string'
 						},
 						directions: {
-							description: 'When to show the geometry. Multiple directions can be passed.',
+							description: 'Specifies when to show the geometry. Multiple directions can be passed.',
 							type: 'array',
 							items: { enum: [ 'north', 'east', 'south', 'west', 'up', 'down' ] }
 						}
@@ -82,6 +82,7 @@ export default defineComponent(({ name, template, schema }) => {
 				)
 			}
 		}
+
 		if (geometries) {
 			create(
 				{
