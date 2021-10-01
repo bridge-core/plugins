@@ -52,6 +52,9 @@ export default defineComponent(({ name, template, schema }) => {
 							description: 'Specifies when to show the geometry. Multiple directions can be passed.',
 							type: 'array',
 							items: { enum: [ 'north', 'east', 'south', 'west', 'up', 'down' ] }
+						},
+						material_instances: {
+							$ref: '/data/packages/minecraftBedrock/schema/block/v1.16.100/components/material_instances.json'
 						}
 					}
 				}
@@ -104,7 +107,8 @@ export default defineComponent(({ name, template, schema }) => {
 							condition: `${geo.directions.map((dir: string) => `q.block_property('bridge:${dir}_neighbor')`).join('&&')}`
 						}),
 						components: {
-							'minecraft:geometry': geo.name
+							'minecraft:geometry': geo.name,
+							'minecraft:material_instances': geo.material_instances
 						}
 					}))
 				},
