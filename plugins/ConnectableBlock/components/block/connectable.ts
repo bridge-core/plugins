@@ -9,11 +9,11 @@ export default defineComponent(({ name, template, schema }) => {
 		],
 		properties: {
 			tag: {
-				description: 'The neighbor block tag.',
+				description: 'The neighbor block tag which the component will test.',
 				type: 'string'
 			},
 			directions: {
-				description: 'Outlines which directions can be connected to.',
+				description: 'Specifies which direction the component will use & create block properties for.',
 				type: 'array',
 				items: {
 					type: 'string',
@@ -21,18 +21,25 @@ export default defineComponent(({ name, template, schema }) => {
 				}
 			},
 			parts: {
-				description: 'part_visiblity method | Defines when to hide specific parts of the geometry. Not compatible with the "geometries" method.',
-				type: 'object',
-				additionalProperties: false,
-				patternProperties: {
-					'^[a-z0-9_-]+$': {
-						description: 'Bone name.',
-						enum: [ 'north', 'east', 'south', 'west', 'up', 'down' ]
+				description: 'The part_visiblity method | Defines when to hide specific parts of the geometry. Not compatible with the "geometries" method.',
+				type: 'array',
+				items: {
+					type: 'object',
+					properties: {
+						name: {
+							description: 'Name of the bone.',
+							type: 'string'
+						},
+						directions: {
+							description: 'Specifies when to show the part. Multiple directions can be passed.',
+							type: 'array',
+							items: { enum: [ 'north', 'east', 'south', 'west', 'up', 'down' ] }
+						}
 					}
 				}
 			},
 			geometries: {
-				description: 'geometries method | Defines a list of geometries and when to hide each one. Not compatible with the "part_visiblity" method.',
+				description: 'The geometries method | Defines a list of geometries and when to hide each one. Not compatible with the "part_visiblity" method.',
 				type: 'array',
 				items: {
 					type: 'object',
@@ -42,9 +49,12 @@ export default defineComponent(({ name, template, schema }) => {
 							type: 'string'
 						},
 						directions: {
-							description: 'When to show the geometry. Multiple directions can be passed.',
+							description: 'Specifies when to show the geometry. Multiple directions can be passed.',
 							type: 'array',
 							items: { enum: [ 'north', 'east', 'south', 'west', 'up', 'down' ] }
+						},
+						material_instances: {
+							$ref: '/data/packages/minecraftBedrock/schema/block/v1.16.100/components/material_instances.json'
 						}
 					}
 				}
@@ -52,7 +62,7 @@ export default defineComponent(({ name, template, schema }) => {
 		}
 	})
 
-	template(({ tag, directions, parts = {}, geometries = [] }:{ tag: string, directions: string[], parts: any, geometries: any }, { create, identifier }) => {
+	template(({ tag, directions, parts = [], geometries = [] }:{ tag: string, directions: string[], parts: any, geometries: any }, { create }) => {
 
 		const positions = new Map([
 			[ 'north', [ 0, 0, -1 ] ],
@@ -73,15 +83,20 @@ export default defineComponent(({ name, template, schema }) => {
 		})
 
 		if (parts) {
-			for (const [bone, dir] of Object.entries(parts)) {
+			parts.map(part => {
 				create(
 					{
-						[bone]: `q.block_property('bridge:${dir}_neighbor')`
+						...(part.directions.length === 1 ? {
+							[part.name]: `q.block_property('bridge:${part.directions}_neighbor')`
+						} : {
+							[part.name]: `${part.directions.map((dir: string) => `q.block_property('bridge:${dir}_neighbor')`).join('&&')}`
+						})
 					},
 					'minecraft:block/components/minecraft:part_visibility/rules'
 				)
-			}
+			})
 		}
+
 		if (geometries) {
 			create(
 				{
@@ -92,7 +107,8 @@ export default defineComponent(({ name, template, schema }) => {
 							condition: `${geo.directions.map((dir: string) => `q.block_property('bridge:${dir}_neighbor')`).join('&&')}`
 						}),
 						components: {
-							'minecraft:geometry': geo.name
+							'minecraft:geometry': geo.name,
+							'minecraft:material_instances': geo.material_instances
 						}
 					}))
 				},
