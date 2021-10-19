@@ -23,7 +23,7 @@
 					"
 					class="task-list-item"
 					style="margin-bottom: 0.8rem"
-					color="sidebar_navigation"
+					color="sidebarSelection"
 				>
 					<v-card-title>
 						<v-btn
