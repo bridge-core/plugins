@@ -1,0 +1,14 @@
+{
+	"author": "Frederox",
+	"name": "Iron Golem Preset",
+	"version": "1.0.0",
+	"id": "ce6f0bfc-5118-41af-8fa1-e8d16a9e7290",
+	"description": "Adds an iron golem preset.",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Curated",
+		"Presets"
+	],
+	"releaseTimestamp": 1635076070858
+}

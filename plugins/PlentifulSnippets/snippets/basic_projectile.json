@@ -1,0 +1,30 @@
+{
+    "name": "Plentiful Snippets: Basic Projectile Entity",
+    "description": "Generates key components for a projectile entity.",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+        "minecraft:entity/component_groups/*"
+	],
+    "data": {
+        "minecraft:projectile": {
+            "power": 1.6,
+            "gravity": 0.05,
+            "uncertainty_base": 1,
+            "uncertainty_multiplier": 0,
+            "offset": [ 0, -0.1, 0 ],
+            "on_hit": {
+                "impact_damage": {
+                    "damage": 5,
+                    "knockback": true,
+                    "semi_random_diff_damage": false
+                }
+            }
+
+        },
+        "minecraft:collision_box": {
+            "height": 0.25,
+            "width": 0.25
+        }
+    }
+}

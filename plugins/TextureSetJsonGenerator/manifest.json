@@ -1,0 +1,15 @@
+{
+	"author": "jasonjgardner",
+	"id": "e8a0c9f8-0baa-44b0-9391-a6e731481c10",
+	"icon": "mdi-buffer",
+	"version": "1.0.0",
+	"name": "Texture Set Generator",
+	"link": "https://github.com/jasonjgardner/bridge-texture-set-generator",
+	"description": "Easily generate, customize and save .texture_set.json files",
+	"target": "v2",
+	"tags": [
+		"Utility",
+		"Curated"
+	],
+	"releaseTimestamp": 1624392473321
+}

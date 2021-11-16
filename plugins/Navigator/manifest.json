@@ -1,0 +1,16 @@
+{
+	"author": "Tschipp",
+	"name": "Navigator",
+	"version": "1.0.0",
+	"id": "0a2df158-672d-4501-8559-4bbdbe8513c2",
+	"description": "Adds a navigator component which can make entities walk on fixed paths, or generally walk to targetted blocks.",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Component"
+	],
+	"install": {
+		"components/entity": "BP/components/entity/bridge/"
+	},
+	"releaseTimestamp": 1631354917412
+}

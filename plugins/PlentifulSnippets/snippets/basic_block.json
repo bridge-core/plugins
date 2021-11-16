@@ -1,0 +1,15 @@
+{
+  "name": "Plentiful Snippets: Basic Block",
+  "description": "Generates basic block components.",
+  "fileTypes": ["block"],
+  "locations": [
+    "minecraft:block/components",
+    "minecraft:block/permutations/*/components"
+  ],
+  "data": {
+      "minecraft:destroy_time": 0.5,
+      "minecraft:friction": 0.5,
+      "minecraft:block_light_absorption": 0,
+      "minecraft:block_light_emission": 0
+  }
+}

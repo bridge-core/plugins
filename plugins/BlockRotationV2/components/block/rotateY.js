@@ -34,7 +34,7 @@ export default function defineComponent({ name, template, schema }) {
 					? rotationLookupFlipped
 					: rotationLookup
 				).map((rotation, i) => ({
-					condition: `query.block_property('bridge:block_rotation') == ${i}`,
+					condition: `query.block_property('bridge:block_rotation') == ${i + 2}`,
 					components: {
 						'minecraft:rotation': rotation,
 					},

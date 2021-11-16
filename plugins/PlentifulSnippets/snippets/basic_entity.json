@@ -1,0 +1,23 @@
+{
+	"name": "Plentiful Snippets: Basic Entity Components",
+	"description": "Generates basic entity components",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+        "minecraft:entity/component_groups/*"
+	],
+    "data": {
+        "minecraft:health": {
+            "value": 20,
+            "max": 20
+        },
+        "minecraft:movement": {
+            "value": 0.2
+        },
+        "minecraft:physics": {},
+        "minecraft:breathable": {
+            "total_supply": 20,
+            "suffocate_time": 15
+        }
+    }
+}

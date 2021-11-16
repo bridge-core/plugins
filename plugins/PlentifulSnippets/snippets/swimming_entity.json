@@ -1,0 +1,56 @@
+{
+	"name": "Plentiful Snippets: Swimming Behaviors",
+	"description": "Generates swimming behaviors.",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+        "minecraft:entity/component_groups/*"
+	],
+	"data": {
+        "minecraft:breathable": {
+            "total_supply": 15,
+            "suffocate_time": 0,
+            "breathes_air": false,
+            "breathes_water": true
+        },
+        "minecraft:movement": {
+            "value": 0.1
+        },
+        "minecraft:underwater_movement": {
+            "value": 0.1
+        },
+        "minecraft:navigation.generic": {
+            "is_amphibious": false,
+            "can_path_over_water": false,
+            "can_swim": true,
+            "can_walk": false,
+            "can_breach": false,
+            "can_sink": false
+        },
+        "minecraft:physics": {
+            "has_gravity": false
+        },
+        "minecraft:movement.sway": {
+            "sway_amplitude": 0.0
+        },
+        "minecraft:behavior.swim_idle": {
+            "priority": 5,
+            "idle_time": 5.0,
+            "success_rate": 0.1
+        },
+          "minecraft:behavior.random_swim": {
+            "priority": 3,
+            "speed_multiplier": 1.0,
+            "xz_dist": 16,
+            "y_dist": 4,
+            "interval": 0
+        },
+          "minecraft:behavior.swim_wander": {
+            "priority": 4,
+            "interval": 0.1,
+            "look_ahead": 2.0,
+            "speed_multiplier": 1.0,
+            "wander_time": 5.0
+        }
+    }
+}

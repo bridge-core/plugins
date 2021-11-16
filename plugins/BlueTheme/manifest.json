@@ -1,0 +1,13 @@
+{
+	"id": "88bd31c7-1f52-46b9-bd30-ebaf2c8bde9e",
+	"name": "Blue theme for epic people",
+	"description": "A blue theme for you epic people who like to swim deep into the ocean in Minecraft.",
+	"target": "v2",
+	"tags": [
+		"Theme"
+	],
+	"api_version": 2,
+	"version": "1.0.0",
+	"author": "NetworkSuspicion",
+	"releaseTimestamp": 1629711485492
+}
