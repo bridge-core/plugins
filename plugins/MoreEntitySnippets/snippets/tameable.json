@@ -28,7 +28,7 @@
 			},
 			"component_groups": {
 				"bridge:tamed": {
-					"minecaft:is_tamed": {},
+					"minecraft:is_tamed": {},
 					"minecraft:behavior.follow_owner": {
 						"priority": 6,
 						"speed_multiplier": 1,
