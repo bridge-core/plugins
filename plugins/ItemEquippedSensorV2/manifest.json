@@ -1,7 +1,7 @@
 {
 	"author": "Joel ant 05",
 	"name": "Item Equipped Sensor",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"id": "748510ea-1782-4e9f-8b86-4993a60bbb3e",
 	"description": "Adds a custom item component to allow you to simply run events and commands when the item is equipped/unequipped.",
 	"api_version": 2,
@@ -10,8 +10,11 @@
 		"Component",
 		"Curated"
 	],
-	"install": {
-		"components/item": "BP/components/item/bridge/"
+	"contributeFiles": {
+		"components/item": {
+			"pack": "behaviorPack",
+			"path": "components/item/bridge/"
+		}
 	},
 	"releaseTimestamp": 1620755291316
 }
