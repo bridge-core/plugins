@@ -1,4 +1,4 @@
-export default ({ options, fileType, packType, fileSystem, getAliases }) => {
+export default ({ fileType, fileSystem }) => {
 
     //Merge function generously "borrowed" by Joel ant 05
     function deepMerge(obj1, obj2) {
@@ -73,8 +73,16 @@ export default ({ options, fileType, packType, fileSystem, getAliases }) => {
         {
             if(!Array.isArray(inc))
                 return [inc];
-                return inc;
+            return inc;
         }
+    }
+
+    function getVariables(filePath, fileContent)
+    {
+        let ident = getIdentifier(filePath, fileContent);
+        let [namespace, name] = ident.split(":");
+        let vars = fileContent?.variables;
+        return { ...vars, "IDENTIFIER" : ident, "NAME" : name, "NAMESPACE" : namespace};
     }
 
     function addTemplate(filePath, identifier, fileContent)
@@ -90,16 +98,41 @@ export default ({ options, fileType, packType, fileSystem, getAliases }) => {
         let id = fileType?.getId(filePath);
         let templateGroup = templates[id];
         let template = templateGroup?.[templateEntity];
+
+        //Just to tag non-templates as non-templates, gets removed later
+        if(!isTemplate(filePath, entityJSON))
+            entityJSON.is_template = false;
+
         if(template)
             return deepMerge(template, entityJSON);
         else 
             return entityJSON;
     }
 
+    function replaceVariables(filePath, fileContent)
+    {
+        if(!isTemplate(filePath, fileContent))
+        {
+            let cString = JSON.stringify(fileContent);
+            let vars = getVariables(filePath, fileContent);
+            for(let v in vars)
+            {
+                let strn = JSON.stringify(vars[v]);
+                console.log(strn);
+                cString = cString.replaceAll("\"${"+ v +"}\"", strn);
+                cString = cString.replaceAll("${"+ v +"}", typeof vars[v] === 'object' ? strn.replaceAll("\"", "\\\"") : (vars[v] + ""));
+            }
+            fileContent = JSON.parse(cString);
+        }
+        return fileContent;
+    }
+
+
     function cleanup(fileContent)
     {
         delete fileContent?.include;
         delete fileContent?.is_template;
+        delete fileContent?.variables;
         return fileContent;
     }
 
@@ -114,7 +147,7 @@ export default ({ options, fileType, packType, fileSystem, getAliases }) => {
                 let obj = await fileSystem.readJson(filePath);
                 
                 if(isTemplate(filePath, obj))
-                return null;
+                    return null;
             }
         },
         
@@ -157,10 +190,12 @@ export default ({ options, fileType, packType, fileSystem, getAliases }) => {
                         tobj = await mergeTemplate(filePath, tobj, includes[i]);
                 }
 
-                tobj = cleanup(tobj);
+                tobj = replaceVariables(filePath, tobj);
 
                 if(isTemplateObj)
                     addTemplate(filePath, identifier, tobj);
+                else
+                    tobj = cleanup(tobj);
 
                 return tobj;
             }
