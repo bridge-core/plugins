@@ -44,6 +44,7 @@ export default ({ fileType, fileSystem }) => {
     function getIdentifier(filePath, fileContent)
     {
         let type = fileType?.getId(filePath);
+
         switch(type) {
             case  "block" :
                 return fileContent?.['minecraft:block']?.description?.identifier;
@@ -57,8 +58,12 @@ export default ({ fileType, fileSystem }) => {
             case  "clientEntity" :
                 return fileContent?.['minecraft:client_entity']?.description?.identifier
             default:
-                return; 
-        }
+            }
+    }
+
+    function noErrors(fileContent)
+    {
+        return !fileContent?.__error__;
     }
 
     function isTemplate(filePath, fileContent)
@@ -118,7 +123,6 @@ export default ({ fileType, fileSystem }) => {
             for(let v in vars)
             {
                 let strn = JSON.stringify(vars[v]);
-                console.log(strn);
                 cString = cString.replaceAll("\"${"+ v +"}\"", strn);
                 cString = cString.replaceAll("${"+ v +"}", typeof vars[v] === 'object' ? strn.replaceAll("\"", "\\\"") : (vars[v] + ""));
             }
@@ -143,11 +147,12 @@ export default ({ fileType, fileSystem }) => {
         //Make sure template files do not get output in the build
         async transformPath(filePath) {
             if (isTemplateable(filePath)) {
+                try {
+                    let obj = await fileSystem.readJson(filePath);
 
-                let obj = await fileSystem.readJson(filePath);
-                
-                if(isTemplate(filePath, obj))
+                    if(isTemplate(filePath, obj))
                     return null;
+                }catch(e){}
             }
         },
         
@@ -155,6 +160,7 @@ export default ({ fileType, fileSystem }) => {
         registerAliases(filePath, fileContent) {
             let type = fileType?.getId(filePath);
             if (
+                noErrors(fileContent) &&
                 isTemplateable(filePath) &&
                 getIdentifier(filePath, fileContent)
                 )
@@ -165,7 +171,7 @@ export default ({ fileType, fileSystem }) => {
             
             //Make entities that use templates depend on those templates
         require(filePath, fileContent) {
-                if (isTemplateable(filePath)) {
+                if (isTemplateable(filePath) && noErrors(fileContent)) {
 
                 let type = fileType?.getId(filePath);
                 let includes = getInclude(fileContent);
@@ -178,7 +184,7 @@ export default ({ fileType, fileSystem }) => {
 
         //Actually merge templates with entity files
         async transform(filePath, fileContent) {
-            if (isTemplateable(filePath)) {
+            if (isTemplateable(filePath) && noErrors(fileContent)) {
 
                 let tobj = fileContent;
                 let identifier = getIdentifier(filePath, tobj);
