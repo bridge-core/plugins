@@ -4,7 +4,7 @@
 	"name": "Templater",
 	"version": "1.0.0",
 	"id": "db2e968b-2d52-486b-bfec-a346395d4936",
-	"description": "Lets files be used as templates and inserted in other files, using inheritance structures",
+	"description": "Lets files be used as templates and inserted in other files, using inheritance structures. Docs: tschipp.ch/templater",
 	"api_version": 2,
 	"target": "v2",
 	"tags": ["Compiler"],
