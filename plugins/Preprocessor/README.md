@@ -52,7 +52,7 @@ This will be calculated, but doesn't produce any JSON output. If we want output,
         "let a = 10;",
         "let b = 5;",
         "let x = a * Math.pow(b, 2);",
-        "json(x);";
+        "json(x);"
     ]
 }
 ```
