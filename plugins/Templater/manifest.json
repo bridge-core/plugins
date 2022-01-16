@@ -7,10 +7,13 @@
 	"description": "Lets files be used as templates and inserted in other files, using inheritance structures. Docs: tschipp.ch/templater",
 	"api_version": 2,
 	"target": "v2",
-	"tags": ["Compiler"],
+	"tags": [
+		"Compiler"
+	],
 	"compiler": {
 		"plugins": {
 			"templater": "compiler/templater.js"
 		}
-	}
+	},
+	"releaseTimestamp": 1642348693431
 }
