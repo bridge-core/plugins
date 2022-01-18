@@ -6,7 +6,8 @@ export default ({ fileSystem, projectRoot }) => {
 
     function isJson(str) {
         try {
-            JSON.parse(str);
+            let res = JSON.parse(str);
+            return !res?.is_template
         } catch (e) {
             return false;
         }
@@ -14,7 +15,7 @@ export default ({ fileSystem, projectRoot }) => {
     }
 
     function containsScripts(fileContent) {
-        return fileContent.includes("$eval") && isJson(fileContent);
+        return fileContent && fileContent?.includes("$eval") && isJson(fileContent);
     }
 
     function getNextEvalPoint(content) {
@@ -56,7 +57,7 @@ export default ({ fileSystem, projectRoot }) => {
     }
 
     function noErrors(fileContent) {
-        return !fileContent?.__error__;
+        return fileContent && !fileContent?.__error__;
     }
 
     function cleanup(fileContent) {
@@ -184,7 +185,7 @@ export default ({ fileSystem, projectRoot }) => {
                 return fileContent;
             }
 
-            if (fileContent.include_scripts)
+            if (fileContent?.include_scripts && !fileContent?.is_template)
                 cleanup(fileContent);
 
             return fileContent;

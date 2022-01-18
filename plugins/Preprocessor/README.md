@@ -8,7 +8,7 @@ This compiler plugin allows you to write rudimentary JavaScript inside of JSON f
 
 1. Download the plugin from the Extension Store.
 
-2. Add `preprocessor` to your compiler path by editing the project `config.json`. You are going to want to include it before basically anything else, in particular before `customComponents` and `templater`. I suggest inserting it after `typeScript`. 
+2. Add `preprocessor` to your compiler path by editing the project `config.json`. If you are using the `templater` plugin as well, you should add the `preprocessor` entry **AFTER** the `templater` entry. Additionally, if you're using custom components, you're probably going to want to add both of these before custom components.
 
 ## Supported File Types:
 
