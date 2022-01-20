@@ -1,15 +1,15 @@
 <template>
   <div>
     <v-container>
-      <v-row justify="center">
+      <v-row justify="center" class="ma-1">
         <h1>Stopwatch</h1>
       </v-row>
       <v-divider/>
-      <v-row justify="center">
+      <v-row justify="center" class="ma-1">
         <h1>{{ this.formattedTime }}</h1>
       </v-row>
       <v-divider/>
-      <v-row>
+      <v-row class="ma-1">
         <v-col>
           <v-btn color="primary" block @click="onToggle">
             <v-icon v-if="!isRunning">mdi-play</v-icon>
@@ -28,7 +28,6 @@
 
 <script>
 const {readJSON, writeJSON} = await require('@bridge/fs')
-const {join} = await require('@bridge/path')
 
 let filePath = 'data/stopwatch.json'
 
