@@ -1,5 +1,31 @@
 export default ({ fileSystem, projectRoot }) => {
 
+     //Merge function generously "borrowed" by Joel ant 05
+     function deepMerge(obj1, obj2) {
+        let outArray = undefined
+        if (Array.isArray(obj1) && Array.isArray(obj2)) outArray = obj2.concat(obj1)
+        else if (Array.isArray(obj1)) outArray = [obj2].concat(obj1)
+        else if (Array.isArray(obj2)) outArray = [obj1].concat(obj2)
+        else if (typeof obj2 !== 'object') return obj2
+
+        // Remove duplicates
+        if (outArray) return [...new Set([...outArray])]
+
+        let res = {}
+
+        for (const key in obj1) {
+            if (obj2[key] === undefined) res[key] = obj1[key]
+            else res[key] = deepMerge(obj1[key], obj2[key])
+        }
+
+        for (const key in obj2) {
+            if (obj1[key] === undefined) res[key] = obj2[key]
+        }
+
+        return res
+    }
+
+
     function getGlobalScripts(fileContent) {
         return fileContent?.include_scripts ?? [];
     }
@@ -101,7 +127,7 @@ export default ({ fileSystem, projectRoot }) => {
                     //Function to be used in scripts to insert json into the files
                     const json = (ins) => {
                         if (_elt_.accessor === '$eval') {
-                            Object.assign(_elt_.parent, ins);
+                            Object.assign(_elt_.parent, deepMerge(ins, _elt_.parent));
                         }
                         else {
                             if (Array.isArray(_elt_.parent))
