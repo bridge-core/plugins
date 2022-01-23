@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = ({projectRoot, projectConfig }) => {
     const compare = require('compare-versions')
     const uuid = require('uuid')
 
@@ -110,10 +110,10 @@ module.exports = () => {
                 if (eventObj.execute?.commands) {
                     let { commands } = use(eventObj, 'execute') ?? []
                     if (typeof commands == 'string') commands = [commands]
-                    if (compare(opts.formatVersion, '1.16.100', '<') < 0) {
-                        // < 1.16.100
+                    let canUseRunCommand = projectConfig.get().experimentalGameplay?.holidayCreatorFeatures && (compare(opts.formatVersion, '1.16.100', '>=') >= 0)
+                    if (!canUseRunCommand) {
+                        // < 1.16.100 & holidayCreatorFeatures
                         commandIdCounter++
-    
                         let executeCommandsGroup = `execute_command_id_${commandIdCounter}`
     
                         entity = deepMerge(entity, { description: { animations: { [acShortName]: acId } } })
@@ -187,7 +187,7 @@ module.exports = () => {
             }    
     }
 
-    const acPath = 'BP/animation_controllers/bridge/execute_commands.json'
+    const acPath = projectRoot + '/BP/animation_controllers/bridge/execute_commands.json'
     let animationController = {
         format_version: '1.10.0',
         animation_controllers: {}
@@ -198,16 +198,16 @@ module.exports = () => {
 
     return {
         include() {
-            return [acPath]
+            return [[acPath, {isVirtual : true}]]
         },
         require(filePath) {
-            if (filePath == acPath) return ['BP/entities/**/*.json', 'BP/entities/*.json']
+            if (filePath == acPath) return [projectRoot + '/BP/entities/**/*.json', projectRoot + '/BP/entities/*.json']
         },
-        read(filePath) {
+        read(filePath, fileHandle) {
             if (filePath === acPath) return {}
         },
         transform(filePath, fileContent) {
-            if (filePath.startsWith('BP/entities')) {
+            if (filePath.includes('BP/entities')) {
                 const events = fileContent['minecraft:entity']?.events
                 const formatVersion = fileContent?.format_version ?? '1.17.0'
     
