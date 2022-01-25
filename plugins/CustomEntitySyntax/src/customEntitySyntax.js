@@ -1,6 +1,7 @@
-module.exports = ({projectRoot, projectConfig }) => {
-    const compare = require('compare-versions')
-    const uuid = require('uuid')
+module.exports = ({projectRoot, projectConfig, fileSystem}) => {
+    const compare = require('compare-versions');
+    const uuid = require('uuid');
+    const uuidByString = require('uuid-by-string');
 
     function deepMerge(obj1, obj2) {
         let outArray = undefined
@@ -42,7 +43,7 @@ module.exports = ({projectRoot, projectConfig }) => {
         let entity = {}
 
         if (opts.eventName) {
-            const res = processEvent(eventObj, { formatVersion: opts.formatVersion })
+            const res = processEvent(eventObj, { formatVersion : opts.formatVersion,path : opts.path })
 
             entity = deepMerge(entity, res.entity)
             entity = deepMerge(entity, {
@@ -55,7 +56,7 @@ module.exports = ({projectRoot, projectConfig }) => {
                 if (eventObj.sequence && Array.isArray(eventObj.sequence)) {
                     let sequencedEvents = []
                     for (const entry of eventObj.sequence) {
-                        const nestedRes = processEvent(entry, { formatVersion: opts.formatVersion })
+                        const nestedRes = processEvent(entry, { formatVersion : opts.formatVersion,path : opts.path })
                         entity = deepMerge(entity, nestedRes.entity['minecraft:entity'])
                         sequencedEvents.push(nestedRes.event)
                     }
@@ -64,7 +65,7 @@ module.exports = ({projectRoot, projectConfig }) => {
                 if (eventObj.randomize && Array.isArray(eventObj.randomize)) {
                     let randomizedEvents = []
                     for (const entry of eventObj.randomize) {
-                        const nestedRes = processEvent(entry, { formatVersion: opts.formatVersion })
+                        const nestedRes = processEvent(entry, {formatVersion : opts.formatVersion,path : opts.path })
                         entity = deepMerge(entity, nestedRes.entity['minecraft:entity'])
                         randomizedEvents.push(nestedRes.event)
                     }
@@ -116,8 +117,8 @@ module.exports = ({projectRoot, projectConfig }) => {
                         commandIdCounter++
                         let executeCommandsGroup = `execute_command_id_${commandIdCounter}`
     
-                        entity = deepMerge(entity, { description: { animations: { [acShortName]: acId } } })
-                        entity = deepMerge(entity, { description: { scripts: { animate: [acShortName] } } })
+                        entity = deepMerge(entity, { description: { animations: { [acShortName(opts.path)]: acId(opts.path) } } })
+                        entity = deepMerge(entity, { description: { scripts: { animate: [acShortName(opts.path)] } } })
     
                         entity = deepMerge(entity, {
                             component_groups: { 
@@ -150,9 +151,9 @@ module.exports = ({projectRoot, projectConfig }) => {
                             }
                         }})
                         
-                        animationController = deepMerge(animationController, {
+                        acMap[acPath(opts.path)] = deepMerge(acMap[acPath(opts.path)], {
                             animation_controllers: {
-                                [acId]: {
+                                [acId(opts.path)]: {
                                     states: {
                                         default: {
                                             transitions: [
@@ -187,33 +188,52 @@ module.exports = ({projectRoot, projectConfig }) => {
             }    
     }
 
-    const acPath = projectRoot + '/BP/animation_controllers/bridge/execute_commands.json'
-    let animationController = {
+    let acPathMap = undefined;
+    let acMap = {};
+    let animationControllerTemplate = JSON.stringify({
         format_version: '1.10.0',
         animation_controllers: {}
-    }
+    });
     let commandIdCounter = 0
-    let acId = `controller.animation.bridge.${uuid.v4()}_execute_commands`
-    const acShortName = `bridge_execute_command_${uuid.v4()}`
+    const acPath = (path) => projectRoot + `/BP/animation_controllers/bridge/cmds_${uuidByString(path).substring(0,18)}.json`
+    const acId = (path) =>`controller.animation.bridge.${uuidByString(path)}_execute_commands`
+    const acShortName = (path) => `bridge_execute_command_${uuidByString(path)}`
+
+    async function checkACPathMap()
+    {   
+        if(!acPathMap)
+        {
+            acPathMap = {};
+            let entities = await fileSystem.allFiles(projectRoot + "/BP/entities");
+            entities.forEach(e => acPathMap[acPath(e)] = e);
+            return Array.from(entities, (path) => [acPath(path), {isVirtual : true}]);
+        }
+    }
 
     return {
-        include() {
-            return [[acPath, {isVirtual : true}]]
+        async include() {
+            let res = await checkACPathMap();
+            return res;
         },
-        require(filePath) {
-            if (filePath == acPath) return [projectRoot + '/BP/entities/**/*.json', projectRoot + '/BP/entities/*.json']
+        async require(filePath) {
+            await checkACPathMap();
+            if (acPathMap[filePath]) return [acPathMap[filePath]];
         },
-        read(filePath, fileHandle) {
-            if (filePath === acPath) return {}
+        async read(filePath) {
+            await checkACPathMap();
+            if (acPathMap[filePath]) return JSON.parse(animationControllerTemplate);
         },
-        transform(filePath, fileContent) {
+        async transform(filePath, fileContent) {
+            await checkACPathMap();
             if (filePath.includes('BP/entities')) {
+
                 const events = fileContent['minecraft:entity']?.events
                 const formatVersion = fileContent?.format_version ?? '1.17.0'
-    
+                
+                acMap[acPath(filePath)] = JSON.parse(animationControllerTemplate);
                 // Iterate each event and process it
                 for (const event in events) {
-                    const res = processEvent(events[event], { formatVersion: formatVersion, eventName: event })
+                    const res = processEvent(events[event], { formatVersion: formatVersion, eventName: event, path : filePath})
 
                     // Merge transformed entity with original
                     fileContent['minecraft:entity'].events[event] = {}
@@ -221,12 +241,19 @@ module.exports = ({projectRoot, projectConfig }) => {
                 }
 
                 commandIdCounter = 0
-                acId = `controller.animation.bridge.${uuid.v4()}_execute_commands`
-                
+
                 return fileContent
-            } else if (filePath === acPath) {
-                const data = deepMerge(animationController, fileContent)
+            } else if (acPathMap[filePath]) {
+                const data = deepMerge(acMap[filePath], fileContent)
                 return data
+            }
+        },
+        async finalizeBuild(filePath, fileContent) {
+            await checkACPathMap();
+            if (acPathMap[filePath])
+            {
+                if(JSON.stringify(fileContent) === animationControllerTemplate)
+                    return null;
             }
         },
     }
