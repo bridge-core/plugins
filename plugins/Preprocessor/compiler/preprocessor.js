@@ -1,7 +1,7 @@
 export default ({ fileSystem, projectRoot }) => {
 
-     //Merge function generously "borrowed" by Joel ant 05
-     function deepMerge(obj1, obj2) {
+    //Merge function generously "borrowed" by Joel ant 05
+    function deepMerge(obj1, obj2) {
         let outArray = undefined
         if (Array.isArray(obj1) && Array.isArray(obj2)) outArray = obj2.concat(obj1)
         else if (Array.isArray(obj1)) outArray = [obj2].concat(obj1)
@@ -99,7 +99,7 @@ export default ({ fileSystem, projectRoot }) => {
         } catch (error) {
             console.error(error);
         }
-       return "";
+        return "";
     }
 
     async function loadGlobalScript(path) {
@@ -147,13 +147,11 @@ export default ({ fileSystem, projectRoot }) => {
                         })();
                     } catch (err) {
                         console.error(err)
-                        if(_elt_.accessor === '$eval')
-                        {
-                            Object.assign(_elt_.parent, {"__error__" : err.toString()}); 
+                        if (_elt_.accessor === '$eval') {
+                            Object.assign(_elt_.parent, { "__error__": err.toString() });
                         }
-                        else
-                        {
-                            _elt_.parent[_elt_.accessor] = {"__error__" : err.toString()};
+                        else {
+                            _elt_.parent[_elt_.accessor] = { "__error__": err.toString() };
                         }
                     }
 
@@ -171,31 +169,37 @@ export default ({ fileSystem, projectRoot }) => {
 
         //Make sure we load all scripts
         async include() {
-            let f = await fileSystem.allFiles(projectRoot + "/BP/preprocessor_scripts");
-            return f;
+            try {
+                let f = await fileSystem.allFiles(projectRoot + "/BP/preprocessor_scripts");
+                return f;
+            } catch (ex) {
+                return;
+            }
         },
 
         //Make sure scripts do not get output in the build
         transformPath(filePath) {
             if (filePath.includes("BP/preprocessor_scripts"))
                 return null;
-        },    
-            
+        },
+
         //Make Files depend on their global scripts
         async require(filePath, fileContent) {
             if (noErrors(fileContent)) {
                 let globalScripts = getGlobalScripts(fileContent);
-                return  Array.from(globalScripts, s => {return projectRoot + `/BP/preprocessor_scripts/${s}`});
+                return Array.from(globalScripts, s => { return projectRoot + `/BP/preprocessor_scripts/${s}` });
             }
         },
 
         //Read content of file, to test if we want to call transform again
         async read(filePath, fileHandle) {
-            const file = await fileHandle.getFile();
-            let content = await file.text();
+            if (fileHandle) {
+                const file = await fileHandle.getFile();
+                let content = await file.text();
 
-            if (content && containsScripts(content))
-                return JSON.parse(content);
+                if (content && containsScripts(content))
+                    return JSON.parse(content);
+            }
         },
 
         //Actually merge templates with entity files
