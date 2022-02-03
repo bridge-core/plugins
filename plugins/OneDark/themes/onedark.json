@@ -1,0 +1,67 @@
+{
+    "name" : "OneDark",
+    "id": "se7en.onedark",
+
+    "colorScheme": "dark",
+
+    "colors": {
+		"text": "#abb2bf",
+		"background": "#282c34",
+		"lineHighlightBackground": "#2c313c",
+
+        "primary": "#0073FF",
+        "secondary": "#0073FF",
+		"accent": "#0073FF",
+
+		"sidebarNavigation": "#21252b",
+		"expandedSidebar": "#21252b",
+		"sidebarSelection": "#323842",
+
+		"menu": "#21252b",
+		"toolbar": "#282c34",
+		"tooltip": "#323842",
+		"footer": "#21252b",
+		"scrollbarThumb": "#30333d",
+		
+        "tabActive": "#282c34",
+        "tabInactive": "#21252b",
+
+		"error": "#c24038",
+		"success": "#70bf37",
+		"warning": "#d19a66",
+		"info": "#61afef"
+    },
+
+    "highlighter": {
+        "type": {
+			"color": "#e5c07b"
+		},
+		"keyword": {
+			"color": "#c678dd"
+		},
+		"definition": {
+			"color": "#61afef"
+		},
+		"atom": {
+			"color": "#d19a66"
+		},
+		"number": {
+			"color": "#d19a66"
+		},
+		"string": {
+			"color": "#98c379"
+		},
+		"variable": {
+			"color": "#e06c75"
+		},
+		"variableStrong": {
+			"color": "#e06c75"
+		},
+		"meta": {
+			"color": "#abb2bf"
+		},
+		"comment": {
+			"color": "#5c6370"
+		}
+    }
+}
