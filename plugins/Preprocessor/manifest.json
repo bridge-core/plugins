@@ -1,0 +1,16 @@
+{
+	"author": "Tschipp",
+	"icon": "mdi-language-javascript",
+	"name": "JavaScript Preprocessor",
+	"version": "1.0.0",
+	"id": "b8313eb3-2988-4494-9ca7-2b0a0a0ddb7d",
+	"description": "JavaScript Preprocessor for JSON files. Find docs here: tschipp.ch/preprocessor",
+	"api_version": 2,
+	"target": "v2",
+	"tags": ["Compiler"],
+	"compiler": {
+		"plugins": {
+			"preprocessor": "compiler/preprocessor.js"
+		}
+	}
+}
