@@ -1,0 +1,56 @@
+{
+	"name": "Dark Owl",
+	"id": "arexon.darkowl",
+	"colorScheme": "dark",
+	"colors": {
+		"primary": "#4688c9",
+		"accent": "#833ecb",
+		"error": "#EF5350",
+		"info": "#42a667",
+		"success": "#42a667",
+		"warning": "#b39554",
+		"background": "#011627",
+		"sidebarNavigation": "#010b1d",
+		"expandedSidebar": "#011627",
+		"sidebarSelection": "#010b1d",
+		"menu": "#011627",
+		"toolbar": "#010b1d",
+		"footer": "#010b1d",
+		"tooltip": "#010b1d",
+		"tabActive": "#0d3754",
+		"tabInactive": "#010b1d",
+		"lineHighlightBackground": "#010b1d",
+		"scrollbarThumb": "#0d3754",
+		"behaviorPack": "#e94b67",
+		"resourcePack": "#464ab4",
+		"skinPack": "#5db49b",
+		"worldTemplate": "#c87545"
+	},
+	"highlighter": {
+		"type": {
+			"color": "#a8c25f"
+		},
+		"keyword": {
+			"color": "#ba77bf",
+			"textDecoration": "italic"
+		},
+		"definition": {
+			"color": "#52af84"
+		},
+		"atom": {
+			"color": "#b44161"
+		},
+		"number": {
+			"color": "#be5d38"
+		},
+		"string": {
+			"color": "#d2a466"
+		},
+		"variable": {
+			"color": "#5181c1"
+		},
+		"comment": {
+			"color": "#57524e"
+		}
+	}
+}
