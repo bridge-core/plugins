@@ -1,0 +1,10 @@
+{
+	"name": "Dark Owl",
+	"description": "A dark & vibrant theme that's easy on the eyes. Inspired by \"Night Owl\" theme.",
+	"id": "5dde13ab-fd7e-4924-ba26-635935a71ee3",
+	"author": "Arexon",
+	"version": "1.0.0",
+	"icon": "mdi-owl",
+	"target": "v2",
+	"tags": ["Theme"]
+}
