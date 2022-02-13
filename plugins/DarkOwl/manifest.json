@@ -6,5 +6,8 @@
 	"version": "1.0.0",
 	"icon": "mdi-owl",
 	"target": "v2",
-	"tags": ["Theme"]
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1644784306438
 }
