@@ -1,0 +1,70 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "{{PROJECT_PREFIX}}:{{IDENTIFIER}}",
+            "properties": {
+                "bridge:pillar_axis": [
+                    0,
+                    1,
+                    2
+                ]
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('bridge:pillar_axis') == 0",
+                "components": {}
+            },
+            {
+                "condition": "query.block_property('bridge:pillar_axis') == 1",
+                "components": {
+                    "minecraft:rotation": [
+                        90,
+                        0,
+                        0
+                    ],
+                    "minecraft:unit_cube": {}
+                }
+            },
+            {
+                "condition": "query.block_property('bridge:pillar_axis') == 2",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        90,
+                        -90
+                    ],
+                    "minecraft:unit_cube": {}
+                }
+            }
+        ],
+        "components": {
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "polished_basalt_side",
+                    "render_method": "opaque"
+                },
+                "down": {
+                    "texture": "polished_basalt_top",
+                    "render_method": "opaque"
+                },
+                "up": {
+                    "texture": "polished_basalt_top",
+                    "render_method": "opaque"
+                }
+            },
+            "minecraft:on_player_placing": {
+                "event": "on_player_placing",
+                "target": "self"
+            }
+        },
+        "events": {
+            "on_player_placing": {
+                "set_block_property": {
+                    "bridge:pillar_axis": "math.floor(query.block_face / 2)"
+                }
+            }
+        }
+    }
+}
