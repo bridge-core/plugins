@@ -1,0 +1,29 @@
+{
+	"name": "Snippet: Survival Invulnerable",
+	"description": "Makes the entity invulnerable to survival players",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+		"minecraft:entity/component_groups/*"
+	],
+	"data": {
+		"minecraft:damage_sensor": {
+			"triggers": [
+				{
+					"on_damage": {
+						"filters": {
+							"none_of": [
+								{
+									"test": "has_ability",
+									"value": "instabuild",
+									"subject": "damager"
+								}
+							]
+						}
+					},
+					"deals_damage": false
+				}
+			]
+		}
+	}
+}

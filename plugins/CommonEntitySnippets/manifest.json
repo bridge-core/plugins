@@ -1,0 +1,13 @@
+{
+	"author": "Tschipp",
+	"name": "Common Entity Snippets",
+	"version": "1.0.0",
+	"id": "e3f6f2a4-6895-46e0-aec1-84d3eb062821",
+	"description": "Adds common Snippets for Entities!",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Snippets"
+	],
+	"releaseTimestamp": 1628850290320
+}

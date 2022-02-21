@@ -1,0 +1,21 @@
+{
+	"name": "Snippet: Walking Entity",
+	"description": "Basic movement components for ground movement",
+	"fileTypes": ["entity"],
+	"locations": [
+		"minecraft:entity/components",
+		"minecraft:entity/component_groups/*"
+	],
+	"data": {
+		"minecraft:movement": {
+			"value": 0.25
+		},
+		"minecraft:movement.basic": {},
+		"minecraft:navigation.walk": {
+			"can_walk": true
+		},
+		"minecraft:jump.static": {},
+		"minecraft:can_climb": {},
+		"minecraft:behavior.float": {}
+	}
+}

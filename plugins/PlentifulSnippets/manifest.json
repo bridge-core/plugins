@@ -1,0 +1,13 @@
+{
+	"name": "Plentiful Snippets",
+	"author": "ExDrill",
+	"description": "Adds a lot of snippets",
+	"id": "b51827ed-8114-4f8b-aef9-5b1536123ae4",
+	"version": "1.0.0",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Snippets"
+	],
+	"releaseTimestamp": 1632516717597
+}

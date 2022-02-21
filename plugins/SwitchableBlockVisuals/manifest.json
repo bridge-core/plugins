@@ -1,0 +1,19 @@
+{
+	"author": "Arexon",
+	"name": "Switchable Block Visuals",
+	"version": "1.0.1",
+	"id": "2a1ac24e-5f73-446b-9d12-c0aff6cbbf4c",
+	"description": "Adds a component that allows for switching between multiple block geometries & textures simultaneously.",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Component"
+	],
+	"contributeFiles": {
+		"components/block": {
+			"pack": "behaviorPack",
+			"path": "components/block/bridge/"
+		}
+	},
+	"releaseTimestamp": 1631525067324
+}

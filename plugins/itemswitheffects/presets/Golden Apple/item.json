@@ -1,0 +1,59 @@
+{
+	"format_version": "1.16.100",
+	"minecraft:item": {
+		"description": {
+			"identifier": "{{PROJECT_PREFIX}}:{{IDENTIFIER}}",
+			"category": "nature"
+		},
+		"components": {
+			"minecraft:use_duration": 1.6,
+			"minecraft:food": {
+				"nutrition": 4,
+				"saturation_modifier": "supernatural",
+				"can_always_eat": true,
+				"on_consume": {
+					"event": "add_mob_effect",
+					"target": "self"
+				}
+			},
+			"minecraft:icon": {
+				"texture": "{{PROJECT_PREFIX}}:{{IDENTIFIER}}"
+			},
+			"minecraft:use_animation": "eat",
+			"minecraft:render_offsets": "apple",
+			"minecraft:creative_category": {
+				"parent": "itemGroup.name.miscFood"
+			}
+		},
+		"events": {
+			"add_mob_effect": {
+				"sequence": [
+					{
+						"add_mob_effect": {
+							"effect": {},
+							"target": "self",
+							"duration": {},
+							"amplifier": {}
+						}
+					},
+					{
+						"add_mob_effect": {
+							"effect": {},
+							"target": "self",
+							"duration": {},
+							"amplifier": {}
+						}
+					},
+					{
+						"add_mob_effect": {
+							"effect": {},
+							"target": "self",
+							"duration": {},
+							"amplifier": {}
+						}
+					}
+				]
+			}
+		}
+	}
+}

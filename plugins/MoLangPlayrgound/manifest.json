@@ -1,0 +1,15 @@
+{
+	"author": "solvedDev",
+	"icon": "mdi-function-variant",
+	"name": "MoLang Playground",
+	"version": "1.0.0",
+	"id": "60b4bac7-8fa8-4746-b462-d7d24dc9a321",
+	"description": "Quickly test MoLang statements within bridge.",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Utility",
+		"Curated"
+	],
+	"releaseTimestamp": 1626344398921
+}

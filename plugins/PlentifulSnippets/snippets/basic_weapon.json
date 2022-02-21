@@ -1,0 +1,19 @@
+{
+	"name": "Plentiful Snippets: Basic Weapon",
+	"description": "Generates a weapon.",
+	"fileTypes": ["item"],
+	"locations": [
+		"minecraft:item/components"
+	],
+	"data": {
+		"minecraft:weapon": {},
+		"minecraft:damage": 5,
+		"minecraft:durability": {
+			"damage_chance": {
+				"min": 60,
+				"max": 100
+			},
+			"max_durability": 512
+		}
+	}
+}

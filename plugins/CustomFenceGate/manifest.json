@@ -1,0 +1,13 @@
+{
+	"author": "Aguilesgamer",
+	"name": "Custom Fence Gate Preset",
+	"version": "1.0.0",
+	"id": "41a7af3b-938c-4c3f-aed4-fc0e26309e0d",
+	"description": "Adds a Custom Fence Gate Preset(This plugin only works in the latest beta!)",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Presets"
+	],
+	"releaseTimestamp": 1627570284814
+}

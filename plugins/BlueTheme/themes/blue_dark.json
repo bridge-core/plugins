@@ -1,0 +1,124 @@
+{
+	"name": "Blue Theme for Epic People",
+	"id": "NetworkSuspicion.blue_dark",
+	"colorScheme": "dark",
+    "colors": {
+		"primary": "#004c4a",
+		"secondary": "#003331",
+		"accent": "#00b2ae",
+		"error": "#006663",
+		"info": "#006663",
+		"success": "#006663",
+		"warning": "#006663",
+		"background": "#009995",
+		"sidebarNavigation": "#00b2ae",
+		"expandedSidebar": "#00b2ae",
+		"sidebarSelection": "#009995",
+		"menu": "#007f7c",
+		"toolbar": "#007f7c",
+		"footer": "#007f7c",
+		"tooltip": "#009995",
+		"tabActive": "#00ccc7",
+		"tabInactive": "#007f7c",
+		"lineHighlightBackground": "#00ccc7",
+		"behaviorPack": "#009995",
+		"resourcePack": "#009995",
+		"skinPack": "#009995",
+		"worldTemplate": "#009995"
+	},
+	"highlighter": {
+		"type": {
+			"color": "#ffffff"
+		},
+		"keyword": {
+			"color": "#ffffff"
+		},
+		"definition": {
+			"color": "#ffffff"
+		},
+		"atom": {
+			"color": "#000000"
+		},
+		"number": {
+			"color": "#000000"
+		},
+		"string": {
+			"color": "#ffffff"
+		},
+		"variable": {
+			"color": "#ffffff"
+		},
+		"variableStrong": {
+			"color": "#ffffff"
+		},
+		"meta": {
+			"color": "white"
+		},
+		"comment": {
+			"color": "#ffffff"
+		},
+		"colorCode.darkRed": {
+			"color": "#ffffff"
+		},
+		"colorCode.red": {
+			"color": "#ffffff"
+		},
+		"colorCode.gold": {
+			"color": "#ffffff"
+		},
+		"colorCode.yellow": {
+			"color": "#ffffff"
+		},
+		"colorCode.darkGreen": {
+			"color": "#ffffff"
+		},
+		"colorCode.green": {
+			"color": "#ffffff"
+		},
+		"colorCode.aqua": {
+			"color": "#ffffff"
+		},
+		"colorCode.darkAqua": {
+			"color": "#ffffff"
+		},
+		"colorCode.darkBlue": {
+			"color": "#ffffff"
+		},
+		"colorCode.blue": {
+			"color": "#ffffff"
+		},
+		"colorCode.lightPurple": {
+			"color": "#ffffff"
+		},
+		"colorCode.darkPurple": {
+			"color": "#ffffff"
+		},
+		"colorCode.white": {
+			"color": "#ffffff"
+		},
+		"colorCode.gray": {
+			"color": "#ffffff"
+		},
+		"colorCode.darkGray": {
+			"color": "#ffffff"
+		},
+		"colorCode.black": {
+			"color": "#ffffff"
+		},
+		"colorCode.minecoinGold": {
+			"color": "#ffffff"
+		},
+		"colorCode.bold": {
+			"color": "#fff",
+			"textDecoration": "bold"
+		},
+		"colorCode.italic": {
+			"color": "#fff",
+			"textDecoration": "italic"
+		},
+		"colorCode.underline": {
+			"color": "#fff",
+			"textDecoration": "underline"
+		}
+	}
+}

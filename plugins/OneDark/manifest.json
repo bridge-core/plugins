@@ -1,0 +1,14 @@
+{
+	"author": "Se7en-dev",
+	"name": "OneDark",
+	"description": "One Dark theme for bridge.!",
+	"link": "https://github.com/Se7en-dev/Bridge-OneDark",
+	"version": "1.0.0",
+	"target": "v2",
+	"id": "67ded4a3-f97f-40b3-93b2-86181e15c88d",
+	"icon": "mdi-atom",
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1642806936833
+}

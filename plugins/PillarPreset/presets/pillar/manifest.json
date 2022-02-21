@@ -1,0 +1,84 @@
+{
+    "name": "Pillar",
+    "icon": "mdi-pillar",
+    "description": "Creates a new pillar block that rotates like a log or pillar.",
+    "category": "fileType.block",
+    "requires": {
+        "targetVersion": [
+            ">=",
+            "1.16.100"
+        ],
+        "packTypes": [
+            "behaviorPack",
+            "resourcePack"
+        ],
+        "experimentalGameplay": [
+            "holidayCreatorFeatures"
+        ]
+    },
+    "additionalModels": {
+        "PRESET_PATH": ""
+    },
+    "fields": [
+        [
+            "Identifier",
+            "IDENTIFIER",
+            {
+                "validate": [
+                    "required",
+                    "alphanumeric",
+                    "lowercase"
+                ]
+            }
+        ],
+        [
+            "Display Name",
+            "IDENTIFIER_NAME",
+            {
+                "validate": [
+                    "required"
+                ]
+            }
+        ]
+    ],
+    "createFiles": [
+        [
+            "block.json",
+            "blocks/{{PRESET_PATH}}{{IDENTIFIER}}.json",
+            {
+                "inject": [
+                    "IDENTIFIER",
+                    "PROJECT_PREFIX",
+                    "PRESET_PATH"
+                ],
+                "openFile": true,
+                "packPath": "behaviorPack"
+            }
+        ]
+    ],
+    "expandFiles": [
+        [
+            "clientBlock.json",
+            "blocks.json",
+            {
+                "inject": [
+                    "IDENTIFIER",
+                    "PROJECT_PREFIX"
+                ],
+                "packPath": "resourcePack"
+            }
+        ],
+        [
+            "en_US.lang",
+            "texts/en_US.lang",
+            {
+                "inject": [
+                    "IDENTIFIER",
+                    "IDENTIFIER_NAME",
+                    "PROJECT_PREFIX"
+                ],
+                "packPath": "resourcePack"
+            }
+        ]
+    ]
+}

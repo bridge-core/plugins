@@ -1,0 +1,24 @@
+{
+  "sound_definitions": {
+    "mob.{{IDENTIFIER}}.death": {
+      "__use_legacy_max_distance": "true",
+      "category": "hostile",
+      "sounds": ["sounds/mob/irongolem/death"]
+    },
+    "mob.{{IDENTIFIER}}.hit": {
+      "__use_legacy_max_distance": "true",
+      "category": "hostile",
+      "sounds": ["sounds/mob/irongolem/hit1", "sounds/mob/irongolem/hit2", "sounds/mob/irongolem/hit3", "sounds/mob/irongolem/hit4"]
+    },
+    "mob.{{IDENTIFIER}}.throw": {
+      "__use_legacy_max_distance": "true",
+      "category": "hostile",
+      "sounds": ["sounds/mob/irongolem/throw"]
+    },
+    "mob.{{IDENTIFIER}}.walk": {
+      "__use_legacy_max_distance": "true",
+      "category": "hostile",
+      "sounds": ["sounds/mob/irongolem/walk1", "sounds/mob/irongolem/walk2", "sounds/mob/irongolem/walk3", "sounds/mob/irongolem/walk4"]
+    }
+  }
+}

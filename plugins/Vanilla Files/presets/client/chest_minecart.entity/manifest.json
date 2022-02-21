@@ -1,0 +1,27 @@
+{
+	"name": "chest_minecart.entity",
+	"icon": "mdi-minecraft",
+	"description": "Creates a chest_minecart.entity",
+	"category": "Vanilla Client Entities",
+	"requires": {
+		"packTypes": ["resourcePack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entity/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"chest_minecart.entity.json",
+			"RP/{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "resourcePack" }
+		]
+	]
+}

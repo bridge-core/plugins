@@ -1,0 +1,10 @@
+{
+    "{{PROJECT_PREFIX}}:{{IDENTIFIER}}": {
+        "sound": "stone",
+        "textures": {
+            "down": "polished_basalt_top",
+            "side": "polished_basalt_side",
+            "up": "polished_basalt_top"
+        }
+    }
+}

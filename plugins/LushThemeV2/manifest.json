@@ -1,0 +1,12 @@
+{
+	"author": "Chikorita-Lover",
+	"version": "1.0.0",
+	"name": "Lush Theme",
+	"description": "Adds a new lush cave-inspired color theme to select inside the settings window.",
+	"id": "9c7f92a4-540a-482f-a298-a3def150569e",
+	"target": "v2",
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1638256859961
+}
