@@ -1701,6 +1701,8 @@
     	let scriptPaths = {};
 
     	let outAnimations = {};
+
+    	let entitiesToCompile = [];
     	
     	function noErrors(fileContent)
         {
@@ -1716,6 +1718,9 @@
     	return {
     		async buildStart() {
                 try {
+    				let newScripts = {};
+    				let newScriptPaths = {};
+
                     const f = await fileSystem.allFiles(projectRoot + '/BP/firework');
 
     				for(const file of f){
@@ -1724,24 +1729,104 @@
 
     						const fileName = filePathArray[filePathArray.length - 1].substring(0, filePathArray[filePathArray.length - 1].length - 4);
 
-    						if(scripts[fileName]){
+    						if(newScripts[fileName]){
     							console.warn('WARNING: ' + fileName + ' already exists in scripts!');
     							continue
     						}
 
     						const fO = await fileSystem.readFile(file);
-    						scripts[fileName] = await fO.text();
-    						scriptPaths[fileName] = file;
+    						newScripts[fileName] = await fO.text();
+    						newScriptPaths[fileName] = file;
 
-    						console.log('Indexed ' + fileName + ' to ' + file);
+    						//console.log('Indexed Script' + fileName + ' to ' + file)
     					}
     				}
+
+    				let entityDepends = {};
+
+    				try{
+    					const entities = await fileSystem.allFiles(projectRoot + '/BP/entities');
+
+    					for(const file of entities){
+    						const fO = await fileSystem.readFile(file);
+    						const content = JSON.parse(await fO.text());
+    						
+    						if(content['minecraft:entity'] && content['minecraft:entity'].components){
+    							const components = Object.getOwnPropertyNames(content['minecraft:entity'].components);
+
+    							let requiredScripts = [];
+
+    							components.forEach(component => {
+    								if(component.startsWith('frw:')){
+    									requiredScripts.push(component.substring(4));
+    								}
+    							});
+
+    							entityDepends[file] = requiredScripts;
+    						}
+
+    						//console.log('Indexed Entity' + file)
+    					}
+    				}catch(e){
+
+    				}
+
+    				//console.log('Generated Entity Depends:')
+    				//console.log(entityDepends)
+
+    				const diffScripts = [];
+
+    				const indexedScripts = Object.getOwnPropertyNames(newScripts);
+
+    				for(const script of indexedScripts){
+    					if(!scripts[script]){
+    						diffScripts.push(script);
+
+    						continue
+    					}
+
+    					if(scripts[script] != newScripts[script]){
+    						diffScripts.push(script);
+
+    						continue
+    					}
+
+    					if(scriptPaths[script] != newScriptPaths[script]){
+    						diffScripts.push(script);
+
+    						continue
+    					}
+    				}
+
+    				//console.log('Got Diff Scripts:')
+    				//console.log(diffScripts)
+
+    				const entityDependsKeys = Object.getOwnPropertyNames(entityDepends);
+
+    				for(const entity of entityDependsKeys){
+    					const entityDependsValue = entityDepends[entity];
+
+    					for(const script of entityDependsValue){
+    						if(diffScripts.includes(script)){
+    							entitiesToCompile.push(entity);
+
+    							break
+    						}
+    					}
+    				}
+
+    				//console.log('Got Entities to Compile:')
+    				//console.log(entitiesToCompile)
+
+    				scripts = newScripts;
+    				scriptPaths = newScriptPaths;
                 } catch (ex) {}
             },
 
-    		async transform(filePath, fileContent) {
+    		async transform(filePath, fileContent) {			
     			if(noErrors(fileContent) && isEntity(filePath)){
-    				console.log('Transforming ' + filePath);
+    				//console.log('Transforming ' + filePath)
+
     				if(fileContent['minecraft:entity'] && fileContent['minecraft:entity'].components){
     					const components = Object.getOwnPropertyNames(fileContent['minecraft:entity'].components);
 
@@ -1826,17 +1911,22 @@
 
     				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify(tick));
     			}catch (ex){
-    				console.log("can't find tick");
-    				console.log(ex);
+    				//console.log("can't find tick")
+    				//console.log(ex)
 
     				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify({
     					values: ['firework_runtime']
     				}));
     			}
 
-                scripts = {};
+    			//console.log('Compiling Extra Entities')
+    			//console.log(entitiesToCompile)
+    			await compileFiles(entitiesToCompile);
+
+                //scripts = {}
     			outAnimations = {};
-    			scriptPaths = {};
+    			//scriptPaths = {}
+    			entitiesToCompile = [];
             },
     	}
     };
