@@ -3,8 +3,12 @@ import * as Compiler from './Compiler'
 import * as ExecutionTree from './ExecutionTree'
 import * as Tokenizer from './Tokenizer'
 
+//rollup src/firework.js --file compiler/firework.js --format iife
+
 module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options, compileFiles }) => {
 	let scripts = {}
+
+	let scriptPaths = {}
 
 	let outAnimations = {}
 	
@@ -24,7 +28,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
             try {
                 const f = await fileSystem.allFiles(projectRoot + '/BP/firework')
 
-				for(file of f){
+				for(const file of f){
 					if(file.endsWith('.frw')){
 						const filePathArray = file.split('/')
 
@@ -37,6 +41,9 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 						const fO = await fileSystem.readFile(file)
 						scripts[fileName] = await fO.text()
+						scriptPaths[fileName] = file
+
+						console.log('Indexed ' + fileName + ' to ' + file)
 					}
 				}
             } catch (ex) {}
@@ -44,6 +51,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 		async transform(filePath, fileContent) {
 			if(noErrors(fileContent) && isEntity(filePath)){
+				console.log('Transforming ' + filePath)
 				if(fileContent['minecraft:entity'] && fileContent['minecraft:entity'].components){
 					const components = Object.getOwnPropertyNames(fileContent['minecraft:entity'].components)
 
@@ -56,37 +64,43 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 					})
 
 					if(requiredScripts.length > 0){
-						for(script of requiredScripts){
-							delete fileContent['minecraft:entity'].components['frw:' + script . substring(0, script.length - 4)]
+						for(const script of requiredScripts){
+							delete fileContent['minecraft:entity'].components['frw:' + script.substring(0, script.length - 4)]
 						}
 
-						for(script of requiredScripts){
-							let scriptContent = scripts[script.substring(0, script.length - 4)]
+						for(const script of requiredScripts){
+							if(scriptPaths[script.substring(0, script.length - 4)]){
+								let scriptContent = scripts[script.substring(0, script.length - 4)]
 
-							const tokens = Tokenizer.Tokenize(scriptContent)
+								const tokens = Tokenizer.Tokenize(scriptContent)
 
-							const tree = ExecutionTree.GenerateETree(tokens)
+								const tree = ExecutionTree.GenerateETree(tokens)
 
-							if(tree instanceof Backend.Error){
-								throw tree.message
+								if(tree instanceof Backend.Error){
+									throw tree.message
+								}
+
+								const compiled = Compiler.Compile(tree, {
+									delayChannels: 3  
+								}, fileContent)
+
+								if(compiled instanceof Backend.Error){
+									throw compiled.message
+								}
+
+								let animations = Object.getOwnPropertyNames(compiled.animations)
+
+								for(let i = 0; i < animations.length; i++){
+									outAnimations[animations[i]] = compiled.animations[animations[i]]
+								}
+
+								fileContent = compiled.entity
+							}else{
+								console.warn('WARNING: ' + script + ' does not exist!')
 							}
-
-							const compiled = Compiler.Compile(tree, {
-								delayChannels: 3
-							  }, fileContent)
-
-							if(compiled instanceof Backend.Error){
-								throw compiled.message
-							}
-
-							let animations = Object.getOwnPropertyNames(compiled.animations)
-
-							for(let i = 0; i < animations.length; i++){
-								outAnimations[animations[i]] = compiled.animations[animations[i]]
-							}
-
-							return compiled.entity
 						}
+
+						return fileContent
 					}
 				}
 			}
@@ -114,12 +128,17 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 			await outputFileSystem.writeFile(outBPPath + 'functions/firework_runtime.mcfunction', mc)
 
 			try{
-				let tick = await outputFileSystem.readJSON(outBPPath + 'functions/tick.json')
+				let tick = await outputFileSystem.readFile(outBPPath + 'functions/tick.json')
+
+				tick = JSON.parse(await tick.text())
 
 				tick.values.push('firework_runtime')
 
-				await outputFileSystem.writeJSON(outBPPath + 'functions/tick.json', JSON.stringify(tick))
+				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify(tick))
 			}catch (ex){
+				console.log("can't find tick")
+				console.log(ex)
+
 				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify({
 					values: ['firework_runtime']
 				}))
@@ -127,6 +146,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
             scripts = {}
 			outAnimations = {}
+			scriptPaths = {}
         },
 	}
 }
