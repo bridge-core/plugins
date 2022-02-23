@@ -1702,7 +1702,11 @@
 
     	let outAnimations = {};
 
+    	let dependAnaimtions = {};
+
     	let entitiesToCompile = [];
+
+    	let inDependMode = false;
     	
     	function noErrors(fileContent)
         {
@@ -1865,8 +1869,31 @@
 
     								let animations = Object.getOwnPropertyNames(compiled.animations);
 
+    								let outBPPath = 'development_behavior_packs/' + projectRoot.split('/')[1] + ' BP/';
+
+    								if(!inDependMode){
+    									dependAnaimtions[filePath] = animations;
+    								}else {
+    									if(dependAnaimtions[filePath]){
+    										for(const animation of dependAnaimtions[filePath]){
+    											console.log('Removing anim in depend mode: ' + animation);
+
+    											try{
+    												outputFileSystem.unlink(outBPPath + 'animations/' + animation);
+    											}catch(e){
+    												console.log(e);
+    											}
+    										}
+    									}
+    								}							
+
     								for(let i = 0; i < animations.length; i++){
-    									outAnimations[animations[i]] = compiled.animations[animations[i]];
+    									if(inDependMode){
+    										console.log('Writing anim in depend mode: ' + animations[i]);
+    										await outputFileSystem.writeFile(outBPPath + 'animations/' + animations[i], compiled.animations[animations[i]]);
+    									}else {
+    										outAnimations[animations[i]] = compiled.animations[animations[i]];
+    									}
     								}
 
     								fileContent = compiled.entity;
@@ -1919,14 +1946,18 @@
     				}));
     			}
 
+    			inDependMode = true;
+
     			//console.log('Compiling Extra Entities')
     			//console.log(entitiesToCompile)
     			await compileFiles(entitiesToCompile);
 
-                //scripts = {}
     			outAnimations = {};
-    			//scriptPaths = {}
+    			dependAnaimtions = {};
+
     			entitiesToCompile = [];
+
+    			inDependMode = false;
             },
     	}
     };
