@@ -11,7 +11,7 @@ export const functions = {
                 animations: {},
                 sequence: [
                     {
-                        runCommand: {
+                        run_command: {
                             command:[
                                 params[0].value
                             ]
@@ -34,7 +34,7 @@ export const functions = {
                 animations: {},
                 sequence: [
                     {
-                        runCommand: {
+                        run_command: {
                             command:[
                                 'tp ' + params[0].value
                             ]
@@ -55,7 +55,7 @@ export const functions = {
                 animations: {},
                 sequence: [
                     {
-                        runCommand: {
+                        run_command: {
                             command:[
                                 'kill @s'
                             ]
@@ -78,7 +78,7 @@ export const functions = {
                 animations: {},
                 sequence: [
                     {
-                        runCommand: {
+                        run_command: {
                             command:[
                                 'say ' + params[0].value
                             ]

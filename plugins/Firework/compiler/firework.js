@@ -34,7 +34,7 @@
                     animations: {},
                     sequence: [
                         {
-                            runCommand: {
+                            run_command: {
                                 command:[
                                     params[0].value
                                 ]
@@ -57,7 +57,7 @@
                     animations: {},
                     sequence: [
                         {
-                            runCommand: {
+                            run_command: {
                                 command:[
                                     'tp ' + params[0].value
                                 ]
@@ -78,7 +78,7 @@
                     animations: {},
                     sequence: [
                         {
-                            runCommand: {
+                            run_command: {
                                 command:[
                                     'kill @s'
                                 ]
@@ -101,7 +101,7 @@
                     animations: {},
                     sequence: [
                         {
-                            runCommand: {
+                            run_command: {
                                 command:[
                                     'say ' + params[0].value
                                 ]
@@ -1391,7 +1391,7 @@
                 let prevToken = tokens[i - 1];
 
                 if(prevToken && nextNextToken){
-                    if(!(nextNextToken.token == 'FLAG' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'CALL') || !(prevToken.token == 'FLAG' || prevToken.token == 'EXPRESSION' || prevToken.token == 'BOOLEAN' || prevToken.token == 'MOLANG' || prevToken.token == 'CALL')){
+                    if(!(nextNextToken.token == 'FLAG' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'CALL' || nextNextToken.token == 'NAME') || !(prevToken.token == 'FLAG' || prevToken.token == 'EXPRESSION' || prevToken.token == 'BOOLEAN' || prevToken.token == 'MOLANG' || prevToken.token == 'CALL' || prevToken.token == 'NAME')){
                         console.log(tokens);
                         return new Error(`Can not do operation '${token.value + nextToken.value}' with '${nextNextToken.token}' and '${prevToken.token}'!`)
                     }
@@ -1706,6 +1706,7 @@
 
     function GenerateETree(tokens){
         tokens = splitLines(tokens);
+
         tokens = buildCodeBlocks(tokens);
 
         if(tokens instanceof Error){

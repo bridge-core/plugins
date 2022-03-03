@@ -757,6 +757,7 @@ function buildFlagAssignments(tokens){
 
 export function GenerateETree(tokens){
     tokens = splitLines(tokens)
+
     tokens = buildCodeBlocks(tokens)
 
     if(tokens instanceof Backend.Error){
