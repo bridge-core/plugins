@@ -1,6 +1,8 @@
 import * as Backend from './Backend.js'
+import * as Native from './Native.js'
 
 export function Compile(tree, config, source){
+    //#region NOTE: Setup json values for editing DONE
     let worldRuntime = source
 
     let outAnimations = {}
@@ -24,19 +26,22 @@ export function Compile(tree, config, source){
     if(!worldRuntime['minecraft:entity'].description.scripts.animate){
         worldRuntime['minecraft:entity'].description.scripts.animate = []
     }
+    //#endregion
 
+
+    //#region NOTE: Create variables to be added to durring overviewing the execution tree DONE
     let blocks = {}
 
     let delays = {}
 
     let dynamicValues = {}
 
-    let constants = {}
-
     let flags = []
 
     let delaySteps = []
+    //#endregion
 
+    //#region NOTE: Expression to molang to be used in setting values DONE
     function expressionToMolang(expression){
         let result = ''
 
@@ -65,11 +70,19 @@ export function Compile(tree, config, source){
         }else if(expression.token == 'FLAG'){
             result = `(q.actor_property('frw:${expression.value}'))`
         }else if(expression.token == 'CALL'){
-            if(expression.value[0].value == 'rand'){
-                result = `(math.die_roll(1, 0, 1) > 0.45)`
-            }else{
-                return new Backend.Error(`Method '${expression.value[0].value}' is not supported in an expression!`)
+            if(!Native.doesFunctionExist(expression.value[0].value)){
+                return new Backend.Error(`Method '${expression.value[0].value}' does not exist!`)
             }
+
+            if(!Native.doesFunctionSupportMolang(expression.value[0].value)){
+                return new Backend.Error(`Method '${expression.value[0].value}' is not supported in expression!`)
+            }
+
+            if(!Native.doesFunctionExistWithTemplate(expression.value[0].value, expression.value.slice(1))){
+                return new Backend.Error(`Method '${expression.value[0].value}' does not match any template!`)
+            }
+
+            result = Native.getFunction(expression.value[0].value, expression.value.slice(1))
         }else{
             return new Backend.Error('Unknown expression token: ' + expression.token + '!')
         }
@@ -82,7 +95,10 @@ export function Compile(tree, config, source){
             flags.push(flag.value)
         }
     }
+    //#endregion
 
+    
+    //#region NOTE: Optimizes expressions for molang
     function optimizeExpression(expression){
         let dynamic = false
 
@@ -232,7 +248,10 @@ export function Compile(tree, config, source){
 
         return expression
     }
+    //#endregion
 
+
+    //#region NOTE: Util Functions
     function searchForExpression(tree){
         if(tree.token == 'DEFINITION' || tree.token == 'IF' || tree.token == 'DELAY'){
             const deep = searchForExpression(tree.value[1].value)
@@ -242,16 +261,6 @@ export function Compile(tree, config, source){
             }
 
             tree.value[1].value = deep
-        }else if(tree.token == 'ASSIGN' && tree.value[0].value == 'const'){
-            if(tree.value[2].token == 'EXPRESSION'){
-                const deep = optimizeExpression(tree.value[2])
-
-                if(deep instanceof Backend.Error){
-                    return deep
-                }
-
-                tree.value[2] = deep
-            }
         }else if(tree.token == 'CALL'){
             for(let i = 1; i < tree.value.length; i++){
                 if(tree.value[i].token == 'EXPRESSION'){
@@ -268,7 +277,7 @@ export function Compile(tree, config, source){
 
         return tree
     }
-
+   
     function indexCodeBlock(block, mode, condition = null, preferedID = null){
         for(let i = 0; i < block.value.length; i++){
             const deep = searchForCodeBlock(block.value[i])
@@ -313,18 +322,6 @@ export function Compile(tree, config, source){
         block = { value: [ID, mode], token: 'BLOCKREF'}
 
         return block
-    }
-
-    function indexConstant(token){
-        if(token.value[2].token == 'EXPRESSION' || token.value[2].dynamic){
-            return new Backend.Error(`Can not assign dyncamic value to const ${token.value[1].value}!`)
-        }
-
-        if(constants[token.value[1].value]){
-            return new Backend.Error(`Can not initialize constant ${token.value[1].value} more than once!`)
-        }
-
-        constants[token.value[1].value] = token.value[2]
     }
 
     function searchForCodeBlock(tree){
@@ -386,7 +383,10 @@ export function Compile(tree, config, source){
 
         return tree
     }
+    //#endregion
 
+
+    //#region NOTE: Do All The Searching Indexing And Optimization 
     for(let i = 0; i < tree.length; i++){
         const deep = searchForExpression(tree[i])
 
@@ -395,18 +395,6 @@ export function Compile(tree, config, source){
         }
 
         tree[i] = deep
-    }
-
-    for(let i = 0; i < tree.length; i++){
-        if(tree[i].token == 'ASSIGN'){
-            if(tree[i].value[0].value == 'const'){
-                const deep = indexConstant(tree[i])
-
-                if(deep instanceof Backend.Error){
-                    return deep
-                }
-            }
-        }
     }
 
     for(let i = 0; i < tree.length; i++){
@@ -428,7 +416,10 @@ export function Compile(tree, config, source){
 
         tree[i] = deep
     }
+    //#endregion
 
+
+    //#region NOTE: Create animations json for flags (sets up anims for adding and removing flag tags)
     //TODO: Make reliable
     for(let i = 0; i < flags.length; i++){
         let data = {
@@ -465,7 +456,10 @@ export function Compile(tree, config, source){
 
         worldRuntime['minecraft:entity'].events['frw:unset_' + flags[i]] = eventData
     }
+    //#endregion
 
+
+    //#region NOTE: Create animations for dynamic values like if params and dynamic flags
     const dynamicValueNames = Object.getOwnPropertyNames(dynamicValues)
 
     //TODO: Make reliable
@@ -530,7 +524,10 @@ export function Compile(tree, config, source){
 
         worldRuntime['minecraft:entity'].description.scripts.animate.push(animData)
     }
+    //#endregion
 
+
+    //#region NOTE: Add code blocks as events to entities
     const blockNames = Object.getOwnPropertyNames(blocks)
 
     for(let i = 0; i < blockNames.length; i++){
@@ -540,26 +537,29 @@ export function Compile(tree, config, source){
 
         for(let l = 0; l < blocks[blockNames[i]].length; l++){
             if(blocks[blockNames[i]][l].token == 'CALL'){
-                if(blocks[blockNames[i]][l].value[0].value == 'rc'){
+                const callName = blocks[blockNames[i]][l].value[0].value
+                const callParams = blocks[blockNames[i]][l].value.slice(1)
+
+                if(Native.doesFunctionExist(callName)){
+                    if(!Native.doesFunctionSupportEntity(callName)){
+                        return new Backend.Error(`Method '${callName}' is not supported in code blocks!`)
+                    }
+        
+                    if(!Native.doesFunctionExistWithTemplate(callName, callParams)){
+                        return new Backend.Error(`Method '${callName}' does not match any template!`)
+                    }
+
+                    data.sequence.push(Native.getFunction(callName, callParams))
+                }else if(blocks[callName]){
                     data.sequence.push({
                         run_command: {
                             command: [
-                                blocks[blockNames[i]][l].value[1].value
+                                `event entity @s frw:${callName}`
                             ]
                         }
                     })
                 }else{
-                    if(blocks[blocks[blockNames[i]][l].value[0].value]){
-                        data.sequence.push({
-                            run_command: {
-                                command: [
-                                    `event entity @s frw:${blocks[blockNames[i]][l].value[0].value}`
-                                ]
-                            }
-                        })
-                    }else{
-                        return new Backend.Error(`Attemped to call undefined method ${blocks[blockNames[i]][l].value[0].value}!`)
-                    }
+                    return new Backend.Error(`Method '${callName}' does not exist!`)
                 }
             }else if(blocks[blockNames[i]][l].token == 'DEFINITION' || blocks[blockNames[i]][l].token == 'IF' || blocks[blockNames[i]][l].token == 'DELAY'){
                 if(blocks[blockNames[i]][l].value[1].value[1] == 'normal'){
@@ -675,12 +675,17 @@ export function Compile(tree, config, source){
 
         worldRuntime['minecraft:entity'].events['frw:' + blockNames[i]] = data
     }
+    //#endregion
 
+
+    //#region NOTE: Setup delay steps DONE
     worldRuntime['minecraft:entity'].events['frwb:delay'] = {
         run_command: {
             command: delaySteps
         }
     }
+    //#endregion
+
 
     return {
         animations: outAnimations,
