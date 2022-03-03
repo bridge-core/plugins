@@ -2148,7 +2148,7 @@
 
     			await outputFileSystem.mkdir(outBPPath + 'functions');
 
-    			let mc = 'event entity @e[tag=started2, tag=!started3] frw:start\ntag @e[tag=started2] add started3\ntag @e[tag=started] add started2\ntag @e add started';
+    			let mc = 'event entity @e[tag=started3] frw:update\nevent entity @e[tag=started3] frwb:delay\nevent entity @e[tag=started2, tag=!started3] frw:start\ntag @e[tag=started2] add started3\ntag @e[tag=started] add started2\ntag @e add started';
 
     			await outputFileSystem.writeFile(outBPPath + 'functions/firework_runtime.mcfunction', mc);
 
@@ -2157,7 +2157,9 @@
 
     				tick = JSON.parse(await tick.text());
 
-    				tick.values.push('firework_runtime');
+    				if(!tick.values.includes('firework_runtime')){
+    					tick.values.push('firework_runtime');
+    				}
 
     				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify(tick));
     			}catch (ex){
