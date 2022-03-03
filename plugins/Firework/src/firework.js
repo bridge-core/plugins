@@ -186,7 +186,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 								}else{
 									if(dependAnaimtions[filePath]){
 										for(const animation of dependAnaimtions[filePath]){
-											console.log('Removing anim in depend mode: ' + animation)
+											//console.log('Removing anim in depend mode: ' + animation)
 
 											try{
 												outputFileSystem.unlink(outBPPath + 'animations/' + animation)
@@ -199,7 +199,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 								for(let i = 0; i < animations.length; i++){
 									if(inDependMode){
-										console.log('Writing anim in depend mode: ' + animations[i])
+										//console.log('Writing anim in depend mode: ' + animations[i])
 										await outputFileSystem.writeFile(outBPPath + 'animations/' + animations[i], compiled.animations[animations[i]])
 									}else{
 										outAnimations[animations[i]] = compiled.animations[animations[i]]

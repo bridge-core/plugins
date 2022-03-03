@@ -49,7 +49,6 @@ const symbols = [
 
 const keywords = [
     'if',
-    'const',
     'dyn',
     'func',
     'delay'
