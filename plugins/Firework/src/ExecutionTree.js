@@ -45,6 +45,72 @@ function splitLines(tokens){
     return lines
 }
 
+function buildStrings(tokens){
+    for(let l = 0; l < tokens.length; l++){
+        let inString = false
+        let inStringIndex = -1
+
+        let stringChar = ''
+
+        let removed = false
+
+        let lastStringLine
+
+        //Remove Whitespace and Create Strings
+        for(let i = 0; i < tokens[l].length; i++){
+            const token = tokens[l][i]
+
+            if(token.token == 'SYMBOL' && (token.value == '"' || token.value == "'") && (stringChar == '' || stringChar == token.value)){
+                inString = !inString
+
+                if(inString){
+                    inStringIndex = i
+                    lastStringLine = token.line
+                    stringChar = token.value
+                }else{            
+                    let tokensInString = tokens[l].slice(inStringIndex + 1, i)
+
+                    let resultString = ''
+
+                    for(let j = 0; j < tokensInString.length; j++){
+                        resultString += tokensInString[j].value
+                    }
+
+                    tokens[l].splice(inStringIndex, i - inStringIndex + 1, { value: resultString, token: 'STRING', line: token.line })
+
+                    i -= i - inStringIndex
+                }
+            }
+            
+            if(token.token == 'WHITESPACE' && !inString){
+                tokens[l].splice(i, 1)
+
+                i--
+            }
+
+            if(tokens[l].length == 0){
+                tokens.splice(l, 1)
+
+                l--
+
+                removed = true
+
+                break
+            }
+        }
+
+        if(removed){
+            continue
+        }
+
+        if(inString){
+          return new Backend.Error('Unclosed string!', lastStringLine)
+        }        
+    }
+
+    return tokens
+}
+
 function buildCodeBlocks(tokens){
     let openPaths = []
 
@@ -112,9 +178,6 @@ function buildCodeBlocks(tokens){
 
 function buildCompoundTypes(tokens){
     for(let l = 0; l < tokens.length; l++){
-        let inString = false
-        let inStringIndex = -1
-
         //Go Deeper Into Blocks
         for(let i = 0; i < tokens[l].length; i++){
             if(tokens[l][i].token == 'BLOCK'){
@@ -126,60 +189,6 @@ function buildCompoundTypes(tokens){
 
                 tokens[l][i].value = deep
             }
-        }
-
-        let removed = false
-
-        let lastStringLine
-
-        //Remove Whitespace and Create Strings
-        for(let i = 0; i < tokens[l].length; i++){
-            const token = tokens[l][i]
-
-            if(token.token == 'SYMBOL' && (token.value == '"' || token.value == "'")){
-                inString = !inString
-
-                if(inString){
-                    inStringIndex = i
-                    lastStringLine = token.line
-                }else{            
-                    let tokensInString = tokens[l].slice(inStringIndex + 1, i)
-
-                    let resultString = ''
-
-                    for(let j = 0; j < tokensInString.length; j++){
-                        resultString += tokensInString[j].value
-                    }
-
-                    tokens[l].splice(inStringIndex, i - inStringIndex + 1, { value: resultString, token: 'STRING', line: token.line })
-
-                    i -= i - inStringIndex
-                }
-            }
-            
-            if(token.token == 'WHITESPACE' && !inString){
-                tokens[l].splice(i, 1)
-
-                i--
-            }
-
-            if(tokens[l].length == 0){
-                tokens.splice(l, 1)
-
-                l--
-
-                removed = true
-
-                break
-            }
-        }
-
-        if(removed){
-            continue
-        }
-
-        if(inString){
-          return new Backend.Error('Unclosed string!', lastStringLine)
         }
 
         //Combine Numbers
@@ -786,6 +795,12 @@ function buildFlagAssignments(tokens){
 
 export function GenerateETree(tokens){
     tokens = splitLines(tokens)
+
+    tokens = buildStrings(tokens)
+
+    if(tokens instanceof Backend.Error){
+        return tokens
+    }
 
     tokens = buildCodeBlocks(tokens)
 
