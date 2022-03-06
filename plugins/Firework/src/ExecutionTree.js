@@ -821,6 +821,9 @@ export function GenerateETree(tokens){
     for(let l = 0; l < tokens.length; l++){
         if(tokens[l].length != 1){
             return new Backend.Error('Unresolved symbols 05:\n' + JSON.stringify(tokens[l], null, 2))
+        }else if(tokens[l].length == 0){
+            tokens[l].splice(l, 1)
+            l--
         }else{
             tokens[l] = tokens[l][0]
         }

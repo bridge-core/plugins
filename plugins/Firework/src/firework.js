@@ -12,11 +12,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 	let outAnimations = {}
 
-	let dependAnaimtions = {}
-
 	let entitiesToCompile = []
-
-	let inDependMode = false
 	
 	function noErrors(fileContent)
     {
@@ -66,7 +62,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 						const content = JSON.parse(await fO.text())
 						
 						if(content['minecraft:entity'] && content['minecraft:entity'].components){
-							const components = Object.getOwnPropertyNames(content['minecraft:entity'].components)
+							const components = Object.keys(content['minecraft:entity'].components)
 
 							let requiredScripts = []
 
@@ -90,7 +86,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 				const diffScripts = []
 
-				const indexedScripts = Object.getOwnPropertyNames(newScripts)
+				const indexedScripts = Object.keys(newScripts)
 
 				for(const script of indexedScripts){
 					if(!scripts[script]){
@@ -115,7 +111,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 				//console.log('Got Diff Scripts:')
 				//console.log(diffScripts)
 
-				const entityDependsKeys = Object.getOwnPropertyNames(entityDepends)
+				const entityDependsKeys = Object.keys(entityDepends)
 
 				for(const entity of entityDependsKeys){
 					const entityDependsValue = entityDepends[entity]
@@ -142,7 +138,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 				//console.log('Transforming ' + filePath)
 
 				if(fileContent['minecraft:entity'] && fileContent['minecraft:entity'].components){
-					const components = Object.getOwnPropertyNames(fileContent['minecraft:entity'].components)
+					const components = Object.keys(fileContent['minecraft:entity'].components)
 
 					let requiredScripts = []
 
@@ -169,6 +165,8 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 									throw tree.message
 								}
 
+								console.log(filePath + ' : ' + script)
+
 								const compiled = Compiler.Compile(tree, {
 									delayChannels: 3  
 								}, fileContent)
@@ -177,33 +175,10 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 									throw compiled.message
 								}
 
-								let animations = Object.getOwnPropertyNames(compiled.animations)
-
-								let outBPPath = 'development_behavior_packs/' + projectRoot.split('/')[1] + ' BP/'
-
-								if(!inDependMode){
-									dependAnaimtions[filePath] = animations
-								}else{
-									if(dependAnaimtions[filePath]){
-										for(const animation of dependAnaimtions[filePath]){
-											//console.log('Removing anim in depend mode: ' + animation)
-
-											try{
-												outputFileSystem.unlink(outBPPath + 'animations/' + animation)
-											}catch(e){
-												console.log(e)
-											}
-										}
-									}
-								}							
+								let animations = Object.keys(compiled.animations)
 
 								for(let i = 0; i < animations.length; i++){
-									if(inDependMode){
-										//console.log('Writing anim in depend mode: ' + animations[i])
-										await outputFileSystem.writeFile(outBPPath + 'animations/' + animations[i], compiled.animations[animations[i]])
-									}else{
-										outAnimations[animations[i]] = compiled.animations[animations[i]]
-									}
+									outAnimations[animations[i]] = compiled.animations[animations[i]]
 								}
 
 								fileContent = compiled.entity
@@ -225,17 +200,9 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 				outBPPath = projectRoot + '/builds/dist/' + projectRoot.split('/')[1] + ' BP/'
 			}
 
-			await outputFileSystem.mkdir(outBPPath + 'animations')
-
-			let animations = Object.getOwnPropertyNames(outAnimations)
-
-			for(let i = 0; i < animations.length; i++){
-				await outputFileSystem.writeFile(outBPPath + 'animations/' + animations[i], outAnimations[animations[i]])
-			}
-
 			await outputFileSystem.mkdir(outBPPath + 'functions')
 
-			let mc = 'event entity @e[tag=started3] frw:update\nevent entity @e[tag=started3] frwb:delay\nevent entity @e[tag=started2, tag=!started3] frw:start\ntag @e[tag=started2] add started3\ntag @e[tag=started] add started2\ntag @e add started'
+			let mc = 'event entity @e[tag=started3] frw_update\nevent entity @e[tag=started3] frwb_delay\nevent entity @e[tag=started2, tag=!started3] frw_start\ntag @e[tag=started2] add started3\ntag @e[tag=started] add started2\ntag @e add started'
 
 			await outputFileSystem.writeFile(outBPPath + 'functions/firework_runtime.mcfunction', mc)
 
@@ -258,18 +225,30 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 				}))
 			}
 
-			inDependMode = true
-
 			//console.log('Compiling Extra Entities')
 			//console.log(entitiesToCompile)
 			await compileFiles(entitiesToCompile)
 
+			await outputFileSystem.mkdir(outBPPath + 'animations')
+
+			let animations = Object.keys(outAnimations)
+
+			let animationFile = {
+				format_version: '1.10.0',
+				animations: {
+
+				}
+			}
+
+			for(let i = 0; i < animations.length; i++){
+				animationFile.animations[animations[i]] = outAnimations[animations[i]]
+			}
+
+			await outputFileSystem.writeFile(outBPPath + 'animations/firework_backend.json', JSON.stringify(animationFile, null, 4))
+
 			outAnimations = {}
-			dependAnaimtions = {}
 
 			entitiesToCompile = []
-
-			inDependMode = false
         },
 	}
 }
