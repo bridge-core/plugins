@@ -443,7 +443,7 @@ export function Compile(tree, config, source){
     
         eventData.set_actor_property['frw:' + name] = 1
 
-        worldRuntime['minecraft:entity'].events[name + '_true'] = eventData
+        worldRuntime['minecraft:entity'].events['frw_' + name + '_true'] = eventData
 
         eventData = {
             set_actor_property: {},

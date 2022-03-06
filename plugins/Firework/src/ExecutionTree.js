@@ -1,8 +1,6 @@
 import * as Backend from './Backend.js'
 
 function splitLines(tokens){
-    console.log(JSON.parse(JSON.stringify(tokens)))
-
     let lineCount = 1
 
     for(let i = 0; i < tokens.length; i++){
@@ -466,7 +464,6 @@ function buildExpressionsSingle(tokens){
 
             if(prevToken && nextNextToken){
                 if(!(nextNextToken.token == 'FLAG' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'CALL' || nextNextToken.token == 'NAME') || !(prevToken.token == 'FLAG' || prevToken.token == 'EXPRESSION' || prevToken.token == 'BOOLEAN' || prevToken.token == 'MOLANG' || prevToken.token == 'CALL' || prevToken.token == 'NAME')){
-                    console.log(tokens)
                     return new Backend.Error(`Can not do operation '${token.value + nextToken.value}' with '${nextNextToken.token}' and '${prevToken.token}'!`, token.line)
                 }
 
@@ -860,8 +857,6 @@ export function GenerateETree(tokens){
             tokens[l] = tokens[l][0]
         }
     }
-
-    console.log(JSON.parse(JSON.stringify(tokens)))
 
     return tokens
 }
