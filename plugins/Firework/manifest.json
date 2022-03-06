@@ -1,9 +1,9 @@
 {
 	"icon": "mdi-rocket-launch",
 	"author": "Outer Cloud Studio",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"name": "Firework",
-	"description": "Adds support for custom entity syntax such as adding component groups or spell effects directly in events.",
+	"description": "Allows you to write complex logic by combining commands with molang!",
 	"id": "ocs.firework",
 	"api_version": 2,
 	"target": "v2",
