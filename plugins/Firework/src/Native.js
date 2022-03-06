@@ -232,7 +232,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) + tokenToUseable(params[1])).toString(),
-                token: 'INTEGER'
+                token: 'INTEGER',
+                line: params[0].line
             }
         },
 
@@ -250,7 +251,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) - tokenToUseable(params[1])).toString(),
-                token: 'INTEGER'
+                token: 'INTEGER',
+                line: params[0].line
             }
         },
 
@@ -268,7 +270,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) * tokenToUseable(params[1])).toString(),
-                token: 'INTEGER'
+                token: 'INTEGER',
+                line: params[0].line
             }
         },
 
@@ -286,7 +289,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) / tokenToUseable(params[1])).toString(),
-                token: 'FLOAT'
+                token: 'FLOAT',
+                line: params[0].line
             }
         },
 
@@ -304,7 +308,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) && tokenToUseable(params[1])).toString(),
-                token: 'BOOLEAN'
+                token: 'BOOLEAN',
+                line: params[0].line
             }
         },
 
@@ -322,7 +327,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) || tokenToUseable(params[1])).toString(),
-                token: 'BOOLEAN'
+                token: 'BOOLEAN',
+                line: params[0].line
             }
         },
 
@@ -341,13 +347,15 @@ export const operations = {
             if(params[0].token != params[1].token){
                 return {
                     value: 'false',
-                    token: 'BOOLEAN'
+                    token: 'BOOLEAN',
+                    line: params[0].line
                 }
             }
 
             return {
                 value: (tokenToUseable(params[0]) == tokenToUseable(params[1])).toString(),
-                token: 'BOOLEAN'
+                token: 'BOOLEAN',
+                line: params[0].line
             }
         },
 
@@ -365,7 +373,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) > tokenToUseable(params[1])).toString(),
-                token: 'INTEGER'
+                token: 'INTEGER',
+                line: params[0].line
             }
         },
 
@@ -383,7 +392,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) < tokenToUseable(params[1])).toString(),
-                token: 'INTEGER'
+                token: 'INTEGER',
+                line: params[0].line
             }
         },
 
@@ -401,7 +411,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) >= tokenToUseable(params[1])).toString(),
-                token: 'INTEGER'
+                token: 'INTEGER',
+                line: params[0].line
             }
         },
 
@@ -419,7 +430,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (tokenToUseable(params[0]) <= tokenToUseable(params[1])).toString(),
-                token: 'INTEGER'
+                token: 'INTEGER',
+                line: params[0].line
             }
         },
 
@@ -436,7 +448,8 @@ export const operations = {
         optimize(params){
             return {
                 value: (!tokenToUseable(params[0])).toString(),
-                token: 'BOOLEAN'
+                token: 'BOOLEAN',
+                line: params[0].line
             }
         },
 
@@ -531,47 +544,55 @@ export function tokenToMolang(token){
     if(token.token == 'INTEGER'){
         return {
             value: token.value,
-            token: 'MOLANG'
+            token: 'MOLANG',
+            line: token.line
         }
     }else if(token.token == 'BOOLEAN'){
         if(token.value == 'true'){
             return {
                 value: '1',
-                token: 'MOLANG'
+                token: 'MOLANG',
+                line: token.line
             }
         }else{
             return {
                 value: '0',
-                token: 'MOLANG'
+                token: 'MOLANG',
+                line: token.line
             }
         }
     }else if(token.token == 'STRING'){
         return {
             value: '\'' + token.value + '\'',
-            token: 'MOLANG'
+            token: 'MOLANG',
+            line: token.line
         }
     }else if(token.token == 'MOLANG'){
         return {
             value: token.value,
-            token: 'MOLANG'
+            token: 'MOLANG',
+            line: token.line
         }
     }else if(token.token == 'FLAG'){
         return {
             value: `q.actor_property('frw:${token.value}')`,
-            token: 'MOLANG'
+            token: 'MOLANG',
+            line: token.line
         }
     }else if(token.token == 'NAME'){
         if(dynamicFlags[token.value]){
             return {
                 value: dynamicFlags[token.value],
-                token: 'MOLANG'
+                token: 'MOLANG',
+                line: token.line
             }
         }
     }
 
     return {
-        value: 'idk',
-        token: 'MOLANG'
+        value: 'ERROR',
+        token: 'MOLANG',
+        line: token.line
     }
 }
 
@@ -582,7 +603,8 @@ export function variableToMolang(token){
 
         token = {
             value: '(' + operations[operation].toMolang(params) + ')',
-            token: 'MOLANG'
+            token: 'MOLANG',
+            line: token.line
         }        
     }else if(token.token == 'CALL'){
         const cName = token.value[0].value
@@ -590,12 +612,14 @@ export function variableToMolang(token){
 
         token = {
             value: '(' + getFunction(cName, cParams) + ')',
-            token: 'MOLANG'
+            token: 'MOLANG',
+            line: token.line
         }
     }else{
         token = {
             value: '(' + tokenToMolang(token).value + ')',
-            token: 'MOLANG'
+            token: 'MOLANG',
+            line: token.line
         }
     }
     

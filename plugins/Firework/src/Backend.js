@@ -1,12 +1,14 @@
 export class Error{
-    constructor(message){
+    constructor(message, line){
         this.message = message
+        this.line = line
     }
 }
 
 export class Warning{
-    constructor(message){
+    constructor(message, line){
         this.message = message
+        this.line = line
     }
 }
 

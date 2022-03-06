@@ -162,7 +162,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 								const tree = ExecutionTree.GenerateETree(tokens)
 
 								if(tree instanceof Backend.Error){
-									throw tree.message
+									throw tree.message + ' on line ' + tree.line + ' in ' + script
 								}
 
 								console.log(filePath + ' : ' + script)
@@ -172,7 +172,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 								}, fileContent)
 
 								if(compiled instanceof Backend.Error){
-									throw compiled.message
+									throw compiled.message + ' on line ' + tree.line + ' in ' + script
 								}
 
 								let animations = Object.keys(compiled.animations)
