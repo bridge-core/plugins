@@ -1090,7 +1090,7 @@
         
             eventData.set_actor_property['frw:' + name] = 1;
 
-            worldRuntime['minecraft:entity'].events[name + '_true'] = eventData;
+            worldRuntime['minecraft:entity'].events['frw_' + name + '_true'] = eventData;
 
             eventData = {
                 set_actor_property: {},
@@ -1248,8 +1248,6 @@
     }
 
     function splitLines(tokens){
-        console.log(JSON.parse(JSON.stringify(tokens)));
-
         let lineCount = 1;
 
         for(let i = 0; i < tokens.length; i++){
@@ -1713,7 +1711,6 @@
 
                 if(prevToken && nextNextToken){
                     if(!(nextNextToken.token == 'FLAG' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'CALL' || nextNextToken.token == 'NAME') || !(prevToken.token == 'FLAG' || prevToken.token == 'EXPRESSION' || prevToken.token == 'BOOLEAN' || prevToken.token == 'MOLANG' || prevToken.token == 'CALL' || prevToken.token == 'NAME')){
-                        console.log(tokens);
                         return new Error(`Can not do operation '${token.value + nextToken.value}' with '${nextNextToken.token}' and '${prevToken.token}'!`, token.line)
                     }
 
@@ -2107,8 +2104,6 @@
                 tokens[l] = tokens[l][0];
             }
         }
-
-        console.log(JSON.parse(JSON.stringify(tokens)));
 
         return tokens
     }
