@@ -20,8 +20,6 @@ import * as Native from './Native.js'
 */
 
 export function Compile(tree, config, source){
-    console.log(JSON.parse(JSON.stringify(tree)))
-
     //#region NOTE: Setup json values for editing
     let worldRuntime = source
 
@@ -56,11 +54,11 @@ export function Compile(tree, config, source){
             if(tree[i].token == 'ASSIGN'){
                 if(tree[i].value[0].value == 'dyn' && tree[i].value[0].token == 'KEYWORD'){
                     if(dynamicFlags[tree[i].value[1].value]){
-                        return new Backend.Error(`Dynamic flag '${tree[i].value[1].value}' already exists!`)
+                        return new Backend.Error(`Dynamic flag '${tree[i].value[1].value}' already exists!`, tree[i].value[0].line)
                     }
 
                     if(tree[i].value[2].token != 'MOLANG'){
-                        return new Backend.Error(`Dynamic flag '${tree[i].value[1].value}' can only be assigned to molang! It was assigned to '${tree[i].value[2].token}'.`)
+                        return new Backend.Error(`Dynamic flag '${tree[i].value[1].value}' can only be assigned to molang! It was assigned to '${tree[i].value[2].token}'.`, tree[i].value[0].line)
                     }
 
                     dynamicFlags[tree[i].value[1].value] = tree[i].value[2].value
@@ -107,7 +105,7 @@ export function Compile(tree, config, source){
                 if(tree[i].token == 'ASSIGN'){
                     if(tree[i].value[0].token == 'FLAG'){
                         if(tree[i].value[1].token != 'BOOLEAN'){
-                            return new Backend.Error(`fFlag '${tree[i].value[0].value}' can only be assigned to a boolean value! It was assigned to '${tree[i].value[1].token}'.`)
+                            return new Backend.Error(`fFlag '${tree[i].value[0].value}' can only be assigned to a boolean value! It was assigned to '${tree[i].value[1].token}'.`, tree[i].line)
                         }
 
                         let deep = indexFlag(tree[i].value[1].value)
@@ -173,7 +171,7 @@ export function Compile(tree, config, source){
         for(let i = 0; i < tree.length; i++){
             if(tree[i].token == 'DEFINITION'){
                 if(functions[tree[i].value[0].value]){
-                    return new Backend.Error(`Function '${tree[i].value[1].value}' already exists!`)
+                    return new Backend.Error(`Function '${tree[i].value[1].value}' already exists!`, tree[i].line)
                 }
 
                 functions[tree[i].value[0].value] = tree[i].value[1].value
@@ -237,7 +235,7 @@ export function Compile(tree, config, source){
                 pTypes.push(params[i].token)
             }
 
-            return new Backend.Error(`Can not do operation ${expression.value[0].value} between types ${pTypes.toString()}!`)
+            return new Backend.Error(`Can not do operation ${expression.value[0].value} between types ${pTypes.toString()}!`, expression.value[0].line)
         }
 
         return Native.optimizeOperation(expression)
@@ -487,12 +485,12 @@ export function Compile(tree, config, source){
                 const params = value[i].value.slice(1)
 
                 if(!Native.doesFunctionExist(name) && !functionNames.includes(name)){
-                    return new Backend.Error(`Function ${name} does not exist!`)
+                    return new Backend.Error(`Function ${name} does not exist!`, value[i].line)
                 }
 
                 if(Native.doesFunctionExist(name)){
                     if(!Native.doesFunctionExistWithTemplate(name, params)){
-                        return new Backend.Error(`Function ${name} does not exist with template!`)
+                        return new Backend.Error(`Function ${name} does not exist with template!`, value[i].line)
                     }
 
                     let entity = Native.getFunction(name, params)
