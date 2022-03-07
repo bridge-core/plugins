@@ -793,6 +793,108 @@ function buildFlagAssignments(tokens){
     return tokens
 }
 
+/* 
+    INTEGER
+    SYMBOL
+    KEYWORD
+    BOOLEAN
+    NAME
+    STRING
+    BLOCK
+    FLAG
+    MOLANG
+    ARROW
+    CALL
+    EXPRESSION
+    ASSIGN
+    IF
+    DELAY
+    DEFINITON
+*/
+
+function validateTree(tokens, gloabalScope){
+    for(let l = 0; l < tokens.length; l++){
+        let deep = null
+
+        switch(tokens[l].token){
+            case 'BLOCK':
+                return new Backend.Error('Blocks may not exist by themselves!', tokens[l].line)
+            case 'DEFINITION':
+                if(!gloabalScope){
+                    return new Backend.Error('Can\'t define function not in the global scope!', tokens[l].line)
+                }
+
+                deep = validateTree(tokens[l].value[1].value, false)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+
+                break
+            case 'ASSIGN':
+                if(gloabalScope){
+                    if(tokens[l].value[0].token == 'FLAG'){
+                        return new Backend.Error('Can\'t assign flags in the global scope!', tokens[l].line)
+                    }
+                }
+                break
+            case 'IF':
+                if(gloabalScope){
+                    return new Backend.Error('Can\'t use if statements in the global scope!', tokens[l].line)
+                }
+
+                deep = validateTree(tokens[l].value[1].value, false)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+                
+                break
+            case 'DELAY':
+                if(gloabalScope){
+                    return new Backend.Error('Can\'t use delay statements in the global scope!', tokens[l].line)
+                }
+
+                deep = validateTree(tokens[l].value[1].value, false)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+
+                break
+            case 'CALL':
+                if(gloabalScope){
+                    return new Backend.Error('Can\'t use calls in the global scope!', tokens[l].line)
+                }
+                break
+            case 'EXPRESSION':
+                return new Backend.Error('Expressions may not exist by themselves!', tokens[l].line)
+            case 'INTEGER':
+                return new Backend.Error('Integers may not exist by themselves!', tokens[l].line)
+            case 'SYMBOL':
+                return new Backend.Error('Symbols may not exist by themselves!', tokens[l].line)
+            case 'KEYWORD':
+                return new Backend.Error('Keywords may not exist by themselves!', tokens[l].line)
+            case 'BOOLEAN':
+                return new Backend.Error('Booleans may not exist by themselves!', tokens[l].line)
+            case 'NAME':
+                return new Backend.Error('Names may not exist by themselves!', tokens[l].line)
+            case 'STRING':
+                return new Backend.Error('Strings may not exist by themselves!', tokens[l].line)
+            case 'FLAG':
+                return new Backend.Error('Flags may not exist by themselves!', tokens[l].line)
+            case 'MOLANG':
+                return new Backend.Error('Molangs may not exist by themselves!', tokens[l].line)
+            case 'ARROW':
+                return new Backend.Error('Arrows may not exist by themselves!', tokens[l].line)
+            default:
+                return new Backend.Error('Unknown token type: ' + tokens[l].token, tokens[l].line)
+        }
+    }
+
+    return tokens
+}
+
 export function GenerateETree(tokens){
     tokens = splitLines(tokens)
 
@@ -871,6 +973,12 @@ export function GenerateETree(tokens){
         }else{
             tokens[l] = tokens[l][0]
         }
+    }
+
+    tokens = validateTree(tokens, true)
+
+    if(tokens instanceof Backend.Error){
+        return tokens
     }
 
     return tokens

@@ -167,9 +167,15 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 								console.log(filePath + ' : ' + script)
 
-								const compiled = Compiler.Compile(tree, {
+								let config = {
 									delayChannels: 3  
-								}, fileContent)
+								}
+
+								if(options.delayChannels){
+									config.delayChannels = options.delayChannels
+								}
+
+								const compiled = Compiler.Compile(tree, config, fileContent)
 
 								if(compiled instanceof Backend.Error){
 									throw compiled.message + ' on line ' + tree.line + ' in ' + script

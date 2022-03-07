@@ -108,7 +108,7 @@ export function Compile(tree, config, source){
                             return new Backend.Error(`fFlag '${tree[i].value[0].value}' can only be assigned to a boolean value! It was assigned to '${tree[i].value[1].token}'.`, tree[i].line)
                         }
 
-                        let deep = indexFlag(tree[i].value[1].value)
+                        let deep = indexFlag(tree[i].value[0].value)
 
                         if(deep instanceof Backend.Error){
                             return deep
@@ -429,6 +429,8 @@ export function Compile(tree, config, source){
     //#region NOTE: Compile Flags
     const flagNames = Object.keys(flags)
 
+    console.log(flagNames)
+
     for(const i in flagNames){
         const name = flagNames[i]
 
@@ -502,10 +504,12 @@ export function Compile(tree, config, source){
                     commands.push(`event entity @s frw_${name}`)
                 }
             }else if(value[i].token == 'ASSIGN'){
-                if(value[i].value[0].value == 'true'){
-                    commands.push(`event entity @s frw_${name}_true`)
+                console.log('FLAG COMPILE')
+                console.log(value[i].value[1].value)
+                if(value[i].value[1].value == 'true'){
+                    commands.push(`event entity @s frw_${value[i].value[0].value}_true`)
                 }else{
-                    commands.push(`event entity @s frw_${name}_false`)
+                    commands.push(`event entity @s frw_${value[i].value[0].value}_false`)
                 }
             }else if(value[i].token == 'IF'){
                 const valueID = value[i].value[0].value
@@ -521,7 +525,7 @@ export function Compile(tree, config, source){
 
                 let triggerCommands = []
 
-                for(let j = 0; j < 3; j++){
+                for(let j = 0; j < config.delayChannels; j++){
                     triggerCommands.push(`event entity @s[tag=!frwb_delay_added] frwb_delay_trigger_channel_${j}_${delayID}`)
 
                     worldRuntime['minecraft:entity'].events[`frwb_delay_trigger_channel_${j}_${delayID}`] = {
@@ -584,7 +588,11 @@ export function Compile(tree, config, source){
     for(const i in functionNames){
         const name = functionNames[i]
 
-        compileCodeBlock(name, functions[name])
+        let deep = compileCodeBlock(name, functions[name])
+
+        if(deep instanceof Backend.Error){
+            return deep
+        }
     }
 
     worldRuntime['minecraft:entity'].events.frwb_delay = {

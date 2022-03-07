@@ -11,7 +11,12 @@ Learn more at https://github.com/outercloudstudio/Firework
                 "packName": "BridgeTest"
             }
         ],
-        "firework"
+        [
+            "firework",
+            {
+                "delayChannels": 3
+            }
+        ]
     ]
 }
 

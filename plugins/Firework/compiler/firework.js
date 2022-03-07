@@ -757,7 +757,7 @@
                                 return new Error(`fFlag '${tree[i].value[0].value}' can only be assigned to a boolean value! It was assigned to '${tree[i].value[1].token}'.`, tree[i].line)
                             }
 
-                            let deep = indexFlag(tree[i].value[1].value);
+                            let deep = indexFlag(tree[i].value[0].value);
 
                             if(deep instanceof Error){
                                 return deep
@@ -1076,6 +1076,8 @@
         //#region NOTE: Compile Flags
         const flagNames = Object.keys(flags);
 
+        console.log(flagNames);
+
         for(const i in flagNames){
             const name = flagNames[i];
 
@@ -1149,10 +1151,12 @@
                         commands.push(`event entity @s frw_${name}`);
                     }
                 }else if(value[i].token == 'ASSIGN'){
-                    if(value[i].value[0].value == 'true'){
-                        commands.push(`event entity @s frw_${name}_true`);
+                    console.log('FLAG COMPILE');
+                    console.log(value[i].value[1].value);
+                    if(value[i].value[1].value == 'true'){
+                        commands.push(`event entity @s frw_${value[i].value[0].value}_true`);
                     }else {
-                        commands.push(`event entity @s frw_${name}_false`);
+                        commands.push(`event entity @s frw_${value[i].value[0].value}_false`);
                     }
                 }else if(value[i].token == 'IF'){
                     const valueID = value[i].value[0].value;
@@ -1168,7 +1172,7 @@
 
                     let triggerCommands = [];
 
-                    for(let j = 0; j < 3; j++){
+                    for(let j = 0; j < config.delayChannels; j++){
                         triggerCommands.push(`event entity @s[tag=!frwb_delay_added] frwb_delay_trigger_channel_${j}_${delayID}`);
 
                         worldRuntime['minecraft:entity'].events[`frwb_delay_trigger_channel_${j}_${delayID}`] = {
@@ -1232,8 +1236,10 @@
             const name = functionNames[i];
 
             let deep = compileCodeBlock(name, functions[name]);
-            console.log(functionNames[i])
-            console.log(deep)
+
+            if(deep instanceof Error){
+                return deep
+            }
         }
 
         worldRuntime['minecraft:entity'].events.frwb_delay = {
@@ -2042,6 +2048,108 @@
         return tokens
     }
 
+    /* 
+        INTEGER
+        SYMBOL
+        KEYWORD
+        BOOLEAN
+        NAME
+        STRING
+        BLOCK
+        FLAG
+        MOLANG
+        ARROW
+        CALL
+        EXPRESSION
+        ASSIGN
+        IF
+        DELAY
+        DEFINITON
+    */
+
+    function validateTree(tokens, gloabalScope){
+        for(let l = 0; l < tokens.length; l++){
+            let deep = null;
+
+            switch(tokens[l].token){
+                case 'BLOCK':
+                    return new Error('Blocks may not exist by themselves!', tokens[l].line)
+                case 'DEFINITION':
+                    if(!gloabalScope){
+                        return new Error('Can\'t define function not in the global scope!', tokens[l].line)
+                    }
+
+                    deep = validateTree(tokens[l].value[1].value, false);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
+
+                    break
+                case 'ASSIGN':
+                    if(gloabalScope){
+                        if(tokens[l].value[0].token == 'FLAG'){
+                            return new Error('Can\'t assign flags in the global scope!', tokens[l].line)
+                        }
+                    }
+                    break
+                case 'IF':
+                    if(gloabalScope){
+                        return new Error('Can\'t use if statements in the global scope!', tokens[l].line)
+                    }
+
+                    deep = validateTree(tokens[l].value[1].value, false);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
+                    
+                    break
+                case 'DELAY':
+                    if(gloabalScope){
+                        return new Error('Can\'t use delay statements in the global scope!', tokens[l].line)
+                    }
+
+                    deep = validateTree(tokens[l].value[1].value, false);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
+
+                    break
+                case 'CALL':
+                    if(gloabalScope){
+                        return new Error('Can\'t use calls in the global scope!', tokens[l].line)
+                    }
+                    break
+                case 'EXPRESSION':
+                    return new Error('Expressions may not exist by themselves!', tokens[l].line)
+                case 'INTEGER':
+                    return new Error('Integers may not exist by themselves!', tokens[l].line)
+                case 'SYMBOL':
+                    return new Error('Symbols may not exist by themselves!', tokens[l].line)
+                case 'KEYWORD':
+                    return new Error('Keywords may not exist by themselves!', tokens[l].line)
+                case 'BOOLEAN':
+                    return new Error('Booleans may not exist by themselves!', tokens[l].line)
+                case 'NAME':
+                    return new Error('Names may not exist by themselves!', tokens[l].line)
+                case 'STRING':
+                    return new Error('Strings may not exist by themselves!', tokens[l].line)
+                case 'FLAG':
+                    return new Error('Flags may not exist by themselves!', tokens[l].line)
+                case 'MOLANG':
+                    return new Error('Molangs may not exist by themselves!', tokens[l].line)
+                case 'ARROW':
+                    return new Error('Arrows may not exist by themselves!', tokens[l].line)
+                default:
+                    return new Error('Unknown token type: ' + tokens[l].token, tokens[l].line)
+            }
+        }
+
+        return tokens
+    }
+
     function GenerateETree(tokens){
         tokens = splitLines(tokens);
 
@@ -2120,6 +2228,12 @@
             }else {
                 tokens[l] = tokens[l][0];
             }
+        }
+
+        tokens = validateTree(tokens, true);
+
+        if(tokens instanceof Error){
+            return tokens
         }
 
         return tokens
@@ -2428,9 +2542,15 @@
 
     								console.log(filePath + ' : ' + script);
 
-    								const compiled = Compile(tree, {
+    								let config = {
     									delayChannels: 3  
-    								}, fileContent);
+    								};
+
+    								if(options.delayChannels){
+    									config.delayChannels = options.delayChannels;
+    								}
+
+    								const compiled = Compile(tree, config, fileContent);
 
     								if(compiled instanceof Error){
     									throw compiled.message + ' on line ' + tree.line + ' in ' + script
