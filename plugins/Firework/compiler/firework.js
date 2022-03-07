@@ -1231,7 +1231,9 @@
         for(const i in functionNames){
             const name = functionNames[i];
 
-            compileCodeBlock(name, functions[name]);
+            let deep = compileCodeBlock(name, functions[name]);
+            console.log(functionNames[i])
+            console.log(deep)
         }
 
         worldRuntime['minecraft:entity'].events.frwb_delay = {
