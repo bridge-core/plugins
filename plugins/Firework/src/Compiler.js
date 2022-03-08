@@ -20,6 +20,8 @@ import * as Native from './Native.js'
 */
 
 export function Compile(tree, config, source){
+    console.log(JSON.parse(JSON.stringify(tree)))
+
     //#region NOTE: Setup json values for editing
     let worldRuntime = source
 
@@ -128,6 +130,12 @@ export function Compile(tree, config, source){
                     }
 
                     deep = searchForFlags(tree[i].value[1].value)
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+                }else if(tree[i].token == 'ELSE'){
+                    let deep = searchForFlags(tree[i].value[0])
 
                     if(deep instanceof Backend.Error){
                         return deep
@@ -281,6 +289,12 @@ export function Compile(tree, config, source){
                 if(deep instanceof Backend.Error){
                     return deep
                 }
+            }else if(tree[i].token == 'ELSE'){
+                let deep = searchForExpressions(tree[i].value[0].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
             }else if(tree[i].token == 'DELAY'){
                 let deep = undefined
 
@@ -349,6 +363,12 @@ export function Compile(tree, config, source){
                 tree[i].value[0] = indexDynamicValues(Backend.uuidv4(), tree[i].value[0])
 
                 deep = searchForDyncamicValues(tree[i].value[1].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+            }else if(tree[i].token == 'ELSE'){
+                deep = searchForDyncamicValues(tree[i].value[0].value)
 
                 if(deep instanceof Backend.Error){
                     return deep
@@ -429,8 +449,6 @@ export function Compile(tree, config, source){
     //#region NOTE: Compile Flags
     const flagNames = Object.keys(flags)
 
-    console.log(flagNames)
-
     for(const i in flagNames){
         const name = flagNames[i]
 
@@ -504,8 +522,6 @@ export function Compile(tree, config, source){
                     commands.push(`event entity @s frw_${name}`)
                 }
             }else if(value[i].token == 'ASSIGN'){
-                console.log('FLAG COMPILE')
-                console.log(value[i].value[1].value)
                 if(value[i].value[1].value == 'true'){
                     commands.push(`event entity @s frw_${value[i].value[0].value}_true`)
                 }else{
@@ -517,6 +533,12 @@ export function Compile(tree, config, source){
                 compileCodeBlock('frwb_' + valueID, value[i].value[1].value)
 
                 commands.push(`event entity @s[tag=frwb_dv_${valueID}] frw_frwb_${valueID}`)
+            }else if(value[i].token == 'ELSE'){
+                const valueID = value[i - 1].value[0].value
+
+                compileCodeBlock('frwb_else_' + valueID, value[i].value[0].value)
+
+                commands.push(`event entity @s[tag=!frwb_dv_${valueID}] frw_frwb_else_${valueID}`)
             }else if(value[i].token == 'DELAY'){
                 const delayID = Backend.uuidv4()
                 const delay = Native.tokenToUseable(value[i].value[0])

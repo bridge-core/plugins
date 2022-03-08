@@ -70,10 +70,10 @@ export const functions = {
                 params: [],
         
                 asMolang (params) {
-                    return `(math.random(0, 1) >= 0.5)`
+                    return `(math.random(0, 1) >= 0.23)`
                 },
 
-                dynamic: true
+                dynamic: true,
             },
 
             {
@@ -82,14 +82,16 @@ export const functions = {
                 ],
         
                 asMolang (params) {
-                    return `(math.random(0, 1) >= ${1 / variableToMolang(params[0]).value * 0.5})`
+                    return `(math.random(0, 1) >= ${1 / variableToMolang(params[0]).value * 0.23})`
                 },
 
                 dynamic: true
             }
         ],
 
-        supports: 'molang'
+        supports: 'molang',
+        
+        returns: 'BOOLEAN'
     }
 }
 
@@ -145,7 +147,11 @@ export function doesTemplateMatch(params, template){
     let pTemplate = []
 
     for(const i in params){
-        pTemplate.push(params[i].token)
+        if(params[i].token == 'CALL'){
+            pTemplate.push(getReturnType(params[i].value[0].value, params[i].value.slice(1)))
+        }else{
+            pTemplate.push(params[i].token)
+        }
     }
 
     if(template.length != pTemplate.length){
@@ -196,6 +202,21 @@ export function getFunction(name, params){
             }
         }
     }
+}
+
+export function getReturnType(name, params){
+    if(!doesFunctionExist(name)){
+        console.warn('Function does not exist: ' + name)
+        return null
+    }
+
+    if(!doesFunctionExistWithTemplate(name, params)){
+        console.warn('Function does not exist with template: ' + name)
+        console.log(params)
+        return null
+    }
+
+    return functions[name].returns
 }
 
 export function getIsFunctionDynamic(name, params){
@@ -364,6 +385,33 @@ export const operations = {
         }
     },
 
+    '!=': {
+        params: [
+            'ANY',
+            'ANY'
+        ],
+
+        optimize(params){
+            if(params[0].token != params[1].token){
+                return {
+                    value: 'true',
+                    token: 'BOOLEAN',
+                    line: params[0].line
+                }
+            }
+
+            return {
+                value: (tokenToUseable(params[0]) != tokenToUseable(params[1])).toString(),
+                token: 'BOOLEAN',
+                line: params[0].line
+            }
+        },
+
+        toMolang(params){
+            return `${variableToMolang(params[0]).value} != ${variableToMolang(params[1]).value}`
+        }
+    },
+
     '>': {
         params: [
             'INTEGER',
@@ -502,7 +550,11 @@ export function canDoOperation(operation){
     let pParams = []
 
     for(const i in params){
-        pParams.push(params[i].token)
+        if(params[i].token == 'CALL'){
+            pParams.push(getReturnType(params[i].value[0].value, params[i].value.slice(1)))
+        }else{
+            pParams.push(params[i].token)
+        }
     }
 
     for(const i in pParams){
