@@ -174,7 +174,7 @@ We can have any json type as a value for variables: primitives, objects or array
             "thing" : true
         }
     },
-    "template" 
+    "includes" : "namespace:template",
     "format_version": "...",
     "minecraft:entity": {
         "description": {
@@ -237,4 +237,61 @@ Therefore, it is recommended that templates include default values for their var
         }
     }
 }	
+```
+
+## Exclusions
+Properties from templates can be also entirely excluded. In an instance file, by adding a property  name and writing a `@EXCLUDE@` before it, we exclude it from the output. As an example:
+```json
+{
+    "is_template" : true,
+    "format_version": "...",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "namespace:template"
+        },
+        "components" : {
+            "minecraft:health" : {
+                "value" : 30,
+                "max"  : 100
+            },
+            "minecraft:behavior.look_at_target" : {
+                "priority" : 0
+            }
+        }
+    }
+}	
+```
+and for the instance:
+```json
+{
+    "includes" : "namespace:template",
+    "format_version": "...",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "namespace:instance"
+        },
+        "components" : {
+            "@EXCLUDE@minecraft:behavior.look_at_target":  {},
+            "minecraft:health" : {
+                "@EXCLUDE@max" : {}
+            }
+        }
+    }
+}
+```
+As you can see, we can exclude properties at any level. The only thing that cannot be excluded is elements of arrays. The output of our example is:
+```json
+{
+    "format_version": "...",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "namespace:instance"
+        },
+        "components" : {
+            "minecraft:health" : {
+                "value" : 30
+            }
+        }
+    }
+}
 ```
