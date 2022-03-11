@@ -7,10 +7,13 @@
 	"description": "JavaScript Preprocessor for JSON files. Find docs here: tschipp.ch/preprocessor",
 	"api_version": 2,
 	"target": "v2",
-	"tags": ["Compiler"],
+	"tags": [
+		"Compiler"
+	],
 	"compiler": {
 		"plugins": {
 			"preprocessor": "compiler/preprocessor.js"
 		}
-	}
+	},
+	"releaseTimestamp": 1644593300362
 }
