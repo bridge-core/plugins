@@ -610,6 +610,28 @@
         }
     }
 
+    function valueToToken(value){
+        if(typeof value == 'string'){
+            return {
+                value: value,
+                token: 'STRING',
+                line: -1
+            }
+        }else if(typeof value == 'number'){
+            return {
+                value: value,
+                token: 'INTEGER',
+                line: -1
+            }
+        }else if(typeof value == 'boolean'){
+            return {
+                value: value,
+                token: 'BOOLEAN',
+                line: -1
+            }
+        }
+    }
+
     let dynamicFlags = {};
 
     function setDynamicFlags(flags){
@@ -720,9 +742,7 @@
         Call -> Name | -> Expression*
     */
 
-    function Compile(tree, config, source){
-        console.log(JSON.parse(JSON.stringify(tree)));
-
+    function Compile(tree, config, source, scriptConfig){
         //#region NOTE: Setup json values for editing
         let worldRuntime = source;
 
@@ -746,6 +766,128 @@
 
         if(!worldRuntime['minecraft:entity'].description.scripts.animate){
             worldRuntime['minecraft:entity'].description.scripts.animate = [];
+        }
+        //#endregion
+
+        //#region NOTE: Static Value Init - Config constants
+        let configConstants = {};
+
+        let scriptConfigKeys = Object.keys(scriptConfig);
+
+        for(let key of scriptConfigKeys){
+            if(!scriptConfig[key]){
+                return new Error('Script config is missing a value for ' + key + '!', -1)
+            }
+
+            let token = valueToToken(scriptConfig[key]);
+
+            if(!token){
+                return new Error('Script config has an invalid value for ' + key + '!', -1)
+            }
+
+            configConstants[key] = token;
+        }
+        //#endregion
+
+        //#region NOTE: Static Value Init - Replace Congfig Constants
+        function searchForConfigConstants(tree){
+            if(tree.token == 'EXPRESSION'){
+                for(let i = 0; i < tree.value.length; i++){
+                    if(tree.value[i].token == 'EXPRESSION'){
+                        let deep = searchForConfigConstants(tree.value[i]);
+
+                        if(deep instanceof Error){
+                            return deep
+                        }
+
+                        tree.value[i] = deep;
+                    }else if(tree.value[i].token == 'NAME'){
+                        if(configConstants[tree.value[i].value]){
+                            tree.value[i] = configConstants[tree.value[i].value];
+                        }
+                    }
+                }
+            }else {
+                for(let i = 0; i < tree.length; i++){
+                    if(tree[i].token == 'ASSIGN'){
+                        if(tree[i].value[1].token == 'NAME'){
+                            if(configConstants[tree[i].value[1].value]){
+                                tree.value[1] = configConstants[tree[i].value[1].value];
+                            }
+                        }
+                    }else if(tree[i].token == 'DEFINITION'){
+                        let deep = searchForConfigConstants(tree[i].value[1].value);
+
+                        if(deep instanceof Error){
+                            return deep
+                        }
+
+                        tree[i].value[1].value = deep;
+                    }else if(tree[i].token == 'IF'){
+                        let deep = searchForConfigConstants(tree[i].value[0]);
+
+                        if(deep instanceof Error){
+                            return deep
+                        }
+
+                        deep = searchForConfigConstants(tree[i].value[1].value);
+
+                        if(deep instanceof Error){
+                            return deep
+                        }
+
+                        tree[i].value[1].value = deep;
+                    }else if(tree[i].token == 'ELSE'){
+                        let deep = searchForConfigConstants(tree[i].value[0]);
+
+                        if(deep instanceof Error){
+                            return deep
+                        }
+
+                        tree[i].value[0] = deep;
+                    }else if(tree[i].token == 'DELAY'){
+                        if(tree[i].value[0].token == 'NAME'){
+                            if(configConstants[tree[i].value[0].value]){
+                                tree[i].value[0] = configConstants[tree[i].value[0].value];
+                            }
+                        }
+
+                        let deep = searchForConfigConstants(tree[i].value[1].value);
+
+                        if(deep instanceof Error){
+                            return deep
+                        }
+
+                        tree[i].value[1].value = deep;
+                    }else if(tree[i].token == 'CALL'){
+                        let params = tree[i].value.slice(1);
+
+                        for(let j = 0; j < params.length; j++){
+                            if(params[j].token == 'NAME'){
+                                if(configConstants[params[j].value]){
+                                    tree[i].value[j + 1] = configConstants[params[j].value];
+                                }
+                            }else if(params[j].token == 'EXPRESSION'){
+                                let deep = searchForConfigConstants(params[j]);
+
+                                if(deep instanceof Error){
+                                    return deep
+                                }
+
+                                tree[i].value[j + 1] = deep;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return tree
+        }
+
+        tree = searchForConfigConstants(tree);
+
+        if(tree instanceof Error){
+            return tree
         }
         //#endregion
 
@@ -2550,8 +2692,6 @@
     						const fO = await fileSystem.readFile(file);
     						newScripts[fileName] = await fO.text();
     						newScriptPaths[fileName] = file;
-
-    						//console.log('Indexed Script' + fileName + ' to ' + file)
     					}
     				}
 
@@ -2577,15 +2717,10 @@
 
     							entityDepends[file] = requiredScripts;
     						}
-
-    						//console.log('Indexed Entity' + file)
     					}
     				}catch(e){
 
     				}
-
-    				//console.log('Generated Entity Depends:')
-    				//console.log(entityDepends)
 
     				const diffScripts = [];
 
@@ -2611,9 +2746,6 @@
     					}
     				}
 
-    				//console.log('Got Diff Scripts:')
-    				//console.log(diffScripts)
-
     				const entityDependsKeys = Object.keys(entityDepends);
 
     				for(const entity of entityDependsKeys){
@@ -2628,9 +2760,6 @@
     					}
     				}
 
-    				//console.log('Got Entities to Compile:')
-    				//console.log(entitiesToCompile)
-
     				scripts = newScripts;
     				scriptPaths = newScriptPaths;
                 } catch (ex) {}
@@ -2638,16 +2767,17 @@
 
     		async transform(filePath, fileContent) {			
     			if(noErrors(fileContent) && isEntity(filePath)){
-    				//console.log('Transforming ' + filePath)
-
     				if(fileContent['minecraft:entity'] && fileContent['minecraft:entity'].components){
     					const components = Object.keys(fileContent['minecraft:entity'].components);
 
     					let requiredScripts = [];
 
+    					let scriptConfigs = {};
+
     					components.forEach(component => {
     						if(component.startsWith('frw:')){
     							requiredScripts.push(component.substring(4) + '.frw');
+    							scriptConfigs[component.substring(4) + '.frw'] = fileContent['minecraft:entity'].components[component];
     						}
     					});
 
@@ -2678,7 +2808,7 @@
     									config.delayChannels = options.delayChannels;
     								}
 
-    								const compiled = Compile(tree, config, fileContent);
+    								const compiled = Compile(tree, config, fileContent, scriptConfigs[script]);
 
     								if(compiled instanceof Error){
     									throw compiled.message + ' on line ' + tree.line + ' in ' + script
@@ -2726,16 +2856,11 @@
 
     				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify(tick));
     			}catch (ex){
-    				//console.log("can't find tick")
-    				//console.log(ex)
-
     				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify({
     					values: ['firework_runtime']
     				}));
     			}
 
-    			//console.log('Compiling Extra Entities')
-    			//console.log(entitiesToCompile)
     			await compileFiles(entitiesToCompile);
 
     			await outputFileSystem.mkdir(outBPPath + 'animations');
@@ -2755,7 +2880,7 @@
 
     			await outputFileSystem.writeFile(outBPPath + 'animations/firework_backend.json', JSON.stringify(animationFile, null, 4));
 
-    			outAnimations = {};
+    			//outAnimations = {}
 
     			entitiesToCompile = [];
             },

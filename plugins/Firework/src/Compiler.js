@@ -19,9 +19,7 @@ import * as Native from './Native.js'
     Call -> Name | -> Expression*
 */
 
-export function Compile(tree, config, source){
-    console.log(JSON.parse(JSON.stringify(tree)))
-
+export function Compile(tree, config, source, scriptConfig){
     //#region NOTE: Setup json values for editing
     let worldRuntime = source
 
@@ -45,6 +43,128 @@ export function Compile(tree, config, source){
 
     if(!worldRuntime['minecraft:entity'].description.scripts.animate){
         worldRuntime['minecraft:entity'].description.scripts.animate = []
+    }
+    //#endregion
+
+    //#region NOTE: Static Value Init - Config constants
+    let configConstants = {}
+
+    let scriptConfigKeys = Object.keys(scriptConfig)
+
+    for(let key of scriptConfigKeys){
+        if(!scriptConfig[key]){
+            return new Backend.Error('Script config is missing a value for ' + key + '!', -1)
+        }
+
+        let token = Native.valueToToken(scriptConfig[key])
+
+        if(!token){
+            return new Backend.Error('Script config has an invalid value for ' + key + '!', -1)
+        }
+
+        configConstants[key] = token
+    }
+    //#endregion
+
+    //#region NOTE: Static Value Init - Replace Congfig Constants
+    function searchForConfigConstants(tree){
+        if(tree.token == 'EXPRESSION'){
+            for(let i = 0; i < tree.value.length; i++){
+                if(tree.value[i].token == 'EXPRESSION'){
+                    let deep = searchForConfigConstants(tree.value[i])
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+
+                    tree.value[i] = deep
+                }else if(tree.value[i].token == 'NAME'){
+                    if(configConstants[tree.value[i].value]){
+                        tree.value[i] = configConstants[tree.value[i].value]
+                    }
+                }
+            }
+        }else{
+            for(let i = 0; i < tree.length; i++){
+                if(tree[i].token == 'ASSIGN'){
+                    if(tree[i].value[1].token == 'NAME'){
+                        if(configConstants[tree[i].value[1].value]){
+                            tree.value[1] = configConstants[tree[i].value[1].value]
+                        }
+                    }
+                }else if(tree[i].token == 'DEFINITION'){
+                    let deep = searchForConfigConstants(tree[i].value[1].value)
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+
+                    tree[i].value[1].value = deep
+                }else if(tree[i].token == 'IF'){
+                    let deep = searchForConfigConstants(tree[i].value[0])
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+
+                    deep = searchForConfigConstants(tree[i].value[1].value)
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+
+                    tree[i].value[1].value = deep
+                }else if(tree[i].token == 'ELSE'){
+                    let deep = searchForConfigConstants(tree[i].value[0])
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+
+                    tree[i].value[0] = deep
+                }else if(tree[i].token == 'DELAY'){
+                    if(tree[i].value[0].token == 'NAME'){
+                        if(configConstants[tree[i].value[0].value]){
+                            tree[i].value[0] = configConstants[tree[i].value[0].value]
+                        }
+                    }
+
+                    let deep = searchForConfigConstants(tree[i].value[1].value)
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+
+                    tree[i].value[1].value = deep
+                }else if(tree[i].token == 'CALL'){
+                    let params = tree[i].value.slice(1)
+
+                    for(let j = 0; j < params.length; j++){
+                        if(params[j].token == 'NAME'){
+                            if(configConstants[params[j].value]){
+                                tree[i].value[j + 1] = configConstants[params[j].value]
+                            }
+                        }else if(params[j].token == 'EXPRESSION'){
+                            let deep = searchForConfigConstants(params[j])
+
+                            if(deep instanceof Backend.Error){
+                                return deep
+                            }
+
+                            tree[i].value[j + 1] = deep
+                        }
+                    }
+                }
+            }
+        }
+
+        return tree
+    }
+
+    tree = searchForConfigConstants(tree)
+
+    if(tree instanceof Backend.Error){
+        return tree
     }
     //#endregion
 

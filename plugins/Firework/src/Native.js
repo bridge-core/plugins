@@ -586,6 +586,28 @@ export function tokenToUseable(token){
     }
 }
 
+export function valueToToken(value){
+    if(typeof value == 'string'){
+        return {
+            value: value,
+            token: 'STRING',
+            line: -1
+        }
+    }else if(typeof value == 'number'){
+        return {
+            value: value,
+            token: 'INTEGER',
+            line: -1
+        }
+    }else if(typeof value == 'boolean'){
+        return {
+            value: value,
+            token: 'BOOLEAN',
+            line: -1
+        }
+    }
+}
+
 let dynamicFlags = {}
 
 export function setDynamicFlags(flags){

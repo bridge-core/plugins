@@ -47,8 +47,6 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 						const fO = await fileSystem.readFile(file)
 						newScripts[fileName] = await fO.text()
 						newScriptPaths[fileName] = file
-
-						//console.log('Indexed Script' + fileName + ' to ' + file)
 					}
 				}
 
@@ -74,15 +72,10 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 							entityDepends[file] = requiredScripts
 						}
-
-						//console.log('Indexed Entity' + file)
 					}
 				}catch(e){
 
 				}
-
-				//console.log('Generated Entity Depends:')
-				//console.log(entityDepends)
 
 				const diffScripts = []
 
@@ -108,9 +101,6 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 					}
 				}
 
-				//console.log('Got Diff Scripts:')
-				//console.log(diffScripts)
-
 				const entityDependsKeys = Object.keys(entityDepends)
 
 				for(const entity of entityDependsKeys){
@@ -125,9 +115,6 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 					}
 				}
 
-				//console.log('Got Entities to Compile:')
-				//console.log(entitiesToCompile)
-
 				scripts = newScripts
 				scriptPaths = newScriptPaths
             } catch (ex) {}
@@ -135,16 +122,17 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 		async transform(filePath, fileContent) {			
 			if(noErrors(fileContent) && isEntity(filePath)){
-				//console.log('Transforming ' + filePath)
-
 				if(fileContent['minecraft:entity'] && fileContent['minecraft:entity'].components){
 					const components = Object.keys(fileContent['minecraft:entity'].components)
 
 					let requiredScripts = []
 
+					let scriptConfigs = {}
+
 					components.forEach(component => {
 						if(component.startsWith('frw:')){
 							requiredScripts.push(component.substring(4) + '.frw')
+							scriptConfigs[component.substring(4) + '.frw'] = fileContent['minecraft:entity'].components[component]
 						}
 					})
 
@@ -175,7 +163,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 									config.delayChannels = options.delayChannels
 								}
 
-								const compiled = Compiler.Compile(tree, config, fileContent)
+								const compiled = Compiler.Compile(tree, config, fileContent, scriptConfigs[script])
 
 								if(compiled instanceof Backend.Error){
 									throw compiled.message + ' on line ' + tree.line + ' in ' + script
@@ -223,16 +211,11 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify(tick))
 			}catch (ex){
-				//console.log("can't find tick")
-				//console.log(ex)
-
 				await outputFileSystem.writeFile(outBPPath + 'functions/tick.json', JSON.stringify({
 					values: ['firework_runtime']
 				}))
 			}
 
-			//console.log('Compiling Extra Entities')
-			//console.log(entitiesToCompile)
 			await compileFiles(entitiesToCompile)
 
 			await outputFileSystem.mkdir(outBPPath + 'animations')
@@ -252,7 +235,7 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 
 			await outputFileSystem.writeFile(outBPPath + 'animations/firework_backend.json', JSON.stringify(animationFile, null, 4))
 
-			outAnimations = {}
+			//outAnimations = {}
 
 			entitiesToCompile = []
         },
