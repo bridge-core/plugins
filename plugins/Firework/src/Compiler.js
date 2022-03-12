@@ -168,6 +168,90 @@ export function Compile(tree, config, source, scriptConfig){
     }
     //#endregion
 
+    //#region NOTE: Static Value Init - Setup if delays
+    console.log(JSON.parse(JSON.stringify(tree)))
+
+    function setupIfDelays(tree){
+        for(let i = 0; i < tree.length; i++){
+            if(tree[i].token == 'DEFINITION'){
+                let deep = setupIfDelays(tree[i].value[1].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+
+                tree[i].value[1].value = deep
+            }else if(tree[i].token == 'IF'){
+                let deep = setupIfDelays(tree[i].value[1].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+
+                tree[i].value[1].value = deep
+
+                tree[i] = {
+                    token: 'DELAY',
+                    value: [
+                        { 
+                            value: '2',
+                            token: 'INTEGER'
+                        },
+                        {
+                            token: 'BLOCK',
+                            value: [
+                                tree[i]
+                            ]
+                        }
+                    ]
+                }
+
+                let remaining = tree.slice(i + 1, tree.length)
+
+                if(remaining.length > 0){
+                    let deep2 = setupIfDelays(remaining)
+
+                    if(deep2 instanceof Backend.Error){
+                        return deep2
+                    }
+
+                    for(let j = 0; j < deep2.length; j++){
+                        tree[i].value[1].value.push(deep2[j])
+                    }
+
+                    tree.splice(i + 1, remaining.length + 1)
+                }
+            }else if(tree[i].token == 'ELSE'){
+                let deep = setupIfDelays(tree[i].value[0])
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+
+                tree[i].value[0] = deep
+            }else if(tree[i].token == 'DELAY'){
+                let deep = setupIfDelays(tree[i].value[1].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+
+                tree[i].value[1].value = deep
+            }
+        }
+
+        return tree
+    }
+
+    tree = setupIfDelays(tree)
+
+    if(tree instanceof Backend.Error){
+        return tree
+    }
+
+    console.log(JSON.parse(JSON.stringify(tree)))
+    //#endregion
+
     //#region NOTE: Static Value Init - Index Dynamic Flags
     let dynamicFlags = {}
 
@@ -243,6 +327,19 @@ export function Compile(tree, config, source, scriptConfig){
                         return deep
                     }
                 }else if(tree[i].token == 'IF'){
+                    let deep = searchForFlags(tree[i].value[0])
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+
+                    deep = searchForFlags(tree[i].value[1].value)
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+                }
+                else if(tree[i].token == 'FIF'){
                     let deep = searchForFlags(tree[i].value[0])
 
                     if(deep instanceof Backend.Error){
@@ -409,6 +506,24 @@ export function Compile(tree, config, source, scriptConfig){
                 if(deep instanceof Backend.Error){
                     return deep
                 }
+            }else if(tree[i].token == 'FIF'){
+                let deep = undefined
+
+                if(tree[i].value[0].token == 'EXPRESSION'){
+                    deep = optimizeExpression(tree[i].value[0])
+
+                    if(deep instanceof Backend.Error){
+                        return deep
+                    }
+
+                    tree[i].value[0] = deep
+                }
+
+                deep = searchForExpressions(tree[i].value[1].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
             }else if(tree[i].token == 'ELSE'){
                 let deep = searchForExpressions(tree[i].value[0].value)
 
@@ -480,6 +595,14 @@ export function Compile(tree, config, source, scriptConfig){
                     return deep
                 }
             }else if(tree[i].token == 'IF'){
+                tree[i].value[0] = indexDynamicValues(Backend.uuidv4(), tree[i].value[0])
+
+                deep = searchForDyncamicValues(tree[i].value[1].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+            }else if(tree[i].token == 'FIF'){
                 tree[i].value[0] = indexDynamicValues(Backend.uuidv4(), tree[i].value[0])
 
                 deep = searchForDyncamicValues(tree[i].value[1].value)
@@ -648,6 +771,12 @@ export function Compile(tree, config, source, scriptConfig){
                     commands.push(`event entity @s frw_${value[i].value[0].value}_false`)
                 }
             }else if(value[i].token == 'IF'){
+                const valueID = value[i].value[0].value
+
+                compileCodeBlock('frwb_' + valueID, value[i].value[1].value)
+
+                commands.push(`event entity @s[tag=frwb_dv_${valueID}] frw_frwb_${valueID}`)
+            }else if(value[i].token == 'FIF'){
                 const valueID = value[i].value[0].value
 
                 compileCodeBlock('frwb_' + valueID, value[i].value[1].value)

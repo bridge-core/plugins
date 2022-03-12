@@ -701,7 +701,7 @@ function buildIfAndDelay(tokens){
             const nextNextNextNextToken = tokens[l][i + 4] // =>
             const nextNextNextNextNextToken = tokens[l][i + 5] // Block
 
-            if(token.token == 'KEYWORD' && token.value == 'if' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '(' && nextNextToken && nextNextNextToken && nextNextNextToken.token == 'SYMBOL' && nextNextNextToken.value == ')' && nextNextNextNextToken && nextNextNextNextToken.token == 'ARROW' && nextNextNextNextNextToken && nextNextNextNextNextToken.token == 'BLOCK'){
+            if(token.token == 'KEYWORD' && token.value == 'if' || token.value == 'fif' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '(' && nextNextToken && nextNextNextToken && nextNextNextToken.token == 'SYMBOL' && nextNextNextToken.value == ')' && nextNextNextNextToken && nextNextNextNextToken.token == 'ARROW' && nextNextNextNextNextToken && nextNextNextNextNextToken.token == 'BLOCK'){
                 if(!(nextNextToken.token == 'FLAG' || nextNextToken.token == 'NAME' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'CALL')){
                     return new Backend.Error(`If condition can't be ${nextNextToken.token}!`, token.line)
                 }
@@ -717,7 +717,11 @@ function buildIfAndDelay(tokens){
                     }
                 }
                 
-                tokens[l].splice(i, 6, { value: [nextNextToken, nextNextNextNextNextToken], token: 'IF', line: token.line })
+                if(token.value == 'if'){
+                    tokens[l].splice(i, 6, { value: [nextNextToken, nextNextNextNextNextToken], token: 'IF', line: token.line })
+                }else{
+                    tokens[l].splice(i, 6, { value: [nextNextToken, nextNextNextNextNextToken], token: 'FIF', line: token.line })
+                }
             }
         }
         
@@ -844,6 +848,7 @@ function buildFlagAssignments(tokens){
     EXPRESSION
     ASSIGN
     IF
+    FIF
     DELAY
     DEFINITON
     ELSE
@@ -887,12 +892,24 @@ function validateTree(tokens, gloabalScope){
                 }
                 
                 break
+            case 'FIF':
+                if(gloabalScope){
+                    return new Backend.Error('Can\'t use fif statements in the global scope!', tokens[l].line)
+                }
+
+                deep = validateTree(tokens[l].value[1].value, false)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+                
+                break
             case 'ELSE':
                     if(gloabalScope){
                         return new Backend.Error('Can\'t use else statements in the global scope!', tokens[l].line)
                     }
 
-                    if(!tokens[l - 1] || tokens[l - 1].token != 'IF'){
+                    if(!tokens[l - 1] || (tokens[l - 1].token != 'IF' && tokens[l - 1].token != 'FIF')){
                         return new Backend.Error('Else statements must be after an if statement!', tokens[l].line)
                     }
     
