@@ -14,5 +14,6 @@
 		"plugins": {
 			"firework": "compiler/firework.js"
 		}
-	}
+	},
+	"releaseTimestamp": 1647699167424
 }
