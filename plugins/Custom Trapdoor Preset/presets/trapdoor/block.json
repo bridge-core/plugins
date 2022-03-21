@@ -42,8 +42,7 @@
 				"event": "inter"
 			},
 			"minecraft:explosion_resistance": 3,
-			"minecraft:destroy_time": 4.5,
-			"minecraft:friction": 1
+			"minecraft:destroy_time": 4.5
 		},
 		"events": {
 			"set": {
