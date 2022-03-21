@@ -1,6 +1,6 @@
 {
 	"texture_data": {
-		"{{PROJECT_PREFIX}}_{{IDENTIFIER}}": {
+		"{{PROJECT_PREFIX}}:{{IDENTIFIER}}": {
 			"textures": "textures/blocks/{{PRESET_PATH}}{{IDENTIFIER}}"
 		}
 	}
