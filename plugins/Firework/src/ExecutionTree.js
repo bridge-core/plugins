@@ -1,4 +1,5 @@
 import * as Backend from './Backend.js'
+import * as Native from './Native.js'
 
 function splitLines(tokens){
     let lineCount = 1
@@ -655,21 +656,33 @@ function buildParams(tokens){
     return tokens
 }
 
-function buildAsignments(tokens){
+function buildAssignments(tokens){
     for(let l = 0; l < tokens.length; l++){
-        //Build Asignments
+        //Go Deeper Into Blocks
+        for(let i = 0; i < tokens[l].length; i++){
+            if(tokens[l][i].token == 'BLOCK'){
+                let deep = buildAssignments(tokens[l][i].value)
+
+                if(deep instanceof Backend.Error){
+                    return deep
+                }
+
+                tokens[l][i].value = deep
+            }
+        }
+
+        //Build Flag Asignments
         for(let i = 0; i < tokens[l].length; i++){
             const token = tokens[l][i]
             const nextToken = tokens[l][i + 1]
             const nextNextToken = tokens[l][i + 2]
-            const nextNextNextToken = tokens[l][i + 3]
 
-            if(token.token == 'KEYWORD' && token.value == 'dyn' && nextToken && nextToken.token == 'NAME' && nextNextToken && nextNextToken.token == 'SYMBOL' && nextNextToken.value == '=' && nextNextNextToken){
-                if(!(nextNextNextToken.token == 'MOLANG' || nextNextNextToken.token == 'EXPRESSION')){
-                    return new Backend.Error(`Dynamic can't be assigned to ${nextNextNextToken.token}!`, token.line)
+            if(token.token == 'FLAG' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '=' && nextNextToken){
+                if(Native.complexTypeToSimpleType(nextNextToken.token) != 'BOOLEAN'){
+                    return new Backend.Error('Can\'t assign flag to ' + nextNextToken.token + '!', token.line)
                 }
-
-                tokens[l].splice(i, 4, { value: [token, nextToken, nextNextNextToken], token: 'ASSIGN', line: token.line })
+                
+                tokens[l].splice(i, 3, { value: [token, nextNextToken], token: 'ASSIGN', line: token.line })
             }
         }
     }
@@ -792,40 +805,6 @@ function buildFunctions(tokens){
                 }
                 
                 tokens[l].splice(i, 6, { value: [nextToken, nextNextNextToken], token: 'DEFINITION', line: token.line })
-            }
-        }
-    }
-
-    return tokens
-}
-
-function buildFlagAssignments(tokens){
-    for(let l = 0; l < tokens.length; l++){
-        //Go Deeper Into Blocks
-        for(let i = 0; i < tokens[l].length; i++){
-            if(tokens[l][i].token == 'BLOCK'){
-                let deep = buildFlagAssignments(tokens[l][i].value)
-
-                if(deep instanceof Backend.Error){
-                    return deep
-                }
-
-                tokens[l][i].value = deep
-            }
-        }
-
-        //Build Flag Asignments
-        for(let i = 0; i < tokens[l].length; i++){
-            const token = tokens[l][i]
-            const nextToken = tokens[l][i + 1]
-            const nextNextToken = tokens[l][i + 2]
-
-            if(token.token == 'FLAG' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '=' && nextNextToken){
-                if(nextNextToken.token != 'BOOLEAN'){
-                    return new Backend.Error('Can\'t assign flag to ' + nextNextToken.token + '!', token.line)
-                }
-                
-                tokens[l].splice(i, 3, { value: [token, nextNextToken], token: 'ASSIGN', line: token.line })
             }
         }
     }
@@ -1010,13 +989,7 @@ export function GenerateETree(tokens){
         return tokens
     }
 
-    tokens = buildFlagAssignments(tokens)
-
-    if(tokens instanceof Backend.Error){
-        return tokens
-    }
-
-    tokens = buildAsignments(tokens)
+    tokens = buildAssignments(tokens)
 
     if(tokens instanceof Backend.Error){
         return tokens

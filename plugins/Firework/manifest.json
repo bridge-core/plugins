@@ -1,7 +1,7 @@
 {
 	"icon": "mdi-rocket-launch",
 	"author": "Outer Cloud Studio",
-	"version": "1.2.8",
+	"version": "1.2.9",
 	"name": "Firework",
 	"description": "Allows you to write complex logic by combining commands with molang!",
 	"id": "ocs.firework",
@@ -14,6 +14,5 @@
 		"plugins": {
 			"firework": "compiler/firework.js"
 		}
-	},
-	"releaseTimestamp": 1647699167424
+	}
 }

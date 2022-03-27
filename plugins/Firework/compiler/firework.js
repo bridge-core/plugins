@@ -106,7 +106,11 @@
                     ],
             
                     asMolang (params) {
-                        return `(math.random(0, 1) >= ${1 / variableToMolang(params[0]).value * 0.23})`
+                        let deep = variableToMolang(params[0]);
+
+                        if(deep instanceof Error) return deep
+
+                        return `(math.random(0, 1) >= ${1 / deep.value * 0.23})`
                     },
 
                     dynamic: true
@@ -116,7 +120,23 @@
             supports: 'molang',
             
             returns: 'BOOLEAN'
-        }
+        },
+        
+        /*par: {
+            params: [
+                'BOOLEAN'
+            ],
+
+            asEntity (params) {
+                return {
+                    commands: params[0].value == 'true' ? [
+                        `kill @s`
+                    ] : []
+                }
+            },
+
+            supports: 'entity'
+        }*/
     };
 
     function doesFunctionExist(name){
@@ -174,7 +194,7 @@
             if(params[i].token == 'CALL'){
                 pTemplate.push(getReturnType(params[i].value[0].value, params[i].value.slice(1)));
             }else {
-                pTemplate.push(params[i].token);
+                pTemplate.push(complexTypeToSimpleType(params[i].token));
             }
         }
 
@@ -283,8 +303,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} + ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} + ${deep2.value}`
+            },
+
+            returns: 'INTEGER'
         },
 
         '-': {
@@ -302,8 +332,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} - ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} - ${deep2.value}`
+            },
+
+            returns: 'INTEGER'
         },
 
         '*': {
@@ -321,8 +361,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} * ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} * ${deep2.value}`
+            },
+
+            returns: 'INTEGER'
         },
 
         '/': {
@@ -340,8 +390,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} / ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} / ${deep2.value}`
+            },
+
+            returns: 'FLOAT'
         },
         
         '&&': {
@@ -359,8 +419,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} && ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} && ${deep2.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
 
         '||': {
@@ -378,8 +448,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} || ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} || ${deep2.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
 
         '==': {
@@ -405,8 +485,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} == ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} == ${deep2.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
 
         '!=': {
@@ -432,8 +522,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} != ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} != ${deep2.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
 
         '>': {
@@ -451,8 +551,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} > ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} > ${deep2.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
 
         '<': {
@@ -470,8 +580,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} < ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} < ${deep2.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
 
         '>=': {
@@ -489,8 +609,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} >= ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} >= ${deep2.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
 
         '<=': {
@@ -508,8 +638,18 @@
             },
 
             toMolang(params){
-                return `${variableToMolang(params[0]).value} <= ${variableToMolang(params[1]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                let deep2 = variableToMolang(params[1]);
+
+                if(deep2 instanceof Error) return deep2
+
+                return `${deep.value} <= ${deep2.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
 
         '!': {
@@ -526,8 +666,14 @@
             },
 
             toMolang(params){
-                return `!${variableToMolang(params[0]).value}`
-            }
+                let deep = variableToMolang(params[0]);
+
+                if(deep instanceof Error) return deep
+
+                return `!${deep.value}`
+            },
+
+            returns: 'BOOLEAN'
         },
     };
 
@@ -535,6 +681,10 @@
         'MOLANG',
         'FLAG'
     ];
+
+    function isTypeStatic(token){
+        return !dynamicDataTypes.includes(token) && token != 'EXPRESSION'
+    }
 
     function isOperationDynamic(operation){
         const params = operation.value.slice(1);
@@ -632,12 +782,6 @@
         }
     }
 
-    let dynamicFlags = {};
-
-    function setDynamicFlags(flags){
-        dynamicFlags = flags;
-    }
-
     function tokenToMolang(token){
         if(token.token == 'INTEGER'){
             return {
@@ -677,21 +821,9 @@
                 token: 'MOLANG',
                 line: token.line
             }
-        }else if(token.token == 'NAME'){
-            if(dynamicFlags[token.value]){
-                return {
-                    value: dynamicFlags[token.value],
-                    token: 'MOLANG',
-                    line: token.line
-                }
-            }
         }
 
-        return {
-            value: 'ERROR',
-            token: 'MOLANG',
-            line: token.line
-        }
+        return new Error(`Can't convert token ${token.token} to molang!`, token.line)
     }
 
     function variableToMolang(token){
@@ -699,8 +831,12 @@
             const operation = token.value[0].value;
             const params = token.value.slice(1);
 
+            let deep = operations[operation].toMolang(params);
+
+            if(deep instanceof Error) return deep
+
             token = {
-                value: '(' + operations[operation].toMolang(params) + ')',
+                value: '(' + deep + ')',
                 token: 'MOLANG',
                 line: token.line
             };        
@@ -708,20 +844,45 @@
             const cName = token.value[0].value;
             const cParams = token.value.slice(1);
 
+            let deep = getFunction(cName, cParams);
+
+            if(deep instanceof Error) return deep
+
             token = {
-                value: '(' + getFunction(cName, cParams) + ')',
+                value: '(' + deep + ')',
                 token: 'MOLANG',
                 line: token.line
             };
         }else {
+            let deep = tokenToMolang(token);
+
+            if(deep instanceof Error){
+                return deep
+            }
+
             token = {
-                value: '(' + tokenToMolang(token).value + ')',
+                value: '(' + deep.value + ')',
                 token: 'MOLANG',
                 line: token.line
             };
         }
         
         return token
+    }
+
+    function isComplexType(type){
+        return type == 'MOLANG' || type == 'FLAG'
+    }
+
+    function complexTypeToSimpleType(type){
+        switch(type){
+            case 'MOLANG':
+                return 'BOOLEAN'
+            case 'FLAG':
+                return 'BOOLEAN'
+            default:
+                return type
+        }
     }
 
     /*
@@ -743,6 +904,8 @@
     */
 
     function Compile(tree, config, source, scriptConfig){
+        console.log(JSON.parse(JSON.stringify(tree)));
+
         //#region NOTE: Setup json values for editing
         let worldRuntime = source;
 
@@ -814,6 +977,14 @@
                             if(configConstants[tree[i].value[1].value]){
                                 tree.value[1] = configConstants[tree[i].value[1].value];
                             }
+                        }else if(tree[i].value[1].token == 'EXPRESSION'){
+                            let deep = searchForConfigConstants(tree[i].value[1]);
+
+                            if(deep instanceof Error){
+                                return deep
+                            }
+                            
+                            tree[i].value[1] = deep;
                         }
                     }else if(tree[i].token == 'DEFINITION'){
                         let deep = searchForConfigConstants(tree[i].value[1].value);
@@ -892,8 +1063,6 @@
         //#endregion
 
         //#region NOTE: Static Value Init - Setup if delays
-        console.log(JSON.parse(JSON.stringify(tree)));
-
         function setupIfDelays(tree){
             for(let i = 0; i < tree.length; i++){
                 if(tree[i].token == 'DEFINITION'){
@@ -971,38 +1140,6 @@
         if(tree instanceof Error){
             return tree
         }
-
-        console.log(JSON.parse(JSON.stringify(tree)));
-        //#endregion
-
-        //#region NOTE: Static Value Init - Index Dynamic Flags
-        let dynamicFlags = {};
-
-        function searchForDyncamicFlags(tree){
-            for(let i = 0; i < tree.length; i++){
-                if(tree[i].token == 'ASSIGN'){
-                    if(tree[i].value[0].value == 'dyn' && tree[i].value[0].token == 'KEYWORD'){
-                        if(dynamicFlags[tree[i].value[1].value]){
-                            return new Error(`Dynamic flag '${tree[i].value[1].value}' already exists!`, tree[i].value[0].line)
-                        }
-
-                        if(tree[i].value[2].token != 'MOLANG'){
-                            return new Error(`Dynamic flag '${tree[i].value[1].value}' can only be assigned to molang! It was assigned to '${tree[i].value[2].token}'.`, tree[i].value[0].line)
-                        }
-
-                        dynamicFlags[tree[i].value[1].value] = tree[i].value[2].value;
-                    }
-                }
-            }
-        }
-
-        let deep = searchForDyncamicFlags(tree);
-
-        if(deep instanceof Error){
-            return deep
-        }
-
-        setDynamicFlags(dynamicFlags);
         //#endregion
 
         //#region NOTE: Dynamic Value Init - Index Flags
@@ -1033,8 +1170,8 @@
                 for(let i = 0; i < tree.length; i++){
                     if(tree[i].token == 'ASSIGN'){
                         if(tree[i].value[0].token == 'FLAG'){
-                            if(tree[i].value[1].token != 'BOOLEAN'){
-                                return new Error(`fFlag '${tree[i].value[0].value}' can only be assigned to a boolean value! It was assigned to '${tree[i].value[1].token}'.`, tree[i].line)
+                            if(complexTypeToSimpleType(tree[i].value[1].token) != 'BOOLEAN'){
+                                return new Error(`Flag '${tree[i].value[0].value}' can only be assigned to a boolean value! It was assigned to '${tree[i].value[1].token}'.`, tree[i].line)
                             }
 
                             let deep = indexFlag(tree[i].value[0].value);
@@ -1042,6 +1179,7 @@
                             if(deep instanceof Error){
                                 return deep
                             }
+
                         }
                     }else if(tree[i].token == 'DEFINITION'){
                         let deep = searchForFlags(tree[i].value[1].value);
@@ -1068,7 +1206,7 @@
                         if(deep instanceof Error){
                             return deep
                         }
-
+                        
                         deep = searchForFlags(tree[i].value[1].value);
 
                         if(deep instanceof Error){
@@ -1105,13 +1243,13 @@
             }
         }
 
-        deep = searchForFlags(tree);
+        let deep = searchForFlags(tree);
 
         if(deep instanceof Error){
             return deep
         }
         //#endregion
-        
+
         //#region NOTE: Dynamic Value Init - Index Functions
         let functions = {};
 
@@ -1299,11 +1437,14 @@
         let dynamicValues = {};
 
         function indexDynamicValues(name, expression){
+            if(expression.token == 'DYNAMIC VALUE') return expression
+            
             dynamicValues[name] = expression;
 
             return {
                 value: name,
-                token: 'DYNAMIC VALUE'
+                token: 'DYNAMIC VALUE',
+                line: expression.line
             }
         }
 
@@ -1352,62 +1493,6 @@
         if(deep instanceof Error){
             return deep
         }
-
-        const dynamicFlagNames = Object.keys(dynamicFlags);
-
-        for(const i in dynamicFlagNames){
-            const name = dynamicFlagNames[i];
-
-            if(!(name in dynamicValues)){
-                dynamicValues[name] = {
-                    value: dynamicFlags[name],
-                    token: 'MOLANG'
-                };
-            }
-        }
-        //#endregion
-        
-        //#region NOTE: Compile Dynamic Values
-        const dynamicValueNames = Object.keys(dynamicValues);
-        
-        for(const i in dynamicValueNames){
-            const name = dynamicValueNames[i];
-
-            outAnimations['animation.firework.backend.' + name] = {
-                loop: true,
-                timeline: {
-                    '0.0': [
-                        `/tag @s add frwb_dv_${name}`
-                    ]
-                },
-                animation_length: 0.001
-            };
-
-            outAnimations['animation.firework.backend.' + name + '.inverse'] = {
-                loop: true,
-                timeline: {
-                    '0.0': [
-                        `/tag @s remove frwb_dv_${name}`
-                    ]
-                },
-                animation_length: 0.001
-            };
-
-            worldRuntime['minecraft:entity'].description.animations[name] = 'animation.firework.backend.' + name;
-            worldRuntime['minecraft:entity'].description.animations[name + '_inverse'] = 'animation.firework.backend.' + name + '.inverse';
-
-            let scriptData = {};
-            
-            scriptData[name] = variableToMolang(dynamicValues[name]).value;
-
-            worldRuntime['minecraft:entity'].description.scripts.animate.push(scriptData);
-
-            scriptData = {};
-
-            scriptData[name + '_inverse'] = '!(' + variableToMolang(dynamicValues[name]).value + ')';
-
-            worldRuntime['minecraft:entity'].description.scripts.animate.push(scriptData);
-        }
         //#endregion
 
         //#region NOTE: Compile Flags
@@ -1450,7 +1535,7 @@
             };
         }
         //#endregion
-        
+
         //#region NOTE: Compile Code Blocks
         let delayChannelTicks = [];
         
@@ -1477,19 +1562,237 @@
                             return new Error(`Function ${name} does not exist with template!`, value[i].line)
                         }
 
-                        let entity = getFunction(name, params);
+                        let funcIsStatic = true;
 
-                        for(let j = 0; j < entity.commands.length; j++){
-                            commands.push(entity.commands[j]);
+                        for(const param of params){
+                            if(!isTypeStatic(param.token)){
+                                funcIsStatic = false;
+                                break
+                            }
+                        }
+
+                        if(!funcIsStatic){
+                            let combinations = [];
+                            let newCombinations = [];
+
+                            for(const param of params){
+                                let paramType = complexTypeToSimpleType(param.token);
+
+                                let paramValues = [];
+                                newCombinations = [];
+                                
+                                if(isComplexType(param.token)){
+                                    switch(paramType){
+                                        case 'BOOLEAN':
+                                            paramValues = [
+                                                {
+                                                    value: 'true',
+                                                    token: 'BOOLEAN'
+                                                },
+                                                {
+                                                    value: 'false',
+                                                    token: 'BOOLEAN'
+                                                }
+                                            ];
+
+                                            break
+                                    }
+                                }else {
+                                    paramValues = [ param ];
+                                }
+
+                                if(combinations.length == 0){
+                                    for(const paramValue of paramValues){
+                                        newCombinations.push([ paramValue ]);
+                                    }
+                                }else {
+                                    for(const paramValue of paramValues){
+                                        for(let combination of combinations){
+                                            combination.push(paramValue);
+
+                                            newCombinations.push(combination);
+                                        }
+                                    }
+                                }
+
+                                combinations = newCombinations;
+
+                                const subID = uuidv4();
+
+                                let subBlock = {
+                                    token: 'BLOCK',
+                                    value: [
+                                        {
+                                            token: 'DELAY',
+                                            value: [
+                                                {
+                                                    token: 'INTEGER',
+                                                    value: '2'
+                                                },
+                                                {
+                                                    token: 'BLOCK',
+                                                    value: []
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                };
+
+                                for(const combination of combinations){
+                                    let molang = '';
+
+                                    for(const param in combination){
+                                        let deep1 = variableToMolang(params[param]);
+
+                                        if(deep1 instanceof Error) return deep1
+
+                                        let deep2 = variableToMolang(combination[param]);
+                                        
+                                        if(deep2 instanceof Error) return deep2
+
+                                        molang += `(${deep1.value} == ${deep2.value}) && `;
+                                    }
+
+                                    molang = molang.substring(0, molang.length - 4);
+
+                                    let subBlockValue = {
+                                        token: 'FIF',
+                                        value: [
+                                            indexDynamicValues(uuidv4(), { value: molang, token: 'MOLANG' }),
+                                            {
+                                                token: 'BLOCK',
+                                                value: []
+                                            }
+                                        ]
+                                    };
+
+                                    let entity = getFunction(name, combination);
+
+                                    if(entity instanceof Error) return entity
+
+                                    console.log(entity.commands);
+
+                                    for(let j = 0; j < entity.commands.length; j++){
+                                        subBlockValue.value[1].value.push({
+                                            token: 'CALL',
+                                            value: [
+                                                {
+                                                    value: 'rc',
+                                                    token: 'NAME'
+                                                },
+                                                {
+                                                    token: 'STRING',
+                                                    value: entity.commands[j]
+                                                }
+                                            ]
+                                        });
+                                    }
+
+                                    subBlock.value[0].value[1].value.push(subBlockValue);
+                                }
+
+                                subBlock.value[0].value[1].value = subBlock.value[0].value[1].value.concat(value.slice(i + 1));
+                                value.splice(i + 1, value.length - i - 1);
+
+                                console.log('SUB BLOCK:');
+                                console.log(subBlock);
+
+                                compileCodeBlock('param_' + subID, subBlock.value);
+
+                                commands.push(`event entity @s frw_param_${subID}`);
+                            }
+                        }else {
+                            let entity = getFunction(name, params);
+
+                            if(entity instanceof Error) return entity
+
+                            for(let j = 0; j < entity.commands.length; j++){
+                                commands.push(entity.commands[j]);
+                            }
                         }
                     } else {
                         commands.push(`event entity @s frw_${name}`);
                     }
                 }else if(value[i].token == 'ASSIGN'){
-                    if(value[i].value[1].value == 'true'){
-                        commands.push(`event entity @s frw_${value[i].value[0].value}_true`);
+                    if(value[i].value[1].token == 'BOOLEAN'){
+                        if(value[i].value[1].value == 'true'){
+                            commands.push(`event entity @s frw_${value[i].value[0].value}_true`);
+                        }else {
+                            commands.push(`event entity @s frw_${value[i].value[0].value}_false`);
+                        }
                     }else {
-                        commands.push(`event entity @s frw_${value[i].value[0].value}_false`);
+                        let subBlock = [
+                            {
+                                token: 'DELAY',
+                                value: [
+                                    {
+                                        token: 'INTEGER',
+                                        value: '5'
+                                    },
+                                    {
+                                        token: 'BLOCK',
+                                        value: [
+                                            {
+                                                token: 'IF',
+                                                value: [
+                                                    indexDynamicValues(uuidv4(), value[i].value[1]),
+                                                    {
+                                                        token: 'BLOCK',
+                                                        value: [
+                                                            {
+                                                                token: 'ASSIGN',
+                                                                value: [
+                                                                    {
+                                                                        token: 'FLAG',
+                                                                        value: value[i].value[0].value
+                                                                    },
+                                                                    {
+                                                                        token: 'BOOLEAN',
+                                                                        value: 'true'
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                token: 'ELSE',
+                                                value: [
+                                                    {
+                                                        token: 'BLOCK',
+                                                        value: [
+                                                            {
+                                                                token: 'ASSIGN',
+                                                                value: [
+                                                                    {
+                                                                        token: 'FLAG',
+                                                                        value: value[i].value[0].value
+                                                                    },
+                                                                    {
+                                                                        token: 'BOOLEAN',
+                                                                        value: 'false'
+                                                                    }
+                                                                ]
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ];
+
+                        subBlock[0].value[1].value = subBlock[0].value[1].value.concat(value.slice(i + 1));
+                        value.splice(i + 1, value.length - i - 1);
+
+                        const subID = uuidv4();
+
+                        commands.push(`event entity @s frw_${subID}`);
+
+                        compileCodeBlock(subID, subBlock);
                     }
                 }else if(value[i].token == 'IF'){
                     const valueID = value[i].value[0].value;
@@ -1592,6 +1895,55 @@
                 command: delayChannelTicks
             }
         };
+        //#endregion
+
+        //#region NOTE: Compile Dynamic Values
+        const dynamicValueNames = Object.keys(dynamicValues);
+        
+        for(const i in dynamicValueNames){
+            const name = dynamicValueNames[i];
+
+            outAnimations['animation.firework.backend.' + name] = {
+                loop: true,
+                timeline: {
+                    '0.0': [
+                        `/tag @s add frwb_dv_${name}`
+                    ]
+                },
+                animation_length: 0.001
+            };
+
+            outAnimations['animation.firework.backend.' + name + '.inverse'] = {
+                loop: true,
+                timeline: {
+                    '0.0': [
+                        `/tag @s remove frwb_dv_${name}`
+                    ]
+                },
+                animation_length: 0.001
+            };
+
+            worldRuntime['minecraft:entity'].description.animations[name] = 'animation.firework.backend.' + name;
+            worldRuntime['minecraft:entity'].description.animations[name + '_inverse'] = 'animation.firework.backend.' + name + '.inverse';
+
+            let scriptData = {};
+
+            let deep = variableToMolang(dynamicValues[name]);
+
+            if(deep instanceof Error) return deep
+            
+            scriptData[name] = deep.value;
+
+            worldRuntime['minecraft:entity'].description.scripts.animate.push(scriptData);
+
+            scriptData = {};
+
+            deep = variableToMolang(dynamicValues[name]);
+
+            scriptData[name + '_inverse'] = '!(' + deep.value + ')';
+
+            worldRuntime['minecraft:entity'].description.scripts.animate.push(scriptData);
+        }
         //#endregion
 
         return {
@@ -2255,21 +2607,33 @@
         return tokens
     }
 
-    function buildAsignments(tokens){
+    function buildAssignments(tokens){
         for(let l = 0; l < tokens.length; l++){
-            //Build Asignments
+            //Go Deeper Into Blocks
+            for(let i = 0; i < tokens[l].length; i++){
+                if(tokens[l][i].token == 'BLOCK'){
+                    let deep = buildAssignments(tokens[l][i].value);
+
+                    if(deep instanceof Error){
+                        return deep
+                    }
+
+                    tokens[l][i].value = deep;
+                }
+            }
+
+            //Build Flag Asignments
             for(let i = 0; i < tokens[l].length; i++){
                 const token = tokens[l][i];
                 const nextToken = tokens[l][i + 1];
                 const nextNextToken = tokens[l][i + 2];
-                const nextNextNextToken = tokens[l][i + 3];
 
-                if(token.token == 'KEYWORD' && token.value == 'dyn' && nextToken && nextToken.token == 'NAME' && nextNextToken && nextNextToken.token == 'SYMBOL' && nextNextToken.value == '=' && nextNextNextToken){
-                    if(!(nextNextNextToken.token == 'MOLANG' || nextNextNextToken.token == 'EXPRESSION')){
-                        return new Error(`Dynamic can't be assigned to ${nextNextNextToken.token}!`, token.line)
+                if(token.token == 'FLAG' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '=' && nextNextToken){
+                    if(complexTypeToSimpleType(nextNextToken.token) != 'BOOLEAN'){
+                        return new Error('Can\'t assign flag to ' + nextNextToken.token + '!', token.line)
                     }
-
-                    tokens[l].splice(i, 4, { value: [token, nextToken, nextNextNextToken], token: 'ASSIGN', line: token.line });
+                    
+                    tokens[l].splice(i, 3, { value: [token, nextNextToken], token: 'ASSIGN', line: token.line });
                 }
             }
         }
@@ -2392,40 +2756,6 @@
                     }
                     
                     tokens[l].splice(i, 6, { value: [nextToken, nextNextNextToken], token: 'DEFINITION', line: token.line });
-                }
-            }
-        }
-
-        return tokens
-    }
-
-    function buildFlagAssignments(tokens){
-        for(let l = 0; l < tokens.length; l++){
-            //Go Deeper Into Blocks
-            for(let i = 0; i < tokens[l].length; i++){
-                if(tokens[l][i].token == 'BLOCK'){
-                    let deep = buildFlagAssignments(tokens[l][i].value);
-
-                    if(deep instanceof Error){
-                        return deep
-                    }
-
-                    tokens[l][i].value = deep;
-                }
-            }
-
-            //Build Flag Asignments
-            for(let i = 0; i < tokens[l].length; i++){
-                const token = tokens[l][i];
-                const nextToken = tokens[l][i + 1];
-                const nextNextToken = tokens[l][i + 2];
-
-                if(token.token == 'FLAG' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '=' && nextNextToken){
-                    if(nextNextToken.token != 'BOOLEAN'){
-                        return new Error('Can\'t assign flag to ' + nextNextToken.token + '!', token.line)
-                    }
-                    
-                    tokens[l].splice(i, 3, { value: [token, nextNextToken], token: 'ASSIGN', line: token.line });
                 }
             }
         }
@@ -2610,13 +2940,7 @@
             return tokens
         }
 
-        tokens = buildFlagAssignments(tokens);
-
-        if(tokens instanceof Error){
-            return tokens
-        }
-
-        tokens = buildAsignments(tokens);
+        tokens = buildAssignments(tokens);
 
         if(tokens instanceof Error){
             return tokens
@@ -2701,7 +3025,6 @@
     const keywords = [
         'if',
         'fif',
-        'dyn',
         'func',
         'delay',
         'else'
@@ -2718,7 +3041,7 @@
             let found = false;
             let foundAt = -1;
 
-            for(let i = input.length + 1; i >= readStart; i--) {
+            for(let i = Math.min(input.length, readStart + 30) + 1; i >= readStart; i--) {
                 const sub = input.substring(readStart, i);
 
                 if(isInteger(sub)){
