@@ -51,7 +51,6 @@ const symbols = [
 const keywords = [
     'if',
     'fif',
-    'dyn',
     'func',
     'delay',
     'else'
@@ -68,7 +67,7 @@ export function Tokenize(input) {
         let found = false
         let foundAt = -1
 
-        for(let i = input.length + 1; i >= readStart; i--) {
+        for(let i = Math.min(input.length, readStart + 30) + 1; i >= readStart; i--) {
             const sub = input.substring(readStart, i)
 
             if(isInteger(sub)){
