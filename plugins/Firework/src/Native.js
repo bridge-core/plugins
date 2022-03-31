@@ -655,7 +655,8 @@ export const operations = {
 
 export const dynamicDataTypes = [
     'MOLANG',
-    'FLAG'
+    'FLAG',
+    'VAR'
 ]
 
 export function isTypeStatic(token){
@@ -797,6 +798,12 @@ export function tokenToMolang(token){
             token: 'MOLANG',
             line: token.line
         }
+    }else if(token.token == 'VAR'){
+        return {
+            value: `q.actor_property('frw:${token.value}')`,
+            token: 'MOLANG',
+            line: token.line
+        }
     }
 
     return new Backend.Error(`Can't convert token ${token.token} to molang!`, token.line)
@@ -851,15 +858,17 @@ export function getOperationReturnType(operation){
 }
 
 export function isComplexType(type){
-    return type == 'MOLANG' || type == 'FLAG'
+    return dynamicDataTypes.includes(type)
 }
 
-export function complexTypeToSimpleType(type){
+export function complexTypeToSimpleType(type, token){
     switch(type){
         case 'MOLANG':
             return 'BOOLEAN'
         case 'FLAG':
             return 'BOOLEAN'
+        case 'EXPRESSION':
+            return getOperationReturnType(token.value[0].value)
         default:
             return type
     }

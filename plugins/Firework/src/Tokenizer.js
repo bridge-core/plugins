@@ -45,7 +45,8 @@ const symbols = [
     '"',
     '{',
     '}',
-    "'"
+    "'",
+    '#'
 ]
 
 const keywords = [

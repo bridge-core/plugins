@@ -145,6 +145,10 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 							if(scriptPaths[script.substring(0, script.length - 4)]){
 								let scriptContent = scripts[script.substring(0, script.length - 4)]
 
+								if(scriptContent.startsWith('#!NO COMPILE')) continue
+
+								console.log(filePath + ' : ' + script)
+
 								const tokens = Tokenizer.Tokenize(scriptContent)
 
 								const tree = ExecutionTree.GenerateETree(tokens)
@@ -152,8 +156,6 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 								if(tree instanceof Backend.Error){
 									throw tree.message + ' on line ' + tree.line + ' in ' + script
 								}
-
-								console.log(filePath + ' : ' + script)
 
 								let config = {
 									delayChannels: 3  
@@ -215,6 +217,8 @@ module.exports = ({ fileType, fileSystem, projectRoot, outputFileSystem, options
 					values: ['firework_runtime']
 				}))
 			}
+
+			console.log('\n\n\n\n\nCOMPILER STAGE 2\n\n\n\n\n')
 
 			await compileFiles(entitiesToCompile)
 
