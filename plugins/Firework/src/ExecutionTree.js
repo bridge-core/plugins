@@ -227,6 +227,26 @@ function buildCompoundTypes(tokens){
             }
         }
 
+        //Build Vars
+        for(let i = 0; i < tokens[l].length; i++){
+            const token = tokens[l][i]
+            const prevToken = tokens[l][i - 1]
+
+            if(token.token == 'NAME' && prevToken && prevToken.token == 'SYMBOL' && prevToken.value == '#'){
+                tokens[l].splice(i - 1, 2, { value: token.value, token: 'VAR', line: token.line })
+
+                i--
+            }
+        }
+
+        for(let i = 0; i < tokens[l].length; i++){
+            const token = tokens[l][i]
+
+            if(token.token == 'SYMBOL' && token.value == '#'){
+                return new Backend.Error('Unexpected symbol \'#\'!', token.line)
+            }
+        }
+
         //Build Molang
         for(let i = 0; i < tokens[l].length; i++){
             const token = tokens[l][i]
@@ -369,7 +389,7 @@ function buildExpressionsSingle(tokens){
             let prevToken = tokens[i - 1]
 
             if(prevToken && nextToken){
-                if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'CALL')){
+                if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextToken.token == 'CALL' || nextToken.token == 'VAR') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'CALL' || prevToken.token == 'VAR')){
                     return new Backend.Error(`Can not do operation '${token.value}' with '${nextToken.token}' and '${prevToken.token}'!`, token.line)
                 }
 
@@ -389,7 +409,7 @@ function buildExpressionsSingle(tokens){
             let prevToken = tokens[i - 1]
 
             if(prevToken && nextToken){
-                if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'CALL')){
+                if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextToken.token == 'CALL' || nextToken.token == 'VAR') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'CALL' || prevToken.token == 'VAR')){
                     return new Backend.Error(`Can not do operation '${token.value}' with '${nextToken.token}' and '${prevToken.token}'!`, token.line)
                 }
                 
@@ -431,7 +451,7 @@ function buildExpressionsSingle(tokens){
                     let nextNextToken = tokens[i + 2]
 
                     if(token.value == '>' || token.value == '<'){
-                        if(!(nextNextToken.token == 'INTEGER' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'NAME' || nextNextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'NAME' || prevToken.token == 'CALL')){
+                        if(!(nextNextToken.token == 'INTEGER' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'NAME' || nextNextToken.token == 'CALL' || nextNextToken.token == 'VAR') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'NAME' || prevToken.token == 'CALL' || prevToken.token == 'VAR')){
                             return new Backend.Error(`Can not do operation '${token.value + nextToken.value}' with '${nextNextToken.token}' and '${prevToken.token}'!`, token.line)
                         }
                         
@@ -441,7 +461,7 @@ function buildExpressionsSingle(tokens){
 
                         i--
                     }else{
-                        if(!(nextNextToken.token == 'INTEGER' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'FLAG' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'NAME'  || nextNextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'BOOLEAN' || prevToken.token == 'FLAG' || prevToken.token == 'MOLANG' || prevToken.token == 'NAME' || prevToken.token == 'CALL')){
+                        if(!(nextNextToken.token == 'INTEGER' || nextNextToken.token == 'EXPRESSION' || nextNextToken.token == 'BOOLEAN' || nextNextToken.token == 'FLAG' || nextNextToken.token == 'MOLANG' || nextNextToken.token == 'NAME'  || nextNextToken.token == 'CALL' || nextNextToken.token == 'VAR') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'BOOLEAN' || prevToken.token == 'FLAG' || prevToken.token == 'MOLANG' || prevToken.token == 'NAME' || prevToken.token == 'CALL' || prevToken.token == 'VAR')){
                             return new Backend.Error(`Can not do operation '${token.value + nextToken.value}' with '${nextNextToken.token}' and '${prevToken.token}'!`, token.line)
                         }
 
@@ -452,7 +472,7 @@ function buildExpressionsSingle(tokens){
                         i--
                     }
                 }else if(token.value == '>' || token.value == '<'){
-                    if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextNextToken.token == 'NAME' || nextNextToken.token == 'CALL') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'NAME' || prevToken.token == 'CALL')){
+                    if(!(nextToken.token == 'INTEGER' || nextToken.token == 'EXPRESSION' || nextNextToken.token == 'NAME' || nextNextToken.token == 'CALL' || nextNextToken.token == 'VAR') || !(prevToken.token == 'INTEGER' || prevToken.token == 'EXPRESSION' || prevToken.token == 'NAME' || prevToken.token == 'CALL' || prevToken.token == 'VAR')){
                         return new Backend.Error(`Can not do operation '${token.value}' with '${nextToken.token}' and '${prevToken.token}'!`, token.line)
                     }
 
@@ -678,8 +698,23 @@ function buildAssignments(tokens){
             const nextNextToken = tokens[l][i + 2]
 
             if(token.token == 'FLAG' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '=' && nextNextToken){
-                if(Native.complexTypeToSimpleType(nextNextToken.token) != 'BOOLEAN'){
+                if(Native.complexTypeToSimpleType(nextNextToken.token, nextNextToken) != 'BOOLEAN'){
                     return new Backend.Error('Can\'t assign flag to ' + nextNextToken.token + '!', token.line)
+                }
+                
+                tokens[l].splice(i, 3, { value: [token, nextNextToken], token: 'ASSIGN', line: token.line })
+            }
+        }
+        
+        //Build Variable Asignments
+        for(let i = 0; i < tokens[l].length; i++){
+            const token = tokens[l][i]
+            const nextToken = tokens[l][i + 1]
+            const nextNextToken = tokens[l][i + 2]
+
+            if(token.token == 'VAR' && nextToken && nextToken.token == 'SYMBOL' && nextToken.value == '=' && nextNextToken){
+                if(Native.complexTypeToSimpleType(nextNextToken.token, nextNextToken) != 'INTEGER'){
+                    return new Backend.Error('Can\'t assign variable to ' + nextNextToken.token + '!', token.line)
                 }
                 
                 tokens[l].splice(i, 3, { value: [token, nextNextToken], token: 'ASSIGN', line: token.line })
@@ -821,6 +856,7 @@ function buildFunctions(tokens){
     STRING
     BLOCK
     FLAG
+    VAR
     MOLANG
     ARROW
     CALL
@@ -856,6 +892,8 @@ function validateTree(tokens, gloabalScope){
                 if(gloabalScope){
                     if(tokens[l].value[0].token == 'FLAG'){
                         return new Backend.Error('Can\'t assign flags in the global scope!', tokens[l].line)
+                    }else if(tokens[l].value[0].token == 'VAR'){
+                        return new Backend.Error('Can\'t assign variables in the global scope!', tokens[l].line)
                     }
                 }
                 break
@@ -932,6 +970,8 @@ function validateTree(tokens, gloabalScope){
                 return new Backend.Error('Strings may not exist by themselves!', tokens[l].line)
             case 'FLAG':
                 return new Backend.Error('Flags may not exist by themselves!', tokens[l].line)
+            case 'VAR':
+                return new Backend.Error('Variables may not exist by themselves!', tokens[l].line)
             case 'MOLANG':
                 return new Backend.Error('Molangs may not exist by themselves!', tokens[l].line)
             case 'ARROW':
@@ -1023,6 +1063,8 @@ export function GenerateETree(tokens){
     if(tokens instanceof Backend.Error){
         return tokens
     }
+
+    console.log(JSON.parse(JSON.stringify(tokens)))
 
     return tokens
 }
