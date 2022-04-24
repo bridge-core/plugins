@@ -1,0 +1,27 @@
+{
+	"name": "polar_bear",
+	"icon": "mdi-minecraft",
+	"description": "Creates a polar_bear",
+	"category": "Vanilla Entities",
+	"requires": {
+		"packTypes": ["behaviorPack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entities/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"polar_bear.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "behaviorPack" }
+		]
+	]
+}

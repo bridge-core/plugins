@@ -1,0 +1,27 @@
+{
+	"name": "llama_spit",
+	"icon": "mdi-minecraft",
+	"description": "Creates a llama_spit (ew)",
+	"category": "Vanilla Entities",
+	"requires": {
+		"packTypes": ["behaviorPack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entities/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"llama_spit.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "behaviorPack" }
+		]
+	]
+}

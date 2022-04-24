@@ -1,0 +1,27 @@
+{
+	"name": "axolotl",
+	"icon": "mdi-minecraft",
+	"description": "Creates a axolotl",
+	"category": "Vanilla Entities",
+	"requires": {
+		"packTypes": ["behaviorPack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entities/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"axolotl.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "behaviorPack" }
+		]
+	]
+}

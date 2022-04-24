@@ -1,0 +1,27 @@
+{
+	"name": "bee",
+	"icon": "mdi-minecraft",
+	"description": "Creates a bee",
+	"category": "Vanilla Entities",
+	"requires": {
+		"packTypes": ["behaviorPack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entities/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"bee.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "behaviorPack" }
+		]
+	]
+}

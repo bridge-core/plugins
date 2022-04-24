@@ -1,0 +1,27 @@
+{
+	"name": "elder_guardian.entity.v1.0",
+	"icon": "mdi-minecraft",
+	"description": "Creates a elder_guardian.entity.v1.0",
+	"category": "Vanilla Client Entities",
+	"requires": {
+		"packTypes": ["resourcePack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entity/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"elder_guardian.entity.v1.0.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "resourcePack" }
+		]
+	]
+}

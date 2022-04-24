@@ -1,0 +1,27 @@
+{
+	"name": "iron_golem.entity",
+	"icon": "mdi-minecraft",
+	"description": "Creates a iron_golem.entity",
+	"category": "Vanilla Client Entities",
+	"requires": {
+		"packTypes": ["resourcePack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entity/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"iron_golem.entity.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "resourcePack" }
+		]
+	]
+}

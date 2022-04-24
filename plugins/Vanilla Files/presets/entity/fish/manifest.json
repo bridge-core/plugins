@@ -1,0 +1,27 @@
+{
+	"name": "fish",
+	"icon": "mdi-minecraft",
+	"description": "Creates a fish",
+	"category": "Vanilla Entities",
+	"requires": {
+		"packTypes": ["behaviorPack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entities/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"fish.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "behaviorPack" }
+		]
+	]
+}

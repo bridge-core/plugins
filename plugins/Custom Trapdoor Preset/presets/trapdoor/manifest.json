@@ -1,64 +1,100 @@
 {
 	"name": "Trapdoor",
 	"icon": "mdi-cube-outline",
-	"description": "Creates a custom trapdoor",
+	"description": "Creates a Custom Trapdoor",
 	"category": "fileType.block",
-	"targetVersion": [">=", "1.16.100"],
-	"packTypes": ["behaviorPack", "resourcePack"],
+	"showIfDisabled": false,
+	"requires": {
+		"targetVersion": [">=", "1.16.100"],
+		"packTypes": ["behaviorPack", "resourcePack"],
+		"experimentalGameplay": ["holidayCreatorFeatures"]
+	},
 	"additionalModels": {
-		"IMAGE_SAVE_PATH": "RP/textures/blocks/",
-		"DEFAULT_IMAGE": "texture.png",
+		"DEFAULT_TEXTURE": "texture.png",
 		"PRESET_PATH": ""
 	},
 	"fields": [
 		[
 			"Texture",
-			"IMAGE",
-			{ "type": "fileInput", "accept": "image/png", "optional": true }
+			"TEXTURE",
+			{
+				"type": "fileInput",
+				"accept": "image/png",
+				"optional": false
+			}
 		],
 		[
 			"Identifier",
 			"IDENTIFIER",
-			{ "validate": ["required", "alphanumeric", "lowercase"] }
+			{
+				"validate": ["required", "alphanumeric", "lowercase"]
+			}
 		],
-		["Display Name", "IDENTIFIER_NAME", { "validate": ["required"] }]
+		["Display Name", "IDENTIFIER_NAME", {
+			"validate": ["required"]
+		}]
 	],
 
 	"createFiles": [
-		"presetScript/optionalImage.js",
+		"presetScript/blockImages.js",
 		[
 			"block.json",
-			"BP/blocks/{{PRESET_PATH}}{{IDENTIFIER}}.json",
-			{ "inject": ["IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH"] }
+			"blocks/{{PRESET_PATH}}{{IDENTIFIER}}.json",
+			{
+				"inject": ["IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH"],
+				"openFile": true,
+				"packPath": "behaviorPack"
+			}
 		],
 		[
 			"trapdoor_closed.json",
-			"RP/models/blocks/trapdoor_closed.json"
+			"models/blocks/trapdoor_closed.json",
+			{
+				"openFile": false,
+				"packPath": "resourcePack"
+			}
 		],
 		[
 			"trapdoor_side.json",
-			"RP/models/blocks/trapdoor_side.json"
+			"models/blocks/trapdoor_side.json",
+			{
+				"openFile": false,
+				"packPath": "resourcePack"
+			}
 		],
 		[
 			"trapdoor_side_open.json",
-			"RP/models/blocks/trapdoor_side_open.json"
-		]	
+			"models/blocks/trapdoor_side_open.json",
+			{
+				"openFile": false,
+				"packPath": "resourcePack"
+			}
+		]
 	],
 	"expandFiles": [
 		[
 			"terrainTexture.json",
-			"RP/textures/terrain_texture.json",
-			{ "inject": ["IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH"] }
+			"textures/terrain_texture.json",
+			{
+				"inject": ["IDENTIFIER", "PROJECT_PREFIX"],
+				"packPath": "resourcePack"
+			}
 		],
 		[
 			"clientBlock.json",
-			"RP/blocks.json",
-			{ "inject": ["IDENTIFIER", "PROJECT_PREFIX"] }
+			"blocks.json",
+			{
+				"inject": ["IDENTIFIER", "PROJECT_PREFIX"],
+				"packPath": "resourcePack"
+			}
 		],
 		[
 			"en_US.lang",
-			"RP/texts/en_US.lang",
-			{ "inject": ["IDENTIFIER", "IDENTIFIER_NAME", "PROJECT_PREFIX"] }
+			"texts/en_US.lang",
+			{
+				"inject": ["IDENTIFIER", "IDENTIFIER_NAME", "PROJECT_PREFIX"],
+				"packPath": "resourcePack"
+			}
 		]
 	]
 }

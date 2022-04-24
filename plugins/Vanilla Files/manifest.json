@@ -1,0 +1,13 @@
+{
+	"author": "ihategravel2",
+	"name": "Vanilla Files 1.17.41",
+	"version": "1.0.1",
+	"id": "a05383f9-acf0-4bfb-b886-6a2ccb820d88",
+	"description": "Adds vanilla files to the file creation menu! Includes entities and client entities",
+	"api_version": 2,
+	"target": "v2",
+	"tags": [
+		"Presets"
+	],
+	"releaseTimestamp": 1637409485073
+}

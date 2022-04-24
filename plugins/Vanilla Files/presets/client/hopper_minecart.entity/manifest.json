@@ -1,0 +1,27 @@
+{
+	"name": "hopper_minecart.entity",
+	"icon": "mdi-minecraft",
+	"description": "Creates a hopper_minecart.entity",
+	"category": "Vanilla Client Entities",
+	"requires": {
+		"packTypes": ["resourcePack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entity/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"hopper_minecart.entity.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "resourcePack" }
+		]
+	]
+}

@@ -1,0 +1,27 @@
+{
+	"name": "horse_v1.entity",
+	"icon": "mdi-minecraft",
+	"description": "Creates a horse_v1.entity",
+	"category": "Vanilla Client Entities",
+	"requires": {
+		"packTypes": ["resourcePack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": "entity/"
+	},
+	"fields": [
+		[
+			"File Name",
+			"FILE_NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"horse_v1.entity.json",
+			"{{PRESET_PATH}}{{FILE_NAME}}.json",
+			{ "inject": ["FILE_NAME", "PRESET_PATH"], "openFile": true, "packPath": "resourcePack" }
+		]
+	]
+}

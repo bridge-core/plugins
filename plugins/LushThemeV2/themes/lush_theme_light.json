@@ -1,0 +1,54 @@
+{
+  "id": "chikorita_lover.lush.theme",
+  "name": "Lush",
+  "colorScheme": "light",
+  "colors": {
+    "primary": "#EB8931",
+    "secondary": "#EB8931",
+    "accent": "#EB8931",
+    "error": "#F168A8",
+    "info": "#889CC8",
+    "success": "#4CAF50",
+    "warning": "#EB8931",
+    "background": "#F3F8E1",
+    "sidebarNavigation": "#E2EAC4",
+    "expandedSidebar": "#E2EAC4",
+    "footer": "#F5F5F5",
+    "tabActive": "#F3F8E1",
+    "toolbar": "#E2EAC4",
+    "scrollbarThumb": "#C8C8C8",
+    "behaviorPack": "#F168A8",
+    "resourcePack": "#889CC8",
+    "skinPack": "#EB8931",
+    "worldTemplate": "#70922D"
+  },
+  "highlighter": {
+    "property": {
+      "color": "#CF6400"
+    },
+    "keyword": {
+      "color": "#CE2A76"
+    },
+    "atom": {
+      "color": "#566DA3"
+    },
+    "number": {
+      "color": "#566DA3"
+    },
+    "string": {
+      "color": "#C16509"
+    },
+    "variable": {
+      "color": "#566DA3"
+    },
+    "variableStrong": {
+      "color": "#566DA3"
+    },
+    "meta": {
+      "color": "#CE2A76"
+    },
+    "comment": {
+      "color": "#566DA3"
+    }
+  }
+}
