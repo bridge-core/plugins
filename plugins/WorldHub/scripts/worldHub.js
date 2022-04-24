@@ -3,15 +3,22 @@ const { create } = await require('@bridge/sidebar')
 const { WorldHub } = await require('@bridge/ui')
 const { register, addTabActions } = await require('@bridge/tab-actions')
 const { setup } = await require('@bridge/com-mojang')
-const { readdir, getFileHandle, loadFileHandleAsDataUrl, directoryExists } =
-	await require('@bridge/fs')
+const {
+	readdir,
+	getFileHandle,
+	loadFileHandleAsDataUrl,
+	directoryExists,
+	readJSON
+} = await require('@bridge/fs')
 const { getCurrentProject } = await require('@bridge/env')
+const Config = await readJSON(`${getCurrentProject()}/config.json`)
 
 class WorldHubTab extends ContentTab {
 	type = 'WorldHubTab'
 	component = WorldHub
 	availableWorlds = null
 	isReady = false
+	worldsDir = Config?.WorldHub?.dirPath || 'worlds'
 
 	async setup() {
 		await new Promise((resolve) =>
@@ -36,13 +43,13 @@ class WorldHubTab extends ContentTab {
 
 	async refresh() {
 		this.isLoading = true
-		if (!(await directoryExists(`${getCurrentProject()}/worlds`))) {
+		if (!(await directoryExists(`${getCurrentProject()}/${this.worldsDir}`))) {
 			this.availableWorlds = []
 			this.isLoading = false
 			return
 		}
 
-		readdir(`${getCurrentProject()}/worlds`, {
+		readdir(`${getCurrentProject()}/${this.worldsDir}`, {
 			withFileTypes: true,
 		}).then(async (dirents) => {
 			this.availableWorlds = await Promise.all(
@@ -52,7 +59,7 @@ class WorldHubTab extends ContentTab {
 						return {
 							folderName: dirent.name,
 							name: await getFileHandle(
-								`${getCurrentProject()}/worlds/${
+								`${getCurrentProject()}/${this.worldsDir}/${
 									dirent.name
 								}/levelname.txt`
 							)
@@ -61,7 +68,7 @@ class WorldHubTab extends ContentTab {
 								.catch(() => dirent.name),
 							imgSrc: await loadFileHandleAsDataUrl(
 								await getFileHandle(
-									`${getCurrentProject()}/worlds/${
+									`${getCurrentProject()}/${this.worldsDir}/${
 										dirent.name
 									}/world_icon.jpeg`
 								).catch(() =>
