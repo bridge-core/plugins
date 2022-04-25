@@ -12,7 +12,7 @@
 	<div class="px-4" v-else-if="tab.availableWorlds.length === 0">
 		<h1>No Worlds</h1>
 		<p>
-			You do not have any worlds to load inside of your "worlds/" folder
+			You do not have any worlds to load inside of your "{{ tab.worldsDir + "/" }}" folder
 			yet.
 		</p>
 	</div>
@@ -97,7 +97,7 @@ export default {
 
 			await copyFolderByHandle(
 				await getDirectoryHandle(
-					`${getCurrentProject()}/worlds/${world}`
+					`${getCurrentProject()}/${this.tab.worldsDir}/${world}`
 				),
 				await comMojangFs.getDirectoryHandle(
 					`minecraftWorlds/${world}`,
@@ -119,14 +119,14 @@ export default {
 					'[Could not find world inside of com.mojang folder!]'
 				)
 
-			await unlink(`${getCurrentProject()}/worlds/${world}`)
+			await unlink(`${getCurrentProject()}/${this.tab.worldsDir}/${world}`)
 
 			await copyFolderByHandle(
 				await comMojangFs.getDirectoryHandle(
 					`minecraftWorlds/${world}`
 				),
 				await getDirectoryHandle(
-					`${getCurrentProject()}/worlds/${world}`,
+					`${getCurrentProject()}/${this.tab.worldsDir}/${world}`,
 					{ create: true }
 				)
 			)
