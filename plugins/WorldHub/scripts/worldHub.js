@@ -18,7 +18,7 @@ class WorldHubTab extends ContentTab {
 	component = WorldHub
 	availableWorlds = null
 	isReady = false
-	worldsDir = Config?.WorldHub?.dirPath || 'worlds'
+	worldsDir = Config?.worldHub?.dirPath || 'worlds'
 
 	async setup() {
 		await new Promise((resolve) =>
