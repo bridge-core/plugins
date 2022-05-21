@@ -128,7 +128,12 @@
 				"set_block_property": {
 					"{{PROJECT_PREFIX}}:slab": 2
 				},
-				"decrement_stack": {}
+				"decrement_stack": {},
+				"run_command": {
+					"command": [
+						"playsound use.wood @p ~~~ 1 1 0"
+					]
+				}
 			},
 			"{{PROJECT_PREFIX}}:up": {
 				"set_block_property": {
