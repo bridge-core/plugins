@@ -1,0 +1,12 @@
+{
+	"name": "Image",
+	"description": "Adds a simple UI Image",
+	"fileTypes": ["ui"],
+	"data": {
+		"new_image": {
+			"type": "image",
+            "texture": "",
+            "size": ["default", "default"]
+		}
+	}
+}

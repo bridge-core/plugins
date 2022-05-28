@@ -1,0 +1,12 @@
+{
+	"name": "Button",
+	"description": "Adds a simple UI Button",
+	"fileTypes": ["ui"],
+	"data": {
+		"new_button@common_buttons.light_text_button": {
+			"${0:$}pressed_button_name": "button.",
+            "${0:$}button_text": "",
+            "size": []
+		}
+	}
+}

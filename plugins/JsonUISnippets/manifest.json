@@ -1,0 +1,9 @@
+{
+	"author": "LeGend077",
+	"name": "JSON UI Snippets",
+	"version": "1.0.0",
+	"id": "d5e1d009-4143-4b4e-9e1c-eca9a2cdeb53",
+	"description": "Adds Snippets to UI files for JSON UI!",
+	"target": "v2",
+	"tags": ["Snippets"]
+}
