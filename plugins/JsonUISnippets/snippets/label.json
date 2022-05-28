@@ -1,0 +1,11 @@
+{
+	"name": "Label",
+	"description": "Adds a simple UI Label",
+	"fileTypes": ["ui"],
+	"data": {
+		"new_label": {
+			"type": "label",
+            "text": ""
+		}
+	}
+}
