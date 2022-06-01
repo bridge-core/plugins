@@ -4,6 +4,8 @@
 		<button type="button" class="mb-2 v-btn v-btn--has-bg theme--dark v-size--default" style="position:absolute;bottom:25px;right:25px;" onclick="window.location.href='#top'">top</button>
 		<p>
 			This is the documentation for the custom commands found within this extension. This file will guide you on how each of the commands are used.<br>
+			If the extension is installed locally, the <code>BP/structures/bridge/</code> and <code>BP/commands/toolbox/</code> folders should have been created.<br>
+			If the extension is installed globally, these required folders and their contents will be auto-generated when the user creates a new project. <br><br>
 			If you are having trouble, join the <a href="https://discord.gg/Maeq5ZtpVk">MCBE Essentials</a> discord server.
 		</p>
 		<fieldset style="display: inline-block">
