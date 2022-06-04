@@ -13,7 +13,7 @@ export default function defineComponent({ name, template, schema }) {
 		const rotationLookup = [
 			[0.0, 0.0, 0.0],
 			[90.0, 0.0, 0.0],
-			[0.0, 0.0, 90.0],
+			[0.0, 90.0, -90.0],
 		]
 		create(
 			{
