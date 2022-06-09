@@ -1,7 +1,8 @@
 <template>
 <div style="overflow: scroll">
 <v-html>
-<h1>FEATURES DOCUMENTATION </br>Version: 1.17.10.4</h1>
+<h1>FEATURES DOCUMENTATION </br>Version: 1.19.10.20</h1>
+This is documentation for a preview release of Minecraft. New features, components, and capabilities in this release are not final and might change without notice before the final release.<br/>Be sure to check the documentation once the release is out of preview if your add-on isn't working properly. Resource and Behavior Packs created for the preview are not guaranteed to work on the final release.<br/>
 <h2><p id="Index">Index</p></h2>
 <table border="1">
 <tr> <th><a href="#Overview">Overview</a></th> </tr>
@@ -13,18 +14,22 @@
 <tr> <td> <a href="#minecraft:beards_and_shavers"> minecraft:beards_and_shavers</a> </tr> </td>
 <tr> <td> <a href="#minecraft:cave_carver_feature"> minecraft:cave_carver_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:conditional_list"> minecraft:conditional_list</a> </tr> </td>
+<tr> <td> <a href="#minecraft:fossil_feature"> minecraft:fossil_feature</a> </tr> </td>
+<tr> <td> <a href="#minecraft:geode_feature"> minecraft:geode_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:growing_plant_feature"> minecraft:growing_plant_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:hell_cave_carver_feature"> minecraft:hell_cave_carver_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:multiface_feature"> minecraft:multiface_feature</a> </tr> </td>
-<tr> <td> <a href="#minecraft:geode_feature"> minecraft:geode_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:ore_feature"> minecraft:ore_feature</a> </tr> </td>
+<tr> <td> <a href="#minecraft:partially_exposed_blob_feature"> minecraft:partially_exposed_blob_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:rect_layout"> minecraft:rect_layout</a> </tr> </td>
 <tr> <td> <a href="#minecraft:scan_surface"> minecraft:scan_surface</a> </tr> </td>
 <tr> <td> <a href="#minecraft:scatter_feature"> minecraft:scatter_feature</a> </tr> </td>
+<tr> <td> <a href="#minecraft:sculk_patch_feature"> minecraft:sculk_patch_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:search_feature"> minecraft:search_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:single_block_feature"> minecraft:single_block_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:snap_to_surface_feature"> minecraft:snap_to_surface_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:structure_template_feature"> minecraft:structure_template_feature</a> </tr> </td>
+<tr> <td> <a href="#minecraft:surface_relative_threshold_feature"> minecraft:surface_relative_threshold_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:underwater_cave_carver_feature"> minecraft:underwater_cave_carver_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:tree_feature"> minecraft:tree_feature</a> </tr> </td>
 <tr> <td> <a href="#minecraft:vegetation_patch_feature"> minecraft:vegetation_patch_feature</a> </tr> </td>
@@ -109,12 +114,12 @@ Example use: Scattering fruit throughout the canopy of a tree.<br / ><textarea r
 <h1><p id="minecraft:beards_and_shavers">minecraft:beards_and_shavers</p></h1>
 
 'minecraft:beards_and_shavers' will build a 'beard' or 'shave' out space so as to provide a clear space for a feature to place.</br>Succeeds if: a beard/shave is made (this should always happen).</br>Fails if: will always return placement pos, but interior feature placement not guaranteed.</br><h2></h2>
-Example use: provides an area for interior structure placement<br / ><textarea readonly="true" cols="70" rows="14">
+Example use: provides an area for interior structure placement<br / ><textarea readonly="true" cols="73" rows="14">
 {"code:beards_and_shavers": {
           "description": {
             "identifier": "..."
           },
-          "places_feature": "badger:feature_that_places_a_structure",
+          "places_feature": "minecraft:feature_that_places_a_structure",
           "bounding_box_min": [ -2, 0, -2 ],
           "bounding_box_max": [ 2, 8, 2 ],
           "y_delta": 2.0,
@@ -129,7 +134,7 @@ Example use: provides an area for interior structure placement<br / ><textarea r
 <h1><p id="minecraft:cave_carver_feature">minecraft:cave_carver_feature</p></h1>
 
 'minecraft:cave_carver_feature' carves a cave through the world in the current chunk, and in every chunk around the current chunk in an 8 radial pattern.This feature will also only work when placed specifically in the pass "pregeneration_pass".</br><h2></h2>
-Example use: Carve caves normally.<br / ><textarea readonly="true" cols="70" rows="11">
+Example use: Carve caves normally.<br / ><textarea readonly="true" cols="70" rows="12">
 {
       "format_version": "1.16.100",
         "minecraft:cave_feature": {
@@ -137,7 +142,8 @@ Example use: Carve caves normally.<br / ><textarea readonly="true" cols="70" row
             "identifier": "minecraft:underground_cave_carver_feature"
           },
           "fill_with": "minecraft:air",
-          "width_modifier": 0.0
+          "width_modifier": 0.0,
+          "skip_carve_chance": 15
         }
       }
 </textarea> </br>
@@ -146,15 +152,75 @@ Example use: Carve caves normally.<br / ><textarea readonly="true" cols="70" row
 <h1><p id="minecraft:conditional_list">minecraft:conditional_list</p></h1>
 
 'minecraft:conditional_list' Places the first suitable feature within a collection.</br>These conditional features will be evaluated in order.</br>Succeeds if: A condition is successfully resolved.</br>Fails if: No condition is successfully resolved.</br><h2></h2>
-Example use: assigning a feature to an expression<br / ><textarea readonly="true" cols="65" rows="9">
+Example use: assigning a feature to an expression<br / ><textarea readonly="true" cols="68" rows="9">
 "conditional_features" : [
             { 
-              "places_feature" : "badger:some_feature_or_other",
+              "places_feature" : "minecraft:some_feature_or_other",
               "condition" : "query.check_some_block_property(),
             },
           ],
           "early_out_scheme": "placement_success"
         
+</textarea> </br>
+<a href="#Index">Back to top</a><br><br>
+
+<h1><p id="minecraft:fossil_feature">minecraft:fossil_feature</p></h1>
+
+'minecraft:fossil_feature' generates a skeletal structure composed of bone blocks and parametric ore blocks.Succeeds if: The fossil is placed.</br>Fails if: The fossil is not placed because it overlaps with another structure or because its bounding box has too many corners occupied by air or fluid.</br><h2></h2>
+Example use: Fossil composed of bone blocks and coal ore blocks.<br / ><textarea readonly="true" cols="55" rows="11">
+{
+          "format_version": "1.16.0",
+          "minecraft:fossil_feature": {
+            "description": {
+              "identifier": "minecraft:fossil_feature"
+            },
+            "ore_block": "minecraft:coal_ore",
+            "max_empty_corners": 4
+          }
+        }
+</textarea> </br>
+<a href="#Index">Back to top</a><br><br>
+
+<h1><p id="minecraft:geode_feature">minecraft:geode_feature</p></h1>
+
+'minecraft:geode_feature' generates a rock formation to simulate a geode. Each layer of, and block within, the geode can be replaced. Succeeds if: At least one block within the geode is placed.</br>Fails if: All blocks within the geode fail to be placed.</br><h2></h2>
+Example use: Diamond geodes with emerald blocks inside and obsidian on the outside.<br / ><textarea readonly="true" cols="54" rows="32">
+{
+  "format_version": "1.13.0",
+  "minecraft:geode_feature": {
+  "description": {
+    "identifier": "minecraft:diamond_geode_feature"
+  },
+  "filler": "minecraft:air",
+  "inner_layer": "minecraft:diamond_block",
+  "alternate_inner_layer": "minecraft:emerald_block",
+  "middle_layer": "minecraft:calcite",
+  "outer_layer": "minecraft:obsidian",
+  "inner_placements": [
+    {
+    "name": "minecraft:amethyst_cluster",
+    "states": {
+      "amethyst_cluster_type": "small"
+    }
+    }
+  ],
+  "min_outer_wall_distance": 4,
+  "max_outer_wall_distance": 7,
+  "min_distribution_points": 3,
+  "max_distribution_points": 5,
+  "min_point_offset": 1,
+  "max_point_offset": 3,
+  "max_radius": 16,
+  "crack_point_offset": 2.0,
+  "generate_crack_chance": 0.95,
+  "base_crack_size": 2.0,
+  "noise_multiplier": 0.025,
+  "use_potential_placements_chance": 0.35,
+  "use_alternate_layer0_chance": 0.083,
+  "placements_require_layer0_alternate": true,
+  "invalid_blocks_threshold": 1
+  }
+}
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
@@ -230,49 +296,6 @@ Example use: Blue vines in caves.<br / ><textarea readonly="true" cols="49" rows
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
-<h1><p id="minecraft:geode_feature">minecraft:geode_feature</p></h1>
-
-'minecraft:geode_feature' generates a rock formation to simulate a geode. Each layer of, and block within, the geode can be replaced. Succeeds if: At least one block within the geode is placed.</br>Fails if: All blocks within the geode fail to be placed.</br><h2></h2>
-Example use: Diamond geodes with emerald blocks inside and obsidian on the outside.<br / ><textarea readonly="true" cols="56" rows="32">
-{
-  "format_version": "1.13.0",
-  "minecraft:geode_feature": {
-    "description": {
-      "identifier": "minecraft:diamond_geode_feature"
-    },
-    "filler": "minecraft:air",
-    "inner_layer": "minecraft:diamond_block",
-    "alternate_inner_layer": "minecraft:emerald_block",
-    "middle_layer": "minecraft:calcite",
-    "outer_layer": "minecraft:obsidian",
-    "inner_placements": [
-      {
-        "name": "minecraft:amethyst_cluster",
-        "states": {
-          "amethyst_cluster_type": "small"
-        }
-      }
-    ],
-    "min_outer_wall_distance": 4,
-    "max_outer_wall_distance": 7,
-    "min_distribution_points": 3,
-    "max_distribution_points": 5,
-    "min_point_offset": 1,
-    "max_point_offset": 3,
-    "max_radius": 16,
-    "crack_point_offset": 2.0,
-    "generate_crack_chance": 0.95,
-    "base_crack_size": 2.0,
-    "noise_multiplier": 0.025,
-    "use_potential_placements_chance": 0.35,
-    "use_alternate_layer0_chance": 0.083,
-    "placements_require_layer0_alternate": true,
-  "invalid_blocks_threshold": 1
-  }
-}
-</textarea> </br>
-<a href="#Index">Back to top</a><br><br>
-
 <h1><p id="minecraft:ore_feature">minecraft:ore_feature</p></h1>
 
 'minecraft:ore_feature' places a vein of blocks to simulate ore deposits. Despite the name, any block can be placed by this feature. During placement, existing world blocks are checked to see if they can be replaced by the new ore block based on the list provided in the 'may_replace' field of a 'replace_rules' entry. If no 'may_replace' field is specified in a 'replace_rule' entry, the ore block can replace any existing block.</br>Succeeds if: At least one ore block is successfully placed.</br>Fails if: All ore block placements fail.</br><h2></h2>
@@ -328,6 +351,26 @@ Example use: Oil deposits in the sand.<br / ><textarea readonly="true" cols="50"
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
+<h1><p id="minecraft:partially_exposed_blob_feature">minecraft:partially_exposed_blob_feature</p></h1>
+
+'minecraft:partially_exposed_blob_feature' generates a blob of the specified block with the specified dimensions For the most part the blob is embedded in the specified surface, however a single side is allowed to be exposed.</br><h2></h2>
+Example use: Blobs of Magma blocks partially embedded in the floors of flooded caves.<br / ><textarea readonly="true" cols="59" rows="14">
+{
+    "format_version": "1.13.0",
+    "minecraft:partially_exposed_blob_feature": {
+      "description": {
+        "identifier": "minecraft:underwater_magma_feature"
+      },
+      "places_block": "minecraft:magma",
+      "placement_radius_around_floor": 1,
+      "placement_probability_per_valid_position": 0.5,
+      "exposed_face": "up"
+    }
+  }
+}
+</textarea> </br>
+<a href="#Index">Back to top</a><br><br>
+
 <h1><p id="minecraft:rect_layout">minecraft:rect_layout</p></h1>
 
 'minecraft:rect_layout' scans the surface of a Chunk, calling place() on the surface of each block column.</br>Succeeds if: A Feature is successfully placed within a Chunk.</br>Fails if: No Feature could be placed within a Chunk.</br><h2></h2>
@@ -337,11 +380,11 @@ Example use: Scans the surface of a chunk and places a feature if able<br / ><te
         "ratio_of_empty_space": 0.5,
         "feature_areas":[
           {
-            "feature": "badger:tree",
+            "feature": "minecraft:tree",
             "area_dimensions": [Width,Height]
           },
           {
-            "feature": "badger:tree2",
+            "feature": "minecraft:tree2",
             "area_dimensions": [Width,Height]
           }
         ]
@@ -360,7 +403,7 @@ Example use: Scans the surface of a chunk and places a feature if able<br / ><te
 
 <h1><p id="minecraft:scatter_feature">minecraft:scatter_feature</p></h1>
 
-'minecraft:scatter_feature' scatters a feature throughout a chunk. The 'x', 'y', and 'z' fields are per-coordinate parameters. Note that coordinates represent an offset from the input position, not an absolute position. Coordinates may be a single value, a random distribution, or molang expression that resolves to a numeric value. The 'coordinate_eval_order' field is provided for finer control of coordinate resolution (particularly when using the 'grid' distribution). 'iterations' controls how many individual placements should occur if the 'scatter_chance' check succeeds. The 'scatter_chance' check happens once, so either all placements will run or none will.</br>Succeeds if: At least one feature placement succeeds.</br>Fails if: All feature placements fail.</br><h2></h2>
+'minecraft:scatter_feature' scatters a feature throughout a chunk. The 'x', 'y', and 'z' fields are per-coordinate parameters. Note that coordinates represent an offset from the input position, not an absolute position. Coordinates may be a single value, a random distribution, or Molang expression that resolves to a numeric value. The 'coordinate_eval_order' field is provided for finer control of coordinate resolution (particularly when using the 'grid' distribution). 'iterations' controls how many individual placements should occur if the 'scatter_chance' check succeeds. The 'scatter_chance' check happens once, so either all placements will run or none will.</br>Succeeds if: At least one feature placement succeeds.</br>Fails if: All feature placements fail.</br><h2></h2>
 Example use: Scattering flowers at sea level across half the chunks in a biome.<br / ><textarea readonly="true" cols="54" rows="21">
 {
   "format_version": 1.13.0,
@@ -384,6 +427,10 @@ Example use: Scattering flowers at sea level across half the chunks in a biome.<
 }
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
+
+<h1><p id="minecraft:sculk_patch_feature">minecraft:sculk_patch_feature</p></h1>
+
+Feature type 'minecraft:sculk_patch_feature' has not yet been documented.</br><a href="#Index">Back to top</a><br><br>
 
 <h1><p id="minecraft:search_feature">minecraft:search_feature</p></h1>
 
@@ -469,6 +516,23 @@ Example use: Place a hot air balloon structure that "floats" in the air.<br / ><
         ]
       }
     }
+  }
+}
+</textarea> </br>
+<a href="#Index">Back to top</a><br><br>
+
+<h1><p id="minecraft:surface_relative_threshold_feature">minecraft:surface_relative_threshold_feature</p></h1>
+
+'minecraft:surface_relative_threshold_feature' determines whether the provided position is below the estimated surface level of the world, and places a feature if so.If the provided position is above configured surface or the surface is not available, placement will fail. This feature only works for Overworld generators using world generation 1.18 or later.</br><h2></h2>
+Example use: Define a feature that places the 'underwater_magma_snap_to_surface_feature', if the given position is at least two blocks below estimated surface level.<br / ><textarea readonly="true" cols="75" rows="11">
+{
+  "format_version": "1.16.0",
+  "minecraft:surface_relative_threshold_feature": {
+  "description": {
+    "identifier": "minecraft:underwater_magma_underground_feature"
+  },
+  "feature_to_snap": "minecraft:underwater_magma_snap_to_surface_feature",
+  "minimum_distance_below_surface": 2
   }
 }
 </textarea> </br>
@@ -581,6 +645,12 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
           }
           block_reference "fill_with" : opt // Reference to the block to fill the cave with.
           molang "width_modifier" : opt // How many blocks to increase the cave radius by, from the center point of the cave.
+          int "skip_carve_chance"<1-*> : opt // The chance to skip doing the carve (1 / value).
+          int "height_limit" : opt // The height limit where we attempt to carve.
+          float_range "y_scale" : opt // The scaling in y.
+          float_range "horizontal_radius_multiplier" : opt // Horizontal radius multiplier.
+          float_range "vertical_radius_multiplier" : opt // Vertical radius multiplier.
+          float_range "floor_level" : opt // Floor Level.
       }
       object "minecraft:conditional_list" : opt
       {
@@ -597,6 +667,46 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
               }
           }
           enumerated_value "early_out_scheme"<"condition_success", "placement_success"> : opt // Denote whether placement should end on first successful placement or first passed condition.
+      }
+      object "minecraft:fossil_feature" : opt
+      {
+          object "description"
+          {
+              string "identifier" // The name of this feature in the form 'namespace_name:feature_name'. 'feature_name' must match the filename.
+          }
+           "ore_block"
+          int "max_empty_corners"
+      }
+      object "minecraft:geode_feature" : opt
+      {
+          object "description"
+          {
+              string "identifier" // The name of this feature in the form 'namespace_name:feature_name'. 'feature_name' must match the filename.
+          }
+           "filler" // The block to fill the inside of the geode.
+           "inner_layer" // The block that forms the inside layer of the geode shell.
+           "alternate_inner_layer" // The block that has a chance of generating instead of inner_layer.
+           "middle_layer" // The block that forms the middle layer of the geode shell.
+           "outer_layer" // The block that forms the outer shell of the geode.
+          array "inner_placements"[1,*] : opt
+          {
+               "<any array element>" // A list of blocks that may be replaced during placement. Omit this field to allow any block to be replaced.
+          }
+          int "min_outer_wall_distance"<1-10> // The minimum distance each distribution point must be from the outer wall. [0,10]
+          int "max_outer_wall_distance"<1-20> // The maximum distance each distribution point can be from the outer wall. [0,20]
+          int "min_distribution_points"<1-10> // The minimum number of points inside the distance field that can get generated. The distance field is the area consisting of all points with a minimum distance to all destribution points. [0,10]
+          int "max_distribution_points"<1-20> // The maximum number of points inside the distance field that can get generated. The distance field is the area consisting of all points with a minimum distance to all destribution points. [0,20]
+          int "min_point_offset"<0-10> // The lowest possible value of random offset applied to the position of each distribution point. [0,10]
+          int "max_point_offset"<0-10> // The highest possible value of random offset applied to the position of each distribution point. [0,10]
+          int "max_radius" // The maximum possible radius of the geode generated.
+          int "crack_point_offset"<0-10> // An offset applied to each distribution point that forms the geode crack opening. [0,10]
+          float "generate_crack_chance"<0.000000-1.000000> // The likelihood of a geode generating with a crack in its shell. [0,1]
+          float "base_crack_size"<0.000000-5.000000> // How large the crack opening of the geode should be when generated. [0,5]
+          float "noise_multiplier" // A multiplier applied to the noise that is applied to the distribution points within the geode. Higher = more noisy.
+          float "use_potential_placements_chance"<0.000000-1.000000> // The likelihood that a special block will be placed on the inside of the geode. [0,1]
+          float "use_alternate_layer0_chance"<0.000000-1.000000> // The likelihood that a block in the innermost layer of the geode will be replaced with an alternate option. [0,1]
+          bool "placements_require_layer0_alternate" // If true, the potential placement block will only be placed on the alternate layer0 blocks that get placed. Potential placement blocks are blocks that depend on the existance of another block to be placed. The latter are the layer0 alternate blocks.
+          int "invalid_blocks_threshold" // The threshold of invalid blocks for a geode to have a distribution point in before it aborts generation entirely.
       }
       object "minecraft:growing_plant_feature" : opt
       {
@@ -640,6 +750,12 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
           }
           block_reference "fill_with" : opt // Reference to the block to fill the cave with.
           molang "width_modifier" : opt // How many blocks to increase the cave radius by, from the center point of the cave.
+          int "skip_carve_chance"<1-*> : opt // The chance to skip doing the carve (1 / value).
+          int "height_limit" : opt // The height limit where we attempt to carve.
+          float_range "y_scale" : opt // The scaling in y.
+          float_range "horizontal_radius_multiplier" : opt // Horizontal radius multiplier.
+          float_range "vertical_radius_multiplier" : opt // Vertical radius multiplier.
+          float_range "floor_level" : opt // Floor Level.
       }
       object "minecraft:multiface_feature" : opt
       {
@@ -658,37 +774,6 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
                "<any array element>" : opt // A list of blocks that the block in this feature can be placed on. Omit this field to allow any block to be placed on.
           }
       }
-      object "minecraft:geode_feature" : opt
-      {
-          object "description"
-          {
-              string "identifier" // The name of this feature in the form 'namespace_name:feature_name'. 'feature_name' must match the filename.
-          }
-           "filler" // The block to fill the inside of the geode.
-           "inner_layer" // The block that forms the inside layer of the geode shell.
-           "alternate_inner_layer" // The block that has a chance of generating instead of inner_layer.
-           "middle_layer" // The block that forms the middle layer of the geode shell.
-           "outer_layer" // The block that forms the outer shell of the geode.
-          array "inner_placements"[1,*] : opt
-          {
-               "<any array element>" // A list of blocks that may be replaced during placement. Omit this field to allow any block to be replaced.
-          }
-          int "min_outer_wall_distance"<1-10> // The minimum distance each distribution point must be from the outer wall. [0,10]
-          int "max_outer_wall_distance"<1-20> // The maximum distance each distribution point can be from the outer wall. [0,20]
-          int "min_distribution_points"<1-10> // The minimum number of points inside the distance field that can get generated. The distance field is the area consisting of all points with a minimum distance to all destribution points. [0,10]
-          int "max_distribution_points"<1-20> // The maximum number of points inside the distance field that can get generated. The distance field is the area consisting of all points with a minimum distance to all destribution points. [0,20]
-          int "min_point_offset"<0-10> // The lowest possible value of random offset applied to the position of each distribution point. [0,10]
-          int "max_point_offset"<0-10> // The highest possible value of random offset applied to the position of each distribution point. [0,10]
-          int "max_radius" // The maximum possible radius of the geode generated.
-          int "crack_point_offset"<0-10> // An offset applied to each distribution point that forms the geode crack opening. [0,10]
-          float "generate_crack_chance"<0.000000-1.000000> // The likelihood of a geode generating with a crack in its shell. [0,1]
-          float "base_crack_size"<0.000000-5.000000> // How large the crack opening of the geode should be when generated. [0,5]
-          float "noise_multiplier" // A multiplier applied to the noise that is applied to the distribution points within the geode. Higher = more noisy.
-          float "use_potential_placements_chance"<0.000000-1.000000> // The likelihood that a special block will be placed on the inside of the geode. [0,1]
-          float "use_alternate_layer0_chance"<0.000000-1.000000> // The likelihood that a block in the innermost layer of the geode will be replaced with an alternate option. [0,1]
-          bool "placements_require_layer0_alternate" // If true, the potential placement block will only be placed on the alternate layer0 blocks that get placed. Potential placement blocks are blocks that depend on the existance of another block to be placed. The latter are the layer0 alternate blocks.
-          int "invalid_blocks_threshold" // The threshold of invalid blocks for a geode to have a distribution point in before it aborts generation entirely.
-      }
       object "minecraft:ore_feature" : opt
       {
           object "description"
@@ -696,6 +781,7 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
               string "identifier" // The name of this feature in the form 'namespace_name:feature_name'. 'feature_name' must match the filename.
           }
           int "count"<1-*> // The number of blocks to be placed.
+          float "discard_chance_on_air_exposure"<0.000000-1.000000> : opt // Chance of discarding placement if neighboring block is Air.
           array "replace_rules"[1,*] : opt
           {
               object "<any array element>" // Collection of replace rules that will be checked in order of definition. If a rule is resolved, the rest will not be resolved for that block position.
@@ -707,6 +793,17 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
                   }
               }
           }
+      }
+      object "minecraft:partially_exposed_blob_feature" : opt
+      {
+          object "description"
+          {
+              string "identifier" // The name of this feature in the form 'namespace_name:feature_name'. 'feature_name' must match the filename.
+          }
+          int "placement_radius_around_floor"<1-8> // Defines the cubic radius of the blob. [1, 8]
+          float "placement_probability_per_valid_position"<0.000000-1.000000> // The probability of trying to place a block at each position within the placement bounds. [0,1]
+          string "exposed_face" : opt // Defines a block face that is allowed to be exposed to air and/or water. Other faces need to be embedded for blocks to be placed by this feature. Defaults to upwards face.
+           "places_block" // Reference to the block to be placed.
       }
       object "minecraft:rect_layout" : opt
       {
@@ -755,7 +852,7 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
           molang "x" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
           object "x" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
           {
-              enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+              enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
               int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
               int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
               array "extent"[2]
@@ -767,7 +864,7 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
           molang "z" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
           object "z" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
           {
-              enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+              enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
               int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
               int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
               array "extent"[2]
@@ -779,7 +876,7 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
           molang "y" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
           object "y" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
           {
-              enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+              enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
               int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
               int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
               array "extent"[2]
@@ -788,6 +885,25 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
                   molang "[1..1]" : opt // Upper bound (inclusive) of the scatter range, as an offset from the input point to scatter around
               }
           }
+      }
+      object "minecraft:sculk_patch_feature" : opt
+      {
+          object "description"
+          {
+              string "identifier" // The name of this feature in the form 'namespace_name:feature_name'. 'feature_name' must match the filename.
+          }
+          array "can_place_sculk_patch_on"
+          {
+               "<any array element>" : opt
+          }
+           "central_block" : opt
+          float "central_block_placement_chance"<0.000000-1.000000> : opt
+          int "cursor_count"<0-32>
+          int "charge_amount"<1-1000>
+          int "spread_attempts"<1-64>
+          int "growth_rounds"<0-8>
+          int "spread_rounds"<0-8>
+           "extra_growth_chance" : opt
       }
       object "minecraft:search_feature" : opt
       {
@@ -881,7 +997,9 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
           }
           feature_reference "feature_to_snap" // Named reference of feature to be snapped
           int "vertical_search_range" // Range to search for a floor or ceiling for snaping the feature.
-          string "surface" : opt // Defines the surface that the y-value of the placement position will be snapped to. Valid values: 'ceiling' and 'floor'
+          string "surface" : opt // Defines the surface that the y-value of the placement position will be snapped to. Valid values: 'ceiling', 'floor' and 'random_horizontal'
+          bool "allow_air_placement" : opt // Determines whether the feature can snap through air blocks. Defaults to true.
+          bool "allow_underwater_placement" : opt // Determines whether the feature can snap through water blocks. Defaults to false.
       }
       object "minecraft:structure_template_feature" : opt
       {
@@ -905,6 +1023,15 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
               }
           }
       }
+      object "minecraft:surface_relative_threshold_feature" : opt
+      {
+          object "description"
+          {
+              string "identifier" // The name of this feature in the form 'namespace_name:feature_name'. 'feature_name' must match the filename.
+          }
+          feature_reference "feature_to_place" // Named reference of feature to be placed
+          int "minimum_distance_below_surface" : opt // The minimum number of blocks required to be between the estimated surface level and a valid place for this feature. Defaults to zero.
+      }
       object "minecraft:underwater_cave_carver_feature" : opt
       {
           object "description"
@@ -913,6 +1040,12 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
           }
           block_reference "fill_with" : opt // Reference to the block to fill the cave with.
           molang "width_modifier" : opt // How many blocks to increase the cave radius by, from the center point of the cave.
+          int "skip_carve_chance"<1-*> : opt // The chance to skip doing the carve (1 / value).
+          int "height_limit" : opt // The height limit where we attempt to carve.
+          float_range "y_scale" : opt // The scaling in y.
+          float_range "horizontal_radius_multiplier" : opt // Horizontal radius multiplier.
+          float_range "vertical_radius_multiplier" : opt // Vertical radius multiplier.
+          float_range "floor_level" : opt // Floor Level.
           block_reference "replace_air_with" : opt // Reference to the block to replace air blocks with.
       }
       object "minecraft:tree_feature" : opt
@@ -1013,6 +1146,29 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
                           int "radius"<0-*>
                            "leaf_block"
                       }
+                      object "mangrove_canopy" : opt
+                      {
+                           "canopy_height"
+                           "canopy_radius"
+                          int "leaf_placement_attempts"<1-*>
+                          array "leaf_blocks"
+                          {
+                              array "<any array element>"[2]
+                              {
+                                   "[0..0]"
+                                  float "[1..1]"
+                              }
+                          }
+                          object "canopy_decoration" : opt
+                          {
+                              chance_information "decoration_chance"
+                               "decoration_block" : opt
+                              int "num_steps" : opt
+                              enumerated_value "step_direction"<"down", "up", "out", "away"> : opt
+                          }
+                           "hanging_block"
+                          chance_information "hanging_block_placement_chance"
+                      }
                       object "mega_canopy" : opt
                       {
                            "canopy_height"
@@ -1094,6 +1250,30 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
               float "width_scale"<0.000000-*>
               float "foliage_altitude_factor"<0.000000-1.000000>
           }
+          object "mangrove_trunk" : opt
+          {
+              int "trunk_width"
+              object "trunk_height"
+              {
+                  int "base"<1-*>
+                  int "height_rand_a"<1-*>
+                  int "height_rand_b"<1-*>
+              }
+               "trunk_block"
+              object "branches" : opt
+              {
+                   "branch_length"
+                   "branch_steps"
+                  chance_information "branch_chance"
+              }
+              object "trunk_decoration" : opt
+              {
+                  chance_information "decoration_chance"
+                   "decoration_block" : opt
+                  int "num_steps" : opt
+                  enumerated_value "step_direction"<"down", "up", "out", "away"> : opt
+              }
+          }
           object "mega_trunk" : opt
           {
               int "trunk_width"
@@ -1163,6 +1343,29 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
                           int "height"<1-*>
                           int "radius"<0-*>
                            "leaf_block"
+                      }
+                      object "mangrove_canopy" : opt
+                      {
+                           "canopy_height"
+                           "canopy_radius"
+                          int "leaf_placement_attempts"<1-*>
+                          array "leaf_blocks"
+                          {
+                              array "<any array element>"[2]
+                              {
+                                   "[0..0]"
+                                  float "[1..1]"
+                              }
+                          }
+                          object "canopy_decoration" : opt
+                          {
+                              chance_information "decoration_chance"
+                               "decoration_block" : opt
+                              int "num_steps" : opt
+                              enumerated_value "step_direction"<"down", "up", "out", "away"> : opt
+                          }
+                           "hanging_block"
+                          chance_information "hanging_block_placement_chance"
                       }
                       object "mega_canopy" : opt
                       {
@@ -1261,6 +1464,29 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
               int "radius"<0-*>
                "leaf_block"
           }
+          object "mangrove_canopy" : opt
+          {
+               "canopy_height"
+               "canopy_radius"
+              int "leaf_placement_attempts"<1-*>
+              array "leaf_blocks"
+              {
+                  array "<any array element>"[2]
+                  {
+                       "[0..0]"
+                      float "[1..1]"
+                  }
+              }
+              object "canopy_decoration" : opt
+              {
+                  chance_information "decoration_chance"
+                   "decoration_block" : opt
+                  int "num_steps" : opt
+                  enumerated_value "step_direction"<"down", "up", "out", "away"> : opt
+              }
+               "hanging_block"
+              chance_information "hanging_block_placement_chance"
+          }
           object "mega_canopy" : opt
           {
                "canopy_height"
@@ -1310,6 +1536,31 @@ Here is the complete feature schema<br / ><textarea readonly="true" cols="192" r
                        "[0..0]"
                       float "[1..1]"
                   }
+              }
+          }
+          object "mangrove_roots" : opt
+          {
+              int "max_root_width"<1-*>
+              int "max_root_length"<1-*>
+               "root_block"
+              object "above_root" : opt
+              {
+                  chance_information "above_root_chance" : opt
+                   "above_root_block" : opt
+              }
+               "muddy_root_block"
+               "mud_block"
+               "y_offset"
+              array "roots_may_grow_through"
+              {
+                   "<any array element>"
+              }
+              object "root_decoration" : opt
+              {
+                  chance_information "decoration_chance"
+                   "decoration_block" : opt
+                  int "num_steps" : opt
+                  enumerated_value "step_direction"<"down", "up", "out", "away"> : opt
               }
           }
       }
@@ -1435,7 +1686,7 @@ Here is a sample feature rule<br / ><textarea readonly="true" cols="69" rows="32
               molang "x" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
               object "x" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
               {
-                  enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+                  enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
                   int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
                   int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
                   array "extent"[2]
@@ -1447,7 +1698,7 @@ Here is a sample feature rule<br / ><textarea readonly="true" cols="69" rows="32
               molang "z" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
               object "z" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
               {
-                  enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+                  enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
                   int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
                   int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
                   array "extent"[2]
@@ -1459,7 +1710,7 @@ Here is a sample feature rule<br / ><textarea readonly="true" cols="69" rows="32
               molang "y" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
               object "y" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
               {
-                  enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+                  enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
                   int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
                   int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
                   array "extent"[2]
@@ -1478,7 +1729,6 @@ Here is a sample feature rule<br / ><textarea readonly="true" cols="69" rows="32
 <h1><p id="Forced features">Forced features</p></h1>
 
 Features attached with the second method are called "forced" or "explicit" features. Unlike feature rules, forced features are not defined in separate JSON files. Instead, they are specified in the existing biome JSON definitions via the "minecraft:forced_features" component. Like feature rules, this component includes fields that define when features should be placed ("placement_pass") and how they should be scattered ("distribution"). For more information about biome components (including the complete JSON schema), consult the biome documentation.</br><a href="#Index">Back to top</a><br><br>
-
 </v-html>
 </div>
 </template>

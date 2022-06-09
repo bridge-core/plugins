@@ -1,7 +1,8 @@
 <template>
 <div style="overflow: scroll">
 <v-html>
-<h1>BIOMES DOCUMENTATION </br>Version: 1.17.10.4</h1>
+<h1>BIOMES DOCUMENTATION </br>Version: 1.19.10.20</h1>
+This is documentation for a preview release of Minecraft. New features, components, and capabilities in this release are not final and might change without notice before the final release.<br/>Be sure to check the documentation once the release is out of preview if your add-on isn't working properly. Resource and Behavior Packs created for the preview are not guaranteed to work on the final release.<br/>
 <h2><p id="Index">Index</p></h2>
 <table border="1">
 <tr> <th><a href="#Overview">Overview</a></th> </tr>
@@ -108,7 +109,7 @@ Biomes are read from JSON files in the biomes subfolders of behavior packs. Load
                   molang "x" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
                   object "x" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
                   {
-                      enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+                      enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
                       int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
                       int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
                       array "extent"[2]
@@ -120,7 +121,7 @@ Biomes are read from JSON files in the biomes subfolders of behavior packs. Load
                   molang "z" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
                   object "z" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
                   {
-                      enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+                      enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
                       int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
                       int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
                       array "extent"[2]
@@ -132,7 +133,7 @@ Biomes are read from JSON files in the biomes subfolders of behavior packs. Load
                   molang "y" : opt // Expression for the coordinate (evaluated each iteration).  Mutually exclusive with random distribution object below.
                   object "y" : opt // Distribution for the coordinate (evaluated each iteration).  Mutually exclusive with Molang expression above.
                   {
-                      enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), or grid (either fixed-step or jittered)
+                      enumerated_value "distribution"<"uniform", "gaussian", "inverse_gaussian", "triangle", "fixed_grid", "jittered_grid"> // Type of distribution - uniform random, gaussian (centered in the range), triangle (centered in the range), or grid (either fixed-step or jittered)
                       int "step_size"<1-*> : opt // When the distribution type is grid, defines the distance between steps along this axis
                       int "grid_offset"<0-*> : opt // When the distribution type is grid, defines the offset along this axis
                       array "extent"[2]
@@ -312,7 +313,6 @@ Biomes are read from JSON files in the biomes subfolders of behavior packs. Load
 
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
-
 </v-html>
 </div>
 </template>

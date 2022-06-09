@@ -1,7 +1,8 @@
 <template>
 <div style="overflow: scroll">
 <v-html>
-<h1>ADDONS DOCUMENTATION </br>Version: 1.17.10.4</h1>
+<h1>ADDONS DOCUMENTATION </br>Version: 1.19.10.20</h1>
+This is documentation for a preview release of Minecraft. New features, components, and capabilities in this release are not final and might change without notice before the final release.<br/>Be sure to check the documentation once the release is out of preview if your add-on isn't working properly. Resource and Behavior Packs created for the preview are not guaranteed to work on the final release.<br/>
 <h2><p id="Index">Index</p></h2>
 <table border="1">
 <tr> <th><a href="#BlockStates">BlockStates</a></th> </tr>
@@ -17,24 +18,642 @@
 <h1><p id="BlockStates">BlockStates</p></h1>
 
 <table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:4;">
-<tr> <th style="border-style:solid; border-width:4;">Type</th> <th style="border-style:solid; border-width:4;">Block State Name</th> <th style="border-style:solid; border-width:4;">Valid Values</th> <th style="border-style:solid; border-width:4;">Description</th> </tr>
+<tr> <th style="border-style:solid; border-width:4;">Block State Name</th> <th style="border-style:solid; border-width:4;">Type</th> <th style="border-style:solid; border-width:4;">Valid Values</th> <th style="border-style:solid; border-width:4;">Description</th> </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">active</td>
 <td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
-<td style="border-style:solid; border-width:4; padding:6px">age_bit</td>
 <td style="border-style:solid; border-width:4; padding:6px">True, False</td>
-<td style="border-style:solid; border-width:4; padding:6px">Determines if saplings should grow</br></td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines whether the block is active or not</br></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
 <td style="border-style:solid; border-width:4; padding:6px">age</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
 <td style="border-style:solid; border-width:4; padding:6px">0 - 15</td>
 <td style="border-style:solid; border-width:4; padding:6px">Represents the age of the block</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">age_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if saplings should grow</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">allow_underwater_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a TNT block works underwater</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">attached_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a tripwire is attached to another tripwire</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">attachment</td>
 <td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">standing, hanging, side, multiple</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of attachment used by a bell or grindstone block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">bamboo_leaf_size</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">no_leaves, small_leaves, large_leaves</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the size of bamboo leaves</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">bamboo_stalk_thickness</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">thin, thick</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the thinkness of a bamboo stalk</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">big_dripleaf_tilt</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">none, unstable, partial_tilt, full_tilt</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the tilt state of big dripleaf block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">bite_counter</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 6</td>
+<td style="border-style:solid; border-width:4; padding:6px">Tracks how many bites of cake have been taken</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">brewing_stand_slot_a_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a bottle is shown in slot a of the brewing stand</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">brewing_stand_slot_b_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a bottle is shown in slot b of the brewing stand</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">brewing_stand_slot_c_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a bottle is shown in slot c of the brewing stand</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">button_pressed_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a button is in the pressed state or not</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">candles</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 3</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes how many extra candles are in the same block space</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">cauldron_liquid</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">water, lava</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of liquid in a cauldron</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">chemistry_table_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">compound_creator, material_reducer, element_constructor, lab_table</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of the work benches that are behind the edu features toggle</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">chisel_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">default, chiseled, lines, smooth</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the pattern of quartz and purpur blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">cluster_count</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 3</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes how many sea pickles are in a cluster</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">color</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">white, orange, magenta, light_blue, yellow, lime, pink, gray, silver, cyan, purple, blue, brown, green, red, black</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the color of a block like wool</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">color_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Sets if a torch is a colored torch block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">conditional_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a command block is conditional or not</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">coral_color</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">blue, pink, purple, red, yellow, blue dead, pink dead, red dead, yellow dead</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the color of a coral block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">coral_direction</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 3</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes the rotation of coral fans</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">coral_hang_type_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes the type of hanging for coral fans</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">covered_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes if a top snow block is covering another block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">cracked_state</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">no_cracks, cracked, max_cracked</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the cracked state of turtle eggs</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">damage</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">undamaged, slightly_damaged, very_damaged, broken</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the state of damage of an Anvil</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">dead_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if coral, coral fans, or sea pickles are dead</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">direction</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 3</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the North, South, East, and West direction of some blocks. 0 = South, 1 = West, 2 = North 3 = East</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">dirt_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">normal, coarse</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the dirt type of a block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">disarmed_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a tripwire is disarmed or not.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">door_hinge_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if door's hinge is mirrored or not</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">double_plant_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">sunflower, syringa, grass, fern, rose, paeonia</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of a double plant block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">drag_down</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes if bubble columns drag entities down or pushes them up</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">dripstone_thickness</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">tip, frustum, base, middle, merge</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of a pointed dripstone block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">end_portal_eye_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if an end portal block has an Eye in it</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">explode_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a TNT block should start its explode sequence</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">facing_direction</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 5</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the Up, Down, North, South, East, and West direction of some blocks. 0 = Down, 1 = Up, 2 = North, 3 = South, 4 = West, 5 = East</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">fill_level</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 6</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines fill level of a cauldron block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">flower_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">poppy, orchid, allium, houstonia, tulip_red, tulip_orange, tulip_white, tulip_pink, oxeye, cornflower, lily_of_the_valley</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of a flower block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">ground_sign_direction</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 15</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes the rotation of signs and standing banners</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">growth</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 7</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the growth level of crops</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">hanging</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes if a lantern block is hanging or not</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">head_piece_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a block is the pillow side of a bed</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">height</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 7</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the height of a top snow block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">huge_mushroom_bits</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 15</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines which huge mushroom block to be displayed</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">in_wall_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a fence block is connected to a wall block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">infiniburn_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a block should burn infinitely</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">item_frame_map_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes if an item frame block has a map in it</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">item_frame_photo_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes if an item frame block has a photo in it</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">liquid_depth</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 15</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the level of liquid blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">lit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a block is lit or not</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">moisturized_amount</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 7</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the moisture level of crops</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">monster_egg_stone_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">stone, cobblestone, stone_brick, mossy_stone_brick, cracked_stone_brick, chiseled_stone_brick</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the stone type of a monster egg block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">new_leaf_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">acacia, dark_oak</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the leaf type of some blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">new_log_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">acacia, dark_oak</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the wood type of some blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">no_drop_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a skull block should drop loot</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">occupied_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a bed block is occupied</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">old_leaf_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">oak, spruce, birch, jungle</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the leaf type of some blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">old_log_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">oak, spruce, birch, jungle</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the wood type of some blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">open_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a door, gate, or trapdoor is open</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">output_lit_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a Comparator's output is lit</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">output_subtract_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a Comparator is set to subtract output</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">persistent_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a leaf block is persistent</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">portal_axis</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
 <td style="border-style:solid; border-width:4; padding:6px">unknown, x, z</td>
 <td style="border-style:solid; border-width:4; padding:6px">Determines the orientation of portal blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">powered_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Shows when an observer or tripwire sends a redstone signal</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">rail_data_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Shows if a rail has a redstone signal</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">rail_direction</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 8</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the orientation of a placed rail block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">redstone_signal</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 15</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the signal strength of a redstone signal</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">repeater_delay</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 3</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the amount of delay of a repeater</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">sand_stone_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">default, heiroglyphs, cut, smooth</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the pattern of a sandstone block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">sand_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">normal, red</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the sand type of a block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">sapling_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">evergreen, birch, jungle, acacia, roofed_oak</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of the sapling block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">sea_grass_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">default, double_top, double_bot</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of a seagrass block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">sponge_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">dry, wet</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of a sponge block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stability</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 5</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the stability of a scaffolding block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stability_check</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes if a scaffolding block has been checked for stability</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_brick_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">default, mossy, cracked, chiseled, smooth</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of a stone brick block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_slab_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">smooth_stone, sandstone, wood, cobblestone, brick, stone_brick, quartz, nether_brick</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of some stone slab blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_slab_type_2</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">red_sandstone, purpur, prismarine_rough, prismarine_dark, prismarine_brick, mossy_cobblestone, smooth_sandstone, red_nether_brick</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of some stone slab blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_slab_type_3</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">end_stone_brick, smooth_red_sandstone, polishe_andesite, andesite, diorite, polished_diorite, granite, polished_granite</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of some stone slab blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_slab_type_4</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">mossy_stone_brick, smooth_quartz, stone, cut_sandstone, cut_red_sandstone</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of some stone slab blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">stone, granite, granite_smooth, diorite, diorite_smooth, andesite, andesite_smooth</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the stone type of a block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stripped_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes if a wood log has been stripped of bark</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">structure_block_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">data, save, load, corner, invalid, export</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the state of a structure block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">structure_void_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">void, air</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines which void mode to draw for structure blocks</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">suspended_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Indicates if a tripwire block is suspended</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">tall_grass_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">default, tall, fern, snow</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of a tall grass block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">toggle_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a hopper block is active or not</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">top_slot_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Shows if a slab is the top half of the block or not</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">torch_facing_direction</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">unknown, west, east, north, south, top</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the block that a torch is attached to in relation to its position</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">triggered_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a dispenser is triggered</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">turtle_egg_count</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">one_egg, two_egg, three_egg, four_egg</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the amount of turtle eggs in an egg block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">update_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a leaf block or flower block should be updated</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">upper_block_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a block is the upper half of an object like a door or a tall plant</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">upside_down_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a stair block or trapdoor block is upsidedown</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">vine_direction_bits</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 15</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the facing direction for vines, works like the facing_direction blockstate</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">wall_block_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">cobblestone, mossy_cobblestone, granite, diorite, andesite, sandstone, brick, stone_brick, mossy_stone_brick, nether_brick, end_brick, prismarine, red_sandstone, red_nether_brick</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the type of a stone used in a wall block</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">wall_connection_type_east</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">none, short, tall</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines what kind of connection a wall has to the east</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">wall_connection_type_north</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">none, short, tall</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines what kind of connection a wall has to the north</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">wall_connection_type_south</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">none, short, tall</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines what kind of connection a wall has to the south</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">wall_connection_type_west</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">none, short, tall</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines what kind of connection a wall has to the west</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">wall_post_bit</td>
+<td style="border-style:solid; border-width:4; padding:6px">Boolean</td>
+<td style="border-style:solid; border-width:4; padding:6px">True, False</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines if a wall should contain a post</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">weirdo_direction</td>
+<td style="border-style:solid; border-width:4; padding:6px">Integer</td>
+<td style="border-style:solid; border-width:4; padding:6px">0 - 3</td>
+<td style="border-style:solid; border-width:4; padding:6px">Describes the rotation of stairs</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">wood_type</td>
+<td style="border-style:solid; border-width:4; padding:6px">String</td>
+<td style="border-style:solid; border-width:4; padding:6px">oak, spruce, birch, jungle, acacia, dark_oak</td>
+<td style="border-style:solid; border-width:4; padding:6px">Determines the wood type of a block</br></td>
 </tr>
 </table>
 <a href="#Index">Back to top</a><br><br>
@@ -320,6 +939,9 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:clay</td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:client_request_placeholder_block</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:coal_block</td>
 </tr>
 <tr>
@@ -365,7 +987,7 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:concrete</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:concretePowder</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:concrete_powder</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:conduit</td>
@@ -608,16 +1230,16 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:double_plant</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:double_stone_slab</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:double_stone_block_slab</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:double_stone_slab2</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:double_stone_block_slab2</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:double_stone_slab3</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:double_stone_block_slab3</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:double_stone_slab4</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:double_stone_block_slab4</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:double_wooden_slab</td>
@@ -1070,6 +1692,9 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:frame</td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:frog_spawn</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:frosted_ice</td>
 </tr>
 <tr>
@@ -1184,7 +1809,7 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:info_update2</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:invisibleBedrock</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:invisible_bedrock</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:iron_bars</td>
@@ -1346,6 +1971,57 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:magma</td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_button</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_door</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_double_slab</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_fence</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_fence_gate</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_leaves</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_log</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_planks</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_pressure_plate</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_propagule</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_roots</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_slab</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_stairs</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_standing_sign</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_trapdoor</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_wall_sign</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mangrove_wood</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:medium_amethyst_bud</td>
 </tr>
 <tr>
@@ -1376,7 +2052,28 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:mossy_stone_brick_stairs</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:movingBlock</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:moving_block</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mud</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mud_brick_double_slab</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mud_brick_slab</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mud_brick_stairs</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mud_brick_wall</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:mud_bricks</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:muddy_mangrove_roots</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:mycelium</td>
@@ -1427,6 +2124,9 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:obsidian</td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:ochre_froglight</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:orange_candle</td>
 </tr>
 <tr>
@@ -1454,6 +2154,12 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:packed_ice</td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:packed_mud</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:pearlescent_froglight</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:pink_candle</td>
 </tr>
 <tr>
@@ -1466,7 +2172,7 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:piston</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:pistonArmCollision</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:piston_arm_collision</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:planks</td>
@@ -1658,6 +2364,9 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:reeds</td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:reinforced_deepslate</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:repeating_command_block</td>
 </tr>
 <tr>
@@ -1682,16 +2391,28 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:scaffolding</td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:sculk</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:sculk_catalyst</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:sculk_sensor</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:sculk_shrieker</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:sculk_vein</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:sea_lantern</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:sea_pickle</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:seagrass</td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:seaLantern</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:shroomlight</td>
@@ -1808,10 +2529,22 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:sticky_piston</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:stickyPistonArmCollision</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:sticky_piston_arm_collision</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:stone</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_block_slab</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_block_slab2</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_block_slab3</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_block_slab4</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_brick_stairs</td>
@@ -1821,18 +2554,6 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_pressure_plate</td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_slab</td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_slab2</td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_slab3</td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_slab4</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:stone_stairs</td>
@@ -1863,6 +2584,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:stripped_jungle_log</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:stripped_mangrove_log</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:stripped_mangrove_wood</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:stripped_oak_log</td>
@@ -1907,7 +2634,7 @@
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:trapped_chest</td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">minecraft:tripWire</td>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:trip_wire</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:tripwire_hook</td>
@@ -1938,6 +2665,9 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:unpowered_repeater</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">minecraft:verdant_froglight</td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">minecraft:vine</td>
@@ -2147,6 +2877,11 @@
 <td style="border-style:solid; border-width:4; padding:6px">56</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">allay</td>
+<td style="border-style:solid; border-width:4; padding:6px">390</td>
+<td style="border-style:solid; border-width:4; padding:6px">134</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">area_effect_cloud</td>
 <td style="border-style:solid; border-width:4; padding:6px">95</td>
 <td style="border-style:solid; border-width:4; padding:6px">95</br></td>
@@ -2205,6 +2940,11 @@
 <td style="border-style:solid; border-width:4; padding:6px">chalkboard</td>
 <td style="border-style:solid; border-width:4; padding:6px">78</td>
 <td style="border-style:solid; border-width:4; padding:6px">78</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">218</td>
+<td style="border-style:solid; border-width:4; padding:6px">218</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">chest_minecart</td>
@@ -2335,6 +3075,11 @@
 <td style="border-style:solid; border-width:4; padding:6px">fox</td>
 <td style="border-style:solid; border-width:4; padding:6px">4985</td>
 <td style="border-style:solid; border-width:4; padding:6px">121</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">frog</td>
+<td style="border-style:solid; border-width:4; padding:6px">4996</td>
+<td style="border-style:solid; border-width:4; padding:6px">132</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">ghast</td>
@@ -2602,6 +3347,11 @@
 <td style="border-style:solid; border-width:4; padding:6px">125</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">tadpole</td>
+<td style="border-style:solid; border-width:4; padding:6px">9093</td>
+<td style="border-style:solid; border-width:4; padding:6px">133</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">thrown_trident</td>
 <td style="border-style:solid; border-width:4; padding:6px">12582985</td>
 <td style="border-style:solid; border-width:4; padding:6px">73</br></td>
@@ -2615,6 +3365,11 @@
 <td style="border-style:solid; border-width:4; padding:6px">tnt_minecart</td>
 <td style="border-style:solid; border-width:4; padding:6px">524385</td>
 <td style="border-style:solid; border-width:4; padding:6px">97</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">trader_llama</td>
+<td style="border-style:solid; border-width:4; padding:6px">5021</td>
+<td style="border-style:solid; border-width:4; padding:6px">157</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">tripod_camera</td>
@@ -2655,6 +3410,11 @@
 <td style="border-style:solid; border-width:4; padding:6px">wandering_trader</td>
 <td style="border-style:solid; border-width:4; padding:6px">886</td>
 <td style="border-style:solid; border-width:4; padding:6px">118</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">warden</td>
+<td style="border-style:solid; border-width:4; padding:6px">2947</td>
+<td style="border-style:solid; border-width:4; padding:6px">131</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">witch</td>
@@ -3003,8 +3763,13 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">acacia_chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">644</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">acacia_door</td>
-<td style="border-style:solid; border-width:4; padding:6px">556</td>
+<td style="border-style:solid; border-width:4; padding:6px">557</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3019,7 +3784,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">acacia_sign</td>
-<td style="border-style:solid; border-width:4; padding:6px">579</td>
+<td style="border-style:solid; border-width:4; padding:6px">580</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3049,12 +3814,17 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">agent_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">487</td>
+<td style="border-style:solid; border-width:4; padding:6px">488</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">air</td>
 <td style="border-style:solid; border-width:4; padding:6px">-158</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">allay_spawn_egg</td>
+<td style="border-style:solid; border-width:4; padding:6px">633</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3074,7 +3844,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">amethyst_shard</td>
-<td style="border-style:solid; border-width:4; padding:6px">624</td>
+<td style="border-style:solid; border-width:4; padding:6px">626</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3099,7 +3869,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">armor_stand</td>
-<td style="border-style:solid; border-width:4; padding:6px">552</td>
+<td style="border-style:solid; border-width:4; padding:6px">553</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3114,7 +3884,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">axolotl_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">500</td>
+<td style="border-style:solid; border-width:4; padding:6px">501</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3139,7 +3909,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">balloon</td>
-<td style="border-style:solid; border-width:4; padding:6px">598</td>
+<td style="border-style:solid; border-width:4; padding:6px">600</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3154,12 +3924,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">banner</td>
-<td style="border-style:solid; border-width:4; padding:6px">567</td>
+<td style="border-style:solid; border-width:4; padding:6px">568</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">banner_pattern</td>
-<td style="border-style:solid; border-width:4; padding:6px">628</td>
+<td style="border-style:solid; border-width:4; padding:6px">653</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3204,7 +3974,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">bee_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">494</td>
+<td style="border-style:solid; border-width:4; padding:6px">495</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3253,8 +4023,13 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">birch_chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">641</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">birch_door</td>
-<td style="border-style:solid; border-width:4; padding:6px">554</td>
+<td style="border-style:solid; border-width:4; padding:6px">555</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3269,7 +4044,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">birch_sign</td>
-<td style="border-style:solid; border-width:4; padding:6px">577</td>
+<td style="border-style:solid; border-width:4; padding:6px">578</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3359,7 +4134,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">bleach</td>
-<td style="border-style:solid; border-width:4; padding:6px">596</td>
+<td style="border-style:solid; border-width:4; padding:6px">598</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3389,7 +4164,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">boat</td>
-<td style="border-style:solid; border-width:4; padding:6px">626</td>
+<td style="border-style:solid; border-width:4; padding:6px">651</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3424,7 +4199,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">bordure_indented_banner_pattern</td>
-<td style="border-style:solid; border-width:4; padding:6px">586</td>
+<td style="border-style:solid; border-width:4; padding:6px">587</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3445,11 +4220,6 @@
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">brewing_stand</td>
 <td style="border-style:solid; border-width:4; padding:6px">431</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">brewingstandblock</td>
-<td style="border-style:solid; border-width:4; padding:6px">117</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3529,12 +4299,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">camera</td>
-<td style="border-style:solid; border-width:4; padding:6px">593</td>
+<td style="border-style:solid; border-width:4; padding:6px">595</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">campfire</td>
-<td style="border-style:solid; border-width:4; padding:6px">588</td>
+<td style="border-style:solid; border-width:4; padding:6px">590</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3559,7 +4329,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">carrot_on_a_stick</td>
-<td style="border-style:solid; border-width:4; padding:6px">517</td>
+<td style="border-style:solid; border-width:4; padding:6px">518</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3579,7 +4349,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">cat_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">488</td>
+<td style="border-style:solid; border-width:4; padding:6px">489</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3609,7 +4379,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">chain</td>
-<td style="border-style:solid; border-width:4; padding:6px">618</td>
+<td style="border-style:solid; border-width:4; padding:6px">621</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3658,6 +4428,11 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">647</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">chest_minecart</td>
 <td style="border-style:solid; border-width:4; padding:6px">389</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
@@ -3694,7 +4469,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">chorus_fruit</td>
-<td style="border-style:solid; border-width:4; padding:6px">558</td>
+<td style="border-style:solid; border-width:4; padding:6px">559</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3710,6 +4485,11 @@
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">clay_ball</td>
 <td style="border-style:solid; border-width:4; padding:6px">384</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">client_request_placeholder_block</td>
+<td style="border-style:solid; border-width:4; padding:6px">-465</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3789,7 +4569,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">cod_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">480</td>
+<td style="border-style:solid; border-width:4; padding:6px">481</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3809,12 +4589,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">command_block_minecart</td>
-<td style="border-style:solid; border-width:4; padding:6px">563</td>
+<td style="border-style:solid; border-width:4; padding:6px">564</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">comparator</td>
-<td style="border-style:solid; border-width:4; padding:6px">522</td>
+<td style="border-style:solid; border-width:4; padding:6px">523</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3829,7 +4609,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">compound</td>
-<td style="border-style:solid; border-width:4; padding:6px">594</td>
+<td style="border-style:solid; border-width:4; padding:6px">596</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3864,7 +4644,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">cooked_mutton</td>
-<td style="border-style:solid; border-width:4; padding:6px">551</td>
+<td style="border-style:solid; border-width:4; padding:6px">552</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3894,7 +4674,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">copper_ingot</td>
-<td style="border-style:solid; border-width:4; padding:6px">504</td>
+<td style="border-style:solid; border-width:4; padding:6px">505</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3969,7 +4749,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">creeper_banner_pattern</td>
-<td style="border-style:solid; border-width:4; padding:6px">582</td>
+<td style="border-style:solid; border-width:4; padding:6px">583</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -3984,7 +4764,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">crimson_door</td>
-<td style="border-style:solid; border-width:4; padding:6px">615</td>
+<td style="border-style:solid; border-width:4; padding:6px">618</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4034,7 +4814,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">crimson_sign</td>
-<td style="border-style:solid; border-width:4; padding:6px">613</td>
+<td style="border-style:solid; border-width:4; padding:6px">616</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4069,7 +4849,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">crossbow</td>
-<td style="border-style:solid; border-width:4; padding:6px">575</td>
+<td style="border-style:solid; border-width:4; padding:6px">576</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4123,8 +4903,13 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">dark_oak_chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">645</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">dark_oak_door</td>
-<td style="border-style:solid; border-width:4; padding:6px">557</td>
+<td style="border-style:solid; border-width:4; padding:6px">558</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4139,7 +4924,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">dark_oak_sign</td>
-<td style="border-style:solid; border-width:4; padding:6px">580</td>
+<td style="border-style:solid; border-width:4; padding:6px">581</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4184,7 +4969,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">debug_stick</td>
-<td style="border-style:solid; border-width:4; padding:6px">590</td>
+<td style="border-style:solid; border-width:4; padding:6px">592</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4329,7 +5114,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">diamond_horse_armor</td>
-<td style="border-style:solid; border-width:4; padding:6px">533</td>
+<td style="border-style:solid; border-width:4; padding:6px">534</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4373,13 +5158,18 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">disc_fragment_5</td>
+<td style="border-style:solid; border-width:4; padding:6px">639</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">dispenser</td>
 <td style="border-style:solid; border-width:4; padding:6px">23</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">dolphin_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">484</td>
+<td style="border-style:solid; border-width:4; padding:6px">485</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4398,23 +5188,23 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">double_stone_slab</td>
-<td style="border-style:solid; border-width:4; padding:6px">44</td>
+<td style="border-style:solid; border-width:4; padding:6px">double_stone_block_slab</td>
+<td style="border-style:solid; border-width:4; padding:6px">43</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">double_stone_slab2</td>
-<td style="border-style:solid; border-width:4; padding:6px">182</td>
+<td style="border-style:solid; border-width:4; padding:6px">double_stone_block_slab2</td>
+<td style="border-style:solid; border-width:4; padding:6px">181</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">double_stone_slab3</td>
-<td style="border-style:solid; border-width:4; padding:6px">-162</td>
+<td style="border-style:solid; border-width:4; padding:6px">double_stone_block_slab3</td>
+<td style="border-style:solid; border-width:4; padding:6px">-167</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">double_stone_slab4</td>
-<td style="border-style:solid; border-width:4; padding:6px">-166</td>
+<td style="border-style:solid; border-width:4; padding:6px">double_stone_block_slab4</td>
+<td style="border-style:solid; border-width:4; padding:6px">-168</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4424,7 +5214,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">dragon_breath</td>
-<td style="border-style:solid; border-width:4; padding:6px">560</td>
+<td style="border-style:solid; border-width:4; padding:6px">561</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -4454,12 +5244,17 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">drowned_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">483</td>
+<td style="border-style:solid; border-width:4; padding:6px">484</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">dye</td>
-<td style="border-style:solid; border-width:4; padding:6px">627</td>
+<td style="border-style:solid; border-width:4; padding:6px">652</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">echo_shard</td>
+<td style="border-style:solid; border-width:4; padding:6px">649</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5069,12 +5864,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">elytra</td>
-<td style="border-style:solid; border-width:4; padding:6px">564</td>
+<td style="border-style:solid; border-width:4; padding:6px">565</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">emerald</td>
-<td style="border-style:solid; border-width:4; padding:6px">512</td>
+<td style="border-style:solid; border-width:4; padding:6px">513</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5089,12 +5884,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">empty_map</td>
-<td style="border-style:solid; border-width:4; padding:6px">515</td>
+<td style="border-style:solid; border-width:4; padding:6px">516</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">enchanted_book</td>
-<td style="border-style:solid; border-width:4; padding:6px">521</td>
+<td style="border-style:solid; border-width:4; padding:6px">522</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5119,7 +5914,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">end_crystal</td>
-<td style="border-style:solid; border-width:4; padding:6px">630</td>
+<td style="border-style:solid; border-width:4; padding:6px">655</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5174,12 +5969,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">evoker_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">475</td>
+<td style="border-style:solid; border-width:4; padding:6px">476</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">experience_bottle</td>
-<td style="border-style:solid; border-width:4; padding:6px">508</td>
+<td style="border-style:solid; border-width:4; padding:6px">509</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5234,7 +6029,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">field_masoned_banner_pattern</td>
-<td style="border-style:solid; border-width:4; padding:6px">585</td>
+<td style="border-style:solid; border-width:4; padding:6px">586</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5249,17 +6044,17 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">fire_charge</td>
-<td style="border-style:solid; border-width:4; padding:6px">509</td>
+<td style="border-style:solid; border-width:4; padding:6px">510</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">firework_rocket</td>
-<td style="border-style:solid; border-width:4; padding:6px">519</td>
+<td style="border-style:solid; border-width:4; padding:6px">520</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">firework_star</td>
-<td style="border-style:solid; border-width:4; padding:6px">520</td>
+<td style="border-style:solid; border-width:4; padding:6px">521</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5284,12 +6079,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">flower_banner_pattern</td>
-<td style="border-style:solid; border-width:4; padding:6px">581</td>
+<td style="border-style:solid; border-width:4; padding:6px">582</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">flower_pot</td>
-<td style="border-style:solid; border-width:4; padding:6px">514</td>
+<td style="border-style:solid; border-width:4; padding:6px">515</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5309,12 +6104,22 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">fox_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">490</td>
+<td style="border-style:solid; border-width:4; padding:6px">491</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">frame</td>
-<td style="border-style:solid; border-width:4; padding:6px">513</td>
+<td style="border-style:solid; border-width:4; padding:6px">514</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">frog_spawn</td>
+<td style="border-style:solid; border-width:4; padding:6px">-468</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">frog_spawn_egg</td>
+<td style="border-style:solid; border-width:4; padding:6px">630</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5363,13 +6168,18 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">globe_banner_pattern</td>
+<td style="border-style:solid; border-width:4; padding:6px">589</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">glow_frame</td>
-<td style="border-style:solid; border-width:4; padding:6px">622</td>
+<td style="border-style:solid; border-width:4; padding:6px">625</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">glow_ink_sac</td>
-<td style="border-style:solid; border-width:4; padding:6px">503</td>
+<td style="border-style:solid; border-width:4; padding:6px">504</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5379,12 +6189,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">glow_squid_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">502</td>
+<td style="border-style:solid; border-width:4; padding:6px">503</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">glow_stick</td>
-<td style="border-style:solid; border-width:4; padding:6px">166</td>
+<td style="border-style:solid; border-width:4; padding:6px">603</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5404,12 +6214,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">goat_horn</td>
-<td style="border-style:solid; border-width:4; padding:6px">623</td>
+<td style="border-style:solid; border-width:4; padding:6px">629</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">goat_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">501</td>
+<td style="border-style:solid; border-width:4; padding:6px">502</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5469,7 +6279,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">golden_horse_armor</td>
-<td style="border-style:solid; border-width:4; padding:6px">532</td>
+<td style="border-style:solid; border-width:4; padding:6px">533</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5609,7 +6419,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">heart_of_the_sea</td>
-<td style="border-style:solid; border-width:4; padding:6px">571</td>
+<td style="border-style:solid; border-width:4; padding:6px">572</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5619,7 +6429,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">hoglin_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">496</td>
+<td style="border-style:solid; border-width:4; padding:6px">497</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5629,12 +6439,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">honey_bottle</td>
-<td style="border-style:solid; border-width:4; padding:6px">592</td>
+<td style="border-style:solid; border-width:4; padding:6px">594</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">honeycomb</td>
-<td style="border-style:solid; border-width:4; padding:6px">591</td>
+<td style="border-style:solid; border-width:4; padding:6px">593</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5644,12 +6454,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">hopper</td>
-<td style="border-style:solid; border-width:4; padding:6px">527</td>
+<td style="border-style:solid; border-width:4; padding:6px">528</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">hopper_minecart</td>
-<td style="border-style:solid; border-width:4; padding:6px">526</td>
+<td style="border-style:solid; border-width:4; padding:6px">527</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5669,7 +6479,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">ice_bomb</td>
-<td style="border-style:solid; border-width:4; padding:6px">595</td>
+<td style="border-style:solid; border-width:4; padding:6px">597</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5693,7 +6503,7 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">invisiblebedrock</td>
+<td style="border-style:solid; border-width:4; padding:6px">invisible_bedrock</td>
 <td style="border-style:solid; border-width:4; padding:6px">95</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
@@ -5739,7 +6549,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">iron_horse_armor</td>
-<td style="border-style:solid; border-width:4; padding:6px">531</td>
+<td style="border-style:solid; border-width:4; padding:6px">532</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5754,7 +6564,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">iron_nugget</td>
-<td style="border-style:solid; border-width:4; padding:6px">569</td>
+<td style="border-style:solid; border-width:4; padding:6px">570</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5800,6 +6610,11 @@
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">item.birch_door</td>
 <td style="border-style:solid; border-width:4; padding:6px">194</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">item.brewing_stand</td>
+<td style="border-style:solid; border-width:4; padding:6px">117</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5873,6 +6688,11 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">item.mangrove_door</td>
+<td style="border-style:solid; border-width:4; padding:6px">-493</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">item.nether_sprouts</td>
 <td style="border-style:solid; border-width:4; padding:6px">-238</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
@@ -5938,8 +6758,13 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">jungle_chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">642</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">jungle_door</td>
-<td style="border-style:solid; border-width:4; padding:6px">555</td>
+<td style="border-style:solid; border-width:4; padding:6px">556</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -5954,7 +6779,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">jungle_sign</td>
-<td style="border-style:solid; border-width:4; padding:6px">578</td>
+<td style="border-style:solid; border-width:4; padding:6px">579</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6029,7 +6854,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">lead</td>
-<td style="border-style:solid; border-width:4; padding:6px">547</td>
+<td style="border-style:solid; border-width:4; padding:6px">548</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6054,7 +6879,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">leather_horse_armor</td>
-<td style="border-style:solid; border-width:4; padding:6px">530</td>
+<td style="border-style:solid; border-width:4; padding:6px">531</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6154,7 +6979,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">lingering_potion</td>
-<td style="border-style:solid; border-width:4; padding:6px">562</td>
+<td style="border-style:solid; border-width:4; padding:6px">563</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6204,7 +7029,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">lodestone_compass</td>
-<td style="border-style:solid; border-width:4; padding:6px">601</td>
+<td style="border-style:solid; border-width:4; padding:6px">604</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6258,8 +7083,108 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">637</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_button</td>
+<td style="border-style:solid; border-width:4; padding:6px">-487</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">646</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_door</td>
+<td style="border-style:solid; border-width:4; padding:6px">635</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_double_slab</td>
+<td style="border-style:solid; border-width:4; padding:6px">-499</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_fence</td>
+<td style="border-style:solid; border-width:4; padding:6px">-491</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_fence_gate</td>
+<td style="border-style:solid; border-width:4; padding:6px">-492</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_leaves</td>
+<td style="border-style:solid; border-width:4; padding:6px">-472</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_log</td>
+<td style="border-style:solid; border-width:4; padding:6px">-484</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_planks</td>
+<td style="border-style:solid; border-width:4; padding:6px">-486</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_pressure_plate</td>
+<td style="border-style:solid; border-width:4; padding:6px">-490</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_propagule</td>
+<td style="border-style:solid; border-width:4; padding:6px">-474</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_roots</td>
+<td style="border-style:solid; border-width:4; padding:6px">-482</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_sign</td>
+<td style="border-style:solid; border-width:4; padding:6px">636</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_slab</td>
+<td style="border-style:solid; border-width:4; padding:6px">-489</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_stairs</td>
+<td style="border-style:solid; border-width:4; padding:6px">-488</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_standing_sign</td>
+<td style="border-style:solid; border-width:4; padding:6px">-494</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_trapdoor</td>
+<td style="border-style:solid; border-width:4; padding:6px">-496</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_wall_sign</td>
+<td style="border-style:solid; border-width:4; padding:6px">-495</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mangrove_wood</td>
+<td style="border-style:solid; border-width:4; padding:6px">-497</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">medicine</td>
-<td style="border-style:solid; border-width:4; padding:6px">599</td>
+<td style="border-style:solid; border-width:4; padding:6px">601</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6304,7 +7229,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">mojang_banner_pattern</td>
-<td style="border-style:solid; border-width:4; padding:6px">584</td>
+<td style="border-style:solid; border-width:4; padding:6px">585</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6343,8 +7268,43 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">movingblock</td>
+<td style="border-style:solid; border-width:4; padding:6px">moving_block</td>
 <td style="border-style:solid; border-width:4; padding:6px">250</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mud</td>
+<td style="border-style:solid; border-width:4; padding:6px">-473</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mud_brick_double_slab</td>
+<td style="border-style:solid; border-width:4; padding:6px">-479</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mud_brick_slab</td>
+<td style="border-style:solid; border-width:4; padding:6px">-478</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mud_brick_stairs</td>
+<td style="border-style:solid; border-width:4; padding:6px">-480</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mud_brick_wall</td>
+<td style="border-style:solid; border-width:4; padding:6px">-481</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">mud_bricks</td>
+<td style="border-style:solid; border-width:4; padding:6px">-475</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">muddy_mangrove_roots</td>
+<td style="border-style:solid; border-width:4; padding:6px">-483</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6359,72 +7319,82 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">music_disc_11</td>
-<td style="border-style:solid; border-width:4; padding:6px">544</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_13</td>
-<td style="border-style:solid; border-width:4; padding:6px">534</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_blocks</td>
-<td style="border-style:solid; border-width:4; padding:6px">536</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_cat</td>
-<td style="border-style:solid; border-width:4; padding:6px">535</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_chirp</td>
-<td style="border-style:solid; border-width:4; padding:6px">537</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_far</td>
-<td style="border-style:solid; border-width:4; padding:6px">538</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_mall</td>
-<td style="border-style:solid; border-width:4; padding:6px">539</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_mellohi</td>
-<td style="border-style:solid; border-width:4; padding:6px">540</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_pigstep</td>
-<td style="border-style:solid; border-width:4; padding:6px">619</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_stal</td>
-<td style="border-style:solid; border-width:4; padding:6px">541</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_strad</td>
-<td style="border-style:solid; border-width:4; padding:6px">542</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_wait</td>
 <td style="border-style:solid; border-width:4; padding:6px">545</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">music_disc_ward</td>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_13</td>
+<td style="border-style:solid; border-width:4; padding:6px">535</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_5</td>
+<td style="border-style:solid; border-width:4; padding:6px">638</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_blocks</td>
+<td style="border-style:solid; border-width:4; padding:6px">537</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_cat</td>
+<td style="border-style:solid; border-width:4; padding:6px">536</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_chirp</td>
+<td style="border-style:solid; border-width:4; padding:6px">538</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_far</td>
+<td style="border-style:solid; border-width:4; padding:6px">539</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_mall</td>
+<td style="border-style:solid; border-width:4; padding:6px">540</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_mellohi</td>
+<td style="border-style:solid; border-width:4; padding:6px">541</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_otherside</td>
+<td style="border-style:solid; border-width:4; padding:6px">628</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_pigstep</td>
+<td style="border-style:solid; border-width:4; padding:6px">622</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_stal</td>
+<td style="border-style:solid; border-width:4; padding:6px">542</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_strad</td>
 <td style="border-style:solid; border-width:4; padding:6px">543</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_wait</td>
+<td style="border-style:solid; border-width:4; padding:6px">546</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">music_disc_ward</td>
+<td style="border-style:solid; border-width:4; padding:6px">544</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">mutton</td>
-<td style="border-style:solid; border-width:4; padding:6px">550</td>
+<td style="border-style:solid; border-width:4; padding:6px">551</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6434,12 +7404,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">name_tag</td>
-<td style="border-style:solid; border-width:4; padding:6px">548</td>
+<td style="border-style:solid; border-width:4; padding:6px">549</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">nautilus_shell</td>
-<td style="border-style:solid; border-width:4; padding:6px">570</td>
+<td style="border-style:solid; border-width:4; padding:6px">571</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6464,12 +7434,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">nether_sprouts</td>
-<td style="border-style:solid; border-width:4; padding:6px">620</td>
+<td style="border-style:solid; border-width:4; padding:6px">623</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">nether_star</td>
-<td style="border-style:solid; border-width:4; padding:6px">518</td>
+<td style="border-style:solid; border-width:4; padding:6px">519</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6484,12 +7454,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">netherbrick</td>
-<td style="border-style:solid; border-width:4; padding:6px">523</td>
+<td style="border-style:solid; border-width:4; padding:6px">524</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">netherite_axe</td>
-<td style="border-style:solid; border-width:4; padding:6px">606</td>
+<td style="border-style:solid; border-width:4; padding:6px">609</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6499,52 +7469,52 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">netherite_boots</td>
-<td style="border-style:solid; border-width:4; padding:6px">611</td>
+<td style="border-style:solid; border-width:4; padding:6px">614</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">netherite_chestplate</td>
-<td style="border-style:solid; border-width:4; padding:6px">609</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">netherite_helmet</td>
-<td style="border-style:solid; border-width:4; padding:6px">608</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">netherite_hoe</td>
-<td style="border-style:solid; border-width:4; padding:6px">607</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">netherite_ingot</td>
-<td style="border-style:solid; border-width:4; padding:6px">602</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">netherite_leggings</td>
-<td style="border-style:solid; border-width:4; padding:6px">610</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">netherite_pickaxe</td>
-<td style="border-style:solid; border-width:4; padding:6px">605</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">netherite_scrap</td>
 <td style="border-style:solid; border-width:4; padding:6px">612</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">netherite_helmet</td>
+<td style="border-style:solid; border-width:4; padding:6px">611</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">netherite_hoe</td>
+<td style="border-style:solid; border-width:4; padding:6px">610</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">netherite_ingot</td>
+<td style="border-style:solid; border-width:4; padding:6px">605</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">netherite_leggings</td>
+<td style="border-style:solid; border-width:4; padding:6px">613</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">netherite_pickaxe</td>
+<td style="border-style:solid; border-width:4; padding:6px">608</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">netherite_scrap</td>
+<td style="border-style:solid; border-width:4; padding:6px">615</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">netherite_shovel</td>
-<td style="border-style:solid; border-width:4; padding:6px">604</td>
+<td style="border-style:solid; border-width:4; padding:6px">607</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">netherite_sword</td>
-<td style="border-style:solid; border-width:4; padding:6px">603</td>
+<td style="border-style:solid; border-width:4; padding:6px">606</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6578,6 +7548,11 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">oak_chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">640</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">oak_sign</td>
 <td style="border-style:solid; border-width:4; padding:6px">358</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
@@ -6600,6 +7575,11 @@
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">ocelot_spawn_egg</td>
 <td style="border-style:solid; border-width:4; padding:6px">451</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">ochre_froglight</td>
+<td style="border-style:solid; border-width:4; padding:6px">-471</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6653,13 +7633,18 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">packed_mud</td>
+<td style="border-style:solid; border-width:4; padding:6px">-477</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">painting</td>
 <td style="border-style:solid; border-width:4; padding:6px">357</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">panda_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">489</td>
+<td style="border-style:solid; border-width:4; padding:6px">490</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6669,17 +7654,22 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">parrot_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">478</td>
+<td style="border-style:solid; border-width:4; padding:6px">479</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">pearlescent_froglight</td>
+<td style="border-style:solid; border-width:4; padding:6px">-469</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">phantom_membrane</td>
-<td style="border-style:solid; border-width:4; padding:6px">574</td>
+<td style="border-style:solid; border-width:4; padding:6px">575</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">phantom_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">486</td>
+<td style="border-style:solid; border-width:4; padding:6px">487</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6689,22 +7679,22 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">piglin_banner_pattern</td>
-<td style="border-style:solid; border-width:4; padding:6px">587</td>
+<td style="border-style:solid; border-width:4; padding:6px">588</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">piglin_brute_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">499</td>
+<td style="border-style:solid; border-width:4; padding:6px">500</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">piglin_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">497</td>
+<td style="border-style:solid; border-width:4; padding:6px">498</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">pillager_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">491</td>
+<td style="border-style:solid; border-width:4; padding:6px">492</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6733,7 +7723,7 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">pistonarmcollision</td>
+<td style="border-style:solid; border-width:4; padding:6px">piston_arm_collision</td>
 <td style="border-style:solid; border-width:4; padding:6px">34</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
@@ -6869,7 +7859,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">popped_chorus_fruit</td>
-<td style="border-style:solid; border-width:4; padding:6px">559</td>
+<td style="border-style:solid; border-width:4; padding:6px">560</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6929,12 +7919,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">prismarine_crystals</td>
-<td style="border-style:solid; border-width:4; padding:6px">549</td>
+<td style="border-style:solid; border-width:4; padding:6px">550</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">prismarine_shard</td>
-<td style="border-style:solid; border-width:4; padding:6px">565</td>
+<td style="border-style:solid; border-width:4; padding:6px">566</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -6954,7 +7944,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">pufferfish_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">481</td>
+<td style="border-style:solid; border-width:4; padding:6px">482</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7009,7 +7999,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">quartz</td>
-<td style="border-style:solid; border-width:4; padding:6px">524</td>
+<td style="border-style:solid; border-width:4; padding:6px">525</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7039,12 +8029,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">rabbit_foot</td>
-<td style="border-style:solid; border-width:4; padding:6px">528</td>
+<td style="border-style:solid; border-width:4; padding:6px">529</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">rabbit_hide</td>
-<td style="border-style:solid; border-width:4; padding:6px">529</td>
+<td style="border-style:solid; border-width:4; padding:6px">530</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7064,17 +8054,17 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">rapid_fertilizer</td>
-<td style="border-style:solid; border-width:4; padding:6px">597</td>
+<td style="border-style:solid; border-width:4; padding:6px">599</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">ravager_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">493</td>
+<td style="border-style:solid; border-width:4; padding:6px">494</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">raw_copper</td>
-<td style="border-style:solid; border-width:4; padding:6px">507</td>
+<td style="border-style:solid; border-width:4; padding:6px">508</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7084,7 +8074,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">raw_gold</td>
-<td style="border-style:solid; border-width:4; padding:6px">506</td>
+<td style="border-style:solid; border-width:4; padding:6px">507</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7094,7 +8084,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">raw_iron</td>
-<td style="border-style:solid; border-width:4; padding:6px">505</td>
+<td style="border-style:solid; border-width:4; padding:6px">506</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7103,23 +8093,8 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">real_double_stone_slab</td>
-<td style="border-style:solid; border-width:4; padding:6px">43</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">real_double_stone_slab2</td>
-<td style="border-style:solid; border-width:4; padding:6px">181</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">real_double_stone_slab3</td>
-<td style="border-style:solid; border-width:4; padding:6px">-167</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">real_double_stone_slab4</td>
-<td style="border-style:solid; border-width:4; padding:6px">-168</td>
+<td style="border-style:solid; border-width:4; padding:6px">recovery_compass</td>
+<td style="border-style:solid; border-width:4; padding:6px">648</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7208,6 +8183,11 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">reinforced_deepslate</td>
+<td style="border-style:solid; border-width:4; padding:6px">-466</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">repeater</td>
 <td style="border-style:solid; border-width:4; padding:6px">419</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
@@ -7249,7 +8229,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">salmon_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">482</td>
+<td style="border-style:solid; border-width:4; padding:6px">483</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7278,13 +8258,38 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">sculk</td>
+<td style="border-style:solid; border-width:4; padding:6px">-458</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">sculk_catalyst</td>
+<td style="border-style:solid; border-width:4; padding:6px">-460</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">sculk_sensor</td>
 <td style="border-style:solid; border-width:4; padding:6px">-307</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">sculk_shrieker</td>
+<td style="border-style:solid; border-width:4; padding:6px">-461</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">sculk_vein</td>
+<td style="border-style:solid; border-width:4; padding:6px">-459</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">scute</td>
-<td style="border-style:solid; border-width:4; padding:6px">572</td>
+<td style="border-style:solid; border-width:4; padding:6px">573</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">sea_lantern</td>
+<td style="border-style:solid; border-width:4; padding:6px">169</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7295,11 +8300,6 @@
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">seagrass</td>
 <td style="border-style:solid; border-width:4; padding:6px">-130</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">sealantern</td>
-<td style="border-style:solid; border-width:4; padding:6px">169</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7329,7 +8329,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">shulker_shell</td>
-<td style="border-style:solid; border-width:4; padding:6px">566</td>
+<td style="border-style:solid; border-width:4; padding:6px">567</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7359,12 +8359,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">skull</td>
-<td style="border-style:solid; border-width:4; padding:6px">516</td>
+<td style="border-style:solid; border-width:4; padding:6px">517</td>
 <td style="border-style:solid; border-width:4; padding:6px">0 = Skeleton</br></br>1 = Wither</br></br>2 = Zombie</br></br>3 = Steve</br></br>4 = Creeper</br></br>5 = Dragon</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">skull_banner_pattern</td>
-<td style="border-style:solid; border-width:4; padding:6px">583</td>
+<td style="border-style:solid; border-width:4; padding:6px">584</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7444,7 +8444,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">soul_campfire</td>
-<td style="border-style:solid; border-width:4; padding:6px">621</td>
+<td style="border-style:solid; border-width:4; padding:6px">624</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7474,12 +8474,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">sparkler</td>
-<td style="border-style:solid; border-width:4; padding:6px">600</td>
+<td style="border-style:solid; border-width:4; padding:6px">602</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">629</td>
+<td style="border-style:solid; border-width:4; padding:6px">654</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7494,7 +8494,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">splash_potion</td>
-<td style="border-style:solid; border-width:4; padding:6px">561</td>
+<td style="border-style:solid; border-width:4; padding:6px">562</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7518,8 +8518,13 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">spruce_chest_boat</td>
+<td style="border-style:solid; border-width:4; padding:6px">643</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">spruce_door</td>
-<td style="border-style:solid; border-width:4; padding:6px">553</td>
+<td style="border-style:solid; border-width:4; padding:6px">554</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7534,7 +8539,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">spruce_sign</td>
-<td style="border-style:solid; border-width:4; padding:6px">576</td>
+<td style="border-style:solid; border-width:4; padding:6px">577</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7559,7 +8564,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">spyglass</td>
-<td style="border-style:solid; border-width:4; padding:6px">625</td>
+<td style="border-style:solid; border-width:4; padding:6px">627</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7603,7 +8608,7 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">stickypistonarmcollision</td>
+<td style="border-style:solid; border-width:4; padding:6px">sticky_piston_arm_collision</td>
 <td style="border-style:solid; border-width:4; padding:6px">-217</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
@@ -7615,6 +8620,26 @@
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">stone_axe</td>
 <td style="border-style:solid; border-width:4; padding:6px">315</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_block_slab</td>
+<td style="border-style:solid; border-width:4; padding:6px">44</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_block_slab2</td>
+<td style="border-style:solid; border-width:4; padding:6px">182</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_block_slab3</td>
+<td style="border-style:solid; border-width:4; padding:6px">-162</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stone_block_slab4</td>
+<td style="border-style:solid; border-width:4; padding:6px">-166</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7679,7 +8704,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">strider_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">495</td>
+<td style="border-style:solid; border-width:4; padding:6px">496</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7715,6 +8740,16 @@
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">stripped_jungle_log</td>
 <td style="border-style:solid; border-width:4; padding:6px">-7</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stripped_mangrove_log</td>
+<td style="border-style:solid; border-width:4; padding:6px">-485</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">stripped_mangrove_wood</td>
+<td style="border-style:solid; border-width:4; padding:6px">-498</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7759,7 +8794,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">suspicious_stew</td>
-<td style="border-style:solid; border-width:4; padding:6px">589</td>
+<td style="border-style:solid; border-width:4; padding:6px">591</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7770,6 +8805,16 @@
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">sweet_berry_bush</td>
 <td style="border-style:solid; border-width:4; padding:6px">-207</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">tadpole_bucket</td>
+<td style="border-style:solid; border-width:4; padding:6px">632</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">tadpole_spawn_egg</td>
+<td style="border-style:solid; border-width:4; padding:6px">631</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7794,7 +8839,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">tnt_minecart</td>
-<td style="border-style:solid; border-width:4; padding:6px">525</td>
+<td style="border-style:solid; border-width:4; padding:6px">526</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7804,7 +8849,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">totem_of_undying</td>
-<td style="border-style:solid; border-width:4; padding:6px">568</td>
+<td style="border-style:solid; border-width:4; padding:6px">569</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">trader_llama_spawn_egg</td>
+<td style="border-style:solid; border-width:4; padding:6px">474</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7819,11 +8869,11 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">trident</td>
-<td style="border-style:solid; border-width:4; padding:6px">546</td>
+<td style="border-style:solid; border-width:4; padding:6px">547</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:4; padding:6px">tripwire</td>
+<td style="border-style:solid; border-width:4; padding:6px">trip_wire</td>
 <td style="border-style:solid; border-width:4; padding:6px">132</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
@@ -7844,7 +8894,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">tropical_fish_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">479</td>
+<td style="border-style:solid; border-width:4; padding:6px">480</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7859,12 +8909,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">turtle_helmet</td>
-<td style="border-style:solid; border-width:4; padding:6px">573</td>
+<td style="border-style:solid; border-width:4; padding:6px">574</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">turtle_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">485</td>
+<td style="border-style:solid; border-width:4; padding:6px">486</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7903,8 +8953,13 @@
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">verdant_froglight</td>
+<td style="border-style:solid; border-width:4; padding:6px">-470</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">vex_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">476</td>
+<td style="border-style:solid; border-width:4; padding:6px">477</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7914,7 +8969,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">vindicator_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">474</td>
+<td style="border-style:solid; border-width:4; padding:6px">475</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7934,7 +8989,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">wandering_trader_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">492</td>
+<td style="border-style:solid; border-width:4; padding:6px">493</td>
+<td style="border-style:solid; border-width:4; padding:6px"></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">warden_spawn_egg</td>
+<td style="border-style:solid; border-width:4; padding:6px">634</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7944,7 +9004,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">warped_door</td>
-<td style="border-style:solid; border-width:4; padding:6px">616</td>
+<td style="border-style:solid; border-width:4; padding:6px">619</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7969,7 +9029,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">warped_fungus_on_a_stick</td>
-<td style="border-style:solid; border-width:4; padding:6px">617</td>
+<td style="border-style:solid; border-width:4; padding:6px">620</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -7999,7 +9059,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">warped_sign</td>
-<td style="border-style:solid; border-width:4; padding:6px">614</td>
+<td style="border-style:solid; border-width:4; padding:6px">617</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -8294,12 +9354,12 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">writable_book</td>
-<td style="border-style:solid; border-width:4; padding:6px">510</td>
+<td style="border-style:solid; border-width:4; padding:6px">511</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">written_book</td>
-<td style="border-style:solid; border-width:4; padding:6px">511</td>
+<td style="border-style:solid; border-width:4; padding:6px">512</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -8329,7 +9389,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">zoglin_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">498</td>
+<td style="border-style:solid; border-width:4; padding:6px">499</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 <tr>
@@ -8349,7 +9409,7 @@
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">zombie_villager_spawn_egg</td>
-<td style="border-style:solid; border-width:4; padding:6px">477</td>
+<td style="border-style:solid; border-width:4; padding:6px">478</td>
 <td style="border-style:solid; border-width:4; padding:6px"></td>
 </tr>
 </table>
@@ -8360,12 +9420,48 @@
 The manifest file contains all the basic information about the pack that Minecraft needs to identify it. The tables below contain all the components of the manifest, their individual properties, and what they mean.</br><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:4;">
 <tr> <th style="border-style:solid; border-width:4;">Name</th> <th style="border-style:solid; border-width:4;">Description</th> </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">capabilities</td>
+<td style="border-style:solid; border-width:4; padding:6px">These are the different features that the pack makes use of that aren't necessarily enabled by default.</br><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
+<tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">chemistry</td>
+<td style="border-style:solid; border-width:3; padding:7px">Allows the pack to add, change or replace Chemistry functionality</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">experimental_custom_ui</td>
+<td style="border-style:solid; border-width:3; padding:7px">Allows HTML files in the pack to be used for custom UI, and scripts in the pack to call and manipulate custom UI</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">raytraced</td>
+<td style="border-style:solid; border-width:3; padding:7px">Indicates that this pack contains Raytracing Enhanced or Physical Based Materials for rendering</br></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:4; padding:6px">dependencies</td>
+<td style="border-style:solid; border-width:4; padding:6px">This section describes the packs that this pack depends on in order to work. Any packs defined here will be automatically added to the world when this one is added if they are present, or an error will be shown if they aren't. Each entry has the following parameters:</br><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
+<tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Type</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">uuid</td>
+<td style="border-style:solid; border-width:3; padding:7px">String</td>
+<td style="border-style:solid; border-width:3; padding:7px">This is the unique identifier of the pack that this pack depends on. It needs to be the exact same UUID that the pack has defined in the header section of it's manifest file</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">version</td>
+<td style="border-style:solid; border-width:3; padding:7px">Vector [a, b, c]</td>
+<td style="border-style:solid; border-width:3; padding:7px">This is the specific version of the pack that your pack depends on. Should match the version the other pack has in its manifest file</br></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">format_version</td>
-<td style="border-style:solid; border-width:4; padding:6px"></td>
+<td style="border-style:solid; border-width:4; padding:6px">This defines the current version of the manifest. Don't change this unless you have a good reason to</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:4; padding:6px">header</td>
-<td style="border-style:solid; border-width:4; padding:6px"><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
+<td style="border-style:solid; border-width:4; padding:6px">This is the heading of the manifest and is required for the manifest to be valid.</br><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
 <tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Type</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">base_game_version</td>
@@ -8406,8 +9502,30 @@ The manifest file contains all the basic information about the pack that Minecra
 </td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:4; padding:6px">metadata</td>
+<td style="border-style:solid; border-width:4; padding:6px">This section contains additional data about your pack and is otherwise optional.</br><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
+<tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Type</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">authors</td>
+<td style="border-style:solid; border-width:3; padding:7px">Array</td>
+<td style="border-style:solid; border-width:3; padding:7px">Name of the author(s) of the pack</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">license</td>
+<td style="border-style:solid; border-width:3; padding:7px">String</td>
+<td style="border-style:solid; border-width:3; padding:7px">The license of the pack</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">url</td>
+<td style="border-style:solid; border-width:3; padding:7px">String</td>
+<td style="border-style:solid; border-width:3; padding:7px">The home website of your pack</br></td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:4; padding:6px">modules</td>
-<td style="border-style:solid; border-width:4; padding:6px"><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
+<td style="border-style:solid; border-width:4; padding:6px">This section describes the modules that comprise the pack. Each entry here defines one of the kinds of contents of the pack.</br><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
 <tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Type</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">description</td>
@@ -8428,64 +9546,6 @@ The manifest file contains all the basic information about the pack that Minecra
 <td style="border-style:solid; border-width:3; padding:7px">version</td>
 <td style="border-style:solid; border-width:3; padding:7px">Vector [a, b, c]</td>
 <td style="border-style:solid; border-width:3; padding:7px">This is the version of the module in the same format as the pack's version in the header. This can be used to further identify changes in your pack</br></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">dependencies</td>
-<td style="border-style:solid; border-width:4; padding:6px"><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
-<tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Type</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">uuid</td>
-<td style="border-style:solid; border-width:3; padding:7px">String</td>
-<td style="border-style:solid; border-width:3; padding:7px">This is the unique identifier of the pack that this pack depends on. It needs to be the exact same UUID that the pack has defined in the header section of it's manifest file</br></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">version</td>
-<td style="border-style:solid; border-width:3; padding:7px">Vector [a, b, c]</td>
-<td style="border-style:solid; border-width:3; padding:7px">This is the specific version of the pack that your pack depends on. Should match the version the other pack has in its manifest file</br></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">capabilities</td>
-<td style="border-style:solid; border-width:4; padding:6px"><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
-<tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">experimental_custom_ui</td>
-<td style="border-style:solid; border-width:3; padding:7px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">chemistry</td>
-<td style="border-style:solid; border-width:3; padding:7px"></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">raytraced</td>
-<td style="border-style:solid; border-width:3; padding:7px"></td>
-</tr>
-</table>
-</td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:4; padding:6px">metadata</td>
-<td style="border-style:solid; border-width:4; padding:6px"><table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
-<tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Type</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">authors</td>
-<td style="border-style:solid; border-width:3; padding:7px">Array</td>
-<td style="border-style:solid; border-width:3; padding:7px">Name of the author(s) of the pack</br></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">license</td>
-<td style="border-style:solid; border-width:3; padding:7px">String</td>
-<td style="border-style:solid; border-width:3; padding:7px">The license of the pack</br></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">url</td>
-<td style="border-style:solid; border-width:3; padding:7px">String</td>
-<td style="border-style:solid; border-width:3; padding:7px">The home website of your pack</br></td>
 </tr>
 </table>
 </td>

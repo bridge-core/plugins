@@ -1,6 +1,7 @@
 <template>
 <div id="app">
-  <h1>Minecraft Documentation</h1>
+  <v-container>
+  <h1>Minecraft Documentation 1.19.10.20</h1>
     <v-btn color="primary" block @click="openTabAddons">
       <v-icon>mdi-plus-box</v-icon>
       <span>Addons</span>
@@ -66,25 +67,16 @@
       <span>Schemas</span>
     </v-btn>
     <br>
-    <v-btn color="primary" block @click="openTabScripting">
-      <v-icon>mdi-code-tags</v-icon>
-      <span>Scripting</span>
-    </v-btn>
-    <br>
     <v-btn color="primary" block @click="openTabTextureSets">
       <v-icon>mdi-image</v-icon>
       <span>Texture Sets</span>
-    </v-btn>
-    <br>
-    <v-btn color="primary" block @click="openTabUI">
-      <v-icon>mdi-application</v-icon>
-      <span>UI</span>
     </v-btn>
     <br>
     <v-btn color="primary" block @click="openTabVolumes">
       <v-icon>mdi-volume-high</v-icon>
       <span>Volumes</span>
     </v-btn>
+    </v-container>
   <v-divider />
 </div>
 </template>
@@ -327,24 +319,6 @@ class SchemasTab extends ContentTab {
   }
 }
 
-class ScriptingTab extends ContentTab {
-  type = 'Scripting'
-  component = Scripting
-
-  async isFor() {
-    return false
-  }
-  get icon() {
-    return 'mdi-code-tags'
-  }
-  get iconColor() {
-    return 'warning'
-  }
-  get name() {
-    return 'Scripting'
-  }
-}
-
 class TextureSetsTab extends ContentTab {
   type = 'TextureSets'
   component = TextureSets
@@ -360,24 +334,6 @@ class TextureSetsTab extends ContentTab {
   }
   get name() {
     return 'Texture Sets'
-  }
-}
-
-class UITab extends ContentTab {
-  type = 'UI'
-  component = UI
-
-  async isFor() {
-    return false
-  }
-  get icon() {
-    return 'mdi-application'
-  }
-  get iconColor() {
-    return 'warning'
-  }
-  get name() {
-    return 'UI'
   }
 }
 
@@ -440,14 +396,8 @@ export default {
      openTabSchemas() {
        openTab(SchemasTab,false)
      },
-     openTabScripting() {
-       openTab(ScriptingTab,false)
-     },
      openTabTextureSets() {
        openTab(TextureSetsTab,false)
-     },
-     openTabUI() {
-       openTab(UITab,false)
      },
      openTabVolumes() {
        openTab(VolumesTab,false)

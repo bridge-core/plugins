@@ -1,13 +1,15 @@
 <template>
 <div style="overflow: scroll">
 <v-html>
-<h1>MOLANG DOCUMENTATION </br>Version: 1.17.10.4</h1>
+<h1>MOLANG DOCUMENTATION </br>Version: 1.19.10.20</h1>
+This is documentation for a preview release of Minecraft. New features, components, and capabilities in this release are not final and might change without notice before the final release.<br/>Be sure to check the documentation once the release is out of preview if your add-on isn't working properly. Resource and Behavior Packs created for the preview are not guaranteed to work on the final release.<br/>
 <h2><p id="Index">Index</p></h2>
 <table border="1">
-<tr> <th><a href="#Why Does MoLang Exist?">Why Does MoLang Exist?</a></th> </tr>
+<tr> <th><a href="#Why Does Molang Exist?">Why Does Molang Exist?</a></th> </tr>
 <tr> <th><a href="#Lexical Structure">Lexical Structure</a></th> </tr>
 <tr> <td> <a href="#Case Sensitivity"> Case Sensitivity</a> </tr> </td>
 <tr> <td> <a href="#Keywords"> Keywords</a> </tr> </td>
+<tr> <td> <a href="#Operator Precedence"> Operator Precedence</a> </tr> </td>
 <tr> <td> <a href="#Variables"> Variables</a> </tr> </td>
 <tr> <td> <a href="#Values"> Values</a> </tr> </td>
 <tr> <td> <a href="#Query Functions"> Query Functions</a> </tr> </td>
@@ -17,6 +19,7 @@
 <tr> <td> <a href="#Math Functions"> Math Functions</a> </tr> </td>
 <tr> <td> <a href="#->  Arrow Operator"> ->  Arrow Operator</a> </tr> </td>
 <tr> <td> <a href="#{ } Brace Scope Delimiters"> { } Brace Scope Delimiters</a> </tr> </td>
+<tr> <td> <a href="#Conditionals"> Conditionals</a> </tr> </td>
 <tr> <td> <a href="#loop"> loop</a> </tr> </td>
 <tr> <td> <a href="#for_each"> for_each</a> </tr> </td>
 <tr> <td> <a href="#break"> break</a> </tr> </td>
@@ -32,17 +35,19 @@
 <tr> <td> <a href="#List of Entity Queries"> List of Entity Queries</a> </tr> </td>
 <tr> <td> <a href="#List of Experimental Entity Queries"> List of Experimental Entity Queries</a> </tr> </td>
 <tr> <th><a href="#Experimental Operators">Experimental Operators</a></th> </tr>
+<tr> <th><a href="#Versioned Changes">Versioned Changes</a></th> </tr>
+<tr> <td> <a href="#Versioned Change Versions"> Versioned Change Versions</a> </tr> </td>
 </table>
 <a href="#Index">Back to top</a>
-<h1><p id="Why Does MoLang Exist?">Why Does MoLang Exist?</p></h1>
+<h1><p id="Why Does Molang Exist?">Why Does Molang Exist?</p></h1>
 
-MoLang is a simple expression-based language designed for fast, data-driven calculation of values at run-time, and with a direct connection to in-game values and systems.  Its focus is solely to enable script-like capabilities in high-performance systems where languages such as JavaScript are not performant at scale.  We need scripting capabilities in these low-level systems to support end-user modding capabilities, and custom entities, rendering, and animation.</br><a href="#Index">Back to top</a><br><br>
+Molang is a simple expression-based language designed for fast, data-driven calculation of values at run-time, and with a direct connection to in-game values and systems.  Its focus is to enable low-level systems like animation to support flexible data-driven behavior for both internal and external creators, while staying highly performant.</br><a href="#Index">Back to top</a><br><br>
 
 <h1><p id="Lexical Structure">Lexical Structure</p></h1>
 
-The language structure is largely based on simple 'C' language family style syntax.  A script is made of either one expression for simple math calculations, or can be made of several statements where more complicated code is required.</br></br>In simple cases, the terminating `;` is omitted and the expression result is returned.  In complex cases (where there are multiple statements terminated with `;`s, `0.0` is returned unless there is a `return` statement, which will exit the current script scope returning the computed value of that return expression (exactly like C).</br><h1><p id="Case Sensitivity">Case Sensitivity</p></h1>
+The language structure is largely based on simple 'C' language family style syntax.  An expression can be made of either one simple value or math calculation, or can be made of several sub-expressions where more complicated code is required.</br></br> In simple cases, the terminating `;` is omitted and the expression result is returned. </br> In complex cases, multiple sub-expressions are each terminated with a semicolon `;`.  Complex expressions evaluate to `0.0` unless there is a `return` statement, in which case the evaluated value of the `return`'s sub-expression will be returned out of the current scope.</br><h1><p id="Case Sensitivity">Case Sensitivity</p></h1>
 
-All things in molang are case-INsensitive, with the exception of strings, which maintain the case provided</br><a href="#Index">Back to top</a><br><br>
+All things in Molang are case-INsensitive, with the exception of strings, which maintain the case provided.</br><a href="#Index">Back to top</a><br><br>
 
 <h1><p id="Keywords">Keywords</p></h1>
 
@@ -83,6 +88,10 @@ All identifiers not in a scope listed below are reserved for future use</br><h2>
 <td style="border-style:solid; border-width:3; padding:7px">A reference to a material named in the entity definition</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">`texture.texture_name`</td>
+<td style="border-style:solid; border-width:3; padding:7px">A reference to a texture named in the entity definition</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">`math.function_name`</td>
 <td style="border-style:solid; border-width:3; padding:7px">Various math functions</br></td>
 </tr>
@@ -91,40 +100,36 @@ All identifiers not in a scope listed below are reserved for future use</br><h2>
 <td style="border-style:solid; border-width:3; padding:7px">Access to an entity's properties</br></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:3; padding:7px">`temp.variable_name`</td>
-<td style="border-style:solid; border-width:3; padding:7px">Read/write temporary storage</br></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">`texture.texture_name`</td>
-<td style="border-style:solid; border-width:3; padding:7px">A reference to a texture named in the entity definition</br></td>
-</tr>
-<tr>
 <td style="border-style:solid; border-width:3; padding:7px">`variable.variable_name`</td>
 <td style="border-style:solid; border-width:3; padding:7px">Read/write storage on an actor</br></td>
 </tr>
 <tr>
-<td style="border-style:solid; border-width:3; padding:7px">`<test> ? <if true> : <if false>`</td>
-<td style="border-style:solid; border-width:3; padding:7px">Trinary conditional operator</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">`temp.variable_name`</td>
+<td style="border-style:solid; border-width:3; padding:7px">Read/write temporary storage</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">`context.variable_name`</td>
+<td style="border-style:solid; border-width:3; padding:7px">Read-only storage provided by the game in certain scenarios</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">`<test> ? <if true>`</td>
 <td style="border-style:solid; border-width:3; padding:7px">Binary conditional operator</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">`<test> ? <if true> : <if false>`</td>
+<td style="border-style:solid; border-width:3; padding:7px">Ternary conditional operator - NOTE: Nested ternary expressions without parentheses were incorrectly parsed before a Versioned Change was made to fix it (see 'Versioned Changes' below)</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">`this`</td>
-<td style="border-style:solid; border-width:3; padding:7px">The current value that this script will ultimately write to (context specific)</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">The current value that this expression will ultimately write to (context specific)</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">`return`</td>
-<td style="border-style:solid; border-width:3; padding:7px">For complex expressions, this evaluates the following statement and stops execution of the script, returns the value computed</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">For complex expressions, this evaluates the following statement and stops execution of the expression, returns the value computed</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">`->`</td>
 <td style="border-style:solid; border-width:3; padding:7px">Arrow operator, for accessing data from a different entity</br></td>
-</tr>
-<tr>
-<td style="border-style:solid; border-width:3; padding:7px">`context.variable_name`</td>
-<td style="border-style:solid; border-width:3; padding:7px">Read-only storage provided by the game in certain scenarios</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">`loop`</td>
@@ -149,9 +154,62 @@ All identifiers not in a scope listed below are reserved for future use</br><h2>
 </table>
 <a href="#Index">Back to top</a><br><br>
 
+<h1><p id="Operator Precedence">Operator Precedence</p></h1>
+
+Molang Operators follow this order to determine which thing is evaluated first when no parentheses are used. This should match the behavior of C or C++. Operators that are higher in this table are evaluated first, while operators on the same row are evaluated with the same priority. When operators have the same priority, they are evaluated left-to-right, except for the Ternary conditional operator, which is evaluated right-to-left. Using parentheses will allow direct control of order of evaluation, and is recommended for more complex expressions. </br><h2></h2>
+
+<table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
+<tr> <th style="border-style:solid; border-width:3;">Operator Precedence Groups</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">(Highest Precedence)</td>
+<td style="border-style:solid; border-width:3; padding:7px">Higher precedence operators are evaluated first when no parentheses are used to control evaluation order</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Logical Not</td>
+<td style="border-style:solid; border-width:3; padding:7px">The Logical Not '!' operator</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Multiplication and Division</td>
+<td style="border-style:solid; border-width:3; padding:7px">Multiplication '*' and Division '/'</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Addition and Subtraction</td>
+<td style="border-style:solid; border-width:3; padding:7px">Addition '+' and Subtraction '-'</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Comparisons</td>
+<td style="border-style:solid; border-width:3; padding:7px">Comparison operators '<' '<=' '>' '>=' (See 'Versioned Changes' below)</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Equality checks</td>
+<td style="border-style:solid; border-width:3; padding:7px">Equality checking operators '==' '!=' (See 'Versioned Changes' below)</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Logical AND</td>
+<td style="border-style:solid; border-width:3; padding:7px">The Logical AND '&&' operator (See 'Versioned Changes' below)</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Logical OR</td>
+<td style="border-style:solid; border-width:3; padding:7px">The Logical OR '||' operator (See 'Versioned Changes' below)</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Ternary Conditional</td>
+<td style="border-style:solid; border-width:3; padding:7px">Ternary conditional operators using '? :'. Evaluated right-to-left when there are multiple ternary operators. (See 'Versioned Changes' below)</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">Null Coalescing</td>
+<td style="border-style:solid; border-width:3; padding:7px">Null coalescing operator '??'</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">(Lowest Precedence)</td>
+<td style="border-style:solid; border-width:3; padding:7px">Lower precedence operators are evaluated last when no parentheses are used to control evaluation order</br></td>
+</tr>
+</table>
+<a href="#Index">Back to top</a><br><br>
+
 <h1><p id="Variables">Variables</p></h1>
 
-There are three variable lifetimes a variable may belong to: Temporary, Entity, and Context:</br>- Temporary variables (eg: `temp.moo = 1;`) are read/write and valid for the scope they are defined in, as per C rules.  For performance reasons their lifetime is global to the current script execution and may return a valid value outside of the outermost scope they are defined in for a script.  Be careful in complex scripts.  We will be adding content errors for invalid accesses as soon as possible.</br>- Entity variables (eg: `variable.moo = 1;`) are read/write and store their value on the entity for the lifetime of that entity.  Note that these are currently not saved, so quitting and reloading the world will re-initialize these.  In the same way, if the entity is despawned, any variables on the entity will be lost.</br>- Context variables (eg: `context.moo`) are read-only and valid for the script they are run on.  The game defines these, and details on what variables are in each will be available in the documentation of the area where that molang script exists (such as behaviours defining what context variables they expose).</br><a href="#Index">Back to top</a><br><br>
+There are three variable lifetimes a variable may belong to: Temporary, Entity, and Context:</br>- Temporary variables (eg: `temp.moo = 1;`) are read/write and valid for the scope they are defined in, as per C rules.  For performance reasons their lifetime is global to the current expression execution and may return a valid value outside of the outermost scope they are defined in for an expression.  Be careful in complex expressions.  We will be adding content errors for invalid accesses as soon as possible.</br>- Entity variables (eg: `variable.moo = 1;`) are read/write and store their value on the entity for the lifetime of that entity.  Note that these are currently not saved, so quitting and reloading the world will re-initialize these.  In the same way, if the entity is despawned, any variables on the entity will be lost.</br>- Context variables (eg: `context.moo`) are read-only and specified by the game in certain situations. Details on what variables are specified and when will be available in the documentation of the area where that Molang expression is used (such as behaviors defining what context variables they expose).</br><a href="#Index">Back to top</a><br><br>
 
 <h1><p id="Values">Values</p></h1>
 
@@ -177,11 +235,11 @@ Struct (see 'structs' section below)
 
 <h1><p id="Query Functions">Query Functions</p></h1>
 
-Query functions (eg: `query.is_baby` or `query.is_item_equipped('main_hand')`) allow scripts to read game data.  If a query function takes no arguments, the parentheses are optional.  For a full list of query functions, see below.</br><a href="#Index">Back to top</a><br><br>
+Query functions (eg: `query.is_baby` or `query.is_item_equipped('main_hand')`) allow expressions to read game data.  If a query function takes no arguments, do not use parentheses. Otherwise, use parentheses and separate arguments with commas. For a full list of query functions, see below.</br><a href="#Index">Back to top</a><br><br>
 
 <h1><p id="Aliases">Aliases</p></h1>
 
-To reduce typing burden and increase clarity when reading and writing molang, the following keyword aliases can make life a bit easier.  Note that left and right sides function identically.</br><h2></h2>
+To reduce typing burden and increase clarity when reading and writing Molang, the following keyword aliases can make life a bit easier.  Note that left and right sides function identically.</br><h2></h2>
 
 <h2><p id="Alias Mapping">Alias Mapping</p></h2>
 
@@ -239,15 +297,15 @@ math.cos(q.anim_time * 38) * variable.rotation_scale + v.x * variable.x * query.
 Structures of data, unlike C, are implicitly defined by usage.  Their purpose is to more efficiently pass data around, such as passing `v.location` rather than `v.x`, `v.y`, and `v.z`.  eg:</br><h2></h2>
 
 <h3></h3>
-<br / ><textarea readonly="true" cols="65" rows="5">
+<br / ><textarea readonly="true" cols="67" rows="5">
 v.location.x = 1;
 v.location.y = 2;
 v.location.z = 3;
-v.another_mob_set_elsewhere->v.first_mobs_location = v.location;
+v.another_mobs_location = v.another_mob_set_elsewhere->v.location;
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
-For some more usage examples, each of the following scripts return 1.23</br><a href="#Index">Back to top</a><br><br>
+For some more usage examples, each of the following expressions return 1.23</br><a href="#Index">Back to top</a><br><br>
 
 <h3></h3>
 <br / ><textarea readonly="true" cols="97" rows="2">
@@ -285,7 +343,7 @@ Note that structures can be arbitrarily deep in their nesting/recursiveness.  Th
 
 <h1><p id="Strings">Strings</p></h1>
 
-Strings in molang are surrounded by single - quotes.Eg: 'minecraft:pig' or 'hello world!'.An empty string is defined as two back - to - back single quotes.  String operations only support `= = ` and `! = ` at this time.</br>Note: strings don't support the ' character as there is no support for escape characters at this time.</br><a href="#Index">Back to top</a><br><br>
+Strings in Molang are surrounded by single quotes, eg: `'minecraft:pig'` or `'hello world!'`. An empty string is defined as two consecutive single quotes.  String operations only support `==` and `!=` at this time.</br>Note: strings don't support the ' character as there is no support for escape characters at this time.</br><a href="#Index">Back to top</a><br><br>
 
 <h1><p id="Math Functions">Math Functions</p></h1>
 
@@ -412,7 +470,7 @@ Strings in molang are surrounded by single - quotes.Eg: 'minecraft:pig' or 'hell
 
 <h2></h2>
 
-Some return values of query function, or values stored in temp/entity/context variables can be a reference to another entity.  The `->` operator allows a script to access variables or run queries on that entity.  For example, the example below will find all pigs within four metres of the current entity(including itself if it's a pig), and increment a variable `v.x` on itself if the block immediately above each pig is flammable(such as an oak button) :</br>Note that in the case where the left - hand - side of the `- > ` operator has an error(value is null, the entity was killed previously, or some other issue), the expression will not evaluate the right - hand - side and will return 0.  This implementation style was a choice between performance and not requiring content creators to overly worry about checking for potentially bad values everywhere.</br></br><h3></h3>
+Some return values of query function, or values stored in temp/entity/context variables can be a reference to another entity.  The `->` operator allows an expression to access variables or run queries on that entity.  For example, the example below will find all pigs within four meters of the current entity (including itself if it's a pig), and increment a variable `v.x` on itself if the block immediately above each pig is flammable (such as an oak button) :</br>Note that in the case where the left-hand side of the `->` operator has an error (value is null, the entity was killed previously, or some other issue), the expression will not evaluate the right-hand side and will return 0. This implementation style was a choice between performance and not requiring content creators to overly worry about checking for potentially bad values everywhere.</br></br><h3></h3>
 <br / ><textarea readonly="true" cols="77" rows="7">
 
 "v.x = 0;
@@ -458,7 +516,7 @@ In general, variables of a mob are considered private to that mob and cannot be 
 
 <h1><p id="{ } Brace Scope Delimiters">{ } Brace Scope Delimiters</p></h1>
 
-One can group a series of statements into a single group by wrapping them in { and } symbols.  This is used primarily in loops and conditional statements:</br><h2></h2>
+One can group a series of statements into a single group by wrapping them in `{` and `}` symbols.  This is used primarily in loops and conditional statements:</br><h2></h2>
 <br / ><textarea readonly="true" cols="40" rows="10">
 
 (v.moo > 0) ? {
@@ -472,9 +530,21 @@ One can group a series of statements into a single group by wrapping them in { a
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
+<h1><p id="Conditionals">Conditionals</p></h1>
+
+The conditional '?' operator allows for two convenient ways to implement simple branching logic.</br> The first way is to use '?' by itself to conditionally execute part of an expression, for example `A ? B`. The part after the '?' is only run if the part before it evaluates to a true boolean.</br> The second way is to use '?' with a ':' as a 'conditional ternary', for example `A ? B : C`. If the part before the '?' is evaluated as true, the part before the ':' is returned. Otherwise the part after is returned.</br> NOTE: Nested ternary expressions without parentheses were incorrectly parsed before a Versioned Change was made to fix it (see 'Versioned Changes' below).</br><h2></h2>
+Conditional Examples<br / ><textarea readonly="true" cols="42" rows="6">
+
+v.should_reset_a ? { v.a = 0; }
+
+v.larger_value = (v.a > v.b) ? v.a : v.b;
+
+</textarea> </br>
+<a href="#Index">Back to top</a><br><br>
+
 <h1><p id="loop">loop</p></h1>
 
-Sometimes you want to execute an expression multiple times.  Rather than copy-pasting it a bunch, you can use `loop(<count>, <expression>);`.  We have placed some arbitrary restrictions on these for safety for now.The maximum loop counter is(as of this document being written) 1024.  Also, note that while you can nest loops inside loops pretty much as deep as you want, be careful you don't make a loop so long it will hang your game.</br><h2></h2>
+Sometimes you want to execute an expression multiple times.  Rather than copy-pasting it a bunch, you can use `loop(<count>, <expression>);`.  We have placed some arbitrary restrictions on these for safety for now. The maximum loop counter is (as of this document being written) 1024.  Also, note that while you can nest loops inside loops pretty much as deep as you want, be careful you don't make a loop so long it will hang your game.</br><h2></h2>
 A Fibonacci Calculator<br / ><textarea readonly="true" cols="19" rows="10">
 
 v.x = 1;
@@ -490,7 +560,16 @@ loop(10, {
 
 <h1><p id="for_each">for_each</p></h1>
 
-`query.get_nearby_entities` (see below) returns an array of entities.  In order to iterate through them, you can use the following new built-in function `for_each`.  It takes three parameters: `for_each(<variable>, <array>, <expression>);`  The variable can be any variable, either a `temp.` or `variable.`, although I'd recommend using `temp.` to not pollute the entity's variable space.  The expression is any molang expression you want to execute for each entry in the array)</br><a href="#Index">Back to top</a><br><br>
+`query.get_nearby_entities` (see below) returns an array of entities.  In order to iterate through them, you can use the following new built-in function `for_each`.  It takes three parameters: `for_each(<variable>, <array>, <expression>);`  The variable can be any variable, either a `temp.` or `variable.`, although I'd recommend using `temp.` to not pollute the entity's variable space.  The expression is any Molang expression you want to execute for each entry in the array)</br><h2></h2>
+<br / ><textarea readonly="true" cols="65" rows="7">
+
+"v.x = 0;
+for_each(t.pig, query.get_nearby_entities(4, 'minecraft:pig'), {
+    v.x = v.x + 1;
+});"
+
+</textarea> </br>
+<a href="#Index">Back to top</a><br><br>
 
 <h1><p id="break">break</p></h1>
 
@@ -508,7 +587,7 @@ loop(10, {t.x = v.x + v.y; v.x = v.y; v.y = t.x; (v.y > 20) ? break;});
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
-This will immediately exit the inner-most active loop, as per C - style language rules.  If you have:</br><a href="#Index">Back to top</a><br><br>
+This will immediately exit the inner-most active loop, as per C-style language rules.  If you have:</br><a href="#Index">Back to top</a><br><br>
 
 <h3></h3>
 <br / ><textarea readonly="true" cols="60" rows="5">
@@ -519,13 +598,13 @@ loop(10, {loop(10, {v.x = v.x + 1; (v.x > 5) ? break;});});
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
-The `break` statement will terminate the inner loop when `v.x > 5`, and continue processing the outer loop's script.  Note that as v.x is not reset between the outer loops, the second time into the inner loop this will add one more to `v.x` and then exit the inner loop again, resulting in a final value of `v.x` of `6 + 1 + 1 + 1 + ... + 1` = `15`.)</br><a href="#Index">Back to top</a><br><br>
+The `break` statement will terminate the inner loop when `v.x > 5`, and continue processing the outer loop's expression.  Note that as v.x is not reset between the outer loops, the second time into the inner loop this will add one more to `v.x` and then exit the inner loop again, resulting in a final value of `v.x` of `6 + 1 + 1 + 1 + ... + 1` = `15`.)</br><a href="#Index">Back to top</a><br><br>
 
 <br><br>
 
 <h1><p id="continue">continue</p></h1>
 
-`continue` functions as per C-style language rules.  Currently only supported in loops, this will skip to the next iteration of the current loop.  See `break` above for more details on inner/outer loops.  The following example will result in v.x becoming 6.0, as the increment will be skipped once it reaches that value.  Note that it is better to break out of the loop in this contrived example, as it would be more performant than continuing to perform all 10 iterations.</br><h2></h2>
+`continue` functions as per C-style language rules.  Currently only supported in `loop` and `for_each`, this will skip to the next iteration of the current loop.  See `break` above for more details on inner/outer loops.  The following example will result in v.x becoming 6.0, as the increment will be skipped once it reaches that value.  Note that it is better to break out of the loop in this contrived example, as it would be more performant than continuing to perform all 10 iterations.</br><h2></h2>
 
 <h3></h3>
 <br / ><textarea readonly="true" cols="24" rows="8">
@@ -543,7 +622,7 @@ loop(10, {
 
 <h1><p id="?? Null Coalescing Operator">?? Null Coalescing Operator</p></h1>
 
-</br>Similar to how the null-coalescing operator works in C#, one can now reference a variable that may or may not exist without seeing a content error.  If it doesn't, you can now provide a default value to use.  Previously, if a variable didn't exist you would get a content error.  This was to make sure variables were always initialized correctly to avoid uninitialized variable bugs.  Unfortunately this then required initialize scripts, or in some cases some complex work-arounds to make sure variables were initialized.  Now, if you know a variable won't be initialized in the first run of a script, you can use the following:</br><h2></h2>
+Similar to how the null-coalescing operator works in C#, one can now reference a variable that may or may not exist without seeing a content error.  If it doesn't, you can now provide a default value to use.  Previously, if a variable didn't exist you would get a content error.  This was to make sure variables were always initialized correctly to avoid uninitialized variable bugs.  Unfortunately this then required initialize scripts, or in some cases some complex work-arounds to make sure variables were initialized.  Now, if you know a variable won't be initialized in the first run of a script, you can use the following:</br><h2></h2>
 
 <h3></h3>
 <br / ><textarea readonly="true" cols="40" rows="2">
@@ -551,7 +630,7 @@ variable.x = (variable.x ?? 1.2) + 0.3;
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
-</br>This will use the value of `variable.x` if it is valid, or else 1.2 if `variable.x`:</br>- has not yet been initialized</br>- is a reference to a deleted entity</br>- is an invalid reference</br>- holds an error</br></br>Note that the `??` operator will work with `variable.`s, `temp.`s, and `context.`s that hold numbers or entity references, but not resources such as materials, textures, or geometries (as those must exist and be valid else it's a content error).  If the first argument would result in something that can't be resolved, it will return the second argument.</br></br>_Reminder: the standing rule of thumb in molang is that if something would error or be a bad value, it is converted to 0.0 (and generally throw a content error on screen in non-publish builds.  Note that content errors may prevent uploading content to the marketplace, so please ensure expressions aren't going to do bad things such as dividing by zero)._</br><a href="#Index">Back to top</a><br><br>
+</br>This will use the value of `variable.x` if it is valid, or else 1.2 if `variable.x`:</br>- has not yet been initialized</br>- is a reference to a deleted entity</br>- is an invalid reference</br>- holds an error</br></br>Note that the `??` operator will work with `variable.`s, `temp.`s, and `context.`s that hold numbers or entity references, but not resources such as materials, textures, or geometries (as those must exist and be valid else it's a content error).  If the first argument would result in something that can't be resolved, it will return the second argument.</br></br>_Reminder: the standing rule of thumb in Molang is that if something would error or be a bad value, it is converted to 0.0 (and generally throw a content error on screen in non-publish builds.  Note that content errors may prevent uploading content to the Marketplace, so please ensure expressions aren't going to do bad things such as dividing by zero)._</br><a href="#Index">Back to top</a><br><br>
 
 <br><br>
 
@@ -622,7 +701,7 @@ For each of the three resource types (materials, textures, and geometry), you ca
 </textarea> </br>
 <a href="#Index">Back to top</a><br><br>
 
-Note that all elements of an array must be of the same type.  eg: a texture array must only contain textures.</br></br>An array can reference any combination of zero or more arrays (including duplicates if desired) and/or zero or more materails (again, including duplicates if you like), and you can have as many arrays as you like, each with as many elements as you like.  If an array includes arrays in its members, they do not need to be the same length.  When indexing into an array in the resource usage section, you use numerical expressions.  If the resulting number is negative, it will use zero as the index.  Any non - negative index will converted to an integer, and will wrap based on the size of the array:</br><h4></h4>
+Note that all elements of an array must be of the same type.  eg: a texture array must only contain textures.</br></br>An array can reference any combination of zero or more arrays (including duplicates if desired) and/or zero or more materials (again, including duplicates if you like), and you can have as many arrays as you like, each with as many elements as you like.  If an array includes arrays in its members, they do not need to be the same length.  When indexing into an array in the resource usage section, you use numerical expressions.  If the resulting number is negative, it will use zero as the index.  Any non - negative index will converted to an integer, and will wrap based on the size of the array:</br><h4></h4>
 <br / ><textarea readonly="true" cols="47" rows="2">
 index = max(0, expression_result) % array_size
 </textarea> </br>
@@ -657,7 +736,7 @@ The geometry section specifies which geometry to use when rendering.  As you can
 
 <h3><p id="Materials">Materials</p></h3>
 
-The materials section specifies how to map what material to what bone of the geometry.  A single material is mapped to a whole bone.  Material expressions are evaluated in the order listed.  The first part of each statement is the name of the model part to apply the material to, and the second part is the material to use.  The model part name can use * for wild - card matching of characters.  For example : </br><h4></h4>
+The materials section specifies how to map what material to what bone of the geometry.  A single material is mapped to a whole bone.  Material expressions are evaluated in the order listed.  The first part of each statement is the name of the model part to apply the material to, and the second part is the material to use.  The model part name can use * for wild - card matching of characters.  For example: </br><h4></h4>
 
 <h6></h6>
 <br / ><textarea readonly="true" cols="100" rows="7">
@@ -682,7 +761,7 @@ The materials section specifies how to map what material to what bone of the geo
 
 <h1><p id="Query Functions">Query Functions</p></h1>
 
-Query Functions are boolean expressions that allow you to query for values owned by the engine under different circumstances.  They can be used in MoLang expressionsUseful for controlling things like changing positions, textures, animations, etc if a mob is a baby.  For example:</br><h2></h2>
+Query Functions are operators that access a wide variety of information. They can return simple true or false values (1.0 or 0.0) or more complex data. See the list of functions below for per-query documentation. Query Functions might not take any parameters. In that case, just `query.function_name` is used. Otherwise parentheses with commas separating arguments should be used, ie `query.function_name(1, 2, 'three')`. For example:</br><h2></h2>
 <br / ><textarea readonly="true" cols="79" rows="2">
 "position": [ 0.0, "query.is_baby ? -8.0 : 0.0", "query.is_baby ? 4.0 : 0.0" ]
 </textarea> </br>
@@ -703,6 +782,10 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">Returns the number of actors rendered in the last frame</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.all</td>
+<td style="border-style:solid; border-width:3; padding:7px">Requires at least 3 arguments. Evaluates the first argument, then returns 1.0 if all of the following arguments evaluate to the same value as the first. Otherwise it returns 0.0.</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.all_animations_finished</td>
 <td style="border-style:solid; border-width:3; padding:7px">Only valid in an animation controller.  Returns 1.0 if all animations in the current animation controller state have played through at least once, else it returns 0.0</br></td>
 </tr>
@@ -711,8 +794,16 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">Returns if the item or block has all of the tags specified</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.anger_level</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the anger level of the actor [0,n). On errors or if the actor has no anger level, returns 0. Available on the Server only.</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.anim_time</td>
 <td style="border-style:solid; border-width:3; padding:7px">Returns the time in seconds since the current animation started, else 0.0 if not called within an animation</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.any</td>
+<td style="border-style:solid; border-width:3; padding:7px">Requires at least 3 arguments. Evaluates the first argument, then returns 1.0 if any of the following arguments evaluate to the same value as the first. Otherwise it returns 0.0.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.any_animation_finished</td>
@@ -740,7 +831,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.average_frame_time</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the time in *seconds* of the average frame time over the last 'n' frames.  If an argument is passed, it is assumed to be the number of frames in the past that you wish to query.  `query.average_frame_time` (or the equivalent `query.average_frame_time(0)`) will return the frame time of the frame before the current one.  `query.average_frame_time(1)` will return the average frame time of the previous two frames.  Currently we store the history of the last 30 frames, although note that this may change in the future.  Asking for more frames will result in only sampling the number of frames stored.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the time in *seconds* of the average frame time over the last 'n' frames.  If an argument is passed, it is assumed to be the number of frames in the past that you wish to query.  'query.average_frame_time' (or the equivalent 'query.average_frame_time(0)') will return the frame time of the frame before the current one.  'query.average_frame_time(1)' will return the average frame time of the previous two frames.  Currently we store the history of the last 30 frames, although note that this may change in the future.  Asking for more frames will result in only sampling the number of frames stored.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.block_face</td>
@@ -776,11 +867,11 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.camera_distance_range_lerp</td>
-<td style="border-style:solid; border-width:3; padding:7px">Takes two distances (any order) and return a number from 0 to 1 based on the camera distance between the two ranges clamped to that range.  For example, `query.camera_distance_range_lerp(10, 20)` will return 0 for any distance less than or equal to 10, 0.2 for a distance of 12, 0.5 for 15, and 1 for 20 or greater.  If you pass in (20, 10), a distance of 20 will return 0.0</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Takes two distances (any order) and return a number from 0 to 1 based on the camera distance between the two ranges clamped to that range.  For example, 'query.camera_distance_range_lerp(10, 20)' will return 0 for any distance less than or equal to 10, 0.2 for a distance of 12, 0.5 for 15, and 1 for 20 or greater.  If you pass in (20, 10), a distance of 20 will return 0.0</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.camera_rotation</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the rotation of the camera.  Requires one argument representing the rotation axis you would like (`0==x`, `1==y`)</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the rotation of the camera.  Requires one argument representing the rotation axis you would like (0 for x, 1 for y)</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.can_climb</td>
@@ -891,6 +982,10 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">returns the Y eye rotation of the entity if it makes sense, else it returns 0.0</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.facing_target_to_range_attack</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is attacking from range (i.e. minecraft:behavior.ranged_attack), else it returns 0.0</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.frame_alpha</td>
 <td style="border-style:solid; border-width:3; padding:7px">Returns the ratio (from 0 to 1) of how much between AI ticks this frame is being rendered</br></td>
 </tr>
@@ -908,7 +1003,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.get_equipped_item_name</td>
-<td style="border-style:solid; border-width:3; padding:7px">takes one optional hand slot as a parameter (0 or 'main_hand' for main hand, 1 or 'off_hand' for off hand), and a second parameter (0=default) if you would like the equipped item or any non-zero number for the currently rendered item, and returns the name of the item in the requested slot (defaulting to the main hand if no parameter is supplied) if there is one, otherwise returns ''.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">DEPRECATED (Use query.is_item_name_any instead if possible so names can be changed later without breaking content.) Takes one optional hand slot as a parameter (0 or 'main_hand' for main hand, 1 or 'off_hand' for off hand), and a second parameter (0=default) if you would like the equipped item or any non-zero number for the currently rendered item, and returns the name of the item in the requested slot (defaulting to the main hand if no parameter is supplied) if there is one, otherwise returns ''.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.get_locator_offset</td>
@@ -916,7 +1011,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.get_name</td>
-<td style="border-style:solid; border-width:3; padding:7px">get the name of the mob if there is one, otherwise return ''</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">DEPRECATED (Use query.is_name_any instead if possible so names can be changed later without breaking content.) Get the name of the mob if there is one, otherwise return ''.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.get_root_locator_offset</td>
@@ -924,7 +1019,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.ground_speed</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the ground speed of the entity in metres/second</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the ground speed of the entity in meters/second</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.has_any_family</td>
@@ -983,6 +1078,14 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">Returns the health of the entity, or 0.0 if it doesn't make sense to call on this entity.</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.heartbeat_interval</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the heartbeat interval of the actor in seconds. Returns 0 when the actor has no heartbeat.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.heartbeat_phase</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the heartbeat phase of the actor. 0.0 if at start of current heartbeat, 1.0 if at the end. Returns 0 on errors or when the actor has no heartbeat. Available on the Client (Resource Packs) only.</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.heightmap</td>
 <td style="border-style:solid; border-width:3; padding:7px">Queries Height Map</br></td>
 </tr>
@@ -993,6 +1096,10 @@ Query Functions are boolean expressions that allow you to query for values owned
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.hurt_time</td>
 <td style="border-style:solid; border-width:3; padding:7px">returns the hurt time for the actor, otherwise returns 0</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.in_range</td>
+<td style="border-style:solid; border-width:3; padding:7px">Requires 3 numerical arguments: some value, a minimum, and a maximum. If the first argument is between the minimum and maximum (inclusive), returns 1.0. Otherwise returns 0.0.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.invulnerable_ticks</td>
@@ -1067,6 +1174,10 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is critical, else it returns 0.0</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_croaking</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is croaking, else it returns 0.0</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_dancing</td>
 <td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is dancing, else it returns 0.0</br></td>
 </tr>
@@ -1075,12 +1186,24 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">returns 1.0 if the entity is attacking using the delayed attack, else it returns 0.0</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_digging</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is digging, else it returns 0.0</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_eating</td>
 <td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is eating, else it returns 0.0</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_eating_mob</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is eating a mob, else it returns 0.0</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_elder</td>
 <td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is an elder version of it, else it returns 0.0</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_emerging</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is emerging, else it returns 0.0</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_emoting</td>
@@ -1155,8 +1278,16 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">takes one optional hand slot as a parameter (0 or 'main_hand' for main hand, 1 or 'off_hand' for off hand), and returns 1.0 if there is an item in the requested slot (defaulting to the main hand if no parameter is supplied), otherwise returns 0.0.</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_item_name_any</td>
+<td style="border-style:solid; border-width:3; padding:7px">Takes an equipment slot name (see the replaceitem command) and an optional slot index value. (The slot index is required for slot names that have multiple slots, for example 'slot.hotbar'.) After that, takes one or more full name (with 'namespace:') strings to check for. Returns 1.0 if an item in the specified slot has any of the specified names, otherwise returns 0.0. An empty string '' can be specified to check for an empty slot. Note that querying slot.enderchest, slot.saddle, slot.armor, or slot.chest will only work in behavior packs. A preferred query to query.get_equipped_item_name, as it can be adjusted by Mojang to avoid breaking content if names are changed.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_jump_goal_jumping</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is doing a jump goal jump, else it returns 0.0</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_jumping</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is in water or rain, else it returns 0.0</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is jumping, else it returns 0.0</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_laying_down</td>
@@ -1183,6 +1314,10 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is moving, else it returns 0.0</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_name_any</td>
+<td style="border-style:solid; border-width:3; padding:7px">Takes one or more arguments. If the entity's name is any of the specified string values, returns 1.0. Otherwise returns 0.0. A preferred query to query.get_name, as it can be adjusted by Mojang to avoid breaking content if names are changed.</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_on_fire</td>
 <td style="border-style:solid; border-width:3; padding:7px">returns 1.0 if the entity is on fire, else it returns 0.0</br></td>
 </tr>
@@ -1203,8 +1338,12 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is orphaned, else it returns 0.0</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_owner_identifier_any</td>
+<td style="border-style:solid; border-width:3; padding:7px">Takes one or more arguments. Returns whether the root actor identifier is any of the specified strings. A preferred query to query.owner_identifier, as it can be adjusted by Mojang to avoid breaking content if names are changed.</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_persona_or_premium_skin</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the player has a persona or permium skin, else it returns 0.0</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the player has a persona or premium skin, else it returns 0.0</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_playing_dead</td>
@@ -1287,6 +1426,14 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is sneezing, else it returns 0.0</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_sniffing</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is sniffing, else it returns 0.0</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_sonic_boom</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is using sonic boom, else it returns 0.0</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_sprinting</td>
 <td style="border-style:solid; border-width:3; padding:7px">Returns 1.0 if the entity is sprinting, else it returns 0.0</br></td>
 </tr>
@@ -1352,7 +1499,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.last_frame_time</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the time in *seconds* of the last frame.  If an argument is passed, it is assumed to be the number of frames in the past that you wish to query.  `query.last_frame_time` (or the equivalent `query.last_frame_time(0)`) will return the frame time of the frame before the current one.  `query.last_frame_time(1)` will return the frame time of two frames ago.  Currently we store the history of the last 30 frames, although note that this may change in the future.  Passing an index more than the available data will return the oldest frame stored.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the time in *seconds* of the last frame.  If an argument is passed, it is assumed to be the number of frames in the past that you wish to query.  'query.last_frame_time' (or the equivalent 'query.last_frame_time(0)') will return the frame time of the frame before the current one.  'query.last_frame_time(1)' will return the frame time of two frames ago.  Currently we store the history of the last 30 frames, although note that this may change in the future.  Passing an index more than the available data will return the oldest frame stored.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.last_hit_by_player</td>
@@ -1372,7 +1519,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.lod_index</td>
-<td style="border-style:solid; border-width:3; padding:7px">Takes an array of distances and returns the zero - based index of which range the actor is in based on distance from the camera.For example, `query.lod_index(10, 20, 30)` will return 0, 1, or 2 based on whether the mob is less than 10, 20, or 30 units away from the camera, or it will return 3 if it is greater than 30.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Takes an array of distances and returns the zero - based index of which range the actor is in based on distance from the camera. For example, 'query.lod_index(10, 20, 30)' will return 0, 1, or 2 based on whether the mob is less than 10, 20, or 30 units away from the camera, or it will return 3 if it is greater than 30.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.log</td>
@@ -1404,11 +1551,11 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.maximum_frame_time</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the time in *seconds* of the most expensive frame over the last 'n' frames.  If an argument is passed, it is assumed to be the number of frames in the past that you wish to query.  `query.maximum_frame_time` (or the equivalent `query.maximum_frame_time(0)`) will return the frame time of the frame before the current one.  `query.maximum_frame_time(1)` will return the maximum frame time of the previous two frames.  Currently we store the history of the last 30 frames, although note that this may change in the future.  Asking for more frames will result in only sampling the number of frames stored.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the time in *seconds* of the most expensive frame over the last 'n' frames.  If an argument is passed, it is assumed to be the number of frames in the past that you wish to query.  'query.maximum_frame_time' (or the equivalent 'query.maximum_frame_time(0)') will return the frame time of the frame before the current one.  'query.maximum_frame_time(1)' will return the maximum frame time of the previous two frames.  Currently we store the history of the last 30 frames, although note that this may change in the future.  Asking for more frames will result in only sampling the number of frames stored.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.minimum_frame_time</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the time in *seconds* of the least expensive frame over the last 'n' frames.  If an argument is passed, it is assumed to be the number of frames in the past that you wish to query.  `query.minimum_frame_time` (or the equivalent `query.minimum_frame_time(0)`) will return the frame time of the frame before the current one.  `query.minimum_frame_time(1)` will return the minimum frame time of the previous two frames.  Currently we store the history of the last 30 frames, although note that this may change in the future.  Asking for more frames will result in only sampling the number of frames stored.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the time in *seconds* of the least expensive frame over the last 'n' frames.  If an argument is passed, it is assumed to be the number of frames in the past that you wish to query.  'query.minimum_frame_time' (or the equivalent 'query.minimum_frame_time(0)') will return the frame time of the frame before the current one.  'query.minimum_frame_time(1)' will return the minimum frame time of the previous two frames.  Currently we store the history of the last 30 frames, although note that this may change in the future.  Asking for more frames will result in only sampling the number of frames stored.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.model_scale</td>
@@ -1448,11 +1595,11 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.overlay_alpha</td>
-<td style="border-style:solid; border-width:3; padding:7px">Do not use - this function is deprecated and will be removed</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">DEPRECATED (Do not use - this function is deprecated and will be removed)</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.owner_identifier</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the root actor identifier</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">DEPRECATED (Use query.is_owner_identifier_any instead if possible so names can be changed later without breaking content.) Returns the root actor identifier.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.player_level</td>
@@ -1480,7 +1627,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.rotation_to_camera</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the rotation required to aim at the camera.  Requires one argument representing the rotation axis you would like (`0==x`, `1==y`)</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the rotation required to aim at the camera.  Requires one argument representing the rotation axis you would like (0 for x, 1 for y)</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.shake_angle</td>
@@ -1516,7 +1663,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.spellcolor</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the entity spell colour if it makes sense, else it returns 0.0</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns a struct representing the entity spell color for the specified entity. The struct contains '.r' '.g' '.b' and '.a' members, each 0.0 to 1.0. If no actor is specified, each member value will be 0.0</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.standing_scale</td>
@@ -1525,6 +1672,18 @@ Query Functions are boolean expressions that allow you to query for values owned
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.structural_integrity</td>
 <td style="border-style:solid; border-width:3; padding:7px">returns the structural integrity for the actor, otherwise returns 0</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.surface_particle_color</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the particle color for the block located in the surface below the actor (scanned up to 10 blocks down). The struct contains '.r' '.g' '.b' and '.a' members, each 0.0 to 1.0. If no actor is specified or if no surface is found, each member value is set to 0.0. Available on the Client (Resource Packs) only.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.surface_particle_texture_coordinate</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the texture coordinate for generating particles for the block located in the surface below the actor (scanned up to 10 blocks down) in a struct with 'u' and 'v' keys. If no actor is specified or if no surface is found, u and v will be 0.0. Available on the Client (Resource Packs) only.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.surface_particle_texture_size</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the texture size for generating particles for the block located in the surface below the actor (scanned up to 10 blocks down). If no actor is specified or if no surface is found, each member value will be 0.0. Available on the Client (Resource Packs) only.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.swell_amount</td>
@@ -1559,6 +1718,10 @@ Query Functions are boolean expressions that allow you to query for values owned
 <td style="border-style:solid; border-width:3; padding:7px">Returns the time of day (midnight=0.0, sunrise=0.25, noon=0.5, sunset=0.75) of the dimension the entity is in.</br></td>
 </tr>
 <tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.time_since_last_vibration_detection</td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the time in seconds since the last vibration detected by the actor. On errors or if no vibration has been detected yet, returns -1. Available on the Client (Resource Packs) only.</br></td>
+</tr>
+<tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.time_stamp</td>
 <td style="border-style:solid; border-width:3; padding:7px">Returns the current time stamp of the level</br></td>
 </tr>
@@ -1584,7 +1747,7 @@ Query Functions are boolean expressions that allow you to query for values owned
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.vertical_speed</td>
-<td style="border-style:solid; border-width:3; padding:7px">Returns the speed of the entity up or down in metres/second, where positive is up</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">Returns the speed of the entity up or down in meters/second, where positive is up</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.walk_distance</td>
@@ -1613,83 +1776,107 @@ Query Functions are boolean expressions that allow you to query for values owned
 <tr> <th style="border-style:solid; border-width:3;">Name</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.actor_property</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes one argument: the name of the property on the entity. Returns the value of that property if it exists, else 0.0 if not.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Holiday Creator Features' AND 'Upcoming Creator Features' to use.) Takes one argument: the name of the property on the entity. Returns the value of that property if it exists, else 0.0 if not.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.biome_has_all_tags</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes either no position (assumes the current entity position) or three parameters: x, y, z (representing the world-origin-relative position), followed by whatever tags you want to query for, and returns 1 if all of them exist in the biome, else it returns 0.  Eg: query.biome_has_all_tags('is_cold', 'has_trees')</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes either no position (assumes the current entity position) or three parameters: x, y, z (representing the world-origin-relative position), followed by whatever tags you want to query for, and returns 1 if all of them exist in the biome, else it returns 0.  Eg: query.biome_has_all_tags('is_cold', 'has_trees')</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.biome_has_any_tag</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes either no position (assumes the current entity position) or three parameters: x, y, z (representing the world-origin-relative position), followed by whatever tags you want to query for, and returns 1 if any of them exist in the biome, else it returns 0.  Eg: query.biome_has_any_tag('is_cold', 'has_trees')</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes either no position (assumes the current entity position) or three parameters: x, y, z (representing the world-origin-relative position), followed by whatever tags you want to query for, and returns 1 if any of them exist in the biome, else it returns 0.  Eg: query.biome_has_any_tag('is_cold', 'has_trees')</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.block_has_all_tags</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes an world-origin-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has all of the tags provided</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes a world-origin-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has all of the tags provided</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.block_has_any_tag</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes a world-origin-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has any of the tags provided</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes a world-origin-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has any of the tags provided</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.block_neighbor_has_all_tags</td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes a block-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has all of the tags provided</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.block_neighbor_has_any_tag</td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes a block-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has any of the tags provided</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.bone_orientation_matrix</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes the name of the bone as an argument.  Returns the bone orientation (as a matrix) of the desired bone provided it exists in the queryable geometry of the mob, else this returns 0.0 (as a float value) and throws a content error.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes the name of the bone as an argument. Returns the bone orientation (as a matrix) of the desired bone provided it exists in the queryable geometry of the mob, else this returns the identity matrix and throws a content error.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.bone_orientation_trs</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) TRS stands for Translate/Rotate/Scale.  Takes the name of the bone as an argument.  Returns the bone orientation matrix decomposed into the component translation/rotation/scale parts of the desired bone provided it exists in the queryable geometry of the mob, else this returns 0.0 (as a float value) and throws a content error.  The returned value is returned as a variable of type 'struct' with members '.t', '.r', and '.s', each with members '.x', '.y', and '.z', and can be accessed as per the following example: v.my_variable = q.bone_orientation_trs('rightarm'); return v.my_variable.r.x;</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) TRS stands for Translate/Rotate/Scale.  Takes the name of the bone as an argument.  Returns the bone orientation matrix decomposed into the component translation/rotation/scale parts of the desired bone provided it exists in the queryable geometry of the mob, else this returns the identity matrix and throws a content error.  The returned value is returned as a variable of type 'struct' with members '.t', '.r', and '.s', each with members '.x', '.y', and '.z', and can be accessed as per the following example: v.my_variable = q.bone_orientation_trs('rightarm'); return v.my_variable.r.x;</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.client_input_type</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns either 'mouse', 'touch', 'gamepad', or 'motion_controller' depending on the type of input used by the current client.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns either 'mouse', 'touch', 'gamepad', or 'motion_controller' depending on the type of input used by the current client.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.cooldown_time</td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns the total cooldown time in seconds for the item held or worn by the specified equipment slot name (and optional second numerical slot id), otherwise returns 0. Uses the same name and id that the replaceitem command takes when querying entities.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.cooldown_time_remaining</td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns the cooldown time remaining in seconds for specified cooldown type or the item held or worn by the specified equipment slot name (and optional second numerical slot id), otherwise returns 0. Uses the same name and id that the replaceitem command takes when querying entities. Returns highest cooldown if no parameters are supplied.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.get_nearby_entities</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns the list of entities within the specified distance, taking an optional second argument as a filter for which mob types to accept (eg: 'minecraft:pig').</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns the list of entities within the specified distance, taking an optional second argument as a filter for which mob types to accept (eg: 'minecraft:pig').</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.get_nearby_entities_except_self</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns the list of entities within the specified distance, taking an optional second argument as a filter for which mob types to accept (eg: 'minecraft:pig').</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns the list of entities within the specified distance, taking an optional second argument as a filter for which mob types to accept (eg: 'minecraft:pig').</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.get_ride</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns the entity this entity is riding if it is riding something, else it returns 0</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns the entity this entity is riding if it is riding something, else it returns 0</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.get_riders</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns the array of entities that are riding this entity</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns the array of entities that are riding this entity</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.has_actor_property</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes one argument: the name of the property on the Actor. Returns 1.0 if a property with the given name exists, 0 otherwise. </br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Holiday Creator Features' AND 'Upcoming Creator Features' to use.) Takes one argument: the name of the property on the Actor. Returns 1.0 if a property with the given name exists, 0 otherwise. </br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.has_player_rider</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns 1 if the entity has a player riding it, else it returns 0</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns 1 if the entity has a player riding it, else it returns 0</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.is_attached</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns 1.0 if the actor is attached to another actor (such as being held or worn), else it will return 0.0</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns 1.0 if the actor is attached to another actor (such as being held or worn), else it will return 0.0</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_cooldown_type</td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns 1.0 if the specified held or worn item has the specified cooldown type name, otherwise returns 0.0. First argument is the cooldown name to check for, second argument is the equipment slot name, and optional third argument is the numerical slot id. For second and third arguments, uses the same name and id that the replaceitem command takes when querying entities.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">query.is_spectator</td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Spectator Mode' to use.) Returns 1.0 if the entity is spectator, else it returns 0.0</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.relative_block_has_all_tags</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes an entity-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has all of the tags provided</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes an entity-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has all of the tags provided</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.relative_block_has_any_tag</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes an entity-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has any of the tags provided</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Takes an entity-relative position and one or more tag names, and returns either 0 or 1 based on if the block at that position has any of the tags provided</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.scoreboard</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Takes one argument - the name of the scoreboard entry for this entity.  Returns the specified scoreboard value for this entity.</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) DEPRECATED (The coming Actor Property feature will replace the need for querying hidden scoreboard data. Current client-side scoreboard code is only meant for supporting the standard UI elements.) Takes one argument - the name of the scoreboard entry for this entity.  Returns the specified scoreboard value for this entity.</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.self</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns the current entity</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns the current entity</br></td>
 </tr>
 <tr>
 <td style="border-style:solid; border-width:3; padding:7px">query.target</td>
-<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL) Returns the target of the current entity if one exists</br></td>
+<td style="border-style:solid; border-width:3; padding:7px">(EXPERIMENTAL. Enable 'Molang Features' to use.) Returns the target of the current entity if one exists</br></td>
 </tr>
 </table>
 <a href="#Index">Back to top</a><br><br>
@@ -1698,8 +1885,43 @@ Query Functions are boolean expressions that allow you to query for values owned
 
 <h1><p id="Experimental Operators">Experimental Operators</p></h1>
 
-Some operators are under `Experimental MoLang Features` atm (see list below).  We are hoping people will experiment with them and give us feedback, so we can move them into general usage.</br></br><a href="#Index">Back to top</a><br><br>
+Some operators may be behind experimental gameplay toggles (see list below).  After getting feedback, we can adjust them further or move them into general availability.</br></br>- (There are currently no Experimental Operators)</br><a href="#Index">Back to top</a><br><br>
 
+<h1><p id="Versioned Changes">Versioned Changes</p></h1>
+
+Molang uses the `"min_engine_version"` from the `manifest.json` of the resource or behavior pack that contains each Molang expression to determine which version of the rules to apply. This allows for changes to how Molang works without breaking existing content. </br></br>Molang Versioned Change versions apply to each expression separately, so it's possible to have different versions active if multiple packs are loaded. </br></br>This is a list of the Versioned Changes that have been added, along with the corresponding game version. </br></br>To know which Versioned Changes are in effect, look at the `"min_engine_version"` of the `manifest.json` of the resource or behavior pack that contains your Molang expression. Any Versioned Change with a version less than or equal to that version number will be in effect. </br><h1><p id="Versioned Change Versions">Versioned Change Versions</p></h1>
+
+<h2></h2>
+
+<table border="1" style="width:100%; border-style:solid; border-collapse:collapse; border-width:3;">
+<tr> <th style="border-style:solid; border-width:3;">Pack min_engine_version</th> <th style="border-style:solid; border-width:3;">Description</th> </tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">1.17.0</td>
+<td style="border-style:solid; border-width:3; padding:7px">Initial support for Versioned Changes added. (Not actually a Versioned Change)</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">1.17.30</td>
+<td style="border-style:solid; border-width:3; padding:7px">Fixed query.item_remaining_use_duration conversion from ticks to seconds (multiplied by 20 instead of dividing). Also fixed normalization logic in that query to go from 1 down to 0 instead of 0 up to 1.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">1.17.40</td>
+<td style="border-style:solid; border-width:3; padding:7px">Added some new error messages for invalid expressions which previously ran with probably unexpected results. For example "'text' + 1" will now cause a content error.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">1.17.40</td>
+<td style="border-style:solid; border-width:3; padding:7px">Added error detection for too many operators in parentheses or brackets, for example: `1+(2 3)`. Also added more explicit error detection for when an unknown token is encountered.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">1.18.10</td>
+<td style="border-style:solid; border-width:3; padding:7px">Fixed conditional (ternary) operator associativity. Previously nested conditional expressions like `A ? B : C ? D : E` would evaluate as `(A ? B : C) ? D : E`. Now they evaluate as `A ? B : (C ? D : E)`.</br></td>
+</tr>
+<tr>
+<td style="border-style:solid; border-width:3; padding:7px">1.18.20</td>
+<td style="border-style:solid; border-width:3; padding:7px">Fixed Logical AND to evaluate before Logical OR, and for comparison operators to evaluate before equality operators. For example `A && B || C` now evaluates as `(A && B) || C` instead of `A && (B || C)`. And `A < B == C > D` now evalutes as `(A < B) == (C > D)` instead of `((A < B) == C) > D`.</br></td>
+</tr>
+</table>
+<a href="#Index">Back to top</a><br><br>
+<br><br>
 </v-html>
 </div>
 </template>
