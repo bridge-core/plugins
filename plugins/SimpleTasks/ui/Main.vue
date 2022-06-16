@@ -79,6 +79,7 @@ const { readJSON, writeJSON } = await require('@bridge/fs')
 const { join } = await require('@bridge/path')
 const { getCurrentProject, getCurrentBP, getProjectAuthor, APP_VERSION } =
 	await require('@bridge/env')
+const { onProjectChanged } = await require('@bridge/project')
 const { createWindow } = await require('@bridge/windows')
 const { InputWindow } = await require('@bridge/ui')
 const { compare } = await require('@bridge/compare-versions')
@@ -86,21 +87,41 @@ const { compare } = await require('@bridge/compare-versions')
 const isV2 = compare(APP_VERSION, '2.0.0', '>=')
 
 let taskSavePath
-if (isV2) taskSavePath = join(getCurrentProject(), '.bridge/tasks.json')
-else taskSavePath = join(getCurrentBP(), 'bridge/tasks.json')
+const loadTaskSavePath = () => {
+	if (isV2) taskSavePath = join(getCurrentProject(), '.bridge/tasks.json')
+	else taskSavePath = join(getCurrentBP(), 'bridge/tasks.json')
+}
+loadTaskSavePath()
 
 export default {
 	async mounted() {
-		try {
-			this.tasks = await readJSON(taskSavePath)
-		} catch {}
+		// Test that the API is already available
+		if (onProjectChanged) {
+			this.disposable = onProjectChanged(async () => {
+				loadTaskSavePath()
+				await this.loadTasks()
+			})
+		}
+
+		await this.loadTasks()
+	},
+	destroyed() {
+		if (this.disposable) this.disposable.dispose()
 	},
 
 	data: () => ({
 		tasks: [],
+		disposable: null,
 	}),
 
 	methods: {
+		async loadTasks() {
+			try {
+				this.tasks = await readJSON(taskSavePath)
+			} catch {
+				this.tasks = []
+			}
+		},
 		async onCreateTask() {
 			createWindow(InputWindow, {
 				title: `Task ${this.tasks.length + 1}`,
