@@ -12,7 +12,7 @@
 			><v-icon style="font-size: 3rem" color="error" class="mb-4">
 				mdi-link-variant-off </v-icon
 			>It looks like you don't have a vanilla pack for bridge. to use!
-			Download the vanilla BP and RP, then drag them into bridge.'s<br />
+			Download the vanilla BP and RP and extract them. Then, outside of bridge. drag them into your bridge folder's<br />
 			<span style="font-weight: 550; color: var(--v-secondary-base)"
 				>data/vanillaPacks/behaviorPack</span
 			>
@@ -74,7 +74,7 @@ export default {
 	methods: {
 		async download() {
 			createConfirmWindow(
-				"[This will bring you to a webpage where you can download the vanilla packs for any version. Once downloaded, extract the zip files and drag the BP and RP into bridge.'s 'data/vanillaPacks/behaviorPack' and 'data/vanillaPacks/resourcePack' folders respectively.]",
+				"[This will bring you to a webpage where you can download the vanilla packs for any version. Once downloaded, extract the zip files and outside of bridge., drag the BP and RP into bridge.'s 'data/vanillaPacks/behaviorPack' and 'data/vanillaPacks/resourcePack' folders respectively.]",
 				'[Download]',
 				'[Cancel]',
 				() => {

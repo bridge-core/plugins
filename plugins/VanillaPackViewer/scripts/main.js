@@ -1,10 +1,9 @@
-const { create, SidebarContent, SelectableSidebarAction, SidebarAction } =
+const { create, SidebarContent, SelectableSidebarAction } =
 	await require('@bridge/sidebar')
 const { VanillaPackViewer, Header } = await require('@bridge/ui')
 const { addFolderImporter } = await require('@bridge/import')
-const { getDirectoryHandle, copyFolderByHandle } = await require('@bridge/fs')
-const { createInformationWindow, createConfirmWindow } =
-	await require('@bridge/windows')
+const { getDirectoryHandle, onBridgeFolderSetup } = await require('@bridge/fs')
+const { createInformationWindow } = await require('@bridge/windows')
 
 class VanillaPackSidebarContent extends SidebarContent {
 	headerSlot = Header
@@ -19,6 +18,9 @@ class VanillaPackSidebarContent extends SidebarContent {
 	constructor() {
 		super()
 
+		onBridgeFolderSetup(async () => {
+			await this.setup()
+		})
 		addFolderImporter({
 			icon: 'mdi-link-variant',
 			name: '[Vanilla Pack]',
@@ -135,32 +137,6 @@ class VanillaPackSidebarContent extends SidebarContent {
 		)
 		this.directoryEntries[formattedName] = dirHandle
 	}
-	// TOO SLOW
-	// async foreignToBridgeFolder() {
-	// if (this.directoryEntries.vanillaBehaviorPack) {
-	// 	const dest = await getDirectoryHandle(
-	// 		'data/vanillaPacks/behaviorPack',
-	// 		{ create: true }
-	// 	)
-	// 	await copyFolderByHandle(
-	// 		this.directoryEntries.vanillaBehaviorPack,
-	// 		dest
-	// 	)
-	// 	this.isForeignPack = false
-	// }
-	// if (this.directoryEntries.vanillaResourcePack) {
-	// 	const dest = await getDirectoryHandle(
-	// 		'data/vanillaPacks/resourcePack',
-	// 		{ create: true }
-	// 	)
-	// 	await copyFolderByHandle(
-	// 		this.directoryEntries.vanillaResourcePack,
-	// 		dest
-	// 	)
-	// 	this.isForeignPack = false
-	// }
-	// await this.setup()
-	// }
 }
 
 create({
