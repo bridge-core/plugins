@@ -1,7 +1,7 @@
 const { create, SidebarContent, SelectableSidebarAction } =
 	await require('@bridge/sidebar')
 const { VanillaPackViewer, Header } = await require('@bridge/ui')
-const { addFolderImporter } = await require('@bridge/import')
+const { addFolderImporter, importHandle } = await require('@bridge/import')
 const { getDirectoryHandle, onBridgeFolderSetup } = await require('@bridge/fs')
 const { createInformationWindow } = await require('@bridge/windows')
 
@@ -64,11 +64,11 @@ class VanillaPackSidebarContent extends SidebarContent {
 			} else {
 				// Is valid
 				if (type === 'behaviorPack') {
-					this.addPack('behaviorPack', dirHandle)
+					this.addPack('behaviorPack', dirHandle, true)
 					this.isForeignPack = true
 				}
 				if (type === 'resourcePack') {
-					this.addPack('resourcePack', dirHandle)
+					this.addPack('resourcePack', dirHandle, true)
 					this.isForeignPack = true
 				}
 				await this.setup()
@@ -111,13 +111,13 @@ class VanillaPackSidebarContent extends SidebarContent {
 		}
 	}
 
-	addPack(type, dirHandle) {
+	addPack(type, dirHandle, showCannotLinkWarning = false) {
 		const formattedName = `vanilla${type[0].toUpperCase()}${type.substring(
 			1
 		)}`
 		for (const action of this.actions) {
 			if (action.config.id === formattedName) {
-				createInformationWindow(
+				if (showCannotLinkWarning) createInformationWindow(
 					'[Vanilla Packs]',
 					'[Cannot add pack because a pack of this type is already linked to the vanilla pack viewer!]'
 				)
@@ -136,6 +136,19 @@ class VanillaPackSidebarContent extends SidebarContent {
 			})
 		)
 		this.directoryEntries[formattedName] = dirHandle
+	}
+
+	getFileContextMenu(fileWrapper) {
+		return [
+			{ type: 'divider' },
+			{
+				icon: 'mdi-import',
+				name: '[Import to Project]',
+				onTrigger: async () => {
+					await importHandle(fileWrapper.handle)
+				}
+			}
+		]
 	}
 }
 

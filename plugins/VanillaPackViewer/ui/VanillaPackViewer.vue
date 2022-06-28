@@ -49,6 +49,7 @@
 				.toLowerCase()}${sidebarContent.selectedAction.config.id
 				.replace('vanilla', '')
 				.substring(1)}`,
+			provideFileContextMenu: sidebarContent.getFileContextMenu
 		}"
 		:directoryHandle="
 			sidebarContent.directoryEntries[
