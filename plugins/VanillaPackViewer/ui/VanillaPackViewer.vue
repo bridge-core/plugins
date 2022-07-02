@@ -88,7 +88,7 @@ export default {
 	methods: {
 		async download() {
 			createConfirmWindow(
-				"[This will bring you to a webpage where you can download the vanilla packs for any version. Once downloaded, extract the zip files and outside of bridge., drag the BP and RP into bridge.'s 'data/vanillaPacks/behaviorPack' and 'data/vanillaPacks/resourcePack' folders respectively.]",
+				"[This will bring you to a webpage where you can download the vanilla packs for any version. Once downloaded, extract the zip files and drag the extracted BP and RP onto bridge. to link them.]",
 				'[Download]',
 				'[Cancel]',
 				() => {
