@@ -50,14 +50,14 @@ register({
 create({
 	id: 'solvedDev.bridge.molangGrapher',
 	displayName: '[Molang Grapher]',
-	icon: 'mdi-function-variant',
+	icon: 'mdi-sine-wave',
 	onClick: async () => {
 		await createTab()
 	},
 })
 
 commandBar.registerAction({
-	icon: 'mdi-function-variant',
+	icon: 'mdi-sine-wave',
 	name: '[Open Molang Grapher]',
 	description: '[Open a Molang Grapher tab within bridge.]',
 	onTrigger: async () => {

@@ -1,8 +1,8 @@
 {
 	"author": "solvedDev",
-	"icon": "mdi-function-variant",
+	"icon": "mdi-sine-wave",
 	"name": "MoLang Grapher",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"id": "d1b0ddaf-4597-4b4d-822a-2198ab8c7c7c",
 	"description": "Integrates JannisX11's Molang Grapher into bridge. v2",
 	"api_version": 2,
@@ -10,5 +10,6 @@
 	"compatibleAppVersions": {
 		"min": "2.3.0"
 	},
+	"readme": "https://jannisx11.github.io/molang-grapher/",
 	"tags": ["Utility", "Curated"]
 }
