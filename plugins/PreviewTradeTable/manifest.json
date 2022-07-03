@@ -1,0 +1,15 @@
+{
+	"author": "rebrainertv",
+	"icon": "mdi-shop",
+	"name": "Preview Trade Table",
+	"version": "1.0.0",
+	"id": "ed00ec41-ebdf-495c-bb12-1b5ddc219c16",
+	"description": "Simulate trade tables within bridge.",
+	"api_version": 2,
+	"target": "v2",
+	"compatibleAppVersions": {
+		"min": "2.3.0"
+	},
+	"readme": "https://mcbe-essentials.github.io/",
+	"tags": ["Utility", "Curated"]
+}
