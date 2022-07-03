@@ -10,5 +10,9 @@
 	"compatibleAppVersions": {
 		"min": "2.3.0"
 	},
-	"tags": ["Utility", "Curated"]
+	"tags": [
+		"Utility",
+		"Curated"
+	],
+	"releaseTimestamp": 1656845697899
 }
