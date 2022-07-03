@@ -11,5 +11,9 @@
 		"min": "2.3.0"
 	},
 	"readme": "https://mcbe-essentials.github.io/",
-	"tags": ["Utility", "Curated"]
+	"tags": [
+		"Utility",
+		"Curated"
+	],
+	"releaseTimestamp": 1656847696506
 }
