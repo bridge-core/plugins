@@ -1,7 +1,7 @@
 {
 	"icon": "mdi-minecraft",
 	"author": "Joel ant 05",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"name": "Vanilla Pack Viewer",
 	"description": "This extension allows you to link or download vanilla packs, conveniently inside of bridge.!",
 	"id": "0eafbf72-cb35-40af-af51-f83e5a33976b",

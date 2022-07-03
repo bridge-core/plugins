@@ -278,7 +278,7 @@ class VanillaPackSidebarContent extends SidebarContent {
 								current = await current.getDirectoryHandle(folder)
 							}
 							const fileHandle = await current.getFileHandle(fileName)
-							await openFile(fileHandle, { isReadOnly: true })
+							await openFile(fileHandle, { readOnlyMode: 'forced' })
 						},
 					})
 				)
