@@ -11,5 +11,6 @@
 		"min": "2.3.0"
 	},
 	"readme": "https://jannisx11.github.io/molang-grapher/",
-	"tags": ["Utility", "Curated"]
+	"tags": ["Utility", "Curated"],
+	"releaseTimestamp": 1656845697899
 }
