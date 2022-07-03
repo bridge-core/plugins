@@ -4,6 +4,6 @@ const { Main } = await require('@bridge/ui')
 const sidebar = create({
 	id: 'solved.simpleTasks.sidebar',
 	icon: 'mdi-view-dashboard',
-	displayName: 'Tasks',
+	displayName: '[Tasks]',
 	component: Main,
 })
