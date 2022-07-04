@@ -10,7 +10,7 @@ class SimulateTradeTableTab extends IframeTab {
 async function createUrl(file) {
 	const fileContent = await file.text()
 	const url = new URL(
-		'http://127.0.0.1:5500/trade-table-editor/preview/index.html'
+		'https://mcbe-essentials.github.io/trade-table-editor/preview/'
 	)
 	url.searchParams.set(
 		'openTradeTable',
