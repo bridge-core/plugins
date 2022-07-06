@@ -1,8 +1,8 @@
 {
 	"author": "rebrainertv",
-	"icon": "mdi-shop",
+	"icon": "mdi-store-outline",
 	"name": "Preview Trade Table",
-	"version": "1.0.1",
+	"version": "1.1.0",
 	"id": "ed00ec41-ebdf-495c-bb12-1b5ddc219c16",
 	"description": "Simulate trade tables within bridge.",
 	"api_version": 2,

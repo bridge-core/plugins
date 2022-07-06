@@ -1,7 +1,8 @@
-const { IframeTab } = await require('@bridge/tab')
+const { IframeTab, getCurrentTabSystem, addTab } = await require('@bridge/tab')
 const { onFileChanged } = await require('@bridge/project')
 const { registerPreview } = await require('@bridge/tab-actions')
 const { zlibSync, strFromU8, strToU8 } = await require('@bridge/fflate')
+const { registerOpenWithHandler } = await require('@bridge/import')
 
 class SimulateTradeTableTab extends IframeTab {
 	type = 'SimulateTradeTableTab'
@@ -27,19 +28,20 @@ async function createUrl(file) {
 	return url.href
 }
 
-async function createTab(tabsSystem, originTab) {
-	const url = await createUrl(await originTab.getFile())
+async function createTab(tabSystem, fileHandle, filePath) {
+	const url = await createUrl(await fileHandle.getFile())
 
-	const tab = new SimulateTradeTableTab(tabsSystem, {
+	const tab = new SimulateTradeTableTab(tabSystem, {
 		url,
-		name: 'Preview: ' + originTab.name,
-		icon: originTab.icon,
-		iconColor: originTab.iconColor,
+		name: 'Preview: ' + fileHandle.name,
+		icon: 'mdi-store-outline',
+		iconColor: 'behaviorPack',
 	})
 
-	onFileChanged(originTab.getPath(), async (file) => {
-		tab.setUrl(await createUrl(file))
-	})
+	if (filePath)
+		onFileChanged(filePath, async (file) => {
+			tab.setUrl(await createUrl(file))
+		})
 
 	return tab
 }
@@ -47,5 +49,21 @@ async function createTab(tabsSystem, originTab) {
 registerPreview({
 	name: '[Simulate]',
 	fileType: 'tradeTable',
-	createPreview: (tabSystem, tab) => createTab(tabSystem, tab),
+	createPreview: (tabSystem, tab) =>
+		createTab(tabSystem, tab.getFileHandle(), tab.getPath()),
+})
+
+registerOpenWithHandler({
+	icon: 'mdi-store-outline',
+	name: '[Trade Table Preview]',
+	isAvailable: ({ filePath }) => filePath && filePath.includes('trading'),
+	onOpen: async ({ fileHandle, filePath }) => {
+		const tab = await createTab(
+			await getCurrentTabSystem(),
+			fileHandle,
+			filePath
+		)
+
+		addTab(tab)
+	},
 })
