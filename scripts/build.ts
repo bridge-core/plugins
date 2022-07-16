@@ -66,10 +66,10 @@ for await (const dirEntry of Deno.readDir('./plugins')) {
 				JSON.stringify(manifest, null, '\t')
 			)
 		}
-
-		// Add download link
-		manifest.link = `/plugins/${dirEntry.name}/plugin.zip`
 	}
+
+	// Add download link
+	manifest.link = `/plugins/${dirEntry.name}/plugin.zip`
 
 	if (manifest.target === 'both') {
 		extensions.push(manifest)
