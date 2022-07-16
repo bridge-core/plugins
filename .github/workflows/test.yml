@@ -16,8 +16,8 @@ jobs:
             - name: Setup Deno 🚧
               uses: denolib/setup-deno@v2
               with:
-                  deno-version: v1.7.X
+                  deno-version: v1.23.X
 
             - name: Run Tests 🔧
               run: |
-                  deno run --allow-read --allow-write --unstable ./scripts/test.ts
+                  deno task test

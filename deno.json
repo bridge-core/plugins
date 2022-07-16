@@ -1,0 +1,7 @@
+{
+	"tasks": {
+		"build": "deno run --allow-read --allow-write --unstable ./scripts/build.ts",
+		"build:all": "deno run --allow-read --allow-write --unstable ./scripts/build.ts --force",
+		"test": "deno run --allow-read --allow-write --unstable ./scripts/test.ts"
+	}
+}
