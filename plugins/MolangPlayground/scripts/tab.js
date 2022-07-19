@@ -31,7 +31,7 @@ class MolangPlaygroundTab extends IframeTab {
 async function createTab() {
 	await addTab(
 		new MolangPlaygroundTab(await getCurrentTabSystem(), {
-			url: 'https://bridge-core.app/molang-playground',
+			url: 'https://bridge-core.github.io/molang-playground',
 		})
 	)
 }
@@ -40,7 +40,9 @@ register({
 	icon: 'mdi-open-in-new',
 	name: '[Open New]',
 	trigger() {
-		openExternal('https://bridge-core.app/molang-playground/?molang=Q')
+		openExternal(
+			'https://bridge-core.github.io/molang-playground/?molang=Q'
+		)
 	},
 	isFor(tab) {
 		return tab.type === 'MolangPlaygroundTab'
