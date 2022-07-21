@@ -16,5 +16,9 @@
 			"convertObj": "plugin.js"
 		}
 	},
-	"tags": ["Compiler", "Curated"]
+	"tags": [
+		"Compiler",
+		"Curated"
+	],
+	"releaseTimestamp": 1658400014102
 }
