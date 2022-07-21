@@ -1,8 +1,8 @@
 {
 	"author": "solvedDev",
 	"icon": "mdi-vector-polygon",
-	"name": "Convert Obj",
-	"version": "1.0.0",
+	"name": "Convert OBJ",
+	"version": "1.0.1",
 	"id": "f76c1da1-1ee4-4a32-8deb-30e2d3fbc885",
 	"description": "Convert .obj files to Minecraft models",
 	"api_version": 2,
@@ -16,9 +16,6 @@
 			"convertObj": "plugin.js"
 		}
 	},
-	"tags": [
-		"Compiler",
-		"Curated"
-	],
+	"tags": ["Curated", "Compiler"],
 	"releaseTimestamp": 1658400014102
 }
