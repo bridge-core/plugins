@@ -1,5 +1,4 @@
 const defaultLanguages = [
-	'en_US',
 	'en_GB',
 	'de_DE',
 	'es_ES',
@@ -30,22 +29,34 @@ const defaultLanguages = [
 	'uk_UA',
 ]
 
-module.exports = ({ options }) => {
+module.exports = ({ options, projectConfig, console }) => {
 	let enUsContent = ''
+	const enUsPath = projectConfig.resolvePackPath(
+		'resourcePack',
+		`texts/en_US.lang`
+	)
 
 	return {
 		include() {
-			if (options.mode === 'build')
-				return defaultLanguages.map((lang) => `RP/texts/${lang}.lang`)
+			if (options.mode === 'production')
+				return defaultLanguages.map((lang) => [
+					projectConfig.resolvePackPath(
+						'resourcePack',
+						`texts/${lang}.lang`
+					),
+					{ isVirtual: true },
+				])
 		},
-		async read(filePath, fileHandle) {
+		read(filePath, fileHandle) {
+			if (options.mode !== 'production') return
+
 			if (filePath.endsWith('.lang')) {
 				if (!fileHandle) return ''
 				return fileHandle.getFile().then((file) => file.text())
 			}
 		},
-		async load(filePath, fileContent) {
-			if (filePath === `RP/texts/en_US.lang`) {
+		load(filePath, fileContent) {
+			if (filePath === enUsPath) {
 				enUsContent = fileContent
 			}
 		},
