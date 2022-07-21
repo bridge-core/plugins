@@ -29,7 +29,7 @@ const defaultLanguages = [
 	'uk_UA',
 ]
 
-module.exports = ({ options, projectConfig, console }) => {
+export default ({ options, projectConfig, console }) => {
 	let enUsContent = ''
 	const enUsPath = projectConfig.resolvePackPath(
 		'resourcePack',

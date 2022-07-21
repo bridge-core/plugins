@@ -1,4 +1,4 @@
-module.exports = () => {
+export default () => {
 	const textureList = 'RP/textures/texture_list.json'
 
 	return {

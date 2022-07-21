@@ -1,4 +1,4 @@
-module.exports = ({}) => {
+export default ({}) => {
 	return {
 		async load(filePath, fileHandle) {
 			if (!filePath.endsWith('.json')) return
