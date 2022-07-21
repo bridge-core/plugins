@@ -1,0 +1,20 @@
+{
+	"author": "solvedDev",
+	"icon": "mdi-vector-polygon",
+	"name": "Convert Obj",
+	"version": "1.0.0",
+	"id": "f76c1da1-1ee4-4a32-8deb-30e2d3fbc885",
+	"description": "Convert .obj files to Minecraft models",
+	"api_version": 2,
+	"target": "v2",
+	"readme": "https://github.com/bridge-core/plugins/tree/master/plugins/ConvertObj",
+	"compatibleAppVersions": {
+		"min": "2.3.0"
+	},
+	"compiler": {
+		"plugins": {
+			"convertObj": "plugin.js"
+		}
+	},
+	"tags": ["Compiler", "Curated"]
+}
