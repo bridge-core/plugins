@@ -1,0 +1,26 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_boat"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"WSW",
+			"WWW"
+		],
+		"key": {
+			"S": {
+				"item": "minecraft:wooden_shovel"
+			},
+			"W": {
+				"item": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_planks"
+			}
+		},
+		"result": {
+			"item": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_boat_spawn_egg"
+		}
+	}
+}

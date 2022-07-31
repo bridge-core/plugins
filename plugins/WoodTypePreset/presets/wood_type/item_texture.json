@@ -1,0 +1,7 @@
+{
+    "texture_data": {
+        "${{IDENTIFIER}}_boat": {
+            "textures": "textures/items/${{IDENTIFIER}}_boat.png"
+        }
+    }
+}

@@ -1,0 +1,27 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_fence"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"W#W",
+			"W#W"
+		],
+		"key": {
+			"#": {
+				"item": "minecraft:stick"
+			},
+			"W": {
+				"item": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_planks"
+			}
+		},
+		"result": {
+			"item": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_fence",
+			"count": 3
+		}
+	}
+}

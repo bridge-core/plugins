@@ -1,0 +1,25 @@
+{
+    "icon": "mdi-palm-tree",
+    "author": "gekocaretaker",
+    "id": "b607f993-52a0-498d-a0a0-3ea12583d05a",
+    "version": "1.0.0",
+    "name": "Wood Type Preset",
+    "target": "v2",
+    "readme": "https://github.com/bridge-core/plugins/tree/master/plugins/WoodTypePreset",
+    "description": "A preset that allows you to make a new wood type. Minecraft has 9 wood types built in.",
+    "api_version": 2,
+    "tags": [
+        "Presets"
+    ],
+    "contributeFiles": {
+        "contributions/custom_boat.animation.json": "RP/animations/custom_boat.animation.json",
+        "contributions/custom_fence_gate.geo.json": "RP/models/blocks/custom_fence_gate.geo.json",
+        "contributions/custom_fence.geo.json": "RP/models/blocks/custom_fence.geo.json",
+        "contributions/custom_slab.geo.json": "RP/models/blocks/custom_slab.geo.json",
+        "contributions/custom_stairs_upsidedown.geo.json": "RP/models/blocks/custom_stairs_upsidedown.geo.json",
+        "contributions/custom_stairs.geo.json": "RP/models/blocks/custom_stairs.geo.json",
+        "contributions/custom_trapdoor.geo.json": "RP/models/blocks/custom_trapdoor.geo.json",
+        "contributions/custom_boat.geo.json": "RP/models/entity/custom_boat.geo.json",
+        "contributions/custom_boat.render_controller.json": "RP/render_controllers/custom_boat.render_controller.json"
+    }
+} 

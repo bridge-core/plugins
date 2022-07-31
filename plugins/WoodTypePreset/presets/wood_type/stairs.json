@@ -1,0 +1,136 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs",
+            "properties": {
+                "bridge:in_world": [
+                    false,
+                    true
+                ],
+                "bridge:rotation": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "bridge:upsidedown": [
+                    false,
+                    true
+                ]
+            }
+        },
+        "components": {
+            "tag:wood": {},
+            "tag:stairs": {},
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "${{IDENTIFIER}}_planks",
+                    "render_method": "opaque",
+                    "ambient_occlusion": false,
+                    "face_dimming": true
+                }
+            },
+            "minecraft:block_light_absorption": 0,
+            "minecraft:creative_category": {
+                "category": "construction",
+                "group": "itemGroup.name.stairs"
+            },
+            "minecraft:geometry": "geometry.custom_stairs",
+            "minecraft:entity_collision": {
+                "origin": [
+                    -8,
+                    0,
+                    -8
+                ],
+                "size": [
+                    16,
+                    8,
+                    16
+                ]
+            },
+            "minecraft:breathability": "air",
+            "minecraft:part_visibility": {
+                "rules": {
+                    "inventory": "!query.block_property('bridge:in_world')",
+                    "nw": "query.block_property('bridge:in_world')",
+                    "ne": "query.block_property('bridge:in_world')",
+                    "se": "query.block_property('bridge:in_world')",
+                    "sw": "query.block_property('bridge:in_world')"
+                }
+            },
+            "minecraft:on_player_placing": {
+                "event": "bridge:on_place"
+            },
+            "minecraft:on_placed": {
+                "event": "bridge:on_placed"
+            },
+            "minecraft:flammable": {
+                "burn_odds": 5,
+                "flame_odds": 3
+            },
+            "minecraft:destroy_time": 3,
+            "minecraft:explosion_resistance": 3
+        },
+        "events": {
+            "bridge:on_place": {
+                "set_block_property": {
+                    "bridge:rotation": "query.cardinal_facing_2d",
+                    "bridge:upsidedown": "query.target_x_rotation <= 0"
+                }
+            },
+            "bridge:on_placed": {
+                "sequence": [
+                    {
+                        "condition": "query.block_property('bridge:rotation') == 2",
+                        "set_block": {
+                            "block_type": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_north"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:rotation') == 3",
+                        "set_block": {
+                            "block_type": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_south"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:rotation') == 4",
+                        "set_block": {
+                            "block_type": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_west"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:rotation') == 5",
+                        "set_block": {
+                            "block_type": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_east"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:upsidedown') && query.block_property('bridge:rotation') == 2",
+                        "set_block": {
+                            "block_type": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_north_upsidedown"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:upsidedown') && query.block_property('bridge:rotation') == 3",
+                        "set_block": {
+                            "block_type": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_south_upsidedown"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:upsidedown') && query.block_property('bridge:rotation') == 4",
+                        "set_block": {
+                            "block_type": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_west_upsidedown"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:upsidedown') && query.block_property('bridge:rotation') == 5",
+                        "set_block": {
+                            "block_type": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_east_upsidedown"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

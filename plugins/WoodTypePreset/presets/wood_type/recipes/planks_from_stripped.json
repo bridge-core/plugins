@@ -1,0 +1,23 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_planks_from_stripped"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"#"
+		],
+		"key": {
+			"#": {
+				"item": "${{PROJECT_PREFIX}}:stripped_${{IDENTIFIER}}_log"
+			}
+		},
+		"result": {
+			"item": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_planks",
+			"count": 4
+		}
+	}
+}

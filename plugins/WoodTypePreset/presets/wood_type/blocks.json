@@ -1,0 +1,56 @@
+{
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_leaves": {
+        "sound": "grass"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_log": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:stripped_${{IDENTIFIER}}_log": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_wood": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:stripped_${{IDENTIFIER}}_wood": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_slab": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_trapdoor": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_fence": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_fence_gate": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_east": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_east_upsidedown": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_north": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_north_upsidedown": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_south": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_south_upsidedown": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_west": {
+        "sound": "wood"
+    },
+    "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_west_upsidedown": {
+        "sound": "wood"
+    }
+}

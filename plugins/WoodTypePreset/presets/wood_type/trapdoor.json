@@ -1,0 +1,219 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_trapdoor",
+            "properties": {
+                "bridge:block_rotation": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "bridge:is_up": [
+                    false,
+                    true
+                ],
+                "bridge:is_open": [
+                    false,
+                    true
+                ]
+            }
+        },
+        "components": {
+            "tag:wood": {},
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "${{IDENTIFIER}}_trapdoor",
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:block_light_absorption": 0,
+            "minecraft:creative_category": {
+                "category": "construction",
+                "group": "itemGroup.name.trapdoor"
+            },
+            "minecraft:geometry": "geometry.custom_trapdoor",
+            "minecraft:breathability": "air",
+            "minecraft:on_player_placing": {
+                "event": "bridge:update_rotation"
+            },
+            "minecraft:on_interact": {
+                "event": "bridge:open_door"
+            },
+            "minecraft:part_visibility": {
+                "rules": {
+                    "down_close": "!query.block_property('bridge:is_up') && !query.block_property('bridge:is_open')",
+                    "up_close": "query.block_property('bridge:is_up') && !query.block_property('bridge:is_open')",
+                    "open": "query.block_property('bridge:is_open')"
+                }
+            },
+            "minecraft:flammable": {
+                "burn_odds": 5,
+                "flame_odds": 3
+            },
+            "minecraft:destroy_time": 3,
+            "minecraft:explosion_resistance": 3
+        },
+        "events": {
+            "bridge:update_rotation": {
+                "set_block_property": {
+                    "bridge:block_rotation": "query.cardinal_facing_2d",
+                    "bridge:is_open": false,
+                    "bridge:is_up": "query.target_x_rotation <= 0"
+                }
+            },
+            "bridge:open_door": {
+                "sequence": [
+                    {
+                        "condition": "!query.block_property('bridge:is_open')",
+                        "set_block_property": {
+                            "bridge:is_open": true
+                        },
+                        "run_command": {
+                            "command": "playsound random.door_open @a[r=8] ~ ~ ~"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:is_open')",
+                        "set_block_property": {
+                            "bridge:is_open": false
+                        },
+                        "run_command": {
+                            "command": "playsound random.door_close @a[r=8] ~ ~ ~"
+                        }
+                    }
+                ]
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('bridge:block_rotation') == 2",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        180,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition": "query.block_property('bridge:block_rotation') == 3",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition": "query.block_property('bridge:block_rotation') == 4",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        270,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition": "query.block_property('bridge:block_rotation') == 5",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        90,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition": "query.block_property('bridge:is_open')",
+                "components": {
+                    "minecraft:pick_collision": {
+                        "origin": [
+                            -8,
+                            0,
+                            5
+                        ],
+                        "size": [
+                            16,
+                            16,
+                            3
+                        ]
+                    },
+                    "minecraft:entity_collision": {
+                        "origin": [
+                            -8,
+                            0,
+                            5
+                        ],
+                        "size": [
+                            16,
+                            16,
+                            3
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "!query.block_property('bridge:is_open') && query.block_property('bridge:is_up')",
+                "components": {
+                    "minecraft:pick_collision": {
+                        "origin": [
+                            -8,
+                            13,
+                            -8
+                        ],
+                        "size": [
+                            16,
+                            3,
+                            16
+                        ]
+                    },
+                    "minecraft:entity_collision": {
+                        "origin": [
+                            -8,
+                            13,
+                            -8
+                        ],
+                        "size": [
+                            16,
+                            3,
+                            16
+                        ]
+                    }
+                }
+            },
+            {
+                "condition": "!query.block_property('bridge:is_open') && !query.block_property('bridge:is_up')",
+                "components": {
+                    "minecraft:pick_collision": {
+                        "origin": [
+                            -8,
+                            0,
+                            -8
+                        ],
+                        "size": [
+                            16,
+                            3,
+                            16
+                        ]
+                    },
+                    "minecraft:entity_collision": {
+                        "origin": [
+                            -8,
+                            0,
+                            -8
+                        ],
+                        "size": [
+                            16,
+                            3,
+                            16
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+}

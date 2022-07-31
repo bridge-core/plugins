@@ -1,0 +1,58 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_log"
+        },
+        "components": {
+            "tag:wood": {},
+            "tag:log": {},
+            "tag:fence_connectable": {},
+            "minecraft:unit_cube": {},
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "${{IDENTIFIER}}_log",
+                    "render_method": "opaque",
+                    "ambient_occlusion": false,
+                    "face_dimming": true
+                },
+                "up": {
+                    "texture": "${{IDENTIFIER}}_log_top",
+                    "render_method": "opaque",
+                    "ambient_occlusion": false,
+                    "face_dimming": true
+                },
+                "down": {
+                    "texture": "${{IDENTIFIER}}_log_top",
+                    "render_method": "opaque",
+                    "ambient_occlusion": false,
+                    "face_dimming": true
+                }
+            },
+            "bridge:log_rotate_on_place": {
+                "rotation_from": "block_face"
+            },
+            "minecraft:creative_category": {
+                "category": "nature",
+                "group": "itemGroup.name.log"
+            },
+            "minecraft:flammable": {
+                "burn_odds": 5,
+                "flame_odds": 5
+            },
+            "minecraft:destroy_time": 3,
+            "minecraft:explosion_resistance": 3,
+            "minecraft:on_interact": {
+                "condition": "query.equipped_item_any_tag('slot.weapon.mainhand', 0, 'minecraft:is_axe')",
+                "event": "bridge:become_stripped"
+            }
+        },
+        "events": {
+            "bridge:become_stripped": {
+                "set_block": {
+                    "block_type": "${{PROJECT_PREFIX}}:stripped_${{IDENTIFIER}}_log"
+                }
+            }
+        }
+    }
+}

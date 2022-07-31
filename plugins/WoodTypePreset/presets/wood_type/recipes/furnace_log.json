@@ -1,0 +1,13 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_furnace": {
+		"description": {
+			"identifier": "${{PROJECT_PREFIX}}:furnace_${{IDENTIFIER}}_log"
+		},
+		"tags": [
+			"furnace"
+		],
+		"input": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_log",
+		"output": "minecraft:coal:1"
+	}
+}
