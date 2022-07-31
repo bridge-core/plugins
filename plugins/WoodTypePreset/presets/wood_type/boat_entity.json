@@ -1,0 +1,40 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_boat",
+			"materials": {
+				"default": "skeleton"
+			},
+			"textures": {
+				"default": "textures/entity/boat/${{IDENTIFIER}}_boat"
+			},
+			"geometry": {
+				"default": "geometry.custom_boat"
+			},
+			"animations": {
+				"move": "animation.custom_boat.move",
+				"point": "animation.custom_boat.point",
+				"damage": "animation.custom_boat.damage",
+				"humanoid_big_head": "animation.humanoid.big_head",
+				"look_at_target": "animation.humanoid.look_at_target.default.v1.0"
+			},
+			"scripts": {
+				"animate": [
+					"point",
+					{
+						"move": "query.modified_move_speed"
+					}
+				]
+			},
+			"render_controllers": [
+				"controller.render.custom_boat"
+			],
+			"enable_attachables": false,
+			"spawn_egg": {
+				"texture": "${{IDENTIFIER}}_boat",
+				"texture_index": 1
+			}
+		}
+	}
+}

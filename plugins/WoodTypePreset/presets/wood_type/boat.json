@@ -1,0 +1,149 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_boat",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false
+        },
+        "components": {
+            "minecraft:type_family": {
+                "family": [
+                    "boat",
+                    "inanimate"
+                ]
+            },
+            "minecraft:knockback_resistance": {
+                "value": 100
+            },
+            "minecraft:behavior.rise_to_liquid_level": {
+                "priority": 0,
+                "liquid_y_offset": 0.25,
+                "rise_delta": 0.01,
+                "sink_delta": 0.01
+            },
+            "minecraft:lava_movement": {
+                "value": 0.2
+            },
+            "minecraft:hurt_on_condition": {
+                "damage_conditions": [
+                    {
+                        "filters": {
+                            "test": "in_lava",
+                            "subject": "self",
+                            "operator": "==",
+                            "value": true
+                        },
+                        "cause": "lava",
+                        "damage_per_tick": 0
+                    }
+                ]
+            },
+            "minecraft:buoyant": {
+                "apply_gravity": true,
+                "base_buoyancy": 0.6,
+                "simulate_waves": true,
+                "big_wave_probability": 0.03,
+                "big_wave_speed": 10.0,
+                "drag_down_on_buoyancy_removed": 0,
+                "liquid_blocks": [
+                    "lava",
+                    "water"
+                ]
+            },
+            "minecraft:breathable": {
+                "totalSupply": 50000,
+                "suffocateTime": 0,
+                "breathes_water": true
+            },
+            "minecraft:health": {
+                "value": 5,
+                "max": 5
+            },
+            "minecraft:movement": {
+                "value": 0.01
+            },
+            "minecraft:navigation.walk": {
+                "can_path_over_water": true,
+                "avoid_water": true
+            },
+            "minecraft:underwater_movement": {
+                "value": 0.1
+            },
+            "minecraft:movement.basic": {},
+            "minecraft:nameable": {},
+            "minecraft:leashable": {
+                "soft_distance": 4.0,
+                "hard_distance": 6.0,
+                "max_distance": 10.0,
+                "on_leash": {
+                    "event": "minecraft:on_leash",
+                    "target": "self"
+                },
+                "on_unleash": {
+                    "event": "minecraft:on_unleash",
+                    "target": "self"
+                }
+            },
+            "minecraft:loot": {
+                "table": "loot_tables/entities/${{IDENTIFIER}}_boat.json"
+            },
+            "minecraft:collision_box": {
+                "width": 1.4,
+                "height": 0.455
+            },
+            "minecraft:rideable": {
+                "seat_count": 2,
+                "interact_text": "action.interact.ride.boat",
+                "pull_in_entities": true,
+                "seats": [
+                    {
+                        "position": [
+                            0.0,
+                            0.3,
+                            0.0
+                        ],
+                        "min_rider_count": 0,
+                        "max_rider_count": 1
+                    },
+                    {
+                        "position": [
+                            0,
+                            0.3,
+                            0.0
+                        ],
+                        "min_rider_count": 2,
+                        "max_rider_count": 2
+                    },
+                    {
+                        "position": [
+                            0,
+                            0.3,
+                            -0.6
+                        ],
+                        "min_rider_count": 2,
+                        "max_rider_count": 2
+                    }
+                ]
+            },
+            "minecraft:behavior.mount_pathing": {
+                "priority": 2,
+                "speed_multiplier": 1.5,
+                "target_dist": 4.0,
+                "track_target": true
+            },
+            "minecraft:behavior.player_ride_tamed": {},
+            "minecraft:input_ground_controlled": {},
+            "minecraft:jump.static": {},
+            "minecraft:balloonable": {},
+            "minecraft:is_tamed": {},
+            "minecraft:physics": {},
+            "minecraft:is_stackable": {},
+            "minecraft:pushable": {
+                "is_pushable": true,
+                "is_pushable_by_piston": true
+            }
+        }
+    }
+}

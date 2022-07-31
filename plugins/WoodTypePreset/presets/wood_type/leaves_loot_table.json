@@ -1,0 +1,14 @@
+{
+	"pools": [
+		{
+			"rolls": 1,
+			"entries": [
+				{
+					"type": "item",
+					"name": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_leaves",
+					"weight": 1
+				}
+			]
+		}
+	]
+}
