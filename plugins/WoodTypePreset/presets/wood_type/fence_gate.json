@@ -36,7 +36,6 @@
                 "group": "itemGroup.name.fenceGate"
             },
             "minecraft:geometry": "geometry.custom_fence_gate",
-            "minecraft:unwalkable": true,
             "minecraft:breathability": "air",
             "minecraft:on_player_placing": {
                 "event": "bridge:update_rotation"
