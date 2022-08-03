@@ -1,0 +1,113 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "${{PROJECT_PREFIX}}:stairs_help",
+            "is_summonable": true,
+            "is_spawnable": false,
+            "is_experimental": false
+        },
+        "component_groups": {
+            "bridge:collision": {
+                "minecraft:environment_sensor": {
+                    "triggers": {
+                        "filters": {
+                            "test": "distance_to_nearest_player",
+                            "operator": ">",
+                            "value": 2
+                        },
+                        "event": "bridge:set",
+                        "target": "self"
+                    }
+                }
+            },
+            "bridge:f": {
+                "minecraft:instant_despawn": {}
+            }
+        },
+        "components": {
+            "minecraft:collision_box": {
+                "width": 0,
+                "height": 0
+            },
+            "minecraft:pushable": {
+                "is_pushable": false,
+                "is_pushable_by_piston": false
+            },
+            "minecraft:physics": {
+                "has_collision": false,
+                "has_gravity": false
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            },
+            "minecraft:health": {
+                "value": 1,
+                "max": 1
+            },
+            "minecraft:inside_block_notifier": {
+                "block_list": [
+                    {
+                        "block": {
+                            "name": "minecraft:air"
+                        },
+                        "entered_block_event": {
+                            "event": "bridge:f",
+                            "target": "self"
+                        }
+                    },
+                    {
+                        "block": {
+                            "name": "${{PROJECT_PREFIX}}:stairs_collision"
+                        },
+                        "entered_block_event": {
+                            "event": "bridge:change",
+                            "target": "self"
+                        }
+                    }
+                ]
+            },
+            "minecraft:custom_hit_test": {
+                "hitboxes": [
+                    {
+                        "width": 0,
+                        "height": 0,
+                        "pivot": [
+                            0,
+                            0,
+                            0
+                        ]
+                    }
+                ]
+            }
+        },
+        "events": {
+            "bridge:change": {
+                "add": {
+                    "component_groups": [
+                        "bridge:collision"
+                    ]
+                }
+            },
+            "bridge:set": {
+                "run_command": {
+                    "command": [
+                        "setblock ~ ~ ~ air"
+                    ]
+                }
+            },
+            "bridge:f": {
+                "add": {
+                    "component_groups": [
+                        "bridge:f"
+                    ]
+                }
+            }
+        }
+    }
+}

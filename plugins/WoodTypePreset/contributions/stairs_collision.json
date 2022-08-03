@@ -1,0 +1,109 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "${{PROJECT_PREFIX}}:stairs_collision",
+            "properties": {
+                "minecraft:direction": {}
+            }
+        },
+        "components": {
+            "minecraft:block_light_absorption": 0,
+            "minecraft:geometry": "geometry.custom_stairs",
+            "minecraft:on_placed": {
+                "event": "bridge:help",
+                "target": "self"
+            },
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "empty",
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:entity_collision": {
+                "origin": [
+                    -8,
+                    0,
+                    -8
+                ],
+                "size": [
+                    16,
+                    0.1,
+                    8
+                ]
+            },
+            "minecraft:pick_collision": false,
+            "minecraft:placement_filter": {
+                "conditions": [
+                    {
+                        "block_filter": [
+                            {
+                                "tags": "query.any_tag('stairs')"
+                            }
+                        ],
+                        "allowed_faces": [
+                            "up"
+                        ]
+                    }
+                ]
+            },
+            "minecraft:loot": "loot_tables/empty.json"
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('minecraft:direction') == 0",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:direction') == 1",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        180,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:direction') == 2",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        90,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition": "query.block_property('minecraft:direction') == 3",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        270,
+                        0
+                    ]
+                }
+            }
+        ],
+        "events": {
+            "bridge:direction": {
+                "set_block_property": {
+                    "minecraft:direction": "query.cardinal_facing_2d-2"
+                }
+            },
+            "bridge:help": {
+                "run_command": {
+                    "command": [
+                        "summon ${{PROJECT_PREFIX}}:stairs_help"
+                    ]
+                }
+            }
+        }
+    }
+}

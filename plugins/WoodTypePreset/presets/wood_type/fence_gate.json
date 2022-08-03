@@ -1,0 +1,153 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:block": {
+        "description": {
+            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_fence_gate",
+            "properties": {
+                "bridge:block_rotation": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "bridge:player_facing": [
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "bridge:is_open": [
+                    false,
+                    true
+                ]
+            }
+        },
+        "components": {
+            "tag:wood": {},
+            "minecraft:material_instances": {
+                "*": {
+                    "texture": "${{IDENTIFIER}}_planks",
+                    "render_method": "alpha_test"
+                }
+            },
+            "minecraft:block_light_absorption": 0,
+            "minecraft:creative_category": {
+                "category": "construction",
+                "group": "itemGroup.name.fenceGate"
+            },
+            "minecraft:geometry": "geometry.custom_fence_gate",
+            "minecraft:unwalkable": true,
+            "minecraft:breathability": "air",
+            "minecraft:on_player_placing": {
+                "event": "bridge:update_rotation"
+            },
+            "minecraft:on_interact": {
+                "event": "bridge:open_gate"
+            },
+            "minecraft:part_visibility": {
+                "rules": {
+                    "closed": "!query.block_property('bridge:is_open')",
+                    "open_north": "query.block_property('bridge:is_open') && (query.block_property('bridge:player_facing') == 2 || query.block_property('bridge:player_facing') == 4)",
+                    "open_south": "query.block_property('bridge:is_open') && (query.block_property('bridge:player_facing') == 3 || query.block_property('bridge:player_facing') == 5)"
+                }
+            },
+            "minecraft:pick_collision": {
+                "origin": [
+                    -8,
+                    0,
+                    -1
+                ],
+                "size": [
+                    16,
+                    16,
+                    2
+                ]
+            },
+            "minecraft:entity_collision": {
+                "origin": [
+                    -8,
+                    0,
+                    -1
+                ],
+                "size": [
+                    16,
+                    16,
+                    2
+                ]
+            },
+            "minecraft:flammable": {
+                "burn_odds": 5,
+                "flame_odds": 3
+            },
+            "minecraft:destroy_time": 3,
+            "minecraft:explosion_resistance": 3
+        },
+        "events": {
+            "bridge:update_rotation": {
+                "set_block_property": {
+                    "bridge:block_rotation": "query.cardinal_facing_2d",
+                    "bridge:is_open": false
+                }
+            },
+            "bridge:open_gate": {
+                "sequence": [
+                    {
+                        "set_block_property": {
+                            "bridge:player_facing": "query.cardinal_facing_2d"
+                        }
+                    },
+                    {
+                        "condition": "!query.block_property('bridge:is_open')",
+                        "set_block_property": {
+                            "bridge:is_open": true
+                        },
+                        "run_command": {
+                            "command": "playsound random.door_open @a[r=8] ~ ~ ~"
+                        }
+                    },
+                    {
+                        "condition": "query.block_property('bridge:is_open')",
+                        "set_block_property": {
+                            "bridge:is_open": false
+                        },
+                        "run_command": {
+                            "command": "playsound random.door_close @a[r=8] ~ ~ ~"
+                        }
+                    }
+                ]
+            }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('bridge:block_rotation') == 2 || query.block_property('bridge:block_rotation') == 3",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        0,
+                        0
+                    ],
+                    "tag:fence-connectable-east": {},
+                    "tag:fence-connectable-west": {}
+                }
+            },
+            {
+                "condition": "query.block_property('bridge:block_rotation') == 4 || query.block_property('bridge:block_rotation') == 5",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        90,
+                        0
+                    ],
+                    "tag:fence-connectable-north": {},
+                    "tag:fence-connectable-south": {}
+                }
+            },
+            {
+                "condition": "query.block_property('bridge:is_open')",
+                "components": {
+                    "minecraft:entity_collision": false
+                }
+            }
+        ]
+    }
+}

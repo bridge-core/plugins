@@ -1,0 +1,31 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "${{PROJECT_PREFIX}}:soul_campfire_from_soul_soil_and_stripped_${{IDENTIFIER}}_log"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			" A ",
+			"ABA",
+			"CCC"
+		],
+		"key": {
+			"A": {
+				"item": "minecraft:stick"
+			},
+			"B": {
+				"item": "minecraft:soul_soil"
+			},
+			"C": {
+				"item": "${{PROJECT_PREFIX}}:stripped_${{IDENTIFIER}}_log"
+			}
+		},
+		"result": {
+			"item": "minecraft:soul_campfire"
+		},
+		"priority": 2
+	}
+}

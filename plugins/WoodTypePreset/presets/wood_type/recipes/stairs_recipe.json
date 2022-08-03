@@ -1,0 +1,25 @@
+{
+	"format_version": "1.12",
+	"minecraft:recipe_shaped": {
+		"description": {
+			"identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs"
+		},
+		"tags": [
+			"crafting_table"
+		],
+		"pattern": [
+			"#  ",
+			"## ",
+			"###"
+		],
+		"key": {
+			"#": {
+				"item": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_planks"
+			}
+		},
+		"result": {
+			"item": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs",
+			"count": 4
+		}
+	}
+}

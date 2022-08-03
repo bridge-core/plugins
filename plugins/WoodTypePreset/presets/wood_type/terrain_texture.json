@@ -1,0 +1,25 @@
+{
+    "texture_data": {
+        "${{IDENTIFIER}}_planks": {
+            "textures": "textures/blocks/wood_types/${{IDENTIFIER}}/${{IDENTIFIER}}_planks"
+        },
+        "${{IDENTIFIER}}_leaves": {
+            "textures": "textures/blocks/wood_types/${{IDENTIFIER}}/${{IDENTIFIER}}_leaves"
+        },
+        "${{IDENTIFIER}}_log": {
+            "textures": "textures/blocks/wood_types/${{IDENTIFIER}}/${{IDENTIFIER}}_log"
+        },
+        "${{IDENTIFIER}}_log_top": {
+            "textures": "textures/blocks/wood_types/${{IDENTIFIER}}/${{IDENTIFIER}}_log_top"
+        },
+        "stripped_${{IDENTIFIER}}_log": {
+            "textures": "textures/blocks/wood_types/${{IDENTIFIER}}/stripped_${{IDENTIFIER}}_log"
+        },
+        "stripped_${{IDENTIFIER}}_log_top": {
+            "textures": "textures/blocks/wood_types/${{IDENTIFIER}}/stripped_${{IDENTIFIER}}_log_top"
+        },
+        "${{IDENTIFIER}}_trapdoor": {
+            "textures": "textures/blocks/wood_types/${{IDENTIFIER}}/${{IDENTIFIER}}_trapdoor"
+        }
+    }
+}
