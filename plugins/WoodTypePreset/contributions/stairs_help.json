@@ -2,7 +2,7 @@
     "format_version": "1.16.100",
     "minecraft:entity": {
         "description": {
-            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_help",
+            "identifier": "${{PROJECT_PREFIX}}:stairs_help",
             "is_summonable": true,
             "is_spawnable": false,
             "is_experimental": false
@@ -63,7 +63,7 @@
                     },
                     {
                         "block": {
-                            "name": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_collision"
+                            "name": "${{PROJECT_PREFIX}}:stairs_collision"
                         },
                         "entered_block_event": {
                             "event": "bridge:change",

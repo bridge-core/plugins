@@ -2,7 +2,7 @@
     "format_version": "1.16.100",
     "minecraft:block": {
         "description": {
-            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}stairs_collision",
+            "identifier": "${{PROJECT_PREFIX}}:stairs_collision",
             "properties": {
                 "minecraft:direction": {}
             }
@@ -100,7 +100,7 @@
             "bridge:help": {
                 "run_command": {
                     "command": [
-                        "summon ${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_help"
+                        "summon ${{PROJECT_PREFIX}}:stairs_help"
                     ]
                 }
             }

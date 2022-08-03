@@ -30,6 +30,7 @@
             "tag:wood": {},
             "tag:stairs": {},
             "tag:stairs-west": {},
+            "tag:fence-connectable-east": {},
             "minecraft:material_instances": {
                 "*": {
                     "texture": "${{IDENTIFIER}}_planks",
@@ -100,7 +101,7 @@
             "bridge:upper_collision": {
                 "run_command": {
                     "command": [
-                        "setblock ~ ~1 ~ ${{PROJECT_PREFIX}}:${{IDENTIFIER}}_stairs_collision[\"direction\":2]"
+                        "setblock ~ ~1 ~ ${{PROJECT_PREFIX}}:stairs_collision[\"direction\":2]"
                     ]
                 }
             }

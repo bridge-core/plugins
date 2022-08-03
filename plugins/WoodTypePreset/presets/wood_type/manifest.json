@@ -20,491 +20,535 @@
         "presetScript/blockImages.js",
         [
             "planks.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_planks.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_planks.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "log.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_log.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_log.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stripped_log.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_log.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_log.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "wood.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_wood.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_wood.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stripped_wood.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_wood.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_wood.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "leaves.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_leaves.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_leaves.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "fence.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_fence.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_fence.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "fence_gate.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_fence_gate.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_fence_gate.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "slab.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_slab.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_slab.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "boat.json",
-            "BP/entities/{{PRESET_PATH}}/{{IDENTIFIER}}_boat.json",
+            "entities/{{PRESET_PATH}}/{{IDENTIFIER}}_boat.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "boat_entity.json",
-            "RP/entity/{{PRESET_PATH}}/{{IDENTIFIER}}_boat.entity.json",
+            "entity/{{PRESET_PATH}}/{{IDENTIFIER}}_boat.entity.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_east.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_east.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_east.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_east_upsidedown.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_east_upsidedown.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_east_upsidedown.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_north.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_north.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_north.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_north_upsidedown.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_north_upsidedown.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_north_upsidedown.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_south.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_south.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_south.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_south_upsidedown.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_south_upsidedown.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_south_upsidedown.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_west.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_west.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_west.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_west_upsidedown.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_west_upsidedown.json",
+            "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_west_upsidedown.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
-            }
-        ],
-        [
-            "stairs_collision.json",
-            "BP/blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_stairs_collision.json",
-            {
-                "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
-            }
-        ],
-        [
-            "stairs_help.json",
-            "BP/entities/{{PRESET_PATH}}/{{IDENTIFIER}}_stairs_help.json",
-            {
-                "inject": [ "IDENTIFIER","PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "leaves_loot_table.json",
-            "BP/loot_tables/blocks/{{PRESET_PATH}}/{{IDENTIFIER}}_leaves.json",
+            "loot_tables/blocks/{{PRESET_PATH}}/{{IDENTIFIER}}_leaves.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "leaves_loot_table_loot.json",
-            "BP/loot_tables/blocks/{{PRESET_PATH}}/{{IDENTIFIER}}_leaves_loot.json",
+            "loot_tables/blocks/{{PRESET_PATH}}/{{IDENTIFIER}}_leaves_loot.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "stairs_loot_table.json",
-            "BP/loot_tables/blocks/{{PRESET_PATH}}/{{IDENTIFIER}}_stairs.json",
+            "loot_tables/blocks/{{PRESET_PATH}}/{{IDENTIFIER}}_stairs.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "double_slab_loot_table.json",
-            "BP/loot_tables/blocks/{{PRESET_PATH}}/double_{{IDENTIFIER}}_slab.json",
+            "loot_tables/blocks/{{PRESET_PATH}}/double_{{IDENTIFIER}}_slab.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "boat_loot_table.json",
-            "BP/loot_tables/entities/{{PRESET_PATH}}/{{IDENTIFIER}}_boat.json",
+            "loot_tables/entities/{{PRESET_PATH}}/{{IDENTIFIER}}_boat.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/boat_recipe.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_boat.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_boat.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/fence_gate_recipe.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_fence_gate.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_fence_gate.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/fence_recipe.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_fence.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_fence.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/scfssasl.json",
-            "BP/recipes/{{PRESET_PATH}}/soul_campfire_from_soul_soil_and_stripped_{{IDENTIFIER}}_log.json",
+            "recipes/{{PRESET_PATH}}/soul_campfire_from_soul_soil_and_stripped_{{IDENTIFIER}}_log.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
-            "recipes/scfsSandasl.json",
-            "BP/recipes/{{PRESET_PATH}}/soul_campfire_from_soul_sand_and_stripped_{{IDENTIFIER}}_log.json",
+            "recipes/scfssandasl.json",
+            "recipes/{{PRESET_PATH}}/soul_campfire_from_soul_sand_and_stripped_{{IDENTIFIER}}_log.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/smoker_from_stripped.json",
-            "BP/recipes/{{PRESET_PATH}}/smoker_from_stripped_{{IDENTIFIER}}.json",
+            "recipes/{{PRESET_PATH}}/smoker_from_stripped_{{IDENTIFIER}}.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/furnace_stripped_wood.json",
-            "BP/recipes/{{PRESET_PATH}}/furnace_stripped_{{IDENTIFIER}}_wood.json",
+            "recipes/{{PRESET_PATH}}/furnace_stripped_{{IDENTIFIER}}_wood.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/furnace_stripped_log.json",
-            "BP/recipes/{{PRESET_PATH}}/furnace_stripped_{{IDENTIFIER}}_log.json",
+            "recipes/{{PRESET_PATH}}/furnace_stripped_{{IDENTIFIER}}_log.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/furnace_wood.json",
-            "BP/recipes/{{PRESET_PATH}}/furnace_{{IDENTIFIER}}_wood.json",
+            "recipes/{{PRESET_PATH}}/furnace_{{IDENTIFIER}}_wood.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/furnace_log.json",
-            "BP/recipes/{{PRESET_PATH}}/furnace_{{IDENTIFIER}}_log.json",
+            "recipes/{{PRESET_PATH}}/furnace_{{IDENTIFIER}}_log.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/cfsl.json",
-            "BP/recipes/{{PRESET_PATH}}/campfire_from_stripped_{{IDENTIFIER}}_log.json",
+            "recipes/{{PRESET_PATH}}/campfire_from_stripped_{{IDENTIFIER}}_log.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/cfcsl.json",
-            "BP/recipes/{{PRESET_PATH}}/campfire_from_charcoal_stripped_{{IDENTIFIER}}_log.json",
+            "recipes/{{PRESET_PATH}}/campfire_from_charcoal_stripped_{{IDENTIFIER}}_log.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/wood_stripped.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_wood_stripped.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_wood_stripped.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/slab_recipe.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_slab.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_slab.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/wood.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_wood.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_wood.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/stairs_recipe.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_stairs.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_stairs.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/planks_from_wood.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_planks_from_wood.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_planks_from_wood.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/planks_from_stripped_wood.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_planks_from_stripped_wood.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_planks_from_stripped_wood.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/planks_from_stripped.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_planks_from_stripped.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_planks_from_stripped.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/planks.json",
-            "BP/recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_planks.json",
+            "recipes/{{PRESET_PATH}}/{{IDENTIFIER}}_planks.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "recipes/stick_from_planks.json",
-            "BP/recipes/{{PRESET_PATH}}/stick_from_{{IDENTIFIER}}_planks.json",
+            "recipes/{{PRESET_PATH}}/stick_from_{{IDENTIFIER}}_planks.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "behaviorPack"
             }
         ],
         [
             "boat_item.png",
-            "RP/textures/items/{{IDENTIFIER}}_boat.png",
+            "textures/items/{{IDENTIFIER}}_boat.png",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "boat.png",
-            "RP/textures/entity/{{IDENTIFIER}}_boat.png",
+            "textures/entity/{{IDENTIFIER}}_boat.png",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "log_top.png",
-            "RP/textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_log_top.png",
+            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_log_top.png",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "log.png",
-            "RP/textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_log.png",
+            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_log.png",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "planks.png",
-            "RP/textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_planks.png",
+            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_planks.png",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "stripped_log_top.png",
-            "RP/textures/blocks/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_log_top.png",
+            "textures/blocks/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_log_top.png",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "stripped_log.png",
-            "RP/textures/blocks/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_log.png",
+            "textures/blocks/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_log.png",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "trapdoor.png",
-            "RP/textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_trapdoor.png",
+            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_trapdoor.png",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "leaves_carried.tga",
-            "RP/textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_leaves.tga",
+            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_leaves.tga",
             {
                 "inject": [ "IDENTIFIER" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ]
     ],
     "expandFiles": [
         [
             "en_US.lang",
-            "RP/texts/en_US.lang",
+            "texts/en_US.lang",
             {
                 "inject": [ "IDENTIFIER", "DISPLAY_NAME", "PROJECT_PREFIX" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "item_texture.json",
-            "RP/textures/item_texture.json",
+            "textures/item_texture.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "terrain_texture.json",
-            "RP/terrain_texture.json",
+            "terrain_texture.json",
             {
                 "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ],
         [
             "blocks.json",
-            "RP/blocks.json",
+            "blocks.json",
             {
-                "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ]
+                "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
+                "openFile": false,
+                "packPath": "resourcePack"
             }
         ]
     ],

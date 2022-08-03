@@ -7,6 +7,7 @@
         "components": {
             "tag:wood": {},
             "tag:planks": {},
+            "tag:fence-connectable": {},
             "tag:fence_connectable": {},
             "minecraft:unit_cube": {},
             "minecraft:material_instances": {

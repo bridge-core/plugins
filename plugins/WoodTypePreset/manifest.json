@@ -20,6 +20,8 @@
         "contributions/custom_stairs.geo.json": "RP/models/blocks/custom_stairs.geo.json",
         "contributions/custom_trapdoor.geo.json": "RP/models/blocks/custom_trapdoor.geo.json",
         "contributions/custom_boat.geo.json": "RP/models/entity/custom_boat.geo.json",
-        "contributions/custom_boat.render_controller.json": "RP/render_controllers/custom_boat.render_controller.json"
+        "contributions/custom_boat.render_controller.json": "RP/render_controllers/custom_boat.render_controller.json",
+        "contributions/stairs_collision.json": "BP/blocks/stairs_collision.json",
+        "contributions/stairs_help.json": "BP/entities/stairs_help.json"
     }
 } 
