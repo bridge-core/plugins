@@ -85,7 +85,6 @@
                     "event": "e:update.neighbors"
                 }
             },
-            "minecraft:unwalkable": true,
             "minecraft:on_player_placing": {
                 "event": "bridge:create_fence"
             },
