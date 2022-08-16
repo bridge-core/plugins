@@ -2,7 +2,14 @@
     "format_version": "1.16.100",
     "minecraft:block": {
         "description": {
-            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_log"
+            "identifier": "${{PROJECT_PREFIX}}:${{IDENTIFIER}}_log",
+            "properties": {
+                "bridge:block_rotation": [
+                    0,
+                    1,
+                    2
+                ]
+            }
         },
         "components": {
             "tag:wood": {},
@@ -29,9 +36,6 @@
                     "face_dimming": true
                 }
             },
-            "bridge:log_rotate_on_place": {
-                "rotation_from": "block_face"
-            },
             "minecraft:creative_category": {
                 "category": "nature",
                 "group": "itemGroup.name.log"
@@ -45,6 +49,9 @@
             "minecraft:on_interact": {
                 "condition": "query.equipped_item_any_tag('slot.weapon.mainhand', 0, 'minecraft:is_axe')",
                 "event": "bridge:become_stripped"
+            },
+            "minecraft:on_player_placing": {
+                "event": "bridge:update_rotation"
             }
         },
         "events": {
@@ -52,7 +59,44 @@
                 "set_block": {
                     "block_type": "${{PROJECT_PREFIX}}:stripped_${{IDENTIFIER}}_log"
                 }
+            },
+            "bridge:update_rotation": {
+                "set_block_property": {
+                    "bridge:block_rotation": "math.floor(query.block_face / 2.0)"
+                }
             }
-        }
+        },
+        "permutations": [
+            {
+                "condition": "query.block_property('bridge:block_rotation') == 0",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        0,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition":"query.block_property('bridge:block_rotation') == 1",
+                "components": {
+                    "minecraft:rotation": [
+                        90,
+                        0,
+                        0
+                    ]
+                }
+            },
+            {
+                "condition":"query.block_property('bridge:block_rotation') == 2",
+                "components": {
+                    "minecraft:rotation": [
+                        0,
+                        90,
+                        -90
+                    ]
+                }
+            }
+        ]
     }
 }

@@ -43,7 +43,7 @@
 					"render_method": "opaque"
 				}
 			},
-			"minecraft:bridge:on_player_placing": {
+			"minecraft:on_player_placing": {
 				"event": "bridge:on_player_placing",
 				"target": "self"
 			},

@@ -28,7 +28,7 @@
             "tag:stairs-east-upsidedown": {},
             "minecraft:material_instances": {
                 "*": {
-                    "texture": "planks_black_spruce",
+                    "texture": "${{IDENTIFIER}}_planks",
                     "render_method": "opaque",
                     "ambient_occlusion": false,
                     "face_dimming": true
