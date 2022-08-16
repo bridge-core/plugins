@@ -52,78 +52,80 @@ export default function defineComponent({ name, template, schema }) {
 	})
 
 	template(({ sensors }, { create, player, identifier }) => {
-		sensors.forEach((sensor, i) => {
-			const tag = `bridge:${identifier.split(':').pop()}_sensor_${i}`
-			const query = `query.equipped_item_any_tag('${
-				sensor.slot ?? 'slot.weapon.mainhand'
-			}', '${tag}')`
-			const equipEvent = `${tag}_on_equip`
-			const unequipEvent = `${tag}_on_unequip`
-
-			const entry = sensor.on_equip
-				? [`@s ${equipEvent}`, ...sensor.on_equip]
-				: [`@s ${equipEvent}`]
-			const exit = sensor.on_unequip
-				? [`@s ${unequipEvent}`, ...sensor.on_unequip]
-				: [`@s ${unequipEvent}`]
-
-			create(
-				{
-					[`tag:${tag}`]: {},
-				},
-				'minecraft:item/components'
-			)
-
-			player.animationController({
-				initial_state: 'not_equipped',
-				states: {
-					not_equipped: {
-						transitions: [
-							{
-								is_equipped: query,
-							},
-						],
+		if (sensors && Array.isArray(sensors)) {
+			sensors.forEach((sensor, i) => {
+				const tag = `bridge:${identifier.split(':').pop()}_sensor_${i}`
+				const query = `query.equipped_item_any_tag('${
+					sensor.slot ?? 'slot.weapon.mainhand'
+				}', '${tag}')`
+				const equipEvent = `${tag}_on_equip`
+				const unequipEvent = `${tag}_on_unequip`
+	
+				const entry = sensor.on_equip
+					? [`@s ${equipEvent}`, ...sensor.on_equip]
+					: [`@s ${equipEvent}`]
+				const exit = sensor.on_unequip
+					? [`@s ${unequipEvent}`, ...sensor.on_unequip]
+					: [`@s ${unequipEvent}`]
+	
+				create(
+					{
+						[`tag:${tag}`]: {},
 					},
-					is_equipped: {
-						transitions: [
-							{
-								not_equipped: `!${query}`,
-							},
-						],
-						on_entry: entry,
-						on_exit: exit,
+					'minecraft:item/components'
+				)
+	
+				player.animationController({
+					initial_state: 'not_equipped',
+					states: {
+						not_equipped: {
+							transitions: [
+								{
+									is_equipped: query,
+								},
+							],
+						},
+						is_equipped: {
+							transitions: [
+								{
+									not_equipped: `!${query}`,
+								},
+							],
+							on_entry: entry,
+							on_exit: exit,
+						},
 					},
-				},
+				})
+	
+				player.create(
+					{
+						[`${tag}_equipped`]: { ...sensor.is_equipped },
+						[`${tag}_unequipped`]: { ...sensor.is_unequipped },
+					},
+					'minecraft:entity/component_groups'
+				)
+				player.create(
+					{
+						[equipEvent]: {
+							add: {
+								component_groups: [`${tag}_equipped`],
+							},
+							remove: {
+								component_groups: [`${tag}_unequipped`],
+							},
+						},
+						[unequipEvent]: {
+							add: {
+								component_groups: [`${tag}_unequipped`],
+							},
+							remove: {
+								component_groups: [`${tag}_equipped`],
+							},
+						},
+					},
+					'minecraft:entity/events'
+				)
 			})
-
-			player.create(
-				{
-					[`${tag}_equipped`]: { ...sensor.is_equipped },
-					[`${tag}_unequipped`]: { ...sensor.is_unequipped },
-				},
-				'minecraft:entity/component_groups'
-			)
-			player.create(
-				{
-					[equipEvent]: {
-						add: {
-							component_groups: [`${tag}_equipped`],
-						},
-						remove: {
-							component_groups: [`${tag}_unequipped`],
-						},
-					},
-					[unequipEvent]: {
-						add: {
-							component_groups: [`${tag}_unequipped`],
-						},
-						remove: {
-							component_groups: [`${tag}_equipped`],
-						},
-					},
-				},
-				'minecraft:entity/events'
-			)
-		})
+		}
 	})
 }
