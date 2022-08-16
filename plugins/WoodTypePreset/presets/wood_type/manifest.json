@@ -17,7 +17,7 @@
         ]
     },
     "createFiles": [
-        "presetScript/tripleOptionalImage.js",
+        "./tripleOptionalImage.js",
         [
             "planks.json",
             "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_planks.json",
