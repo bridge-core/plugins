@@ -25,7 +25,7 @@
             "minecraft:material_instances": {
                 "*": {
                     "texture": "${{IDENTIFIER}}_trapdoor",
-                    "render_method": "alpha_test"
+                    "render_method": "blend"
                 }
             },
             "minecraft:block_light_absorption": 0,

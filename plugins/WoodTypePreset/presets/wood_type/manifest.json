@@ -17,7 +17,7 @@
         ]
     },
     "createFiles": [
-        "presetScript/blockImages.js",
+        "presetScript/tripleOptionalImage.js",
         [
             "planks.json",
             "blocks/{{PRESET_PATH}}/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_planks.json",
@@ -431,87 +431,6 @@
                 "openFile": false,
                 "packPath": "behaviorPack"
             }
-        ],
-        [
-            "boat_item.png",
-            "textures/items/{{IDENTIFIER}}_boat.png",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "boat.png",
-            "textures/entity/{{IDENTIFIER}}_boat.png",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "log_top.png",
-            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_log_top.png",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "log.png",
-            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_log.png",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "planks.png",
-            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_planks.png",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "stripped_log_top.png",
-            "textures/blocks/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_log_top.png",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "stripped_log.png",
-            "textures/blocks/wood_types/{{IDENTIFIER}}/stripped_{{IDENTIFIER}}_log.png",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "trapdoor.png",
-            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_trapdoor.png",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "leaves_carried.tga",
-            "textures/blocks/wood_types/{{IDENTIFIER}}/{{IDENTIFIER}}_leaves.tga",
-            {
-                "inject": [ "IDENTIFIER" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
         ]
     ],
     "expandFiles": [
@@ -520,24 +439,6 @@
             "texts/en_US.lang",
             {
                 "inject": [ "IDENTIFIER", "DISPLAY_NAME", "PROJECT_PREFIX" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "item_texture.json",
-            "textures/item_texture.json",
-            {
-                "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
-                "openFile": false,
-                "packPath": "resourcePack"
-            }
-        ],
-        [
-            "terrain_texture.json",
-            "terrain_texture.json",
-            {
-                "inject": [ "IDENTIFIER", "PROJECT_PREFIX", "PRESET_PATH" ],
                 "openFile": false,
                 "packPath": "resourcePack"
             }
