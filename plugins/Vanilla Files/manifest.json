@@ -8,7 +8,7 @@
 	"target": "v2",
 	"compatibleAppVersions": {
 		"min": "2.2.1",
-		"max": "2.2.13"
+		"max": "2.3.0"
 	},
 	"tags": [
 		"Presets"
