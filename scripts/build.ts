@@ -96,11 +96,10 @@ async function readDirectory(
 		}
 		if (!dirEntry.isFile) continue
 
-		const omitPresetManifest = false
-		// TODO: Re-enable omitting of preset manifests once v2.3 is out officially
-		// shouldOmitPresetManifests &&
-		// path.includes('presets') &&
-		// dirEntry.name === 'manifest.json'
+		const omitPresetManifest =
+			shouldOmitPresetManifests &&
+			path.includes('presets') &&
+			dirEntry.name === 'manifest.json'
 		const isPluginZip = dirEntry.name === 'plugin.zip'
 
 		if (dirEntry.isFile && !omitPresetManifest && !isPluginZip) {
