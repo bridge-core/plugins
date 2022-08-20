@@ -2,7 +2,7 @@
 	"icon": "mdi-palm-tree",
 	"author": "gekocaretaker",
 	"id": "b607f993-52a0-498d-a0a0-3ea12583d05a",
-	"version": "1.0.4",
+	"version": "1.0.5",
 	"name": "Wood Type Preset",
 	"target": "v2",
 	"readme": "https://github.com/bridge-core/plugins/tree/master/plugins/WoodTypePreset",

@@ -26,26 +26,26 @@ module.exports = async ({ createFile, loadPresetFile, models, expandFile }) => {
     } = models
 
     // Planks
-    quickBlockImage(PLANKS_TEXTURE, DEFAULT_PLANKS_TEXTURE, 'planks')
+    await quickBlockImage(PLANKS_TEXTURE, DEFAULT_PLANKS_TEXTURE, 'planks')
     // Log
-    quickBlockImage(LOG_TEXTURE, DEFAULT_LOG_TEXTURE, 'log')
+    await quickBlockImage(LOG_TEXTURE, DEFAULT_LOG_TEXTURE, 'log')
     // Log Top
-    quickBlockImage(LOG_TEXTURE_TOP, DEFAULT_LOG_TEXTURE_TOP, 'log_top')
+    await quickBlockImage(LOG_TEXTURE_TOP, DEFAULT_LOG_TEXTURE_TOP, 'log_top')
     // Stripped Log
-    quickBlockImage(STRIPPED_LOG_TEXTURE, DEFAULT_STRIPPED_LOG_TEXTURE, 'log_stripped')
+    await quickBlockImage(STRIPPED_LOG_TEXTURE, DEFAULT_STRIPPED_LOG_TEXTURE, 'log_stripped')
     // Stripped Log Top
-    quickBlockImage(STRIPPED_LOG_TEXTURE_TOP, DEFAULT_STRIPPED_LOG_TEXTURE_TOP, 'log_top_stripped')
+    await quickBlockImage(STRIPPED_LOG_TEXTURE_TOP, DEFAULT_STRIPPED_LOG_TEXTURE_TOP, 'log_top_stripped')
     // Leaves
-    quickBlockImage(LEAVES_TEXTURE, DEFAULT_LEAVES_TEXTURE, 'leaves', 'tga')
+    await quickBlockImage(LEAVES_TEXTURE, DEFAULT_LEAVES_TEXTURE, 'leaves', 'tga')
     // Trapdoor
-    quickBlockImage(TRAPDOOR_TEXTURE, DEFAULT_TRAPDOOR_TEXTURE, 'trapdoor')
+    await quickBlockImage(TRAPDOOR_TEXTURE, DEFAULT_TRAPDOOR_TEXTURE, 'trapdoor')
     // Boat
-    quickEntityImage(BOAT_TEXTURE, DEFAULT_BOAT_TEXTURE, 'boat', 'boat')
+    await quickEntityImage(BOAT_TEXTURE, DEFAULT_BOAT_TEXTURE, 'boat', 'boat')
     // Boat Item
-    quickItemImage(BOAT_ITEM_TEXTURE, DEFAULT_BOAT_ITEM_TEXTURE, 'boat')
+    await quickItemImage(BOAT_ITEM_TEXTURE, DEFAULT_BOAT_ITEM_TEXTURE, 'boat')
 
 
-    function quickBlockImage(TEXTURE, DEFAULT_TEXTURE, str, ext = 'png') {
+    async function quickBlockImage(TEXTURE, DEFAULT_TEXTURE, str, ext = 'png') {
         let fileName = `${IDENTIFIER}_${str}.${ext}`
         
             if (!TEXTURE) TEXTURE = await loadPresetFile(DEFAULT_TEXTURE)
@@ -62,7 +62,7 @@ module.exports = async ({ createFile, loadPresetFile, models, expandFile }) => {
         }, { packPath: 'resourcePack' })
     }
 
-    function quickItemImage(TEXTURE, DEFAULT_TEXTURE, str) {
+    async function quickItemImage(TEXTURE, DEFAULT_TEXTURE, str) {
         let fileName = `${IDENTIFIER}_${str}.png`
 
             if (!TEXTURE) TEXTURE = await loadPresetFile(DEFAULT_TEXTURE)
@@ -79,7 +79,7 @@ module.exports = async ({ createFile, loadPresetFile, models, expandFile }) => {
         }, { packPath: 'resourcePack' })
     }
 
-    function quickEntityImage(TEXTURE, DEFAULT_TEXTURE, str, path = '') {
+    async function quickEntityImage(TEXTURE, DEFAULT_TEXTURE, str, path = '') {
         let fileName = `${IDENTIFIER}_${str}.png`
 
             if (!TEXTURE) TEXTURE = await loadPresetFile(DEFAULT_TEXTURE)
