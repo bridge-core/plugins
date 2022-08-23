@@ -1,0 +1,18 @@
+{
+    "categories": [
+        {
+            "title": "Information",
+            "pages": [
+                "information/intro"
+            ]
+        },
+        {
+            "title": "Guides",
+            "pages": [
+                "guides/text",
+                "guides/images",
+                "guides/emoji"
+            ]
+        }
+    ]
+}

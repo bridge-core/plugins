@@ -1,0 +1,10 @@
+{
+	"id": "md",
+	"type": "text",
+	"icon": "mdi-book",
+	"detect": {
+		"scope": "docs/",
+		"fileExtensions": [".md"]
+	},
+	"formatOnSaveCapable": false
+}
