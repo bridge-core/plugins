@@ -33,5 +33,6 @@
 	"compatibleAppVersions": {
 		"min": "2.3.2"
 	},
-	"readme": "https://github.com/FrederoxDev/Markdown-Docs/blob/main/README.md"
+	"readme": "https://github.com/FrederoxDev/Markdown-Docs/blob/main/README.md",
+	"releaseTimestamp": 1661255297507
 }
