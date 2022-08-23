@@ -10,7 +10,9 @@
             :renderTopLevelDirectory="true" 
             :directoryHandle="sidebarContent.directoryHandle" 
             :options="{
-                isReadOnly: false}"
+                isReadOnly: false,
+                startPath: sidebarContent.docsPath
+            }"
         >
         </DirectoryViewer>
     </div>
