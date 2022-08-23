@@ -1,0 +1,37 @@
+{
+	"api_version": 2,
+	"author": "Frederox",
+	"name": "Markdown Docs",
+	"version": "1.0.0",
+	"id": "9c5bb3e6-1bc4-4453-9afe-a528e8d6e9d5",
+	"description": "Easily create documentation ingame",
+	"tags": [
+		"Utility",
+		"Curated"
+	],
+	"target": "v2",
+	"icon": "mdi-book-open-outline",
+	"contributeFiles": {
+		"contributeFiles/docs/guides": {
+			"path": "docs/guides"
+		},
+		"contributeFiles/docs/information": {
+			"path": "docs/information"
+		},
+		"contributeFiles/docs/config.json": {
+			"path": "docs/config.json"
+		},
+		"contributeFiles/bridge.png": {
+			"pack": "resourcePack",
+			"path": "textures/bridge.png"
+		},
+		"contributeFiles/how_to_play_common.json": {
+			"pack": "resourcePack",
+			"path": "ui/how_to_play_common.json"
+		}
+	},
+	"compatibleAppVersions": {
+		"min": "2.3.2"
+	},
+	"readme": "https://github.com/FrederoxDev/Markdown-Docs/blob/main/README.md"
+}
