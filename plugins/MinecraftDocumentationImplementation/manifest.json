@@ -3,7 +3,7 @@
 	"icon": "mdi-book-open-page-variant",
 	"id": "e9a9eaf3-5378-434b-8ae1-607445288302",
 	"version": "1.0.2",
-	"name": "Minecraft Documentation Implemention",
+	"name": "Minecraft Documentation Implementation",
 	"target": "v2",
 	"description": "Implements the minecraft documentations inside bridge",
 	"api_version": 2,

@@ -14,19 +14,19 @@
 </template>
 
 <script>
-const { BaseWindow } = await require('@bridge/windows');
-const { readdir, readJSON, writeJSON, readFilesFromDir, readFile } = await require('@bridge/fs');
-const { IframeTab, addTab, getCurrentTabSystem } = await require('@bridge/tab')
+import { BaseWindow } from '@bridge/windows';
+import { readdir, readJSON, writeJSON, readFilesFromDir, readFile } from '@bridge/fs';
+import { IframeTab, addTab, getCurrentTabSystem } from '@bridge/tab';
 
-readJSON("./extensions/MinecraftDocumentationImplemention/data.json").then(value => { this.Data = value });
-readdir("./extensions/MinecraftDocumentationImplemention/Docs").then(value => { this.versions = value });
+readJSON("./extensions/MinecraftDocumentationImplementation/data.json").then(value => { this.Data = value });
+readdir("./extensions/MinecraftDocumentationImplementation/Docs").then(value => { this.versions = value });
 
 export default
 {
     async mounted() {
         if(this.Data.setVersion != null)
         {
-            readFilesFromDir(`./extensions/MinecraftDocumentationImplemention/Docs/${ this.Data.setVersion }`).then(value => { this.Docs = value });
+            readFilesFromDir(`./extensions/MinecraftDocumentationImplementation/Docs/${ this.Data.setVersion }`).then(value => { this.Docs = value });
         }
     },
     data: () => ({
@@ -54,20 +54,20 @@ export default
 		            return `${version}:${type.name.replace(".html","")}`;
 	            }
             }
-            readFile(`./extensions/MinecraftDocumentationImplemention/Docs/${version}/${type.name}`).then(value => {
+            readFile(`./extensions/MinecraftDocumentationImplementation/Docs/${version}/${type.name}`).then(value => {
                 value.text().then(async (res) => {await addTab(new DocViewerTab(await getCurrentTabSystem(), {html:`<html><body style="color:white; font-family: Sans-serif; background-color: #222"><h1 style="color: red;">LINKS INSIDE THIS PAGE DO NOT WORK<h1>${res}</body></html>`}));});
                 });
         },
         openDocVersion(version)
         {
             this.Data.setVersion = version;
-            writeJSON("./extensions/MinecraftDocumentationImplemention/data.json", this.Data);
-            readFilesFromDir(`./extensions/MinecraftDocumentationImplemention/Docs/${ version }`).then(value => { this.Docs = value; console.log(value)});
+            writeJSON("./extensions/MinecraftDocumentationImplementation/data.json", this.Data);
+            readFilesFromDir(`./extensions/MinecraftDocumentationImplementation/Docs/${ version }`).then(value => { this.Docs = value; console.log(value)});
         },
         goBack()
         {
             this.Data.setVersion = null;
-            writeJSON("./extensions/MinecraftDocumentationImplemention/data.json", this.Data);
+            writeJSON("./extensions/MinecraftDocumentationImplementation/data.json", this.Data);
         }
     }
 }
