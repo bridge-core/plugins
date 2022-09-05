@@ -1,5 +1,5 @@
 {
-    "author": "SineVector241",
+	"author": "SineVector241",
 	"icon": "mdi-book-open-page-variant",
 	"id": "e9a9eaf3-5378-434b-8ae1-607445288302",
 	"version": "1.0.2",
@@ -9,5 +9,6 @@
 	"api_version": 2,
 	"tags": [
 		"Utility"
-	]
+	],
+	"releaseTimestamp": 1662381252115
 }
