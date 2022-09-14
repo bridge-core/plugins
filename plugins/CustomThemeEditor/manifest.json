@@ -2,11 +2,15 @@
 	"author": "SineVector241",
 	"icon": "mdi-palette",
 	"id": "24672c87-efcb-4d3c-9da1-357cbdaa0e4d",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"name": "Custom Theme Editor",
 	"target": "v2",
 	"description": "Customize your own theme for bridge",
 	"api_version": 2,
+	"compatibleAppVersions": {
+		"min": "2.2.1",
+		"max": "2.3.0"
+	},
 	"tags": [
 		"Utility",
 		"Theme"
