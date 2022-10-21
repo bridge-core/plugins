@@ -8,10 +8,3 @@ create({
     icon: "mdi-tools",
     component: SideBar
 });
-
-export class Test {
-    async TestFunction() {
-
-    }
-}
-readdir("").then(val => { console.log(val); });
