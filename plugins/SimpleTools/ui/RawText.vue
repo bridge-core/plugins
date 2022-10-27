@@ -347,13 +347,13 @@ class TextModification {
 
 <style>
 .Output {
-    background: rgb(32,32,32);
+    background: var(--v-tabInactive-base);
     border-radius: 5px;
     padding: 5px;
 }
 
 .RTEditor {
-    background: rgb(32, 32, 32);
+    background: var(--v-tabInactive-base);
     border-radius: 5px;
     padding: 5px;
     margin-top: 5px;

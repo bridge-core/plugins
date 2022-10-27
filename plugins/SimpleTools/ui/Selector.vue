@@ -829,7 +829,7 @@ class Coordinates {
 
 <style>
 .Output {
-	background: rgb(32, 32, 32);
+	background: var(--v-tabInactive-base);
 	border-radius: 5px;
 	padding: 5px;
 }

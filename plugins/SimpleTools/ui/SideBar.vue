@@ -4,9 +4,9 @@
         <v-btn style="margin-bottom:10px" color="primary" block @click="OpenLoopTool">Loop Tool</v-btn>
         <v-btn style="margin-bottom:10px" color="primary" block @click="OpenIdTool">ID Generator</v-btn>
         <v-btn style="margin-bottom:10px" color="primary" block @click="OpenRawtextTool">JSON Rawtext Generator</v-btn>
-        <v-btn style="margin-bottom:10px" color="primary" block @click="OpenGametestUITool">Gametest UI Generator</v-btn>
+        <v-btn style="margin-bottom:10px" color="primary" block @click="OpenScriptUITool">Script UI Generator</v-btn>
         <v-btn style="margin-bottom:10px" color="primary" block @click="OpenRenderOffsetTool">Render Offset Corrector</v-btn>
-        <!--<v-btn style="margin-bottom:10px" color="primary" block @click="OpenStructureViewerTool">Structure Viewer</v-btn> -->
+        <!-- <v-btn style="margin-bottom:10px" color="primary" block @click="OpenStructureViewerTool">Structure Viewer</v-btn> -->
         <v-btn style="margin-bottom:10px" color="primary" block @click="OpenSelectorGeneratorTool">Selector Generator</v-btn>
         <!-- <v-btn style="margin-bottom:10px" color="primary" block @click="OpenTroubleshooterTool">FAQ Troubleshooter</v-btn> -->
         <!-- <v-btn style="margin-bottom:10px" color="primary" block @click="OpenRecipeGeneratorTool">Recipe Generator</v-btn> -->
@@ -15,7 +15,7 @@
 
 <script>
 import { ContentTab, addTab, Tab, getCurrentTabSystem } from "@bridge/tab";
-import { Loop, Id, RawText, GameTestUI, RenderOffset, StructureViewer, Selector, TroubleShooter, Recipe } from "@bridge/ui";
+import { Loop, Id, RawText, ScriptUI, RenderOffset, StructureViewer, Selector, TroubleShooter, Recipe } from "@bridge/ui";
 import { readdir } from "@bridge/fs";
 
 //ESM Import for local script files do not work. Please check issue #596
@@ -40,7 +40,7 @@ export default
         {
             addTab(new RawTextTab(getCurrentTabSystem()));
         },
-        OpenGametestUITool()
+        OpenScriptUITool()
         {
             addTab(new GameTestUITab(getCurrentTabSystem()));
         },
@@ -129,8 +129,8 @@ class RawTextTab extends ContentTab
 
 class GameTestUITab extends ContentTab
 {
-    component = GameTestUI;
-    type = "GameTestUITab";
+    component = ScriptUI;
+    type = "ScriptUITab";
 
     async isFor() {
         return false
@@ -142,7 +142,7 @@ class GameTestUITab extends ContentTab
         return 'warning'
     }
     get name() {
-        return 'GameTest UI Generator'
+        return 'Script UI Generator'
     }
 }
 

@@ -93,10 +93,10 @@ const Items = Object.freeze({
 	padding: 0;
 	margin: 0;
 	border-style: solid;
-	-o-border-image: url(dialog_background_opaque.png) 6;
-	-webkit-border-image: url(dialog_background_opaque.png) 6;
-	-moz-border-image: url(dialog_background_opaque.png) 6;
-	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAA7SURBVHjaYgwLDvvPQCYoKC5gYGFgYGDQ1NEkywBLS0sGJgYKwagBowaMGgAFx44d+08JAAAAAP//AwCbM0Ov7t4h/QAAAABJRU5ErkJggg==") 6 fill;
+	-o-border-image: url(dialog_background_opaque.png) 8;
+	-webkit-border-image: url(dialog_background_opaque.png) 8;
+	-moz-border-image: url(dialog_background_opaque.png) 8;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAA7SURBVHjaYgwLDvvPQCYoKC5gYGFgYGDQ1NEkywBLS0sGJgYKwagBowaMGgAFx44d+08JAAAAAP//AwCbM0Ov7t4h/QAAAABJRU5ErkJggg==") 8 fill;
 	border-width: 18px 18px 18px 18px;
 	image-rendering: pixelated;
 	height: 20px;
@@ -119,6 +119,6 @@ const Items = Object.freeze({
 }
 
 .ItemCell:hover {
-	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhJREFUOE9jDAsO+89AJigoLmBgBBlwRusIWUbcbXo6asBoGDCMpgMGKoXBsWPH/ltaWpKVG0GaAIa0WybCkMlcAAAAAElFTkSuQmCC") 6 fill;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAADhJREFUOE9jDAsO+89AJigoLmBgBBlwRusIWUbcbXo6asBoGDCMpgMGKoXBsWPH/ltaWpKVG0GaAIa0WybCkMlcAAAAAElFTkSuQmCC") 8 fill;
 }
 </style>

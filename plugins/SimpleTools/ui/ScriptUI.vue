@@ -1,15 +1,13 @@
 <template>
 	<div style="padding:10px; overflow:scroll;">
-		<h1>GameTest UI Generator</h1>
+		<h1>Script UI Generator</h1>
 		<div class="TitleButtonsGTGrid">
-			<v-btn v-if="Selection==0" class="TitleButton" color="primary" block>Action Form</v-btn>
-			<v-btn v-if="Selection!=0" class="TitleButton" block @click="SelectActionForm">Action Form
-			</v-btn>
-			<v-btn v-if="Selection==1" class="TitleButton" color="primary" block>Message Form</v-btn>
-			<v-btn v-if="Selection!=1" class="TitleButton" block @click="SelectMessageForm">Message Form
-			</v-btn>
-			<v-btn v-if="Selection==2" class="TitleButton" color="primary" block>Modal Form</v-btn>
-			<v-btn v-if="Selection!=2" class="TitleButton" block @click="SelectModalForm">Modal Form</v-btn>
+			<v-btn v-if="Selection == 0" class="TitleButton" color="primary" block>Action</v-btn>
+			<v-btn v-if="Selection != 0" class="TitleButton" block @click="SelectActionForm">Action</v-btn>
+			<v-btn v-if="Selection == 1" class="TitleButton" color="primary" block>Message</v-btn>
+			<v-btn v-if="Selection != 1" class="TitleButton" block @click="SelectMessageForm">Message</v-btn>
+			<v-btn v-if="Selection == 2" class="TitleButton" color="primary" block>Modal</v-btn>
+			<v-btn v-if="Selection != 2" class="TitleButton" block @click="SelectModalForm">Modal</v-btn>
 		</div>
 		<div v-if="Selection == 0">
 			<v-btn block color="primary" @click="AddAFButton" style="margin-top: 5px;">Add Button</v-btn>
@@ -18,7 +16,8 @@
 				{{ ActionFormTitle }}</p>
 			<div class="GTActionFormPreview">
 				<p v-if="ActionFormBody != ''" style="font-family: Mojangles; overflow-wrap: break-word;">{{
-				ActionFormBody }}</p>
+						ActionFormBody
+				}}</p>
 				<div v-for="Button in ActionFormButtons">
 					<div v-if="!Button.ImagePath" class="MCButton">
 						<span style="color: black; font-family: Mojangles;">{{ Button.Title
@@ -28,7 +27,8 @@
 						<img v-bind:src="Button.ImgValue" class="AFMCButtonIcon" />
 						<div class="MCButton">
 							<span style="color: black; font-family: Mojangles;">{{
-							Button.Title }}</span>
+									Button.Title
+							}}</span>
 						</div>
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 								<v-icon> mdi-arrow-up-box </v-icon>
 							</v-btn>
 							<v-btn icon color="primary" @click="MoveAFButtonDown(i)"
-								:disabled="i == ActionFormButtons.length-1">
+								:disabled="i == ActionFormButtons.length - 1">
 								<v-icon> mdi-arrow-down-box </v-icon>
 							</v-btn>
 						</v-card-actions>
@@ -77,17 +77,20 @@
 				style="color:black; font-family: Mojangles; position:relative; text-align: center; transform: translateY(55px);">
 				{{ MessageFormTitle }}</p>
 			<div class="GTMessageFormPreview">
-				<p v-if="MessageFormBody != ''" style="font-family: sans-serif; overflow-wrap: break-word;">{{ MessageFormBody }}</p>
+				<p v-if="MessageFormBody != ''" style="font-family: sans-serif; overflow-wrap: break-word;">{{
+						MessageFormBody
+				}}</p>
 			</div>
 			<div class="GTMSFButtons" style="margin: 0 auto;">
-					<div class="MCButton">
-						<span style="color: black; font-family: Mojangles;">{{ MessageFormBTN1 }}</span>
-					</div>
-					<div class="MCButton">
-						<span style="color: black; font-family: Mojangles;">{{ MessageFormBTN2 }}</span>
-					</div>
+				<div class="MCButton">
+					<span style="color: black; font-family: Mojangles;">{{ MessageFormBTN1 }}</span>
+				</div>
+				<div class="MCButton">
+					<span style="color: black; font-family: Mojangles;">{{ MessageFormBTN2 }}</span>
+				</div>
 			</div>
-			<v-btn color="primary" @click="GenerateMessageForm" :disabled="!MessageFormTitle || !MessageFormBTN1 || !MessageFormBTN2">Generate</v-btn>
+			<v-btn color="primary" @click="GenerateMessageForm"
+				:disabled="!MessageFormTitle || !MessageFormBTN1 || !MessageFormBTN2">Generate</v-btn>
 			<v-btn @click="CopyMessageFormOutput" :disabled="GeneratedMessageForm == 'No Data'">Copy Output</v-btn>
 			<br></br>
 			<div class="Output">
@@ -106,7 +109,132 @@
 			</div>
 		</div>
 		<div v-if="Selection == 2">
-			<h1>Coming Soon!</h1>
+			<p
+				style="color:black; font-family: Mojangles; position:relative; text-align: center; transform: translateY(55px);">
+				{{ ModalFormTitle }}</p>
+			<div class="GTActionFormPreview">
+				<div v-for="(Component, i) in ModalFormContent">
+					<div v-if="Component.Type == 'Toggle'" class="ModalToggleDisplayer">
+						<div v-if="!Component.Toggled" @click="ToggleOn(Component)" class="MCToggleOff"></div>
+						<div v-if="Component.Toggled" @click="ToggleOff(Component)" class="MCToggleOn"></div>
+						<span
+							style="color: var(--v-text-base); font-family: Mojangles; overflow-wrap: break-word; overflow: hidden;">{{
+									Component.Title
+							}}</span>
+					</div>
+					<div v-if="Component.Type == 'Textbox'">
+						<span
+							style="color: var(--v-text-base); font-family: Mojangles; overflow-wrap: break-word; overflow: hidden;">{{
+									Component.Title
+							}}</span>
+						<input type="text" v-bind:placeholder="Component.Placeholder" v-model="Component.Default"
+							class="MCTextbox" />
+					</div>
+					<div v-if="Component.Type == 'Slider'">
+						<span
+							style="color: var(--v-text-base); font-family: Mojangles; overflow-wrap: break-word; overflow: hidden;">{{
+									Component.Title
+							}}</span>
+						<input type="range" v-bind:min="Component.Min" v-bind:max="Component.Max"
+							v-bind:value="Component.Default" v-bind:step="Component.Step" class="MCSlider"
+							v-model="Component.Default" />
+					</div>
+					<div v-if="Component.Type == 'Dropdown'">
+						<span
+							style="color: var(--v-text-base); font-family: Mojangles; overflow-wrap: break-word; overflow: hidden;">{{
+									Component.Title
+							}}</span>
+						<div class="MCDropdown" @click="ShowHideDropdown(Component)">
+							<span
+							style="display: inline-block; color: black; font-family: Mojangles; overflow-wrap: break-word; overflow: hidden;">{{
+									Component.Options[Component.Default]
+							}}</span>
+							<div v-if="!Component.Selected" class="MCDropdownArrow"></div>
+							<div v-if="Component.Selected" class="MCDropdownArrowActive"></div>
+							<div v-if="Component.Selected" class="MCDropdownContent">
+								<div v-for="(Selection, i) in Component.Options" class="MCDropdownSelection" @click="SetSelectionDefault(Component, i)">
+									<div v-if="i == Component.Default" class="MCDropdownRadioButtonOn"></div>
+									<div v-else class="MCDropdownRadioButtonOff"></div>
+									<span style="color: black; font-family: Mojangles; overflow-wrap: break-word; overflow: hidden;">{{
+									Selection }}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="MCButton">
+					<span style="color: black; font-family: Mojangles;">Submit</span>
+				</div>
+			</div>
+			<v-btn color="primary" @click="GenerateModalForm"
+				:disabled="ModalFormContent.length == 0">Generate</v-btn>
+			<v-btn @click="CopyModalFormOutput" :disabled="GeneratedModalForm == 'No Data'">Copy Output</v-btn>
+			<br></br>
+			<div class="Output">
+				<pre ref="text">{{ GeneratedModalForm }}</pre>
+			</div>
+			<div class="RTEditor">
+				<h2>Editor</h2>
+				<div class="GTModalAdders">
+					<v-btn style="margin-bottom: 4px;" block color="primary" @click="AddToggle">Add Toggle</v-btn>
+					<v-btn style="margin-bottom: 4px;" block color="primary" @click="AddTextbox">Add Textbox</v-btn>
+					<v-btn style="margin-bottom: 8px;" block color="primary" @click="AddDrodown">Add Dropdown</v-btn>
+					<v-btn style="margin-bottom: 8px;" block color="primary" @click="AddSlider">Add Slider</v-btn>
+				</div>
+				<v-text-field outlined label="Form Title" v-model="ModalFormTitle"></v-text-field>
+				<transition-group name="GTAF-flip-list" tag="v-card">
+					<v-card v-for="(Module, i) in ModalFormContent" style="margin-bottom: 0.8rem"
+						color="sidebarSelection" :key="Module.Id">
+						<v-card-title>{{ Module.Type }}</v-card-title>
+						<v-card-text v-if="Module.Type == 'Toggle'">
+							<v-text-field outlined label="Label" v-model="Module.Title"></v-text-field>
+							<v-switch v-model="Module.Toggled" style="margin-top: 0" inset dense :label="'Default Value'" />
+						</v-card-text>
+						<v-card-text v-if="Module.Type == 'Textbox'">
+							<v-text-field outlined label="Label" v-model="Module.Title"></v-text-field>
+							<v-text-field outlined label="Default Value" v-model="Module.Default"></v-text-field>
+							<v-text-field outlined label="Placeholder" v-model="Module.Placeholder"></v-text-field>
+						</v-card-text>
+						<v-card-text v-if="Module.Type == 'Slider'">
+							<v-text-field outlined label="Label" v-model="Module.Title"></v-text-field>
+							<v-text-field type="number" typeof="number" outlined label="Default Value" v-model="Module.Default"></v-text-field>
+							<v-text-field type="number" typeof="number" outlined label="Step Value" v-model="Module.Step"></v-text-field>
+							<v-text-field type="number" typeof="number" outlined label="Minimum Value" v-model="Module.Min"></v-text-field>
+							<v-text-field type="number" typeof="number" outlined label="Maximum Value" v-model="Module.Max"></v-text-field>
+						</v-card-text>
+						<v-card-text v-if="Module.Type == 'Dropdown'">
+							<v-text-field outlined label="Label" v-model="Module.Title"></v-text-field>
+							<v-text-field type="number" typeof="number" outlined label="Default Value" v-model="Module.Default"></v-text-field>
+							<h2>Selections</h2>
+							<v-btn block color="primary" @click="AddDrodownOption(Module)">Add Option</v-btn>
+							<div v-for="(Selection,i) in Module.Options" style="padding: 5px; margin: 5px; background-color:var(--v-lineHighlightBackground-base); border-radius: 5px;">
+								<v-text-field outlined label="Label" v-model="Module.Options[i]"></v-text-field>
+								<v-btn icon color="error" @click="DeleteSelectionOption(Module,i)" :disabled="Module.Options.length == 1">
+									<v-icon> mdi-delete </v-icon>
+								</v-btn>
+								<v-btn icon color="primary" @click="MoveSelectionOptionUp(Module,i)" :disabled="i == 0">
+									<v-icon> mdi-arrow-up-box </v-icon>
+								</v-btn>
+								<v-btn icon color="primary" @click="MoveSelectionOptionDown(Module,i)" :disabled="i == Module.Options.length - 1">
+									<v-icon> mdi-arrow-down-box </v-icon>
+								</v-btn>
+							</div>
+						</v-card-text>
+						<v-card-actions>
+							<v-btn icon color="error" @click="DeleteModalModule(i)">
+								<v-icon> mdi-delete </v-icon>
+							</v-btn>
+							<v-btn icon color="primary" @click="MoveModalModuleUp(i)" :disabled="i == 0">
+								<v-icon> mdi-arrow-up-box </v-icon>
+							</v-btn>
+							<v-btn icon color="primary" @click="MoveModalModuleDown(i)"
+								:disabled="i == ModalFormContent.length - 1">
+								<v-icon> mdi-arrow-down-box </v-icon>
+							</v-btn>
+						</v-card-actions>
+					</v-card>
+				</transition-group>
+			</div>
 		</div>
 		<div class="Toast" id="Popup">
 			<h2>Copied</h2>
@@ -117,19 +245,23 @@
 <script>
 import { getFileHandle, loadFileHandleAsDataUrl, directoryExists } from "@bridge/fs";
 import { getCurrentRP } from "@bridge/env";
+import { stringify } from '@bridge/json5'
 
 export default {
 	data: () => ({
 		Selection: 0,
 		ActionFormTitle: "Example",
 		MessageFormTitle: "Example",
+		ModalFormTitle: "Example",
 		ActionFormBody: "",
 		MessageFormBody: "Example",
 		MessageFormBTN1: "Button 1",
 		MessageFormBTN2: "Button 2",
 		ActionFormButtons: [],
+		ModalFormContent: [],
 		GeneratedActionForm: "No Data",
-		GeneratedMessageForm: "No Data"
+		GeneratedMessageForm: "No Data",
+		GeneratedModalForm: "No Data"
 	}),
 	methods: {
 		async GetImagePlaceholder(btn) {
@@ -175,6 +307,39 @@ export default {
 		DeleteAFButton(Id) {
 			this.ActionFormButtons.splice(Id, 1);
 		},
+		AddToggle() {
+			this.ModalFormContent.push(new ModalFormToggle());
+		},
+		AddTextbox() {
+			this.ModalFormContent.push(new ModalFormTextbox());
+		},
+		AddSlider() {
+			this.ModalFormContent.push(new ModalFormSlider());
+		},
+		AddDrodown() {
+			this.ModalFormContent.push(new ModalFormDropdown());
+		},
+		MoveModalModuleUp(Index) {
+			MoveArray(this.ModalFormContent, Index, Index - 1)
+		},
+		MoveModalModuleDown(Index) {
+			MoveArray(this.ModalFormContent, Index, Index + 1)
+		},
+		DeleteModalModule(Id) {
+			this.ModalFormContent.splice(Id, 1);
+		},
+		AddDrodownOption(Component) {
+			Component.Options.push("Example");
+		},
+		MoveSelectionOptionUp(Component,Index) {
+			MoveArray(Component.Options, Index, Index - 1)
+		},
+		MoveSelectionOptionDown(Component,Index) {
+			MoveArray(Component.Options, Index, Index + 1)
+		},
+		DeleteSelectionOption(Component,Id) {
+			Component.Options.splice(Id, 1);
+		},
 		GenerateActionForm() {
 			this.GeneratedActionForm = `const form = new ActionFormData()\n.title("${this.ActionFormTitle}")`;
 			if (this.ActionFormBody != "")
@@ -195,6 +360,20 @@ export default {
 			this.GeneratedMessageForm += `\n.button2("${this.MessageFormBTN2}")`;
 			this.GeneratedMessageForm += ";";
 		},
+		GenerateModalForm() {
+			this.GeneratedModalForm = `const form = new ModalFormData()\n.title("${this.ModalFormTitle}")`;
+			this.ModalFormContent.forEach(module => {
+				if(module.Type == 'Textbox')
+					this.GeneratedModalForm += `\n.textField("${module.Title}", "${module.Placeholder}", "${module.Default}")`;
+				if(module.Type == 'Slider')
+					this.GeneratedModalForm += `\n.slider("${module.Title}", ${module.Min}, ${module.Max}, ${module.Step}, ${module.Default})`;
+				if(module.Type == 'Toggle')
+					this.GeneratedModalForm += `\n.toggle("${module.Title}", ${module.Toggled})`;
+				if(module.Type == 'Dropdown')
+					this.GeneratedModalForm += `\n.dropdown("${module.Title}", ${stringify(module.Options)}, ${module.Default})`;
+			});
+			this.GeneratedModalForm += ";";
+		},
 		CopyActionFormOutput() {
 			navigator.clipboard.writeText(this.GeneratedActionForm);
 			var Toast = document.getElementById("Popup");
@@ -212,6 +391,31 @@ export default {
 				ev.target.style.animation = "";
 				Toast.removeEventListener("animationend", (ev) => { });
 			});
+		},
+		CopyModalFormOutput() {
+			navigator.clipboard.writeText(this.GeneratedModalForm);
+			var Toast = document.getElementById("Popup");
+			Toast.style.animation = "PopupAnimation 2s";
+			Toast.addEventListener("animationend", (ev) => {
+				ev.target.style.animation = "";
+				Toast.removeEventListener("animationend", (ev) => { });
+			});
+		},
+		ToggleOn(Component) {
+			Component.Toggled = true;
+		},
+		ToggleOff(Component) {
+			Component.Toggled = false;
+		},
+		ShowHideDropdown(Component)
+		{
+			if(Component.Selected)
+				Component.Selected = false;
+			else
+				Component.Selected = true;
+		},
+		SetSelectionDefault(Component, Index) {
+			Component.Default = Index;
 		}
 	}
 }
@@ -230,17 +434,59 @@ class ActionFormButton {
 		this.ImgValue;
 	}
 }
+
+class ModalFormToggle {
+	constructor() {
+		this.Id = crypto.randomUUID();
+		this.Title = "Example";
+		this.Toggled = false;
+		this.Type = "Toggle";
+	}
+}
+
+class ModalFormTextbox {
+	constructor() {
+		this.Id = crypto.randomUUID();
+		this.Title = "Example";
+		this.Placeholder = "Example";
+		this.Default = "Example";
+		this.Type = "Textbox";
+	}
+}
+
+class ModalFormSlider {
+	constructor() {
+		this.Id = crypto.randomUUID();
+		this.Title = "Example";
+		this.Min = 0;
+		this.Max = 10;
+		this.Step = 1;
+		this.Default = 0;
+		this.Type = "Slider";
+	}
+}
+
+class ModalFormDropdown {
+	constructor() {
+		this.Id = crypto.randomUUID();
+		this.Title = "Example";
+		this.Options = [ "Default" ];
+		this.Default = 0;
+		this.Selected = false;
+		this.Type = "Dropdown";
+	}
+}
 </script>
 
 <style>
 .Output {
-	background: rgb(32, 32, 32);
+	background: var(--v-tabInactive-base);
 	border-radius: 5px;
 	padding: 5px;
 }
 
 .RTEditor {
-	background: rgb(32, 32, 32);
+	background: var(--v-tabInactive-base);
 	border-radius: 5px;
 	padding: 5px;
 	margin-top: 5px;
@@ -279,12 +525,221 @@ class ActionFormButton {
 	image-rendering: pixelated;
 }
 
+.MCToggleOff {
+	height: 30px;
+	width: 60px;
+	background-size: 60px 30px;
+	margin-bottom: 4px;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAQCAYAAAABOs/SAAAAAXNSR0IArs4c6QAAAI9JREFUOI3llW0KwCAIhjV2Lzvi2InyTx6r/VmDPhytNhrsgaDEfNMiEQACNBBCwBY/DcR0uzmCqsN7P6KnssSJiFQdtnWLJ26qzAVJyovmlWOt7VZ0zhU20x1tkOaMaxBRsmbm94WJqBCq2TSmlfp/wt13zMxzHtddoZzvl7r2+wwLi8j5J2s83Z0QJrXFHdfaQUgTSSrJAAAAAElFTkSuQmCC");
+	image-rendering: pixelated;
+	background-color: transparent;
+}
+
+.MCToggleOff:hover {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAQCAYAAAABOs/SAAAAAXNSR0IArs4c6QAAAJRJREFUOI1j/P///38G4gAjkeqwa2ZE1c7CwMDAYHFdHqcGnlP/GPbEP6bETqyABdkCbODA5ScwJrEhgwugeJkFlyp0wJxAfkj/XYDpZiayTaMQEO1jbIBRBJX//w0dLGYUwbQImxguMGBBPfIsJjuO/78ZoMRFqkXoYPAHNbbSh2KLeU79Qy6TcQGKaicMwwaqWgQAeLwoOgfnwbEAAAAASUVORK5CYII=");
+}
+
+.MCToggleOn {
+	height: 30px;
+	width: 60px;
+	background-size: 60px 30px;
+	margin-bottom: 4px;
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAQCAYAAAABOs/SAAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAABRSURBVDjLY/j//z8DNTEQ/CcK08JifODYsWPYLSbaxXgwzAJsOCIsArfF9fX1ZOPha7GDgwMYj1o8avHwsXh45eMBKTKpUUnALMCFaWYxMRgAabqrrJ4nx1gAAAAASUVORK5CYII=");
+	image-rendering: pixelated;
+	background-color: transparent;
+}
+
+.MCToggleOn:hover {
+	background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAQCAYAAAABOs/SAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAB8SURBVHjaYvz//z8DlQFRBrIw0ABYXJfHKcdz6h/DnvjHWC2mShDwnPqHVfzA5Se4fezfaU62hRvLTxKljolhgADZFm99dIph66NT9Ld4wHw8avGQsZjskstbzmwY+ZjY0ofaFjNSWjvxnPoHL5NxAcaBqhYBAAAA//8DAPraIgqZtiPEAAAAAElFTkSuQmCC");
+}
+
 .MCButton:hover {
 	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAHElEQVQImWMQP8sOQYrNbAwQCsTyY0DlQCkwAgAz5woarZ4QnQAAAABJRU5ErkJggg==") 1 1 1 1 fill;
 }
 
 .MCButton:active {
 	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAG0lEQVQIHWNg8GOAIMVmNigFROJn2VE5EAqCANuIChrqOY3qAAAAAElFTkSuQmCC") 1 1 1 1 fill;
+}
+
+.MCTextbox {
+	font-family: Mojangles;
+	outline: 0;
+	background: transparent;
+	margin-bottom: 4px;
+	-o-border-image: url(text_edit_base.png) 3 3 4 3;
+	-webkit-border-image: url(text_edit_base.png) 3 3 4 3;
+	-moz-border-image: url(text_edit_base.png) 3 3 4 3;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAMklEQVQY02NgYGD4jw0DAYhgAIH/bi5uKBhDQVxcHAomXcGmTZtQMIYCvI6EMXBhggoAxAWL8SVT9zoAAAAASUVORK5CYII=") 3 3 4 3 fill;
+	border-width: 8px 8px 8px 8px;
+	border-style: outset;
+	margin: 0;
+	width: 102%;
+	height: 60px;
+	image-rendering: pixelated;
+}
+
+.MCTextbox:hover {
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAKUlEQVQY02P4jwMwwACI4+bihoIxFMTFxaFg0hVs2rQJBWMowOtIigEAlN10CcADxHMAAAAASUVORK5CYII=") 3 3 4 3 fill;
+}
+
+.MCSlider {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 20px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAIAAADZSiLoAAAAF0lEQVQI12N0cHBgYGBgYGBgYoABBAsAFXgAxulxJusAAAAASUVORK5CYII=");
+	-o-border-image: url(slider_button_default.png) 1 1 1 1;
+	-webkit-border-image: url(slider_button_default.png) 1 1 1 1;
+	-moz-border-image: url(slider_button_default.png) 1 1 1 1;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAHklEQVQI103JoQEAIAAEIc79d36LQSptm+dAFfTPBbwhCAE7ZTfbAAAAAElFTkSuQmCC") 1 1 1 1 fill;
+	border-width: 2px 2px 2px 2px;
+	border-style: outset;
+	image-rendering: pixelated;
+}
+
+.MCSlider::-webkit-slider-thumb {
+	width: 18px;
+	height: 34px;
+	-webkit-appearance: none;
+	appearance: none;
+	-o-border-image: url(slider_button_default.png) 2 2 2 2;
+	-webkit-border-image: url(slider_button_default.png) 2 2 2 2;
+	-moz-border-image: url(slider_button_default.png) 2 2 2 2;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAAklEQVR4AewaftIAAAA9SURBVHXBUQ3AIBBEwUeDg9V13siZWjPngULSJv2gM03S5KCzVBUv20QEnYdtthzJdvGjs9gmR/LVJE0Obnq4EJNtGgRhAAAAAElFTkSuQmCC") 2 2 2 2 fill;
+	border-width: 4px 4px 4px 4px;
+	border-style: outset;
+	image-rendering: pixelated;
+}
+
+.MCSlider::-webkit-slider-thumb:hover {
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAYAAADgzO9IAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABASURBVHjaYvz///9/BiyAhYGBgcHiujxcgOfUP4Y98Y8hEjABBgYGhgOXnzAwMDAwMDHgACww1TCVMMCIy3LAAOeLFZ+q6SOBAAAAAElFTkSuQmCC") 2 2 2 2 fill;
+}
+
+.MCDropdown {
+	width: 100%;
+	height: 60px;
+	padding: 15px;
+	margin-bottom: 4px;
+	border-style: solid;
+	-o-border-image: url(button_borderless_light.png) 1 1 1 1;
+	-webkit-border-image: url(button_borderless_light.png) 1 1 1 1;
+	-moz-border-image: url(button_borderless_light.png) 1 1 1 1;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABGdBTUEAALGPC/xhBQAAAAFzUkdCAK7OHOkAAAAtSURBVAhbY/j379//79+/g/GB/Qf+M4AYx44dA+PUlFQsAiBlIAYIR4ZH/gcAR6oyBr6zTCIAAAAASUVORK5CYII=") 1 1 1 1 fill;
+	border-width: 2px 2px 2px 2px;
+	image-rendering: pixelated;
+}
+
+.MCDropdown:hover {
+	width: 100%;
+	height: 60px;
+	margin-bottom: 4px;
+	border-style: solid;
+	-o-border-image: url(button_borderless_light.png) 1 1 1 1;
+	-webkit-border-image: url(button_borderless_light.png) 1 1 1 1;
+	-moz-border-image: url(button_borderless_light.png) 1 1 1 1;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAIAAAAmkwkpAAAAHElEQVQImWMQP8sOQYrNbAwQCsTyY0DlQCkwAgAz5woarZ4QnQAAAABJRU5ErkJggg==") 1 1 1 1 fill;
+	border-width: 2px 2px 2px 2px;
+	image-rendering: pixelated;
+}
+
+.MCDropdownArrow {
+	float: right;
+	display: inline;
+	width: 18px;
+	height: 18px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABHSURBVHjatJFRCgAgCEOb59ttd8D1FRQV6UcDQeZTBsJ2yypaQSUYJNM5QhIyoCTEaF7gkvm2MPtxGxwP2N6KpE8+vj2lDwBTYjiEuOLJygAAAABJRU5ErkJggg==");
+	image-rendering: pixelated;
+	background-size: cover;
+}
+
+.MCDropdownArrowActive {
+	float: right;
+	display: inline;
+	width: 18px;
+	height: 18px;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAABESURBVChTY/z//z8DsYAJShMFsCr29fXFah2GYphCbBpQFKMrQOfDFeOyGlkcrBiXQhiAyTP6+PjgVYgM6BzO2AEDAwCFdBkHORCnVwAAAABJRU5ErkJggg==");
+	image-rendering: pixelated;
+	background-size: cover;
+}
+
+.MCDropdownContent {
+	transform: translate(-15px, 15px);
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	margin-bottom: 4px;
+	border-style: solid;
+	-o-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-webkit-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-moz-border-image: url(button_borderless_light.png) 2 2 2 2;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAIAAAACDbGyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAvSURBVBhXY0ADjEDs5+MHJL18vDIyMpjAogzqmure3t4QNsOMGTMegwGUjwAMDAB8sQt2vmSbpAAAAABJRU5ErkJggg==") 2 2 2 2 fill;
+	border-width: 4px 4px 4px 4px;
+	image-rendering: pixelated;
+}
+
+.MCDropdownSelection {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: start;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQIHWPw8vACAAG8AN2dliNJAAAAAElFTkSuQmCC");
+	column-gap: 10px;
+}
+
+.MCDropdownSelection:hover {
+	display: grid;
+	grid-template-columns: auto auto;
+	justify-content: start;
+	background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQIW2MQL2EAAAExAIz1syfxAAAAAElFTkSuQmCC");
+}
+
+.MCDropdownRadioButtonOff {
+	width: 20px;
+	height: 20px;
+	border-style: solid;
+	-o-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-webkit-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-moz-border-image: url(button_borderless_light.png) 2 2 2 2;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAcSURBVBjTY2BgYPhPJGb4HxEWgRePKiROITEYAMwJpR1N/yxLAAAAAElFTkSuQmCC") 2 2 2 2 fill;
+	border-width: 4px 4px 4px 4px;
+	image-rendering: pixelated;
+}
+
+.MCDropdownRadioButtonOff:hover {
+	width: 20px;
+	height: 20px;
+	border-style: solid;
+	-o-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-webkit-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-moz-border-image: url(button_borderless_light.png) 2 2 2 2;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAZSURBVBjTY/hPJGAAERFhEXjxqELiFBIDACxwEMBDO47PAAAAAElFTkSuQmCC") 2 2 2 2 fill;
+	border-width: 4px 4px 4px 4px;
+	image-rendering: pixelated;
+}
+
+.MCDropdownRadioButtonOn {
+	width: 20px;
+	height: 20px;
+	border-style: solid;
+	-o-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-webkit-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-moz-border-image: url(button_borderless_light.png) 2 2 2 2;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABmJLR0QAwgDCAMKN1+F2AAAAWElEQVQY062QSwrAIAwFx+K1cg3JEaXHcCfFM72uWgSlZNFZ5TMJIQkQATKAF/+U6lkBkBdXa007vLgA5Weq975sMrM3Pgjyv5jnZHfnIo5rLM25lqIPvwFOsSyHddI8QwAAAABJRU5ErkJggg==") 2 2 2 2 fill;
+	border-width: 4px 4px 4px 4px;
+	image-rendering: pixelated;
+}
+
+.MCDropdownRadioButtonOn:hover {
+	width: 20px;
+	height: 20px;
+	border-style: solid;
+	-o-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-webkit-border-image: url(button_borderless_light.png) 2 2 2 2;
+	-moz-border-image: url(button_borderless_light.png) 2 2 2 2;
+	border-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABmJLR0QAVQBVAFV4xrLkAAAAUklEQVQY062QMQrAMAwD5ZJvmTgvT8mWV12nlEJD8dCbZJCEkQEoQZGkFu3T1M8uAUQNxhjsiBoAlJWac76a3P3Wh5L8byzPY/fnwgAy81h28AuzuDocEyFV6wAAAABJRU5ErkJggg==") 2 2 2 2 fill;
+	border-width: 4px 4px 4px 4px;
+	image-rendering: pixelated;
 }
 
 .GTActionFormPreview {
@@ -315,6 +770,21 @@ class ActionFormButton {
 .MCAFButtonDisplayer {
 	display: grid;
 	column-gap: 5px;
+}
+
+.ModalToggleDisplayer {
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 5px;
+	justify-content: start;
+	width: 100%;
+}
+
+.GTModalAdders {
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 5px;
+	width: 100%;
 }
 
 @media (min-width: 100px) {
