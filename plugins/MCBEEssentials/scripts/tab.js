@@ -33,8 +33,7 @@ class MCBEEssentialsTab extends IframeTab {
 async function createTab(tabSystem) {
 	const tab = new MCBEEssentialsTab(tabSystem, {
 		url: 'https://mcbe-essentials.glitch.me/'
-	}) 
-	console.log(tab);
+	})
 	return tab;
 }
 
