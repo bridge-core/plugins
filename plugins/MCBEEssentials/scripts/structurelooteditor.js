@@ -36,7 +36,7 @@ class MCBEEStructureLootEditorTab extends IframeTab {
 
 async function createTab(tabSystem, fileHandle, filePath) {
 	const tab = new MCBEEStructureLootEditorTab(tabSystem, {
-		url: 'https://mcbe-essentials.glitch.me/structure-editor/loot-tabler/',
+		url: 'https://mcbe-essentials.github.io/structure-editor/loot-tabler/',
 		openWithPayload: {filePath, fileHandle}
 	}) 
 	return tab;
@@ -46,7 +46,7 @@ register({
 	icon: 'mdi-open-in-new',
 	name: '[Open New]',
 	trigger() {
-		openExternal('https://mcbe-essentials.glitch.me/structure-editor/loot-tabler/')
+		openExternal('https://mcbe-essentials.github.io/structure-editor/loot-tabler/')
 	},
 	isFor(tab) {
 		return tab.type === 'MCBEEStructureLootEditorTab'
