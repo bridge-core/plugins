@@ -36,7 +36,7 @@ class MCBEETradeTableEditorTab extends IframeTab {
 
 async function createTab(tabSystem, fileHandle, filePath) {
 	const tab = new MCBEETradeTableEditorTab(tabSystem, {
-		url: 'https://mcbe-essentials.glitch.me/trade-table-editor/',
+		url: 'https://mcbe-essentials.github.io/trade-table-editor/',
 		openWithPayload: {filePath, fileHandle}
 	}) 
 	return tab;
@@ -46,7 +46,7 @@ register({
 	icon: 'mdi-open-in-new',
 	name: '[Open New]',
 	trigger() {
-		openExternal('https://mcbe-essentials.glitch.me/trade-table-editor/')
+		openExternal('https://mcbe-essentials.github.io/trade-table-editor/')
 	},
 	isFor(tab) {
 		return tab.type === 'MCBEETradeTableEditorTab'
