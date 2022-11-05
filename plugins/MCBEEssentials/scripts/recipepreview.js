@@ -21,7 +21,7 @@ class SimulateRecipeTab extends IframeTab {
 async function createTab(tabSystem, fileHandle, filePath) {
 
 	const tab = new SimulateRecipeTab(tabSystem, {
-		url: 'https://mcbe-essentials.glitch.me/recipe-previewer/',
+		url: 'https://mcbe-essentials.github.io/recipe-previewer/',
 		name: 'Preview: ' + fileHandle.name,
 		icon: 'mdi-book-outline',
 		iconColor: 'behaviorPack',
