@@ -32,7 +32,7 @@ class MCBEEssentialsTab extends IframeTab {
 
 async function createTab(tabSystem) {
 	const tab = new MCBEEssentialsTab(tabSystem, {
-		url: 'https://mcbe-essentials.glitch.me/'
+		url: 'https://mcbe-essentials.github.io/'
 	})
 	return tab;
 }
@@ -41,7 +41,7 @@ register({
 	icon: 'mdi-open-in-new',
 	name: '[Open New]',
 	trigger() {
-		openExternal('https://mcbe-essentials.glitch.me/')
+		openExternal('https://mcbe-essentials.github.io/')
 	},
 	isFor(tab) {
 		return tab.type === 'MCBEEssentialsTab'
