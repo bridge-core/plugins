@@ -4,7 +4,7 @@
 	"name": "MCBE Essentials",
 	"version": "1.1.0",
 	"id": "52e9fb51-4733-4336-85f4-94ed94bbb539",
-	"description": "This extension connects MCBE Essentials apps with bridge. Right click a trade table, dialogue, structure or recipe file and select Open With to open it in the appropriate MCBE Essentials app! In addition, the site is available as a sidebar button.",
+	"description": "This extension connects MCBE Essentials apps with bridge. Right click a trade table, dialogue, structure or recipe file and select "Open With" to open it in the appropriate MCBE Essentials app! In addition, the site is available as a sidebar button.",
 	"api_version": 2,
 	"target": "v2",
 	"compatibleAppVersions": {
