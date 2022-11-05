@@ -21,7 +21,7 @@ class SimulateTradeTableTab extends IframeTab {
 async function createTab(tabSystem, fileHandle, filePath) {
 
 	const tab = new SimulateTradeTableTab(tabSystem, {
-		url: 'https://mcbe-essentials.glitch.me/trade-table-editor/previewer/',
+		url: 'https://mcbe-essentials.github.io/trade-table-editor/previewer/',
 		name: 'Preview: ' + fileHandle.name,
 		icon: 'mdi-store-outline',
 		iconColor: 'behaviorPack',
