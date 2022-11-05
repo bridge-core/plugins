@@ -2,15 +2,15 @@
 	"author": "rebrainertv",
 	"icon": "mdi-wrench-outline",
 	"name": "MCBE Essentials",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"id": "52e9fb51-4733-4336-85f4-94ed94bbb539",
-	"description": "Open the MCBE Essentials website within a new bridge. tab",
+	"description": "This extension connects MCBE Essentials apps with bridge. Right click a trade table, dialogue, structure or recipe file and select Open With to open it in the appropriate MCBE Essentials app! In addition, the site is available as a sidebar button.",
 	"api_version": 2,
 	"target": "v2",
 	"compatibleAppVersions": {
 		"min": "2.3.0"
 	},
-	"readme": "https://mcbe-essentials.github.io/",
+	"readme": "https://mcbe-essentials.glitch.me/",
 	"tags": [
 		"Utility",
 		"Curated"
