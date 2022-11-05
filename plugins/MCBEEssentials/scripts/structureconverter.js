@@ -36,7 +36,7 @@ class MCBEEStructureConverterTab extends IframeTab {
 
 async function createTab(tabSystem, fileHandle, filePath) {
 	const tab = new MCBEEStructureConverterTab(tabSystem, {
-		url: 'https://mcbe-essentials.glitch.me/structure-to-function/',
+		url: 'https://mcbe-essentials.github.io/structure-to-function/',
 		openWithPayload: {filePath, fileHandle}
 	}) 
 	return tab;
@@ -46,7 +46,7 @@ register({
 	icon: 'mdi-open-in-new',
 	name: '[Open New]',
 	trigger() {
-		openExternal('https://mcbe-essentials.glitch.me/structure-to-function/')
+		openExternal('https://mcbe-essentials.github.io/structure-to-function/')
 	},
 	isFor(tab) {
 		return tab.type === 'MCBEEStructureConverterTab'
