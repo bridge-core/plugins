@@ -6,36 +6,26 @@ const { registerOpenWithHandler } = await require('@bridge/import')
 
 class SimulateTradeTableTab extends IframeTab {
 	type = 'SimulateTradeTableTab'
-}
 
-async function createUrl(file) {
-	const fileContent = await file.text()
-	const url = new URL(
-		'https://mcbe-essentials.github.io/trade-table-editor/preview/'
-	)
-	url.searchParams.set(
-		'openTradeTable',
-		btoa(
-			strFromU8(
-				zlibSync(strToU8(fileContent), {
-					level: 9,
-				}),
-				true
-			)
-		)
-	)
-
-	return url.href
+	async is(tab) {
+		const canBeSameTab = await super.is(tab)
+		if (!canBeSameTab) return false
+	  
+		const referencedFile = this.getOptions().openWithPayload?.filePath
+		const referencesSameFile = referencedFile === tab.getOptions().openWithPayload?.filePath
+	  
+		return referencedFile !== undefined && referencesSameFile
+	}
 }
 
 async function createTab(tabSystem, fileHandle, filePath) {
-	const url = await createUrl(await fileHandle.getFile())
 
 	const tab = new SimulateTradeTableTab(tabSystem, {
-		url,
+		url: 'https://mcbe-essentials.github.io/trade-table-editor/previewer/',
 		name: 'Preview: ' + fileHandle.name,
 		icon: 'mdi-store-outline',
 		iconColor: 'behaviorPack',
+		openWithPayload: {filePath, fileHandle}
 	})
 
 	if (filePath)
@@ -54,7 +44,7 @@ registerPreview({
 })
 
 registerOpenWithHandler({
-	icon: 'mdi-store-outline',
+	icon: 'mdi-store-search-outline',
 	name: '[Trade Table Preview]',
 	isAvailable: ({ filePath }) => filePath && filePath.includes('trading'),
 	onOpen: async ({ fileHandle, filePath }) => {
