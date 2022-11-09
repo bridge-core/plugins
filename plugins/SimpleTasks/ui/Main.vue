@@ -77,7 +77,7 @@
 <script>
 const { readJSON, writeJSON } = await require('@bridge/fs')
 const { join } = await require('@bridge/path')
-const { getCurrentProject, getCurrentBP, getProjectAuthor, APP_VERSION } =
+const { getCurrentProject, getCurrentBP, getProjectAuthors, APP_VERSION } =
 	await require('@bridge/env')
 const { onProjectChanged } = await require('@bridge/project')
 const { createWindow } = await require('@bridge/windows')
@@ -123,10 +123,19 @@ export default {
 			}
 		},
 		async onCreateTask() {
+			const authors = isV2 ? await getProjectAuthors() : undefined
+			let author = ''
+			if (authors) {
+				author =
+					typeof authors[0] === 'string'
+						? authors[0]
+						: authors[0].name
+			}
+
 			createWindow(InputWindow, {
 				title: `Task ${this.tasks.length + 1}`,
 				description: '',
-				assignedTo: isV2 ? await getProjectAuthor() : '',
+				assignedTo: author || '',
 				onInput: (title, description, assignedTo) => {
 					this.tasks.push({
 						title,
