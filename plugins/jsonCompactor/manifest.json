@@ -1,0 +1,19 @@
+{
+    "icon": "mdi-package-variant-minus",
+    "author": "Dingsel",
+    "version": "0.0.1",
+    "name": "Json Compactor",
+    "description": "Renames Component Groups and removes every newline or space from the file causing the file to shrink upto 50% of the original size.",
+    "id": "0e33a0e1-973d-440d-a9e7-978ddd71989e",
+    "link": "https://discord.gg/tzrmH56JXC",
+    "api_version": 2,
+    "target": "v2",
+    "tags": [
+        "Compiler"
+    ],
+    "compiler": {
+        "plugins": {
+            "jsonCompactor": "compiler/minify.js"
+        }
+    }
+}
