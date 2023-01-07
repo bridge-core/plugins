@@ -1,0 +1,27 @@
+{
+	"name": "Preprocessor Script",
+	"icon": "mdi-language-javascript",
+	"description": "Blank Preprocessor Script",
+	"category": "fileType.simpleFile",
+	"requires": {
+		"packTypes": ["behaviorPack"]
+	},
+	"additionalModels": {
+		"PRESET_PATH": ""
+	},
+	"fields": [
+		[
+			"Name",
+			"NAME",
+			{ "validate": ["required", "alphanumeric", "lowercase"] }
+		]
+	],
+
+	"createFiles": [
+		[
+			"script.js",
+			"preprocessor_scripts/{{PRESET_PATH}}{{NAME}}.js",
+			{ "inject": ["NAME", "PRESET_PATH"], "openFile": true, "packPath": "behaviorPack" }
+		]
+	]
+}

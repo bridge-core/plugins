@@ -1,0 +1,11 @@
+{
+	"id": "preprocessorScript",
+	"type": "text",
+	"icon": "mdi-language-javascript",
+	"detect": {
+		"packType": "behaviorPack",
+		"scope": "preprocessor_scripts/",
+		"matcher": ["preprocessor_scripts/**/*", "preprocessor_scripts/**/*"],
+		"fileExtensions": [".js"]
+	}
+}
