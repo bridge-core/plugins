@@ -5,7 +5,7 @@
 	"detect": {
 		"packType": "behaviorPack",
 		"scope": "preprocessor_scripts/",
-		"matcher": ["preprocessor_scripts/**/*", "preprocessor_scripts/**/*"],
+		"matcher": ["preprocessor_scripts/**/*", "preprocessor_scripts/*"],
 		"fileExtensions": [".js"]
 	}
 }
