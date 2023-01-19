@@ -1,7 +1,8 @@
+import { compareVersions as compare } from 'compare-versions';
+import { v4 as uuid } from 'uuid';
+import uuidByString from 'uuid-by-string'
+
 export default ({ projectRoot, projectConfig, fileSystem }) => {
-	const compare = require('compare-versions')
-	const uuid = require('uuid')
-	const uuidByString = require('uuid-by-string')
 
 	function deepMerge(obj1, obj2) {
 		let outArray = undefined
@@ -89,7 +90,7 @@ export default ({ projectRoot, projectConfig, fileSystem }) => {
 			}
 
 			// Spell effects
-			const effectId = uuid.v4()
+			const effectId = uuid()
 			let addEffects = undefined
 			let removeEffects = undefined
 
@@ -131,8 +132,8 @@ export default ({ projectRoot, projectConfig, fileSystem }) => {
 			if (eventObj.add?.group) {
 				const group = use(eventObj, 'add/group')
 				const groupName =
-					(typeof group.name !== 'object' ? group.name : uuid.v4()) ||
-					uuid.v4()
+					(typeof group.name !== 'object' ? group.name : uuid()) ||
+					uuid()
 				const components = group.components ?? {}
 
 				eventObj = deepMerge(eventObj, {
