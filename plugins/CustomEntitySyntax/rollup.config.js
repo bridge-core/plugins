@@ -8,7 +8,7 @@ export default {
 	output: [
 		{
 			file: pkg.module,
-			format: 'cjs',
+			format: 'es',
 		},
 	],
 	plugins: [
