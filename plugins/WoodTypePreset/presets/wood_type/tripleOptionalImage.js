@@ -86,6 +86,6 @@ module.exports = async ({ createFile, loadPresetFile, models, expandFile }) => {
         else fileName = TEXTURE.name
         const fileNameNoExtension = fileName.replace(/.png|.tga|.jpg|.jpeg/gi, '')
 
-            await createFile(`textures/entity/${PRESET_PATH}${path}/${IDENTIFIER}_${str}`)
+            await createFile(`textures/entity/${PRESET_PATH}${path}/${IDENTIFIER}_${str}`, TEXTURE, { packPath: 'resourcePack' })
     }
 }
