@@ -1,6 +1,8 @@
 export default defineComponent(({ name, template, schema }) => {
 	name('bridge:navigator')
 	schema({
+		type: 'object',
+		additionalProperties: false,
 		properties: {
 			paths: {
 				type: 'array',
@@ -10,15 +12,15 @@ export default defineComponent(({ name, template, schema }) => {
 					additionalProperties: false,
 					properties: {
 						priority: {
-							type: "number",
+							type: "integer",
 							description: "Priority of the generated tasks"
 						},
 						start_event: {
-							$ref: "../dynamic/currentContext/eventEnum.json",
+							$ref: "/data/packages/minecraftBedrock/schema/entity/dynamic/currentContext/eventEnum.json",
 							description: "Event that starts the entity's pathing"
 						},
 						stop_event: {
-							$ref: "../dynamic/currentContext/eventEnum.json",
+							$ref: "/data/packages/minecraftBedrock/schema/entity/dynamic/currentContext/eventEnum.json",
 							description: "Event that stops this path"
 						},
 						speed_multiplier: {
@@ -73,7 +75,7 @@ export default defineComponent(({ name, template, schema }) => {
 							items: {
 								anyOf: [
 									{
-										$ref: "../../general/reference/identifiers.json#/definitions/block_identifiers",
+										$ref: "/data/packages/minecraftBedrock/schema/general/reference/identifiers.json#/definitions/block_identifiers",
 										description: "The block to target. Will not trigger any special events when reached, and uses global offset and stay duration."
 									},
 									{
@@ -81,7 +83,7 @@ export default defineComponent(({ name, template, schema }) => {
 										additionalProperties: false,
 										properties: {
 											block: {
-												$ref: "../../general/reference/identifiers.json#/definitions/block_identifiers",
+												$ref: "/data/packages/minecraftBedrock/schema/general/reference/identifiers.json#/definitions/block_identifiers",
 												description: "The block to target"
 											},
 											on_reach: {
@@ -89,12 +91,12 @@ export default defineComponent(({ name, template, schema }) => {
 												description: "The event(s) to trigger when reaching the block",
 												anyOf: [
 													{
-														$ref: "../general/eventDefinition.json"
+														$ref: "/data/packages/minecraftBedrock/schema/entity/general/v1.16.0/eventDefinition.json"
 													},
 													{
 														type: "array",
 														items: {
-															$ref: "../general/eventDefinition.json"
+															$ref: "/data/packages/minecraftBedrock/schema/entity/general/v1.16.0/eventDefinition.json"
 														}
 													}
 												]
@@ -104,12 +106,12 @@ export default defineComponent(({ name, template, schema }) => {
 												description: "The event(s) to trigger when the stay is completed",
 												anyOf: [
 													{
-														$ref: "../general/eventDefinition.json"
+														$ref: "/data/packages/minecraftBedrock/schema/entity/general/v1.16.0/eventDefinition.json"
 													},
 													{
 														type: "array",
 														items: {
-															$ref: "../general/eventDefinition.json"
+															$ref: "/data/packages/minecraftBedrock/schema/entity/general/v1.16.0/eventDefinition.json"
 														}
 													}
 												]
@@ -137,7 +139,7 @@ export default defineComponent(({ name, template, schema }) => {
 				}
 			},
 			stop_event: {
-				$ref: "../dynamic/currentContext/eventEnum.json",
+				$ref: "/data/packages/minecraftBedrock/schema/entity/dynamic/currentContext/eventEnum.json",
 				description: "Event that stops all paths. If this is unset, it will be bridge:stop_all_paths"
 			}
 		}
