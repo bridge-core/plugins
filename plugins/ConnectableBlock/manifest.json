@@ -2,7 +2,7 @@
 	"icon": "mdi-cube-outline",
 	"author": "Arexon",
 	"name": "Connectable Block",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"id": "8e362b9e-7c63-4495-b0ab-111fd31de00d",
 	"description": "Easily make your block connect with neighboring blocks by using part_visibity or geometries.",
 	"api_version": 2,

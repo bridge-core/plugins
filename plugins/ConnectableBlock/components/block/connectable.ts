@@ -92,7 +92,7 @@ export default defineComponent(({ name, template, schema }) => {
 							[part.name]: `${part.directions.map((dir: string) => `q.block_property('bridge:${dir}_neighbor')`).join('&&')}`
 						})
 					},
-					'minecraft:block/components/minecraft:part_visibility/rules'
+					'minecraft:block/components/minecraft:part_visibility/conditions'
 				)
 			})
 		}
@@ -118,9 +118,9 @@ export default defineComponent(({ name, template, schema }) => {
 
 		create(
 			{
-				'minecraft:ticking': {
+				'minecraft:queued_ticking': {
 					looping: true,
-					range: [ 0, 0 ],
+					interval_range: [ 0, 0 ],
 					on_tick: {
 						event: 'e:update.neighbors'
 					}
