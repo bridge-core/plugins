@@ -1,0 +1,12 @@
+{
+"name": "Dark Night",
+"description": "Beautiful dark theme for work at night.",
+"id": "8da5c1bc-4028-11ee-be56-0242ac120002",
+"author": "thecoolnature",
+"version": "1.0.0",
+"icon": "mdi-weather-night",
+"target": "v2",
+"tags": [
+"Theme"
+]
+}
