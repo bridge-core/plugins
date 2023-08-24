@@ -1,0 +1,56 @@
+{
+  "name": "Dark Night",
+  "id": "thecoolnature.darknight",
+  "colorScheme": "dark",
+  "colors": {
+    "primary": "#071019",
+    "accent": "#070B19",
+    "error": "#0404B4",
+    "info": "#0B0719",
+    "success": "#64FE2E",
+    "warning": "#2E2E2E",
+    "background": "#000000",
+    "sidebarNavigation": "#5F04B4",
+    "expandedSidebar": "#190710",
+    "sidebarSelection": "#010b1d",
+    "menu": "#070719",
+    "toolbar": "#5F04B4",
+    "footer": "#070719",
+    "tooltip": "#010b1d",
+    "tabActive": "#0d3754",
+    "tabInactive": "#010b1d",
+    "lineHighlightBackground": "#010b1d",
+    "scrollbarThumb": "#0d3754",
+    "behaviorPack": "#6E6E6E",
+    "resourcePack": "#0404B4",
+    "skinPack": "#DF0101",
+    "worldTemplate": "#4B610B"
+  },
+  "highlighter": {
+    "type": {
+      "color": "#3ADF00"
+    },
+    "keyword": {
+      "color": "#FF00FF",
+      "textDecoration": "italic"
+    },
+    "definition": {
+      "color": "#31B404"
+    },
+    "atom": {
+      "color": "#FF00BF"
+    },
+    "number": {
+      "color": "#5858FA"
+    },
+    "string": {
+      "color": "#DF0101"
+    },
+    "variable": {
+      "color": "#CC2EFA"
+    },
+    "comment": {
+      "color": "#585858"
+    }
+  }
+}
