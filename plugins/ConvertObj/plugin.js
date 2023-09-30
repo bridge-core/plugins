@@ -162,7 +162,7 @@ export default ({ options, projectConfig, fileSystem }) => {
 		async transform(filePath, fileContent) {
 			if (filePath.endsWith('.obj')) {
 				const fileName = filePath.split('/').pop().replace('.obj', '')
-				const modelId = `${namespace}:${fileName}`
+				const modelId = `geometry.${namespace}.${fileName}`
 
 				const texturePath = projectConfig.resolvePackPath(
 					'resourcePack',

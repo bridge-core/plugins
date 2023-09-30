@@ -2,7 +2,7 @@
 	"author": "solvedDev",
 	"icon": "mdi-vector-polygon",
 	"name": "Convert OBJ",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"id": "f76c1da1-1ee4-4a32-8deb-30e2d3fbc885",
 	"description": "Convert .obj files to Minecraft models",
 	"api_version": 2,
