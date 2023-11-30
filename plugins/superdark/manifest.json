@@ -1,0 +1,13 @@
+{
+	"author": "Gamer99",
+	"name": "superdark",
+	"description": "test",
+	"version": "1.0.0",
+	"target": "v2",
+	"id": "1e13a740-fcc4-45d5-925a-53ed39370f9b",
+	"icon": "mdi-atom",
+	"tags": [
+		"Theme"
+	],
+	"releaseTimestamp": 1642806936833
+}
