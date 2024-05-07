@@ -125,7 +125,7 @@ export default defineComponent(({ name, template, schema }) => {
 		directions.map((dir: string) => {
 			create(
 				{
-					[`bridge:${dir}_neighbor`]: { "values": [false, true] }
+					[`bridge:${dir}_neighbor`]: [false, true]
 				},
 				'minecraft:block/description/states'
 			)
