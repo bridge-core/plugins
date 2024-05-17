@@ -1,0 +1,12 @@
+{
+	"author": "Twig",
+	"name": "Extra Snippets",
+	"version": "1.0.0",
+	"description": "This extensions adds many snippets for Entitys, Blocks, Items, etx.",
+	"id": "609489ae-bb05-4264-9d20-cad0d7e4e8d7",
+	"tags": ["Snippets"],
+	"icon": "mdi-attachment-plus",
+	"releaseTimestamp": 1620755291316,
+	"readme": "https://github.com/bridge-core/plugins/tree/master/plugins/ExtraSnippets",
+	"target": "v2"
+}
