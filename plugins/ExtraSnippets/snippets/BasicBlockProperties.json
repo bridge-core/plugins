@@ -1,0 +1,23 @@
+{
+   "name": "Snippet: Basic Block Properties",
+   "description": "This adds basic block properties that almost all normal mobs need",
+   "fileTypes": [
+      "block"
+   ],
+   "locations": [
+      "minecraft:block/components",
+      "minecraft:block/component_groups/*"
+   ],
+   "data": {
+      "minecraft:destructible_by_mining": {
+         "seconds_to_destroy": 1
+      },
+      "minecraft:destructible_by_explosion": {
+         "explosion_resistance": 1
+      },
+      "minecraft:flammable": true,
+      "minecraft:friction": 0.4,
+      "minecraft:display_name": "undefined",
+      "minecraft:map_color": "#000000"
+   }
+}

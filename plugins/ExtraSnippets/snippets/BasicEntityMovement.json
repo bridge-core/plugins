@@ -1,0 +1,33 @@
+{
+   "name": "Snippet: Basic Entity Movement",
+   "description": "This adds basic entity movement that almost all normal mobs need",
+   "fileTypes": [
+      "entity"
+   ],
+   "locations": [
+      "minecraft:entity/components",
+      "minecraft:entity/component_groups/*"
+   ],
+   "data": {
+      "minecraft:movement": {
+         "value": 5,
+         "max": 10
+      },
+      "minecraft:movement.generic": {
+         "max_turn": 270
+      },
+      "minecraft:navigation.generic": {
+         "avoid_damage_blocks": true,
+         "can_jump": true,
+         "can_float": true
+      },
+      "minecraft:behavior.random_stroll": {
+         "interval": 120,
+         "priority": 0,
+         "speed_multiplier": 1
+      },
+      "minecraft:attack": {
+         "damage": 5
+      }
+   }
+}

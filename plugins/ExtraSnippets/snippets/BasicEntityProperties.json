@@ -1,0 +1,39 @@
+{
+   "name": "Snippet: Basic Entity Properties",
+   "description": "This adds basic entity properties that almost all normal mobs need",
+   "fileTypes": [
+      "entity"
+   ],
+   "locations": [
+      "minecraft:entity/components",
+      "minecraft:entity/component_groups/*"
+   ],
+   "data": {
+      "minecraft:behavior.look_at_player": {
+         "priority": 3,
+         "look_distance": 6
+      },
+      "minecraft:can_climb": {},
+      "minecraft:pushable": {
+         "is_pushable": true,
+         "is_pushable_by_piston": true
+      },
+      "minecraft:collision_box": {
+         "height": 1,
+         "width": 1
+      },
+      "minecraft:leashable": {},
+      "minecraft:physics": {
+         "has_collision": true,
+         "has_gravity": true
+      },
+      "minecraft:jump.static": {
+         "jump_power": 0.42
+      },
+      "minecraft:health": {
+         "max": 20,
+         "value": 20
+      },
+      "minecraft:floats_in_liquid": {}
+   }
+}

@@ -1,0 +1,21 @@
+{
+   "name": "Snippet: Disable Entity Damage",
+   "description": "This adds a damage sensor that makes the entity invulnerable",
+   "fileTypes": [
+      "entity"
+   ],
+   "locations": [
+      "minecraft:entity/components",
+      "minecraft:entity/component_groups/*"
+   ],
+   "data": {
+      "minecraft:damage_sensor": {
+         "triggers": [
+            {
+               "cause": "all",
+               "deals_damage": false
+            }
+         ]
+      }
+   }
+}

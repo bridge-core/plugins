@@ -1,0 +1,18 @@
+{
+   "name": "Snippet: Trade Table Link",
+   "description": "This adds a link to a trade table",
+   "fileTypes": [
+      "entity"
+   ],
+   "locations": [
+      "minecraft:entity/components",
+      "minecraft:entity/component_groups/*"
+   ],
+   "data": {
+      "minecraft:trade_table": {
+         "display_name": "undefined",
+         "table": "undefined.json",
+         "new_screen": true
+      }
+   }
+}
