@@ -38,11 +38,25 @@ class VanillaPackSidebarContent extends SidebarContent {
 		this.headerHeight = '60px'
 	}
 
-	async handleFolderImport(dirHandle) {
+	async handleFolderImport(dirHandle, root = true) {
+		// Load existing idb data
+		const data = (await storage.load()) ?? {
+			directoryEntries: {
+				vanillaBehaviorPack: null,
+				vanillaResourcePack: null,
+			},
+		}
+
 		// Decide whether it is the vanilla BP or RP by looking at manifest in directory and reading module type
 		if (dirHandle.kind === 'directory') {
+			let foundPacks = false
 			let type
+
+			const handles = []
+
 			for await (const handle of dirHandle.values()) {
+				handles.push(handle)
+
 				if (handle.name === 'manifest.json') {
 					try {
 						const file = await handle.getFile()
@@ -60,23 +74,52 @@ class VanillaPackSidebarContent extends SidebarContent {
 						}
 					} catch {}
 				}
+
+				if (handle.name === 'behavior_pack') {
+					foundPacks = true
+
+					data.directoryEntries.vanillaBehaviorPack = handle
+				}
+
+				if (handle.name === 'resource_pack') {
+					foundPacks = true
+
+					data.directoryEntries.vanillaResourcePack = handle
+				}
+			}
+
+			if (foundPacks) {
+				// Save these new file handles to idb and set them on the sidebar state for DirectoryViewer
+				await storage.save(data)
+				this.directoryEntries = data.directoryEntries
+				// Setup viewer
+				await this.setup()
+
+				return
 			}
 
 			if (!type) {
-				// If type couldn't be decided, show warning
-				createInformationWindow(
-					'[Vanilla Packs]',
-					`[Could not recognise pack as there is no valid manifest in the "${dirHandle.name}" directory.]`
-				)
-			} else {
-				// If it was decided, continue...
-				// Load existing idb data
-				const data = (await storage.load()) ?? {
-					directoryEntries: {
-						vanillaBehaviorPack: null,
-						vanillaResourcePack: null,
-					},
+				if (root) {
+					//Try to import if its just in a subfolder
+					if (
+						handles.length == 1 &&
+						handles[0].kind === 'directory'
+					) {
+						this.handleFolderImport(handles[0], false)
+					} else {
+						createInformationWindow(
+							'[Vanilla Packs]',
+							`[Could not recognise pack as there is no valid manifest in the "${dirHandle.name}" directory.]`
+						)
+					}
+				} else {
+					// If type couldn't be decided, show warning
+					createInformationWindow(
+						'[Vanilla Packs]',
+						`[Could not recognise pack as there is no valid manifest in the "${dirHandle.name}" directory.]`
+					)
 				}
+			} else {
 				// Set behavior pack
 				if (type === 'behaviorPack') {
 					data.directoryEntries.vanillaBehaviorPack = dirHandle
@@ -271,14 +314,22 @@ class VanillaPackSidebarContent extends SidebarContent {
 
 						onTrigger: async () => {
 							// Get file handle, relative to the dirHandle argument
-							const pathArr = file.path.substring(1).split(/\\|\//g)
+							const pathArr = file.path
+								.substring(1)
+								.split(/\\|\//g)
 							const fileName = pathArr.pop()
 							let current = dirHandle
 							for (const folder of pathArr) {
-								current = await current.getDirectoryHandle(folder)
+								current = await current.getDirectoryHandle(
+									folder
+								)
 							}
-							const fileHandle = await current.getFileHandle(fileName)
-							await openFile(fileHandle, { readOnlyMode: 'forced' })
+							const fileHandle = await current.getFileHandle(
+								fileName
+							)
+							await openFile(fileHandle, {
+								readOnlyMode: 'forced',
+							})
 						},
 					})
 				)
