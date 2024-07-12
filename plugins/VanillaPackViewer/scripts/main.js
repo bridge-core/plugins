@@ -3,7 +3,8 @@ const { create, SidebarContent, SelectableSidebarAction } =
 const { VanillaPackViewer, Header } = await require('@bridge/ui')
 const { addFolderImporter, importHandle } = await require('@bridge/import')
 const { createInformationWindow } = await require('@bridge/windows')
-const { readFilesFromDir, getFileHandle } = await require('@bridge/fs')
+const { readFilesFromDir, getFileHandle, serializeHandle, deserializeHandle } =
+	await require('@bridge/fs')
 const storage = await require('@bridge/persistent-storage')
 const { registerAction } = await require('@bridge/command-bar')
 const { openFile } = await require('@bridge/project')
@@ -38,14 +39,41 @@ class VanillaPackSidebarContent extends SidebarContent {
 		this.headerHeight = '60px'
 	}
 
-	async handleFolderImport(dirHandle, root = true) {
-		// Load existing idb data
+	async loadHandles() {
+		// Load data from idb
 		const data = (await storage.load()) ?? {
 			directoryEntries: {
 				vanillaBehaviorPack: null,
 				vanillaResourcePack: null,
 			},
 		}
+
+		this.directoryEntries = {
+			vanillaBehaviorPack: data.directoryEntries.vanillaBehaviorPack
+				? deserializeHandle(data.directoryEntries.vanillaBehaviorPack)
+				: null,
+			vanillaResourcePack: data.directoryEntries.vanillaResourcePack
+				? deserializeHandle(data.directoryEntries.vanillaResourcePack)
+				: null,
+		}
+	}
+
+	async saveHandles() {
+		await storage.save({
+			directoryEntries: {
+				vanillaBehaviorPack: this.directoryEntries.vanillaBehaviorPack
+					? serializeHandle(this.directoryEntries.vanillaBehaviorPack)
+					: null,
+				vanillaResourcePack: this.directoryEntries.vanillaResourcePack
+					? serializeHandle(this.directoryEntries.vanillaResourcePack)
+					: null,
+			},
+		})
+	}
+
+	async handleFolderImport(dirHandle, root = true) {
+		// Load existing idb data
+		await this.loadHandles()
 
 		// Decide whether it is the vanilla BP or RP by looking at manifest in directory and reading module type
 		if (dirHandle.kind === 'directory') {
@@ -78,20 +106,20 @@ class VanillaPackSidebarContent extends SidebarContent {
 				if (handle.name === 'behavior_pack') {
 					foundPacks = true
 
-					data.directoryEntries.vanillaBehaviorPack = handle
+					this.directoryEntries.vanillaBehaviorPack = handle
 				}
 
 				if (handle.name === 'resource_pack') {
 					foundPacks = true
 
-					data.directoryEntries.vanillaResourcePack = handle
+					rhis.directoryEntries.vanillaResourcePack = handle
 				}
 			}
 
 			if (foundPacks) {
 				// Save these new file handles to idb and set them on the sidebar state for DirectoryViewer
-				await storage.save(data)
-				this.directoryEntries = data.directoryEntries
+				await this.saveHandles()
+
 				// Setup viewer
 				await this.setup()
 
@@ -122,16 +150,16 @@ class VanillaPackSidebarContent extends SidebarContent {
 			} else {
 				// Set behavior pack
 				if (type === 'behaviorPack') {
-					data.directoryEntries.vanillaBehaviorPack = dirHandle
+					this.directoryEntries.vanillaBehaviorPack = dirHandle
 				}
 				// OR
 				// Set resource pack
 				else if (type === 'resourcePack') {
-					data.directoryEntries.vanillaResourcePack = dirHandle
+					this.directoryEntries.vanillaResourcePack = dirHandle
 				}
+
 				// Save these new file handles to idb and set them on the sidebar state for DirectoryViewer
-				await storage.save(data)
-				this.directoryEntries = data.directoryEntries
+				await this.saveHandles()
 				// Setup viewer
 				await this.setup()
 			}
@@ -144,14 +172,6 @@ class VanillaPackSidebarContent extends SidebarContent {
 		}
 	}
 
-	async loadHandles() {
-		// Load data from idb
-		const data = await storage.load()
-		// Set directory entries if they were saved
-		if (data?.directoryEntries)
-			this.directoryEntries = data.directoryEntries
-	}
-
 	async setup() {
 		// Get access to handles if necessary
 		await this.accessHandles()
@@ -159,8 +179,9 @@ class VanillaPackSidebarContent extends SidebarContent {
 		// If we have a BP handle and access to it, add action to VP viewer
 		if (
 			this.directoryEntries.vanillaBehaviorPack &&
-			(await this.directoryEntries.vanillaBehaviorPack.queryPermission()) ===
-				'granted'
+			(!this.directoryEntries.vanillaBehaviorPack.queryPermission ||
+				(await this.directoryEntries.vanillaBehaviorPack.queryPermission()) ===
+					'granted')
 		)
 			this.addPack(
 				'behaviorPack',
@@ -169,8 +190,9 @@ class VanillaPackSidebarContent extends SidebarContent {
 		// If we have an RP handle and access to it, add action to VP viewer
 		if (
 			this.directoryEntries.vanillaResourcePack &&
-			(await this.directoryEntries.vanillaResourcePack.queryPermission()) ===
-				'granted'
+			(!this.directoryEntries.vanillaResourcePack.queryPermission() ||
+				(await this.directoryEntries.vanillaResourcePack.queryPermission()) ===
+					'granted')
 		)
 			this.addPack(
 				'resourcePack',
@@ -193,12 +215,14 @@ class VanillaPackSidebarContent extends SidebarContent {
 		// Check if we already have permissions for VP types
 		const bpPermission =
 			this.directoryEntries.vanillaBehaviorPack &&
-			(await this.directoryEntries.vanillaBehaviorPack.queryPermission()) ===
-				'granted'
+			(!this.directoryEntries.vanillaBehaviorPack.queryPermission ||
+				(await this.directoryEntries.vanillaBehaviorPack.queryPermission()) ===
+					'granted')
 		const rpPermission =
 			this.directoryEntries.vanillaResourcePack &&
-			(await this.directoryEntries.vanillaResourcePack.queryPermission()) ===
-				'granted'
+			(!this.directoryEntries.vanillaResourcePack.queryPermission() ||
+				(await this.directoryEntries.vanillaResourcePack.queryPermission()) ===
+					'granted')
 
 		// If we already have permission for either, update sidebar to show DirectoryViewer and don't continue with requesting permissions
 		// Don't need to worry about which pack we specifically have access to because the sidebar action will not be registered if there is no access
