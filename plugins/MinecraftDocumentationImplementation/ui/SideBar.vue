@@ -3,7 +3,7 @@
         <div v-if="this.Data.setVersion == null">
             <h1 style="text-align:center;">Minecraft Documentation</h1>
             <h3 block style="text-decoration:underline; text-align:center;">Choose a version</h3>
-            <v-btn block color="primary" v-for="item in versions.sort().reverse()" @click="openDocVersion(item)" style="margin-bottom: 10px;"><span>{{ item }}</span></v-btn>
+            <v-btn block color="primary" v-for="item in versions.sort((a, b) => a.replace(/\d+/g, n => +n+1000 ).localeCompare(b.replace(/\d+/g, n => +n+1000 ))).reverse()" @click="openDocVersion(item)" style="margin-bottom: 10px;"><span>{{ item }}</span></v-btn>
         </div>
         <div v-else>
             <h1 style="text-align:center;">{{ this.Data.setVersion }}</h1>
