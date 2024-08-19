@@ -9,5 +9,8 @@
 	"tags": [
 		"Component"
 	],
-	"releaseTimestamp": 1612027691170
+	"releaseTimestamp": 1612027691170,
+	"compatibleAppVersions": {
+		"max": "2.7.30"
+	}
 }

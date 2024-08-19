@@ -7,5 +7,8 @@
 	"description": "Tons More Presets To Help Making Addons",
 	"api_version": 1,
 	"tags": ["presets"],
-	"releaseTimestamp": 1615216261965
+	"releaseTimestamp": 1615216261965,
+	"compatibleAppVersions": {
+		"max": "2.7.30"
+	}
 }

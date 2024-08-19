@@ -55,5 +55,8 @@
 			"path": "entities/stairs_help.json"
 		}
 	},
-	"releaseTimestamp": 1659566034916
+	"releaseTimestamp": 1659566034916,
+	"compatibleAppVersions": {
+		"max": "2.7.30"
+	}
 }

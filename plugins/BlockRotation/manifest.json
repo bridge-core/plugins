@@ -9,5 +9,8 @@
 		"Curated",
 		"Component"
 	],
-	"releaseTimestamp": 1612027690656
+	"releaseTimestamp": 1612027690656,
+	"compatibleAppVersions": {
+		"max": "2.7.30"
+	}
 }

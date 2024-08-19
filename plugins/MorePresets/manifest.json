@@ -8,5 +8,8 @@
 		"Curated",
 		"Presets"
 	],
-	"releaseTimestamp": 1612027691142
+	"releaseTimestamp": 1612027691142,
+	"compatibleAppVersions": {
+		"max": "2.7.30"
+	},
 }

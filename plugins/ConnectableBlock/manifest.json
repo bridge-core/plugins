@@ -16,5 +16,8 @@
 			"path": "components/block/bridge/"
 		}
 	},
-	"releaseTimestamp": 1632821021507
+	"releaseTimestamp": 1632821021507,
+	"compatibleAppVersions": {
+		"max": "2.7.30"
+	}
 }
