@@ -2,5 +2,8 @@
     "deno.enable": true,
     "deno.import_intellisense_origins": {
         "https://deno.land": true
-    }
+    },
+    "json.schemas": [{
+        "fileMatch": ["plugins/*/manifest.json"], "url": ".vscode/custom_schemas/extension_manifest.json"
+    }]
 }
