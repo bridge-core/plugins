@@ -4,7 +4,7 @@
 	"version": "1.0.2",
 	"name": "Kiki's Advanced Presets",
 	"link": "https://www.youtube.com/channel/UCOt9hqBRhSvR3BCLhXdar1Q",
-	"description": "Tons More Presets To Help Making Addons",
+	"description": "Tons More Presets To Help Making Addons (Deprecated in MC 1.21.20)",
 	"api_version": 1,
 	"tags": ["presets"],
 	"releaseTimestamp": 1615216261965

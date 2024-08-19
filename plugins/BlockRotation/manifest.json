@@ -3,10 +3,9 @@
 	"name": "Simple Block Rotation",
 	"version": "1.2.1",
 	"id": "ac340569-8df3-4409-ac9d-b855b183210b",
-	"description": "Adding rotation to blocks is as easy as it should be: Adding a single component!",
+	"description": "Adding rotation to blocks is as easy as it should be: Adding a single component! (Deprecated in MC 1.21.20)",
 	"api_version": 2,
 	"tags": [
-		"Curated",
 		"Component"
 	],
 	"releaseTimestamp": 1612027690656

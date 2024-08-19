@@ -3,7 +3,7 @@
 	"name": "Better Custom Slab Preset",
 	"version": "1.0.1",
 	"id": "6313b392-9507-45a9-aa1a-08d7d8eebc32",
-	"description": "Adds a Better Custom Slab Preset(This plugin only works in the latest beta!)",
+	"description": "Adds a Better Custom Slab Preset (Deprecated in MC 1.21.20)",
 	"api_version": 2,
 	"target": "v2",
 	"tags": [

@@ -3,7 +3,7 @@
 	"name": "Pillar Preset",
 	"version": "1.0.0",
 	"id": "458bc9a3-ab1a-4cbe-908b-966340116755",
-	"description": "Adds a pillar block preset.",
+	"description": "Adds a pillar block preset. (Deprecated in MC 1.21.20)",
 	"api_version": 2,
 	"target": "v2",
 	"tags": [
