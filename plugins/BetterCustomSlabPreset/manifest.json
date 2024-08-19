@@ -9,5 +9,8 @@
 	"tags": [
 		"Presets"
 	],
-	"releaseTimestamp": 1627570284385
+	"releaseTimestamp": 1627570284385,
+	"compatibleAppVersions": {
+		"max": "2.7.30"
+	}
 }
