@@ -10,52 +10,49 @@ export default function defineComponent({ name, template, schema }) {
 	})
 
 	template(({ rotation_from = 'player' }, { create }) => {
-		const rotationLookup = [
-			[0.0, 0.0, 0.0],
-			[90.0, 0.0, 0.0],
-			[0.0, 90.0, -90.0],
-		]
-		create(
-			{
-				'bridge:block_rotation': [0, 1, 2],
-			},
-			'minecraft:block/description/properties'
-		)
+		const state = rotation_from === 'player'
+			? 'cardinal_facing'
+			: 'block_face';
 
 		create(
 			{
-				permutations: rotationLookup.map((rotation, i) => ({
-					condition: `query.block_property('bridge:block_rotation') == ${i}`,
-					components: {
-						'minecraft:rotation': rotation,
+				'minecraft:placement_direction': {
+					enabled_states: [
+						`minecraft:${state}`
+					],
+					...(state === 'cardinal_direction' ? { y_rotation_offset: 180 } : {})
+				},
+			},
+			'minecraft:block/description/traits'
+		);
+
+		create(
+			{
+				permutations: [
+					// X axis
+					{
+						condition: `q.block_state('minecraft:${state}') == 'west' || q.block_state('minecraft:${state}') == 'east'`,
+						components: {
+							"minecraft:transformation": { rotation: [0, 0, 90] }
+						}
 					},
-				})),
+					// Y axis
+					{
+						condition: `q.block_state('minecraft:${state}') == 'down' || q.block_state('minecraft:${state}') == 'up'`,
+						components: {
+							"minecraft:transformation": { rotation: [0, 0, 0] }
+						}
+					},
+					// Z axis
+					{
+						condition: `q.block_state('minecraft:${state}') == 'north' || q.block_state('minecraft:${state}') == 'south'`,
+						components: {
+							"minecraft:transformation": { rotation: [90, 0, 0] }
+						}
+					}
+				]
 			},
 			'minecraft:block'
-		)
-
-		create(
-			{
-				'minecraft:on_player_placing': {
-					event: 'bridge:update_rotation',
-				},
-			},
-			'minecraft:block/components'
-		)
-
-		create(
-			{
-				'bridge:update_rotation': {
-					set_block_property: {
-						'bridge:block_rotation': `math.floor(${
-							rotation_from === 'player'
-								? 'query.cardinal_facing'
-								: 'query.block_face'
-						} / 2.0)`,
-					},
-				},
-			},
-			'minecraft:block/events'
 		)
 	})
 }

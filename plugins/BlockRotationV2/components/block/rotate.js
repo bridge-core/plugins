@@ -1,3 +1,11 @@
+const rotationLookup = new Map([
+	['down', [-90.0, 0.0, 0.0]],
+	['up', [90.0, 0.0, 0.0]],
+	['north', [0.0, 0.0, 0.0]],
+	['west', [0.0, 90.0, 0.0]],
+	['south', [0.0, 180.0, 0.0]],
+	['east', [0.0, -90.0, 0.0]],
+]);
 export default function defineComponent({ name, template, schema }) {
 	name('bridge:rotate_on_place')
 	schema({
@@ -10,53 +18,34 @@ export default function defineComponent({ name, template, schema }) {
 	})
 
 	template(({ rotation_from = 'player' }, { create }) => {
-		const rotationLookup = [
-			[0.0, 0.0, 0.0],
-			[0.0, 0.0, 180.0],
-			[90.0, 0.0, 0.0],
-			[-90.0, 0.0, 0.0],
-			[0.0, 0.0, -90.0],
-		]
-		create(
-			{
-				'bridge:block_rotation': [0, 1, 2, 3, 4, 5],
-			},
-			'minecraft:block/description/properties'
-		)
+		const state = rotation_from === 'player'
+			? 'cardinal_direction'
+			: 'block_face';
 
 		create(
 			{
-				permutations: rotationLookup.map((rotation, i) => ({
-					condition: `query.block_property('bridge:block_rotation') == ${i}`,
+				'minecraft:placement_direction': {
+					enabled_states: [
+						`minecraft:${state}`
+					],
+					...(state === 'cardinal_direction' ? { y_rotation_offset: 180 } : {})
+				},
+			},
+			'minecraft:block/description/traits'
+		);
+
+		create(
+			{
+				permutations: Array.from(rotationLookup.entries()).map(([name, rotation]) => ({
+					condition: `q.block_state('minecraft:${state}') == '${name}'`,
 					components: {
-						'minecraft:rotation': rotation,
+						'minecraft:transformation': {
+							rotation,
+						},
 					},
 				})),
 			},
 			'minecraft:block'
-		)
-
-		create(
-			{
-				'minecraft:on_player_placing': {
-					event: 'bridge:update_rotation',
-				},
-			},
-			'minecraft:block/components'
-		)
-
-		create(
-			{
-				'bridge:update_rotation': {
-					set_block_property: {
-						'bridge:block_rotation':
-							rotation_from === 'player'
-								? 'query.cardinal_facing'
-								: 'query.block_face',
-					},
-				},
-			},
-			'minecraft:block/events'
-		)
+		);
 	})
 }
