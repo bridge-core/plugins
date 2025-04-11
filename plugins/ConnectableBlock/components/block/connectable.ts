@@ -105,31 +105,17 @@ export default defineComponent(({ name, template, schema }) => {
 	})
 
 	template(({ tag, directions, parts = [], geometries = [] }: { tag: string, directions: string[], parts: any, geometries: any }, { create, sourceBlock }) => {
-		const positions = new Map([
-			['north', [0, 0, -1]],
-			['east', [1, 0, 0]],
-			['south', [0, 0, 1]],
-			['west', [-1, 0, 0]],
-			['up', [0, 1, 0]],
-			['down', [0, -1, 0]],
-			['north_up', [0, 1, -1]],
-			['east_up', [1, 1, 0]],
-			['south_up', [0, 1, 1]],
-			['west_up', [-1, 1, 0]],
-			['north_down', [0, -1, -1]],
-			['east_down', [1, -1, 0]],
-			['south_down', [0, -1, 1]],
-			['west_down', [-1, -1, 0]],
-		])
-
-		directions.map((dir: string) => {
-			create(
-				{
-					[`bridge:${dir}_neighbor`]: [false, true]
-				},
-				'minecraft:block/description/states'
-			)
-		})
+		create(
+			{
+				...Object.fromEntries(
+					directions.map((dir: string) => [
+						`bridge:${dir}_neighbor`, [false, true]
+					])
+				),
+				'bridge:connectable': [tag, "empty"]
+			},
+			'minecraft:block/description/states'
+		);
 
 		function getQueryStringForPartOrGeometry(part_or_geo: { directions: string[] | undefined, direction_combinations: string[][] | undefined, inverted: boolean | undefined }) {
 			return (part_or_geo.inverted ? "!(" : "") + (
@@ -148,15 +134,16 @@ export default defineComponent(({ name, template, schema }) => {
 					)
 			) + (part_or_geo.inverted ? ")" : "")
 		}
+
 		if (parts) {
-			parts.map((part: { name: string, directions: string[] | undefined, direction_combinations: string[][] | undefined, inverted: boolean | undefined }) => {
-				create(
-					{
-						[part.name]: getQueryStringForPartOrGeometry(part)
-					},
-					'minecraft:block/components/minecraft:geometry/bone_visibility'
-				)
-			})
+			create(
+				Object.fromEntries(
+					parts.map((part: { name: string, directions: string[] | undefined, direction_combinations: string[][] | undefined, inverted: boolean | undefined }) => [
+						part.name, getQueryStringForPartOrGeometry(part)
+					])
+				),
+				'minecraft:block/components/minecraft:geometry/bone_visibility'
+			)
 		}
 
 		if (geometries) {
@@ -176,24 +163,13 @@ export default defineComponent(({ name, template, schema }) => {
 
 		create(
 			{
-				'minecraft:queued_ticking': {
+				'minecraft:tick': {
 					looping: true,
-					interval_range: [0, 0],
-					on_tick: {
-						event: 'e:update.neighbors'
-					}
-				}
+					interval_range: [0, 0]
+				},
+				'minecraft:custom_components': ["bridge:connectable"]
 			},
 			'minecraft:block/components'
 		)
-
-		directions.map((dir: string) => {
-			create(
-				{
-					[`bridge:${dir}_neighbor`]: `q.block_neighbor_has_any_tag(${positions.get(dir)}, '${tag}') ? true : false`
-				},
-				'minecraft:block/events/e:update.neighbors/set_block_state'
-			)
-		})
 	})
 })
