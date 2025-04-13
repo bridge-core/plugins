@@ -1,9 +1,9 @@
 {
 	"author": "Joel ant 05",
 	"name": "Simple Block Rotation",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"id": "b05592ed-cc3e-437c-ae7c-3f51353051bd",
-	"description": "Adding rotation to blocks is as easy as it should be: Adding a single component! (Deprecated in MC 1.21.20)",
+	"description": "Adding rotation to blocks is as easy as it should be: Adding a single component!",
 	"api_version": 2,
 	"target": "v2",
 	"tags": [
