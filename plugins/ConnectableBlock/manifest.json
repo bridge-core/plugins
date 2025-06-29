@@ -15,7 +15,7 @@
 			"pack": "behaviorPack",
 			"path": "components/block/bridge/"
 		},
-		"scripts": {
+		"scripting": {
 			"pack": "behaviorPack",
 			"path": "scripts"
 		}
