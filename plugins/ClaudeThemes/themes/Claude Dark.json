@@ -1,0 +1,22 @@
+{"name":"Claude",
+   "colorScheme" : "dark","id":"draco12191712.claude.dark",
+	"colors":{"text":"#f0efec","primary":"#d97757","secondary":"#d97757","accent":"#d97757",
+  "error":"#e66767", "info":"#5598e7","warning":"#fab219","success":"#35b231",
+      "background":"#151515","sidebarNavigation":"#151515","expandedSidebar":"#262626",
+"sidebarSelection":"#333332","menu":"#20201f","footer":"#151515","tooltip":"#20201f","toolbar":"#151515",
+  "tabActive":"#2c2c2a","tabInactive":"#151515","lineHighlightBackground":"#212120","scrollbarThumb":"#3d3d3b",
+	"behaviorPack":"#e66767","resourcePack":"#5598e7","skinPack":"#ec835a","worldTemplate":"#35b231","claude":"#d97757"},
+  "monaco":{"editor.selectionBackground":"#0099ff4d","editor.selectionHighlightBackground":"#0099ff24","editor.inactiveSelectionBackground":"#0099ff26",
+"editorLineNumber.foreground":"#6d6b67","editorLineNumber.activeForeground":"#c3c2b7",
+    "editorIndentGuide.background":"#ffffff14","editorIndentGuide.background1":"#ffffff14","editorIndentGuide.activeBackground":"#ffffff33","editorIndentGuide.activeBackground1":"#ffffff33",
+  "editorBracketMatch.background":"#ffffff14","editorBracketMatch.border":"#ffffff33",
+"editorBracketHighlight.foreground1":"#d4a27f","editorBracketHighlight.foreground2":"#d97757","editorBracketHighlight.foreground3":"#7fb0dc","editorBracketHighlight.foreground4":"#d4a27f","editorBracketHighlight.foreground5":"#d97757","editorBracketHighlight.foreground6":"#7fb0dc","editorBracketHighlight.unexpectedBracket.foreground":"#e66767",
+	"editorWidget.background":"#20201f","editorWidget.border":"#ffffff14","editorSuggestWidget.background":"#20201f","editorSuggestWidget.border":"#ffffff14","editorSuggestWidget.selectedBackground":"#ffffff14",
+   "editorHoverWidget.background":"#20201f","editorHoverWidget.border":"#ffffff14","scrollbarSlider.background":"#ffffff1f","scrollbarSlider.hoverBackground":"#ffffff33","scrollbarSlider.activeBackground":"#ffffff40"},
+"highlighter": {
+  "string":{"color":"#d97757"},"definition":{"color":"#d4a27f"},
+    "keyword": {"color": "#ebdbbc"},
+"type":{"color":"#f4ae94"},"variable":{"color":"#61aaf2"},"variableStrong":{"color":"#f4ae94"},
+	"atom":{"color":"#d17a9a"},"number":{"color":"#7fb0dc"},
+  "meta":{"color":"#cc785c"},"comment":{"color":"#91918d"},"delimiter":{"color":"#bfbfba"}}
+}

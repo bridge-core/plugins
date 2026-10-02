@@ -1,0 +1,22 @@
+{
+"id":"draco12191712.claude.light", "name":"Claude (Light)","colorScheme":"light",
+  "highlighter":{"string":{"color":"#b4552f"},
+    "definition":{"color":"#8c5e33","textDecoration":"none"},"keyword":{"color":"#7a6428"},
+  "type":{"color":"#a8492a"},  "variable":{"color":"#2a6fc4"},"variableStrong":{"color":"#a8492a"},
+"atom":{"color":"#a3416a"},"number":{"color":"#3d6e9e"},"meta":{"color":"#a85a40"},
+	"comment":{"color":"#74736d"},"delimiter":{"color":"#52514e"}},
+    "colors": {"text":"#131313",
+  "primary":"#c6613f","secondary":"#c6613f","accent":"#c6613f","error":"#d03b3b","info":"#2a78d6","warning":"#a66a00","success":"#1a8633",
+"background":"#fcfcfb","sidebarNavigation":"#fcfcfb","expandedSidebar":"#ffffff","sidebarSelection":"#ebebe8","menu":"#ffffff",
+      "footer":"#fcfcfb","tooltip":"#ffffff","toolbar":"#fcfcfb","tabActive":"#efeeea","tabInactive":"#fcfcfb",
+  "lineHighlightBackground":"#f3f3f0","scrollbarThumb":"#cfcec8","behaviorPack":"#d03b3b","resourcePack":"#2a78d6","skinPack":"#c25124","worldTemplate":"#1a8633","claude":"#c6613f"
+	},
+"monaco":{
+  "editor.selectionBackground":"#0073e640","editor.selectionHighlightBackground":"#0073e61a","editor.inactiveSelectionBackground":"#0073e620",
+    "editorLineNumber.foreground":"#a5a49a","editorLineNumber.activeForeground":"#52514e",
+"editorIndentGuide.background":"#0b0b0b14","editorIndentGuide.background1":"#0b0b0b14","editorIndentGuide.activeBackground":"#0b0b0b33","editorIndentGuide.activeBackground1":"#0b0b0b33",
+  "editorBracketMatch.background":"#0b0b0b0f","editorBracketMatch.border":"#0b0b0b33",
+	"editorBracketHighlight.foreground1":"#8c5e33","editorBracketHighlight.foreground2":"#b4552f","editorBracketHighlight.foreground3":"#3d6e9e","editorBracketHighlight.foreground4":"#8c5e33","editorBracketHighlight.foreground5":"#b4552f","editorBracketHighlight.foreground6":"#3d6e9e","editorBracketHighlight.unexpectedBracket.foreground":"#d03b3b",
+  "editorWidget.background":"#ffffff","editorWidget.border":"#0b0b0b1a","editorSuggestWidget.background":"#ffffff","editorSuggestWidget.border":"#0b0b0b1a","editorSuggestWidget.selectedBackground":"#0b0b0b0f",
+"editorHoverWidget.background":"#ffffff","editorHoverWidget.border":"#0b0b0b1a","scrollbarSlider.background":"#0b0b0b1f","scrollbarSlider.hoverBackground":"#0b0b0b33","scrollbarSlider.activeBackground":"#0b0b0b40"}
+}
