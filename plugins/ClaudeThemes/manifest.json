@@ -1,0 +1,12 @@
+{
+	"name": "Claude Themes",
+	"description": "Makes bridge. look like the Claude app. Claude's colors, rounded cards, Claude style fonts and orange code colors, in a dark and a light theme.",
+	"id": "31342a88-85f3-4b39-b5cf-adc19d8323ba",
+	"author": "Draco12191712",
+	"version": "1.0.0",
+	"icon": "mdi-asterisk",
+	"target": "v2",
+	"api_version": 2,
+	"tags": ["Theme"],
+	"releaseTimestamp": 1790907291147
+}
